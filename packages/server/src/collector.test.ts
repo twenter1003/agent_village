@@ -89,7 +89,21 @@ describe('collector', () => {
     expect(Object.keys((await state()).buildings).sort()).toEqual(['w1:backend-dev', 'w1:qa-reviewer']);
     expect(count(`project = '${ID}'`)).toBe(lines.length + 1); // + 빈 roster (폴더 없음 → 팀장만)
     const list = (await (await fetch(url('/api/projects'))).json()) as { id: string; cwd: string }[];
-    expect(list).toContainEqual(expect.objectContaining({ id: ID, cwd: '/work/my-shop-app' }));
+    expect(list.map((p) => p.cwd)).not.toContain('/work/my-shop-app'); // 폴더가 없으면 목록에서 숨김 (D32)
+    expect((await fetch(url(`/api/projects/${ID}/state`))).status).toBe(200); // 기록·상태는 그대로
+  });
+
+  it('마을 목록은 폴더가 있는 마을만: 지우면 빠지고 다시 만들면 돌아온다 (D32)', async () => {
+    const cwd = join(tmp, 'gone-project');
+    mkdirSync(cwd);
+    await post(JSON.stringify({ hook_event_name: 'SessionStart', session_id: 'gone', cwd }));
+    const cwds = async () =>
+      ((await (await fetch(url('/api/projects'))).json()) as { cwd: string }[]).map((p) => p.cwd);
+    await vi.waitFor(async () => expect(await cwds()).toContain(cwd));
+    rmSync(cwd, { recursive: true });
+    expect(await cwds()).not.toContain(cwd);
+    mkdirSync(cwd);
+    expect(await cwds()).toContain(cwd);
   });
 
   it('같은 이벤트를 다시 보내도 두 번 저장하지 않는다', async () => {

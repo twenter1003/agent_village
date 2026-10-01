@@ -1,5 +1,6 @@
 // 수집기 HTTP (02 문서 9장). 127.0.0.1에만 바인딩. /hook은 판단 없이 항상 즉시 204 (02 문서 1장 원칙 1)
 import { once } from 'node:events';
+import { existsSync } from 'node:fs';
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import {
@@ -222,6 +223,7 @@ export async function startServer(port: number, dbPath: string) {
             res,
             200,
             [...store.villages.values()]
+              .filter((p) => existsSync(p.cwd)) // 폴더가 사라진 마을은 숨김, 기록은 그대로 (01 문서 D32)
               .sort((a, b) => b.lastAt - a.lastAt)
               .map((p) => ({ id: p.id, cwd: p.cwd, lastAt: p.lastAt })),
           );
