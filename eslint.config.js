@@ -11,6 +11,10 @@ export default ts.config(
       'packages/web/src/assets/sea/critter.ts',
       'playwright-report/**',
       'test-results/**',
+      // 디자인 동기화 도구가 만드는 폴더 (.gitignore와 같음)
+      '.ds-sync/**',
+      '.design-sync/**',
+      'ds-bundle/**',
     ],
   },
   js.configs.recommended,
