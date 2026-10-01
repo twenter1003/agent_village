@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>가구 · 마을 소품 · 바닥</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.hd{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;color:#5a2e2e;margin:0}
+.meta{font-size:12px;color:#8a5a4a;line-height:17px}
+.card{box-sizing:border-box;background:#fff9ee;border:3px solid #7a3e3e;border-radius:20px;padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.row{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap}
+.cell{display:flex;flex-direction:column;align-items:center;gap:4px}
+.frame{border-radius:14px;background:#f5ecd7}
+.nm{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:15px;color:#5a2e2e;text-align:center}
+.aid{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8a5a4a;text-align:center}
+.rule{margin:0;padding-left:18px;font-size:14px;line-height:23px;color:#5a2e2e}
+.code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:#f3e3c3;border-radius:6px;padding:1px 6px}
+.tilecrop{width:120px;height:70px;overflow:hidden;border-radius:12px;background:#f5ecd7}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1340px; box-sizing: border-box; padding: 44px 56px; background: #f5ecd7; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #5a2e2e; display: flex; flex-direction: column; gap: 20px">
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 class="hd" style="font-size: 40px; line-height: 48px">가구 · 마을 소품 · 바닥</h1>
+<p style="margin: 0; font-size: 15px; color: #8a5a4a">모두 같은 64 × 32 타일 위의 독립 SVG입니다. 이 보드는 125%로 보여 주고 선은 3px로 보정했습니다 (--sw = 3 / 1.25).</p>
+</div>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">가구</h2><span class="meta">천 부분은 --fab 색 변수라 상점에서 같은 가구를 색만 바꿔 팔 수 있습니다. 1×2 방향은 2×1을 좌우 반전.</span></div>
+<div class="row">
+<div class="cell"><div class="frame"><dc-import name="Prop" kind="armchair" scale="1.25" fab="mustard" hint-size="120px,200px"></dc-import></div><span class="nm">안락의자</span><span class="aid">furniture.armchair · 1×1</span></div>
+<div class="cell"><div class="frame"><dc-import name="Prop" kind="desk" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">책상 · 노트북</span><span class="aid">furniture.desk · 1×1</span></div>
+<div class="cell"><div class="frame"><dc-import name="Prop" kind="bookcase" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">책장</span><span class="aid">furniture.bookcase · 벽</span></div>
+<div class="cell"><div class="frame"><dc-import name="Prop" kind="plant" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">화분</span><span class="aid">furniture.plant · 1×1</span></div>
+<div class="cell"><div class="frame"><dc-import name="Prop" kind="lamp" scale="1.25" fab="coral" hint-size="120px,200px"></dc-import></div><span class="nm">스탠드</span><span class="aid">furniture.lamp · 1×1</span></div>
+<div class="cell"><div class="frame"><dc-import name="Prop" kind="bed" scale="1.25" fab="blue" hint-size="160px,260px"></dc-import></div><span class="nm">침대</span><span class="aid">furniture.bed · 2×1</span></div>
+<div class="cell"><div class="frame"><dc-import name="Prop" kind="rug" scale="1.25" fab="lavender" hint-size="160px,260px"></dc-import></div><span class="nm">러그</span><span class="aid">furniture.rug · 2×1 · 바닥층</span></div>
+</div>
+</section>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">마을 소품</h2><span class="meta">1×1 · 기준점 48,128 · 나무 잎은 진녹색 3톤 (--leaf-top / -l / -r)</span></div>
+<div class="row">
+<div class="cell"><div class="frame"><dc-import name="Prop" kind="tree" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">둥근 나무</span><span class="aid">prop.tree</span></div>
+<div class="cell"><div class="frame"><dc-import name="Prop" kind="pine" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">뾰족 나무</span><span class="aid">prop.pine</span></div>
+<div class="cell"><div class="frame"><dc-import name="Prop" kind="bush" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">덤불</span><span class="aid">prop.bush</span></div>
+<div class="cell"><div class="frame"><dc-import name="Prop" kind="streetlamp" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">가로등</span><span class="aid">prop.streetlamp</span></div>
+<div class="cell"><div class="frame"><dc-import name="Prop" kind="bench" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">벤치</span><span class="aid">prop.bench</span></div>
+<div class="cell"><div class="frame"><dc-import name="Prop" kind="flowers" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">꽃밭</span><span class="aid">prop.flowers</span></div>
+<div class="cell"><div class="frame"><dc-import name="Prop" kind="board" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">게시판</span><span class="aid">prop.board · 회의 장소</span></div>
+<div class="cell"><div class="frame"><dc-import name="Prop" kind="fence" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">울타리</span><span class="aid">prop.fence · x방향</span></div>
+<div class="cell"><div class="frame"><dc-import name="Prop" kind="materials" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">자재 더미</span><span class="aid">prop.materials · 공사장</span></div>
+</div>
+</section>
+
+<div style="display: flex; gap: 20px; flex-grow: 1">
+<section class="card" style="flex-shrink: 0">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">분수</h2><span class="meta">2×2 · 광장 가운데</span></div>
+<div class="cell"><div class="frame"><dc-import name="Prop" kind="fountain" scale="1.25" hint-size="200px,320px"></dc-import></div><span class="aid">prop.fountain</span></div>
+</section>
+<section class="card" style="flex-grow: 1">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">바닥 타일</h2><span class="meta">외곽선 없음 · 이어 붙여도 이음새가 보이지 않게</span></div>
+<div class="row" style="align-items: flex-start">
+<div class="cell"><div class="tilecrop"><div style="margin-top: -125px"><dc-import name="Prop" kind="tile-grass" scale="1.25" hint-size="120px,200px"></dc-import></div></div><span class="nm">잔디</span><span class="aid">tile.grass</span></div>
+<div class="cell"><div class="tilecrop"><div style="margin-top: -125px"><dc-import name="Prop" kind="tile-path" scale="1.25" hint-size="120px,200px"></dc-import></div></div><span class="nm">길</span><span class="aid">tile.path</span></div>
+<div class="cell"><div class="tilecrop"><div style="margin-top: -125px"><dc-import name="Prop" kind="tile-plaza" scale="1.25" hint-size="120px,200px"></dc-import></div></div><span class="nm">광장 돌</span><span class="aid">tile.plaza</span></div>
+<div class="cell"><div class="tilecrop"><div style="margin-top: -125px"><dc-import name="Prop" kind="tile-dirt" scale="1.25" hint-size="120px,200px"></dc-import></div></div><span class="nm">흙 · 부지</span><span class="aid">tile.dirt</span></div>
+</div>
+<ul class="rule">
+<li>바닥은 타일마다 선을 긋지 않습니다. 마을 가장자리에만 두께 8의 옆면(-l, -r)과 3px 외곽선을 둘러 섬처럼 보이게 합니다.</li>
+<li>그리는 순서는 바닥 → 바닥층 가구(러그) → 나머지를 x + y 순으로. 같은 칸이면 가구 → 캐릭터.</li>
+<li>공사장 주변엔 자재 더미, 광장엔 게시판·벤치·분수, 집 앞엔 꽃밭을 기본 배치로 둡니다.</li>
+<li>가구 가격은 기준가 × 물가 지수. 색 변형은 같은 가격.</li>
+</ul>
+</section>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1340}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

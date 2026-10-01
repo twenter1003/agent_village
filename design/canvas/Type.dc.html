@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>글꼴 · 아이콘 · 간격</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.hd{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;color:#5a2e2e;margin:0}
+.meta{font-size:12px;color:#8a5a4a;line-height:16px}
+.ic{fill:none;stroke:#5a2e2e;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.it{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;color:#8a5a4a;text-align:center;line-height:15px}
+.ib{width:48px;height:48px;border:2px solid #7a3e3e;border-radius:12px;background:#f5ecd7;display:flex;align-items:center;justify-content:center;box-sizing:border-box}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1000px; box-sizing: border-box; padding: 48px 56px; background: #f5ecd7; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #5a2e2e; display: flex; flex-direction: column; gap: 24px">
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 class="hd" style="font-size: 40px; line-height: 48px">글꼴 · 아이콘 · 간격</h1>
+<p style="margin: 0; font-size: 15px; color: #8a5a4a">제목과 숫자는 Jua, 읽는 글은 Gowun Dodum. 두 글꼴 모두 굵기는 하나뿐이라 위계는 크기와 색으로만 만듭니다.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: 600px minmax(0, 1fr); gap: 20px">
+
+<section style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 class="hd" style="font-size: 22px">글자 크기</h2>
+<div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); row-gap: 14px; column-gap: 16px; align-items: baseline">
+<div class="meta">화면 제목<br>Jua 32 / 40</div>
+<div style="font-family: 'Jua', sans-serif; font-size: 32px; line-height: 40px">토끼 카페 완공!</div>
+<div class="meta">섹션 제목<br>Jua 22 / 28</div>
+<div style="font-family: 'Jua', sans-serif; font-size: 22px; line-height: 28px">팀원 · 외부 방문자</div>
+<div class="meta">카드 제목<br>Jua 17 / 24</div>
+<div style="font-family: 'Jua', sans-serif; font-size: 17px; line-height: 24px">곰 · 백엔드</div>
+<div class="meta">숫자<br>Jua 16 ~ 24</div>
+<div style="font-family: 'Jua', sans-serif; font-size: 24px; line-height: 28px">3,420 <span style="font-size: 16px">코인</span> <span style="font-size: 16px; color: #2f7d4f">+200</span></div>
+<div class="meta">본문<br>Gowun Dodum 15 / 22</div>
+<div style="font-size: 15px; line-height: 22px">결제 API 스키마를 정리하고 있어요.</div>
+<div class="meta">보조<br>Gowun Dodum 13 / 18</div>
+<div style="font-size: 13px; line-height: 18px; color: #8a5a4a">작업 2 / 4 · 12분 전</div>
+<div class="meta">최소<br>Gowun Dodum 12 / 16</div>
+<div style="font-size: 12px; line-height: 16px; color: #8a5a4a">이보다 작게 쓰지 않습니다</div>
+</div>
+<div style="font-size: 13px; line-height: 20px; color: #8a5a4a; border-top: 2px dashed #e3cdb0; padding-top: 12px">글자 색은 --text와 --text-2 두 가지. 색 바탕 위 글자는 슬롯의 deep 색을 씁니다 (대비 4.5:1 이상).</div>
+</section>
+
+<section style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">아이콘</h2><span class="meta">24 격자 · 선 2 · 둥근 끝 · --text 색 · 채우지 않음</span></div>
+<div style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); row-gap: 14px; column-gap: 8px">
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="4.5"></circle></svg></div>코인</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 9L12 4.5L20.5 9Z"></path><path d="M6 10.5V17M10 10.5V17M14 10.5V17M18 10.5V17M4 20H20"></path></svg></div>금고 · 은행</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16.5L10 10.5L14 14.5L20 8.5"></path><path d="M15 8.5H20V13.5"></path></svg></div>물가</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11A6 6 0 0 1 18 11V16L19.5 18H4.5Z"></path><path d="M10 20.5A2 2 0 0 0 14 20.5"></path></svg></div>알림</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 3.5V6M12 18V20.5M3.5 12H6M18 12H20.5M6 6L7.8 7.8M16.2 16.2L18 18M6 18L7.8 16.2M16.2 7.8L18 6"></path><circle cx="12" cy="12" r="6"></circle></svg></div>설정</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19.5L13 11.5"></path><path d="M10.5 6.5L14.5 3.5L20.5 9.5L17.5 13.5Z"></path></svg></div>작업</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.5H19A1.5 1.5 0 0 1 20.5 7V15A1.5 1.5 0 0 1 19 16.5H11L7 19.5V16.5H5A1.5 1.5 0 0 1 3.5 15V7A1.5 1.5 0 0 1 5 5.5Z"></path></svg></div>회의</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14.5A7.5 7.5 0 1 1 9.5 5A6 6 0 0 0 19 14.5Z"></path></svg></div>휴식</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4L20.5 19H3.5Z"></path><path d="M12 10V14M12 16.8V17"></path></svg></div>막힘</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11L12 4L20 11"></path><path d="M6 9.5V20H18V9.5"></path><path d="M10 20V15H14V20"></path></svg></div>집</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4L20.5 8.5L12 13L3.5 8.5Z"></path><path d="M3.5 12.5L12 17L20.5 12.5"></path></svg></div>마을 보기</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"></rect><rect x="13" y="4" width="7" height="7" rx="1.5"></rect><rect x="4" y="13" width="7" height="7" rx="1.5"></rect><rect x="13" y="13" width="7" height="7" rx="1.5"></rect></svg></div>격자 보기</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V19M5 12H19"></path></svg></div>확대</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12H19"></path></svg></div>축소</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4H9M15 4H20V9M20 15V20H15M9 20H4V15"></path></svg></div>전체 보기</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5L9.5 17L19 7.5"></path></svg></div>완료</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18"></path></svg></div>닫기</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5L14 10L20.5 12L14 14L12 20.5L10 14L3.5 12L10 10Z"></path></svg></div>완공</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5C7 4 9.5 4 12 6C14.5 4 17 4 20 5.5V19C17 17.5 14.5 17.5 12 19.5C9.5 17.5 7 17.5 4 19Z"></path><path d="M12 6V19.5"></path></svg></div>도서관<br>Explore</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.8"></circle><path d="M11 6.8L6 20M13 6.8L18 20M8 15H16"></path></svg></div>설계사무소<br>Plan</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="8" width="17" height="11" rx="2"></rect><path d="M9 8V6A1 1 0 0 1 10 5H14A1 1 0 0 1 15 6V8M3.5 13H20.5"></path></svg></div>인력사무소<br>general</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11V8.5A2 2 0 0 1 7 6.5H17A2 2 0 0 1 19 8.5V11"></path><path d="M3 12.5A2 2 0 0 1 7 12.5V14.5H17V12.5A2 2 0 0 1 21 12.5V17.5H3Z"></path><path d="M5 17.5V19.5M19 17.5V19.5"></path></svg></div>가구 상점</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M9 10V10.5M15 10V10.5M9 14.5C10.6 16 13.4 16 15 14.5"></path></svg></div>성격</div>
+<div class="it"><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M12 7.5V12L15 14"></path></svg></div>시간</div>
+</div>
+</section>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px">
+<section style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 20px 24px; display: flex; flex-direction: column; gap: 12px">
+<h2 class="hd" style="font-size: 20px">간격 · 4 단위</h2>
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: #8a5a4a">
+<div style="display: flex; align-items: center; gap: 10px"><span style="width: 28px">4</span><span style="width: 4px; height: 14px; background: #f0b24a; border-radius: 3px"></span></div>
+<div style="display: flex; align-items: center; gap: 10px"><span style="width: 28px">8</span><span style="width: 8px; height: 14px; background: #f0b24a; border-radius: 3px"></span></div>
+<div style="display: flex; align-items: center; gap: 10px"><span style="width: 28px">12</span><span style="width: 12px; height: 14px; background: #f0b24a; border-radius: 3px"></span><span>칩 안, 아이콘과 글자 사이</span></div>
+<div style="display: flex; align-items: center; gap: 10px"><span style="width: 28px">16</span><span style="width: 16px; height: 14px; background: #f0b24a; border-radius: 3px"></span><span>카드 안 여백, 화면 가장자리</span></div>
+<div style="display: flex; align-items: center; gap: 10px"><span style="width: 28px">24</span><span style="width: 24px; height: 14px; background: #f0b24a; border-radius: 3px"></span><span>패널 안 여백</span></div>
+<div style="display: flex; align-items: center; gap: 10px"><span style="width: 28px">32</span><span style="width: 32px; height: 14px; background: #f0b24a; border-radius: 3px"></span><span>구역 사이</span></div>
+</div>
+</section>
+<section style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 20px 24px; display: flex; flex-direction: column; gap: 12px">
+<h2 class="hd" style="font-size: 20px">모서리 · UI 선</h2>
+<div style="display: flex; gap: 12px; align-items: flex-end">
+<div class="it"><div style="width: 44px; height: 44px; border: 2px solid #7a3e3e; border-radius: 8px; background: #f5ecd7; box-sizing: border-box"></div>8 · 작은 칸</div>
+<div class="it"><div style="width: 44px; height: 44px; border: 2px solid #7a3e3e; border-radius: 12px; background: #f5ecd7; box-sizing: border-box"></div>12 · 버튼</div>
+<div class="it"><div style="width: 44px; height: 44px; border: 3px solid #7a3e3e; border-radius: 16px; background: #f5ecd7; box-sizing: border-box"></div>16 · 토스트</div>
+<div class="it"><div style="width: 44px; height: 44px; border: 3px solid #7a3e3e; border-radius: 20px; background: #f5ecd7; box-sizing: border-box"></div>20 · 패널</div>
+<div class="it"><div style="width: 64px; height: 28px; border: 2px solid #7a3e3e; border-radius: 999px; background: #f5ecd7; box-sizing: border-box"></div>알약 · 칩</div>
+</div>
+<div style="font-size: 13px; line-height: 20px">UI 선은 두 가지: 패널·카드·상단바 <b style="font-family: 'Jua', sans-serif; font-weight: 400">3px</b>, 높이 44 이하 컨트롤 <b style="font-family: 'Jua', sans-serif; font-weight: 400">2px</b>. 월드와 같은 --ink.</div>
+</section>
+<section style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 20px 24px; display: flex; flex-direction: column; gap: 12px">
+<h2 class="hd" style="font-size: 20px">높이감</h2>
+<div style="display: flex; gap: 20px; align-items: center">
+<div class="it"><div style="width: 88px; height: 40px; border: 2px solid #7a3e3e; border-radius: 12px; background: #f7cb52; box-shadow: 0 3px 0 #7a3e3e; box-sizing: border-box"></div>누르는 것<br>아래 턱 3</div>
+<div class="it"><div style="width: 88px; height: 40px; border: 3px solid #7a3e3e; border-radius: 16px; background: #fff9ee; box-shadow: 0 6px 0 rgba(122, 62, 62, 0.16); box-sizing: border-box"></div>떠 있는 것<br>토스트·팝오버</div>
+<div class="it"><div style="width: 88px; height: 40px; border: 3px solid #7a3e3e; border-radius: 16px; background: #fff9ee; box-sizing: border-box"></div>놓인 것<br>카드·패널</div>
+</div>
+<div style="font-size: 13px; line-height: 20px; color: #8a5a4a">흐린 그림자 대신 어긋난 단색 그림자만 씁니다. 월드의 평면 음영과 같은 결.</div>
+</section>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

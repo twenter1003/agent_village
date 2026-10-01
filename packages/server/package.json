@@ -1,0 +1,11 @@
+{
+  "name": "@tycoon/server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts"
+  },
+  "dependencies": {
+    "@tycoon/core": "workspace:*"
+  }
+}

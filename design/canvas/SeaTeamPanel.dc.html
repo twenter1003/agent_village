@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>바다 팀원 패널</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<aside aria-label="팀원과 방문자" style="width: 360px; height: 832px; box-sizing: border-box; padding: 16px; display: flex; flex-direction: column; gap: 10px; background: #f9fdfc; border-left: 3px solid #2e4b66; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #1f3850; overflow: hidden">
+<div style="display: flex; align-items: baseline; justify-content: space-between"><h2 style="margin: 0; font-family: 'Jua', sans-serif; font-weight: 400; font-size: 20px">팀원 <span style="font-size: 15px; color: #4f6883">4</span></h2><span style="font-size: 12px; color: #4f6883">.claude/agents 4개</span></div>
+
+<a href="SeaScreenHouse.dc.html" style="display: flex; flex-direction: column; gap: 7px; padding: 10px 12px; border: 3px solid {{bd.seal}}; border-radius: 16px; background: #f9fdfc; text-decoration: none; color: #1f3850; outline: {{ol.seal}}">
+<div style="display: flex; gap: 10px; align-items: center">
+<span style="width: 48px; height: 48px; flex-shrink: 0; box-sizing: border-box; border: 2px solid #2e4b66; border-radius: 12px; background: #dde8f5; overflow: hidden; display: flex; align-items: center; justify-content: center"><dc-import name="SeaCritter" species="seal" mode="face" scale="0.5" animate="false" hint-size="44px,44px"></dc-import></span>
+<div style="display: flex; flex-direction: column; gap: 3px; flex-grow: 1; min-width: 0">
+<div style="display: flex; align-items: center; gap: 6px"><span style="font-family: 'Jua', sans-serif; font-size: 17px">점박이물범</span><span style="padding: 0 8px; height: 20px; display: inline-flex; align-items: center; border: 2px solid #2e4b66; border-radius: 999px; background: #dde8f5; color: #3f5f99; font-family: 'Jua', sans-serif; font-size: 12px">백엔드</span><span style="padding: 0 7px; height: 20px; display: inline-flex; align-items: center; border: 2px solid #2e4b66; border-radius: 999px; font-family: 'Jua', sans-serif; font-size: 12px">ISTJ</span></div>
+<span style="display: flex; align-items: center; gap: 5px; font-size: 12px"><span style="width: 10px; height: 10px; border-radius: 50%; border: 2px solid #2e4b66; background: #bfdca8"></span>휴식 · 집</span>
+</div>
+<span style="font-family: 'Jua', sans-serif; font-size: 15px; white-space: nowrap">1,240</span>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; padding: 6px 10px; background: #d3e9e6; border-radius: 10px; font-size: 13px"><span style="flex-grow: 1; color: #4f6883">다음 작업을 기다리는 중</span><span style="font-size: 11.5px; color: #4f6883">12분째</span></div>
+</a>
+
+<a href="SeaScreenHouse.dc.html" style="display: flex; flex-direction: column; gap: 7px; padding: 10px 12px; border: 3px solid {{bd.otter}}; border-radius: 16px; background: #f9fdfc; text-decoration: none; color: #1f3850; outline: {{ol.otter}}">
+<div style="display: flex; gap: 10px; align-items: center">
+<span style="width: 48px; height: 48px; flex-shrink: 0; box-sizing: border-box; border: 2px solid #2e4b66; border-radius: 12px; background: #fadcd8; overflow: hidden; display: flex; align-items: center; justify-content: center"><dc-import name="SeaCritter" species="otter" mode="face" scale="0.5" animate="false" hint-size="44px,44px"></dc-import></span>
+<div style="display: flex; flex-direction: column; gap: 3px; flex-grow: 1; min-width: 0">
+<div style="display: flex; align-items: center; gap: 6px"><span style="font-family: 'Jua', sans-serif; font-size: 17px">수달</span><span style="padding: 0 8px; height: 20px; display: inline-flex; align-items: center; border: 2px solid #2e4b66; border-radius: 999px; background: #fadcd8; color: #a8433d; font-family: 'Jua', sans-serif; font-size: 12px">프론트엔드</span><span style="padding: 0 7px; height: 20px; display: inline-flex; align-items: center; border: 2px solid #2e4b66; border-radius: 999px; font-family: 'Jua', sans-serif; font-size: 12px">ENFP</span></div>
+<span style="display: flex; align-items: center; gap: 5px; font-size: 12px"><span style="width: 10px; height: 10px; border-radius: 50%; border: 2px solid #2e4b66; background: #f7cb52"></span>작업 중 · 공사 현장</span>
+</div>
+<span style="font-family: 'Jua', sans-serif; font-size: 15px; white-space: nowrap">860</span>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; padding: 6px 10px; background: #d3e9e6; border-radius: 10px; font-size: 13px"><span style="flex-grow: 1">로그인 폼 검증</span><span style="font-size: 11.5px; color: #4f6883">로그인 개선 3/6</span></div>
+</a>
+
+<a href="SeaScreenHouse.dc.html" style="display: flex; flex-direction: column; gap: 7px; padding: 10px 12px; border: 3px solid {{bd.hamster}}; border-radius: 16px; background: #f9fdfc; text-decoration: none; color: #1f3850; outline: {{ol.hamster}}">
+<div style="display: flex; gap: 10px; align-items: center">
+<span style="width: 48px; height: 48px; flex-shrink: 0; box-sizing: border-box; border: 2px solid #2e4b66; border-radius: 12px; background: #fbe9c4; overflow: hidden; display: flex; align-items: center; justify-content: center"><dc-import name="SeaCritter" species="hamster" mode="face" scale="0.5" animate="false" hint-size="44px,44px"></dc-import></span>
+<div style="display: flex; flex-direction: column; gap: 3px; flex-grow: 1; min-width: 0">
+<div style="display: flex; align-items: center; gap: 6px"><span style="font-family: 'Jua', sans-serif; font-size: 17px">햄스터</span><span style="padding: 0 8px; height: 20px; display: inline-flex; align-items: center; border: 2px solid #2e4b66; border-radius: 999px; background: #fbe9c4; color: #845614; font-family: 'Jua', sans-serif; font-size: 12px">QA</span><span style="padding: 0 4px; height: 20px; display: inline-flex; align-items: center; gap: 1px; border: 2px solid #2e4b66; border-radius: 999px; font-family: 'Jua', sans-serif; font-size: 12px"><span>IS</span><span style="padding: 0 3px; border-radius: 5px; background: #e8e1f6; color: #6a55a3">T</span><span>P</span></span></div>
+<span style="display: flex; align-items: center; gap: 5px; font-size: 12px"><span style="width: 10px; height: 10px; border-radius: 50%; border: 2px solid #2e4b66; background: #96c6ea"></span>회의 중 · 광장</span>
+</div>
+<span style="font-family: 'Jua', sans-serif; font-size: 15px; white-space: nowrap">1,020</span>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; padding: 6px 10px; background: #d3e9e6; border-radius: 10px; font-size: 13px"><span style="flex-grow: 1">결제 화면 흐름 회의</span><span style="font-size: 11.5px; color: #4f6883">04:12</span></div>
+</a>
+
+<a href="SeaScreenHouse.dc.html" style="display: flex; flex-direction: column; gap: 7px; padding: 10px 12px; border: 3px solid {{bd.turtle}}; border-radius: 16px; background: #f9fdfc; text-decoration: none; color: #1f3850; outline: {{ol.turtle}}">
+<div style="display: flex; gap: 10px; align-items: center">
+<span style="width: 48px; height: 48px; flex-shrink: 0; box-sizing: border-box; border: 2px solid #2e4b66; border-radius: 12px; background: #dcebd2; overflow: hidden; display: flex; align-items: center; justify-content: center"><dc-import name="SeaCritter" species="turtle" mode="face" scale="0.5" animate="false" hint-size="44px,44px"></dc-import></span>
+<div style="display: flex; flex-direction: column; gap: 3px; flex-grow: 1; min-width: 0">
+<div style="display: flex; align-items: center; gap: 6px"><span style="font-family: 'Jua', sans-serif; font-size: 17px">바다거북</span><span style="padding: 0 8px; height: 20px; display: inline-flex; align-items: center; border: 2px solid #2e4b66; border-radius: 999px; background: #dcebd2; color: #2f7049; font-family: 'Jua', sans-serif; font-size: 12px">팀장</span><span style="padding: 0 7px; height: 20px; display: inline-flex; align-items: center; border: 2px solid #2e4b66; border-radius: 999px; font-family: 'Jua', sans-serif; font-size: 12px">ENTJ</span></div>
+<span style="display: flex; align-items: center; gap: 5px; font-size: 12px"><span style="width: 10px; height: 10px; border-radius: 50%; border: 2px solid #2e4b66; background: #96c6ea"></span>회의 중 · 광장</span>
+</div>
+<span style="font-family: 'Jua', sans-serif; font-size: 15px; white-space: nowrap">1,480</span>
+</div>
+<div style="display: flex; align-items: center; gap: 8px; padding: 6px 10px; background: #d3e9e6; border-radius: 10px; font-size: 13px"><span style="flex-grow: 1">회의 진행 · 작업 나누기</span><span style="font-size: 11.5px; color: #4f6883">04:12</span></div>
+</a>
+
+<div style="display: flex; align-items: baseline; justify-content: space-between; margin-top: 6px"><h2 style="margin: 0; font-family: 'Jua', sans-serif; font-weight: 400; font-size: 18px">외부 방문자 <span style="font-size: 14px; color: #4f6883">3</span></h2><span style="font-size: 12px; color: #4f6883">집 없음</span></div>
+<div style="display: flex; gap: 10px; align-items: center; padding: 6px 10px 6px 6px; border: 2px dashed #2e4b66; border-radius: 14px">
+<span style="width: 38px; height: 38px; flex-shrink: 0; box-sizing: border-box; border: 2px solid #2e4b66; border-radius: 10px; background: #efe8df; overflow: hidden; display: flex; align-items: center; justify-content: center"><dc-import name="SeaCritter" species="fish" role="explore" mode="face" scale="0.4" animate="false" hint-size="35px,35px"></dc-import></span>
+<div style="display: flex; flex-direction: column; flex-grow: 1"><span style="font-family: 'Jua', sans-serif; font-size: 15px">Explore <span style="font-size: 12px; color: #6a5b46">탐사 기지</span></span><span style="font-size: 12px; color: #4f6883">파일 23개 훑는 중</span></div>
+</div>
+<div style="display: flex; gap: 10px; align-items: center; padding: 6px 10px 6px 6px; border: 2px dashed #2e4b66; border-radius: 14px">
+<span style="width: 38px; height: 38px; flex-shrink: 0; box-sizing: border-box; border: 2px solid #2e4b66; border-radius: 10px; background: #efe8df; overflow: hidden; display: flex; align-items: center; justify-content: center"><dc-import name="SeaCritter" species="fish" role="plan" mode="face" scale="0.4" animate="false" hint-size="35px,35px"></dc-import></span>
+<div style="display: flex; flex-direction: column; flex-grow: 1"><span style="font-family: 'Jua', sans-serif; font-size: 15px">Plan <span style="font-size: 12px; color: #6a5b46">해도실</span></span><span style="font-size: 12px; color: #4f6883">설계안 정리 중</span></div>
+</div>
+<div style="display: flex; gap: 10px; align-items: center; padding: 6px 10px 6px 6px; border: 2px dashed #2e4b66; border-radius: 14px">
+<span style="width: 38px; height: 38px; flex-shrink: 0; box-sizing: border-box; border: 2px solid #2e4b66; border-radius: 10px; background: #efe8df; overflow: hidden; display: flex; align-items: center; justify-content: center"><dc-import name="SeaCritter" species="fish" role="general" mode="face" scale="0.4" animate="false" hint-size="35px,35px"></dc-import></span>
+<div style="display: flex; flex-direction: column; flex-grow: 1"><span style="font-family: 'Jua', sans-serif; font-size: 15px">general <span style="font-size: 12px; color: #6a5b46">인력 부두</span></span><span style="font-size: 12px; color: #4f6883">공사장에서 산호석 블록 나르는 중</span></div>
+</div>
+</aside>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"selected":{"editor":"enum","options":["none","seal","otter","hamster","turtle"],"default":"none"},"$preview":{"width":360,"height":832}}'>
+class Component extends DCLogic {
+renderVals() {
+const sel = this.props.selected ?? 'none';
+const bd = {}; const ol = {};
+['seal', 'otter', 'hamster', 'turtle'].forEach((k) => {
+bd[k] = sel === k ? '#e2ae33' : '#2e4b66';
+ol[k] = sel === k ? '2px solid #2e4b66' : 'none';
+});
+return { bd: bd, ol: ol };
+}
+}
+</script>
+</body>
+</html>

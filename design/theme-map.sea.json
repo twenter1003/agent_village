@@ -1,0 +1,69 @@
+{
+  "$comment": "바다 테마 대응표 (부록). 게임 상태·규칙·테스트·저장은 정본 id(= 잔디 마을 id)만 쓰고, 그릴 때와 글자를 보여 줄 때만 이 표로 바다 id와 이름을 고른다. 표에 없는 id는 그대로 쓴다 (sign.*, site.*, fx.complete는 id가 같고 그림만 바다용). 원본: design/canvas/Sea*.dc.html. 설명: docs/05-바다-테마.md 2~3장.",
+  "theme": "sea",
+  "name": "바다 마을",
+  "tokens": "design/tokens-sea.css",
+  "rig": "design/rig.sea.json",
+  "assetSources": {
+    "building": "design/canvas/SeaBuilding.dc.html",
+    "prop": "design/canvas/SeaProp.dc.html",
+    "character": "design/canvas/SeaCritter.dc.html",
+    "worldFx": "design/canvas/SeaFx.dc.html",
+    "village": "design/canvas/SeaVillage.dc.html"
+  },
+
+  "species": { "bear": "seal", "rabbit": "otter", "raccoon": "hamster", "penguin": "turtle", "gentoo": "gentoo", "polarbear": "polarbear", "walrus": "walrus", "sealion": "sealion", "gull": "gull", "seaotter": "seaotter", "clownfish": "clownfish", "puffin": "puffin", "dugong": "dugong", "flamingo": "flamingo", "harpseal": "harpseal", "loggerhead": "loggerhead", "pelican": "pelican", "elephantseal": "elephantseal", "emperorchick": "emperorchick", "iguana": "iguana", "visitor": "fish" },
+  "accessory": { "glasses": "headlamp", "beret": "starfishPin", "magnifier": "headlamp", "bowtie": "captainHat", "cap": "cap" },
+  "$accessory": "magnifier(QA 돋보기)는 바다에 같은 소품이 없어 headlamp로 간다. 햄스터는 lockedAccessory가 우선이라 늘 헬멧을 쓴다.",
+  "lockedAccessory": { "hamster": "seaWalkHelmet" },
+
+  "body": { "plaster-1f": "shell-1f", "wood-1f": "coral-1f", "brick-2f": "wreck-2f", "stone-2f": "basalt-2f" },
+  "roof": { "gable": "scallop", "hip": "dome", "flat": "conch" },
+  "sign": "same",
+  "site": "same",
+  "fx": "same",
+
+  "tile": { "grass": "sand", "path": "gravel", "plaza": "plaza", "dirt": "rock" },
+  "furniture": { "armchair": "clamchair", "desk": "desk", "bookcase": "shelf", "plant": "coralpot", "lamp": "jellylamp", "bed": "clambed", "rug": "rug" },
+  "prop": { "tree": "kelp", "pine": "coral", "bush": "braincoral", "streetlamp": "jellypost", "flowers": "anemone", "fence": "buoyfence", "bench": "bench", "board": "board", "materials": "materials", "fountain": "clamfountain" },
+  "carry": { "plank": "blocks" },
+  "hold": { "hammer": "hammer" },
+  "$hold": "수달만 hammer 대신 stone (rig.sea.json props.hammer.variantBySpecies)",
+
+  "extras": {
+    "prop": ["seagrass", "rock", "chest", "starfish", "urchin"],
+    "$prop": "바다에만 있는 장식. 게임 상태와 무관하고 마을 생성기가 뿌린다 (배치 예: SeaVillage.dc.html의 P(…) 호출). rock은 물범 쉼터(rules.restSpot)로도 쓴다."
+  },
+
+  "labels": {
+    "town": "바다 마을",
+    "currency": "진주",
+    "vault": "보물상자",
+    "$vault": "01 문서 6.5의 '팀 금고' (팀원 잔고 합계)",
+    "move": "헤엄",
+    "facilities": { "library": "탐사 기지", "plan": "해도실", "agency": "인력 부두" },
+    "buildings": { "workshop": "공방", "cafe": "카페", "guard": "초소", "hall": "회관", "work": "작업장" },
+    "species": { "seal": "점박이물범", "otter": "수달", "hamster": "골든햄스터", "turtle": "바다거북", "gentoo": "펭귄", "polarbear": "북극곰", "walrus": "바다코끼리", "sealion": "바다사자", "gull": "갈매기", "seaotter": "해달", "clownfish": "흰동가리", "puffin": "퍼핀", "dugong": "듀공", "flamingo": "플라밍고", "harpseal": "하프물범", "loggerhead": "붉은바다거북", "pelican": "갈색펠리컨", "elephantseal": "코끼리물범", "emperorchick": "황제펭귄 아기", "iguana": "바다이구아나", "fish": "복어" },
+    "speciesShort": { "seal": "물범", "otter": "수달", "hamster": "햄스터", "turtle": "바다거북", "gentoo": "펭귄", "polarbear": "북극곰", "walrus": "바다코끼리", "sealion": "바다사자", "gull": "갈매기", "seaotter": "해달", "clownfish": "흰동가리", "puffin": "퍼핀", "dugong": "듀공", "flamingo": "플라밍고", "harpseal": "하프물범", "loggerhead": "붉은바다거북", "pelican": "펠리컨", "elephantseal": "코끼리물범", "emperorchick": "황제펭귄", "iguana": "이구아나", "fish": "복어" },
+    "furniture": { "armchair": "폭신 조개 의자", "desk": "유목 책상 · 노트북", "bookcase": "유리병 선반", "plant": "산호 화분", "lamp": "해파리 램프", "bed": "대합 침대", "rug": "물결 러그", "flowers": "말미잘 화단" },
+    "accessory": { "headlamp": "헤드랜턴", "starfishPin": "불가사리 핀", "seaWalkHelmet": "씨워크 헬멧", "captainHat": "선장 모자", "cap": "모자" },
+    "eras": { "village": "모래섬 마을", "town": "산호 읍", "city": "해저 도시", "capital": "해저 수도" },
+    "works": { "streetlamp": "해파리 가로등", "bench": "벤치", "flowers": "말미잘 꽃밭", "park": "공원", "paving": "길 포장", "landmark": "등대", "landmark2": "소라 탑", "palace": "해저 궁전" }
+  },
+
+  "rules": {
+    "restSpot": { "seal": "rock" },
+    "$restSpot": "물범은 쉴 때 집 앞 대신 가장 가까운 prop.rock 위(data-seat 48,103)로 간다. 바위가 없거나 다른 팀원이 앉아 있으면 집 앞.",
+    "characterBubbles": ["pose:talk", "accessory:seaWalkHelmet"],
+    "helmetHose": "헬멧을 쓴 캐릭터 머리 위 호스 끝(31,-122)에서 수면(월드 y < 0)까지 선을 이어 그린다. 호스는 월드 층, 캐릭터 에셋 밖.",
+    "speciesCycle": "roster.speciesCycle을 species 표로 옮긴 것: seal, otter, hamster (팀장 turtle은 뺌, D16), 그다음 동물 도감(D15·D16) gentoo, polarbear, walrus, sealion, gull, seaotter, clownfish, puffin, dugong, flamingo, harpseal, loggerhead, pelican, elephantseal, emperorchick, iguana. 도감을 다 쓰면 자동 변형(variant)"
+  },
+
+  "world": {
+    "background": { "gradient": ["--water-bg-1", "--water-bg-2 55%", "--water-bg-3"] },
+    "lightRays": { "count": 4, "color": "--light-ray", "$comment": "화면 고정 층 (카메라를 따라가지 않음). 위치는 SeaVillage.dc.html 첫 svg" },
+    "fishSchool": { "count": 7, "y": 40, "pxPerTick": 2.5, "tickMs": 200, "loopPx": 1750, "color": "--fish-school" },
+    "bubbleStreams": { "tickMs": 200, "lifeTicks": 28, "perSource": 4, "risePxPerTick": 7, "sources": ["prop.clamfountain", "prop.chest", "island edge x2"], "$sources": "SeaFx.dc.html의 SOURCES 좌표가 예시 마을 기준 위치" },
+    "groundEdge": "마을 가장자리 옆면은 현무암 (--basalt-l / --basalt-r), 두께 14"
+  }
+}

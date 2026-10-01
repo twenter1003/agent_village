@@ -1,0 +1,574 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Building.dc.html": {
+      "h": 256,
+      "title": "컴포넌트 · 건물 (Tweaks로 조합)",
+      "w": 160,
+      "x": 1520,
+      "y": 9260
+    },
+    "Cards.dc.html": {
+      "h": 1120,
+      "title": "05 · 카드 · 토스트 · 월드 UI",
+      "w": 1440,
+      "x": 0,
+      "y": 2840
+    },
+    "Chars.dc.html": {
+      "h": 1200,
+      "title": "06 · 캐릭터 시트 (4종 × 7포즈 + 프로필)",
+      "w": 1440,
+      "x": 0,
+      "y": 4380
+    },
+    "Controls.dc.html": {
+      "h": 1240,
+      "title": "04 · 버튼 · 칩 · 진행 표시",
+      "w": 1440,
+      "x": 1520,
+      "y": 1480
+    },
+    "Critter.dc.html": {
+      "h": 138,
+      "title": "컴포넌트 · 캐릭터",
+      "w": 128,
+      "x": 1936,
+      "y": 9260
+    },
+    "Guide.dc.html": {
+      "h": 1460,
+      "title": "08 · 동물 추가 가이드 (Claude Code용)",
+      "w": 1440,
+      "x": 0,
+      "y": 5740
+    },
+    "Kit.dc.html": {
+      "h": 1700,
+      "title": "09 · 조립식 건물 키트",
+      "w": 1440,
+      "x": 0,
+      "y": 7660
+    },
+    "Main.dc.html": {
+      "h": 1360,
+      "title": "01 · 색상 토큰",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "Prop.dc.html": {
+      "h": 160,
+      "title": "컴포넌트 · 소품",
+      "w": 96,
+      "x": 1760,
+      "y": 9260
+    },
+    "Props.dc.html": {
+      "h": 1340,
+      "title": "11 · 가구 · 마을 소품 · 바닥",
+      "w": 1440,
+      "x": 0,
+      "y": 9480
+    },
+    "Rig.dc.html": {
+      "h": 1240,
+      "title": "07 · 캐릭터 리그 규격",
+      "w": 1440,
+      "x": 1520,
+      "y": 4380
+    },
+    "Rules.dc.html": {
+      "h": 1360,
+      "title": "02 · 선 · 음영 · 타일",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "ScreenBuilding.dc.html": {
+      "h": 900,
+      "is_interactive": true,
+      "title": "16 · 건물 상세",
+      "w": 1440,
+      "x": 1520,
+      "y": 13740
+    },
+    "ScreenEconomy.dc.html": {
+      "h": 900,
+      "is_interactive": true,
+      "title": "18 · 경제 패널",
+      "w": 1440,
+      "x": 1520,
+      "y": 14760
+    },
+    "ScreenGrid.dc.html": {
+      "h": 900,
+      "is_interactive": true,
+      "title": "14 · 격자 뷰",
+      "w": 1440,
+      "x": 1520,
+      "y": 12720
+    },
+    "ScreenHouse.dc.html": {
+      "h": 900,
+      "is_interactive": true,
+      "title": "15 · 집 상세",
+      "w": 1440,
+      "x": 0,
+      "y": 13740
+    },
+    "ScreenMain.dc.html": {
+      "h": 900,
+      "is_interactive": true,
+      "title": "13 · 메인 (마을)",
+      "w": 1440,
+      "x": 0,
+      "y": 12720
+    },
+    "ScreenShop.dc.html": {
+      "h": 900,
+      "is_interactive": true,
+      "title": "17 · 가구 상점",
+      "w": 1440,
+      "x": 0,
+      "y": 14760
+    },
+    "Stages.dc.html": {
+      "h": 1480,
+      "title": "10 · 공사 단계",
+      "w": 1440,
+      "x": 1520,
+      "y": 7660
+    },
+    "TeamPanel.dc.html": {
+      "h": 832,
+      "title": "컴포넌트 · 팀원 패널",
+      "w": 360,
+      "x": 3040,
+      "y": 12908
+    },
+    "TopBar.dc.html": {
+      "h": 68,
+      "title": "컴포넌트 · 상단 바",
+      "w": 1440,
+      "x": 3040,
+      "y": 12720
+    },
+    "Type.dc.html": {
+      "h": 1000,
+      "title": "03 · 글꼴 · 아이콘 · 간격",
+      "w": 1440,
+      "x": 0,
+      "y": 1480
+    },
+    "Village.dc.html": {
+      "h": 900,
+      "title": "12 · 마을 장면",
+      "w": 1440,
+      "x": 0,
+      "y": 11260
+    },
+    "SeaTokens.dc.html": {
+      "page": "sea",
+      "h": 1600,
+      "title": "바다 01 · 색상 토큰",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "SeaRules.dc.html": {
+      "page": "sea",
+      "h": 1180,
+      "title": "바다 02 · 수중 규칙 · 대응표",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "SeaUI.dc.html": {
+      "page": "sea",
+      "h": 1260,
+      "title": "바다 03 · UI 스킨 · 아이콘 · 카드",
+      "w": 1440,
+      "x": 1520,
+      "y": 1300
+    },
+    "SeaChars.dc.html": {
+      "page": "sea",
+      "h": 1320,
+      "title": "바다 04 · 캐릭터 시트 (5종 × 7포즈 + 프로필)",
+      "w": 1440,
+      "x": 0,
+      "y": 2960
+    },
+    "SeaRig.dc.html": {
+      "page": "sea",
+      "h": 1420,
+      "title": "바다 05 · 리그 차이 · 헤엄 · 헬멧",
+      "w": 1440,
+      "x": 1520,
+      "y": 2960
+    },
+    "SeaCritter.dc.html": {
+      "page": "sea",
+      "h": 138,
+      "title": "컴포넌트 · 바다 캐릭터",
+      "w": 128,
+      "x": 3040,
+      "y": 2960
+    },
+    "SeaKit.dc.html": {
+      "page": "sea",
+      "h": 1800,
+      "title": "바다 06 · 조립식 건물 키트",
+      "w": 1440,
+      "x": 0,
+      "y": 4760
+    },
+    "SeaStages.dc.html": {
+      "page": "sea",
+      "h": 1500,
+      "title": "바다 07 · 공사 단계",
+      "w": 1440,
+      "x": 1520,
+      "y": 4760
+    },
+    "SeaProps.dc.html": {
+      "page": "sea",
+      "h": 1680,
+      "title": "바다 08 · 가구 · 마을 소품 · 바닥",
+      "w": 1440,
+      "x": 1520,
+      "y": 6380
+    },
+    "SeaBuilding.dc.html": {
+      "page": "sea",
+      "h": 256,
+      "title": "컴포넌트 · 바다 건물 (Tweaks로 조합)",
+      "w": 160,
+      "x": 3040,
+      "y": 4760
+    },
+    "SeaProp.dc.html": {
+      "page": "sea",
+      "h": 160,
+      "title": "컴포넌트 · 바다 소품",
+      "w": 96,
+      "x": 3280,
+      "y": 4760
+    },
+    "SeaVillage.dc.html": {
+      "page": "sea",
+      "h": 900,
+      "title": "바다 09 · 마을 장면",
+      "w": 1440,
+      "x": 0,
+      "y": 8480
+    },
+    "SeaFx.dc.html": {
+      "page": "sea",
+      "h": 700,
+      "title": "컴포넌트 · 물속 연출 (거품 · 물고기 떼)",
+      "w": 1200,
+      "x": 2760,
+      "y": 8480
+    },
+    "SeaScreenMain.dc.html": {
+      "page": "sea",
+      "h": 900,
+      "is_interactive": true,
+      "title": "바다 10 · 메인 (마을)",
+      "w": 1440,
+      "x": 0,
+      "y": 9800
+    },
+    "SeaScreenGrid.dc.html": {
+      "page": "sea",
+      "h": 900,
+      "is_interactive": true,
+      "title": "바다 11 · 격자 뷰",
+      "w": 1440,
+      "x": 1520,
+      "y": 9800
+    },
+    "SeaScreenHouse.dc.html": {
+      "page": "sea",
+      "h": 900,
+      "is_interactive": true,
+      "title": "바다 12 · 집 상세",
+      "w": 1440,
+      "x": 0,
+      "y": 10820
+    },
+    "SeaScreenBuilding.dc.html": {
+      "page": "sea",
+      "h": 900,
+      "is_interactive": true,
+      "title": "바다 13 · 건물 상세",
+      "w": 1440,
+      "x": 1520,
+      "y": 10820
+    },
+    "SeaScreenShop.dc.html": {
+      "page": "sea",
+      "h": 900,
+      "is_interactive": true,
+      "title": "바다 14 · 가구 상점",
+      "w": 1440,
+      "x": 0,
+      "y": 11840
+    },
+    "SeaScreenEconomy.dc.html": {
+      "page": "sea",
+      "h": 900,
+      "is_interactive": true,
+      "title": "바다 15 · 경제 패널",
+      "w": 1440,
+      "x": 1520,
+      "y": 11840
+    },
+    "SeaTopBar.dc.html": {
+      "page": "sea",
+      "h": 68,
+      "title": "컴포넌트 · 바다 상단 바",
+      "w": 1440,
+      "x": 3040,
+      "y": 9800
+    },
+    "SeaTeamPanel.dc.html": {
+      "page": "sea",
+      "h": 832,
+      "title": "컴포넌트 · 바다 팀원 패널",
+      "w": 360,
+      "x": 3040,
+      "y": 9988
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-09-29T13:50:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "n4a": {
+      "fill": "orange",
+      "text": "공사 현장 (아래 가운데)\n곰이 초소 골조를 망치질하고, 인력사무소에서 온 외부인(노란 모자)이 널빤지를 나릅니다. 현장 위 점 6개 = 작업 3/6.",
+      "w": 360,
+      "x": 1520,
+      "y": 11260
+    },
+    "n4b": {
+      "fill": "orange",
+      "text": "광장 회의 (가운데)\n펭귄 팀장과 토끼가 게시판 앞에서 이야기 중. 말풍선과 입력 중 점은 월드 UI.",
+      "w": 360,
+      "x": 1920,
+      "y": 11260
+    },
+    "n4c": {
+      "fill": "orange",
+      "text": "집에서 휴식 (왼쪽)\n너구리가 자기 집(초록 지붕) 앞에서 졸고 있습니다. 집 4채의 지붕 = 집주인 슬롯 색.",
+      "w": 360,
+      "x": 2320,
+      "y": 11260
+    },
+    "n4d": {
+      "fill": "orange",
+      "text": "외부인 시설 (위)\n도서관 · 설계사무소 · 인력사무소. 외부인은 집이 없고, 모자 색으로 어느 시설 소속인지 구분합니다 (초록 Explore, 파랑 Plan, 노랑 general).",
+      "w": 360,
+      "x": 1520,
+      "y": 11600
+    },
+    "n4e": {
+      "fill": "orange",
+      "text": "완공 · 대기 (오른쪽)\n공방 · 카페 · 회관이 완공, 예정 부지 2곳과 기초 1곳이 남은 작업. 상단 바의 ‘작업 12 / 20 · 완공 3채’와 맞춘 상태입니다.",
+      "w": 360,
+      "x": 1920,
+      "y": 11600
+    },
+    "stage1": {
+      "kind": "title1",
+      "maxW": 2960,
+      "text": "1단계 · 디자인 시스템",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "stage2": {
+      "kind": "title1",
+      "maxW": 2960,
+      "text": "2단계 · 캐릭터",
+      "w": 240,
+      "x": 0,
+      "y": 4080
+    },
+    "stage3": {
+      "kind": "title1",
+      "maxW": 2960,
+      "text": "3단계 · 에셋",
+      "w": 240,
+      "x": 0,
+      "y": 7360
+    },
+    "stage4": {
+      "kind": "title1",
+      "maxW": 2960,
+      "text": "4단계 · 마을 장면",
+      "w": 240,
+      "x": 0,
+      "y": 10940
+    },
+    "stage5": {
+      "kind": "title1",
+      "maxW": 2960,
+      "text": "5단계 · 화면",
+      "w": 240,
+      "x": 0,
+      "y": 12400
+    },
+    "sea1": {
+      "page": "sea",
+      "kind": "title1",
+      "maxW": 2960,
+      "text": "바다 마을 1단계 · 디자인 시스템",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "sea2": {
+      "page": "sea",
+      "kind": "title1",
+      "maxW": 2960,
+      "text": "바다 마을 2단계 · 캐릭터",
+      "w": 240,
+      "x": 0,
+      "y": 2660
+    },
+    "sea3": {
+      "page": "sea",
+      "kind": "title1",
+      "maxW": 2960,
+      "text": "바다 마을 3단계 · 에셋",
+      "w": 240,
+      "x": 0,
+      "y": 4460
+    },
+    "sea4": {
+      "page": "sea",
+      "kind": "title1",
+      "maxW": 2960,
+      "text": "바다 마을 4단계 · 마을 장면",
+      "w": 240,
+      "x": 0,
+      "y": 8180
+    },
+    "sea5": {
+      "page": "sea",
+      "kind": "title1",
+      "maxW": 2960,
+      "text": "바다 마을 5단계 · 화면",
+      "w": 240,
+      "x": 0,
+      "y": 9500
+    },
+    "sva": {
+      "page": "sea",
+      "fill": "teal",
+      "text": "공사 현장 (아래 가운데)\n수달이 돌로 초소 프레임을 두드리고, 인력 부두에서 온 복어(노란 모자)가 산호석 블록을 나릅니다. 현장 위 점 6개 = 작업 3/6. 초소의 지붕 색은 완공 때 공개됩니다.",
+      "w": 360,
+      "x": 1520,
+      "y": 8480
+    },
+    "svb": {
+      "page": "sea",
+      "fill": "teal",
+      "text": "광장 회의 (가운데)\n선장 모자를 쓴 바다거북 팀장과 씨워크 헬멧을 쓴 골든햄스터가 게시판 앞에서 이야기 중. 햄스터 헬멧의 공기 호스는 화면 위 수면까지 이어지고, 헬멧 아래로 거품이 새어 나옵니다.",
+      "w": 360,
+      "x": 1920,
+      "y": 8480
+    },
+    "svc": {
+      "page": "sea",
+      "fill": "teal",
+      "text": "바위 위 휴식 (왼쪽)\n점박이물범이 자기 집(파란 성게 돔) 앞 바위에 올라 졸고 있습니다. 물범이 바위에 올라와 쉬는 습성을 그대로 휴식 상태로 썼습니다.",
+      "w": 360,
+      "x": 2320,
+      "y": 8480
+    },
+    "svd": {
+      "page": "sea",
+      "fill": "teal",
+      "text": "외부인 시설 (위)\n탐사 기지 · 해도실 · 인력 부두. 복어 외부인은 집이 없고 모자 색으로 소속을 구분합니다 (초록 Explore, 파랑 Plan, 노랑 general).",
+      "w": 360,
+      "x": 1520,
+      "y": 8840
+    },
+    "sve": {
+      "page": "sea",
+      "fill": "teal",
+      "text": "물속 연출 (전체)\n빛줄기 4개, 바닥 물결 무늬, 분수·보물상자·가장자리 틈에서 오르는 거품, 멀리 지나가는 물고기 떼. 모두 월드 층이라 에셋과 따로 켜고 끕니다.",
+      "w": 360,
+      "x": 1920,
+      "y": 8840
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Rules.dc.html",
+    "Type.dc.html",
+    "Controls.dc.html",
+    "Cards.dc.html",
+    "Chars.dc.html",
+    "Rig.dc.html",
+    "Guide.dc.html",
+    "Kit.dc.html",
+    "Stages.dc.html",
+    "Props.dc.html",
+    "Building.dc.html",
+    "Prop.dc.html",
+    "Critter.dc.html",
+    "Village.dc.html",
+    "ScreenMain.dc.html",
+    "ScreenGrid.dc.html",
+    "ScreenHouse.dc.html",
+    "ScreenBuilding.dc.html",
+    "ScreenShop.dc.html",
+    "ScreenEconomy.dc.html",
+    "TopBar.dc.html",
+    "TeamPanel.dc.html",
+    "SeaTokens.dc.html",
+    "SeaRules.dc.html",
+    "SeaUI.dc.html",
+    "SeaChars.dc.html",
+    "SeaRig.dc.html",
+    "SeaCritter.dc.html",
+    "SeaKit.dc.html",
+    "SeaStages.dc.html",
+    "SeaProps.dc.html",
+    "SeaBuilding.dc.html",
+    "SeaProp.dc.html",
+    "SeaVillage.dc.html",
+    "SeaFx.dc.html",
+    "SeaScreenMain.dc.html",
+    "SeaScreenGrid.dc.html",
+    "SeaScreenHouse.dc.html",
+    "SeaScreenBuilding.dc.html",
+    "SeaScreenShop.dc.html",
+    "SeaScreenEconomy.dc.html",
+    "SeaTopBar.dc.html",
+    "SeaTeamPanel.dc.html"
+  ],
+  "pages": [
+    {
+      "id": "land",
+      "name": "잔디 마을"
+    },
+    {
+      "id": "sea",
+      "name": "바다 마을"
+    }
+  ],
+  "title": "서브에이전트 타이쿤"
+}

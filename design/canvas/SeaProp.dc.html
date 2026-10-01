@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>바다 소품 · 가구 · 바닥</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="position: relative; width: {{rw}}px; height: {{rh}}px">
+
+<sc-if value="{{k.tileSand}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="tile.sand" data-tiles="1x1" data-anchor="48,128" data-layer="ground" aria-hidden="true" style="display: block">
+<polygon fill="#f3e4c3" points="48,112 80,128 48,144 16,128"></polygon>
+<path d="M32 126Q37 123 42 126M52 134Q57 131 62 134M50 118Q55 115 60 118" fill="none" stroke="#e6d1a6" stroke-width="{{w18}}" stroke-linecap="round"></path>
+</svg>
+</sc-if>
+<sc-if value="{{k.tileGravel}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="tile.gravel" data-tiles="1x1" data-anchor="48,128" data-layer="ground" aria-hidden="true" style="display: block">
+<polygon fill="#f6cdb4" points="48,112 80,128 48,144 16,128"></polygon>
+<g fill="#fff5ee"><ellipse cx="38" cy="127" rx="2.8" ry="1.5"></ellipse><ellipse cx="57" cy="122" rx="2.2" ry="1.2"></ellipse><ellipse cx="52" cy="135" rx="2.6" ry="1.4"></ellipse></g>
+<g fill="#e9b597"><circle cx="45" cy="121" r="1.3"></circle><circle cx="63" cy="130" r="1.4"></circle><circle cx="33" cy="131" r="1.1"></circle></g>
+</svg>
+</sc-if>
+<sc-if value="{{k.tilePlaza}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="tile.plaza" data-tiles="1x1" data-anchor="48,128" data-layer="ground" aria-hidden="true" style="display: block">
+<polygon fill="#e4e8ec" points="48,112 80,128 48,144 16,128"></polygon>
+<path d="M32 120L64 136M64 120L32 136" fill="none" stroke="#c9d0d7" stroke-width="{{w15}}" stroke-linecap="round"></path>
+</svg>
+</sc-if>
+<sc-if value="{{k.tileRock}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="tile.rock" data-tiles="1x1" data-anchor="48,128" data-layer="ground" aria-hidden="true" style="display: block">
+<polygon fill="#bac3cd" points="48,112 80,128 48,144 16,128"></polygon>
+<path d="M37 125L43 128M53 121L59 118" fill="none" stroke="#7d8998" stroke-width="{{w15}}" stroke-linecap="round"></path>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.clamchair}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="furniture.clamchair" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<g transform="translate(0 6)">
+<path d="M22 112Q18.6 100.5 25.5 92Q26.5 80.6 35 77.4Q40.1 69.1 48 72Q55.9 69.1 61 77.4Q69.5 80.6 70.5 92Q77.4 100.5 74 112Z" fill="#f6aa98" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round"></path>
+<path d="M48 112L25.4 102.7M48 112L31.5 86.5M48 112L41.9 77.2M48 112L54.1 77.2M48 112L64.5 86.5M48 112L70.6 102.7" fill="none" stroke="#e8907d" stroke-width="{{w2}}" stroke-linecap="round"></path>
+</g>
+<g stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="{{fabL}}" points="20,128 48,142 48,130 20,116"></polygon>
+<polygon fill="{{fabR}}" points="48,142 76,128 76,116 48,130"></polygon>
+<polygon fill="{{fab}}" points="48,102 76,116 48,130 20,116"></polygon>
+</g>
+<circle cx="53" cy="113" r="4.6" fill="#fbf3f8" stroke="#2e4b66" stroke-width="{{w2}}"></circle><circle cx="51.6" cy="111.4" r="1.4" fill="#ffffff"></circle>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.desk}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="furniture.desk" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<path d="M21 105L21 127M48 119L48 141M75 105L75 127" fill="none" stroke="#2e4b66" stroke-width="{{w6}}" stroke-linecap="round"></path>
+<path d="M21 105L21 127M48 119L48 141M75 105L75 127" fill="none" stroke="#b58c65" stroke-width="{{w25}}" stroke-linecap="round"></path>
+<g stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#b58c65" points="20,102 48,116 48,120 20,106"></polygon>
+<polygon fill="#98714f" points="48,116 76,102 76,106 48,120"></polygon>
+<polygon fill="#cda67e" points="48,88 76,102 48,116 20,102"></polygon>
+<polygon fill="#e4e8ec" points="44,95 56,101 46,106 34,100"></polygon>
+<polygon fill="#d4f1f4" points="44,95 56,101 56,86 44,80"></polygon>
+<path fill="#f6cdb4" d="M58 105Q62 95 69 100Q67 106 58 105Z"></path>
+</g>
+<path d="M62 101Q64 99 66 101" fill="none" stroke="#d79d7e" stroke-width="{{w15}}" stroke-linecap="round"></path>
+<path d="M47 88L53 91M47 92L51 94" fill="none" stroke="#6f97d8" stroke-width="{{w15}}" stroke-linecap="round"></path>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.shelf}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="furniture.shelf" data-tiles="1x1" data-anchor="48,128" data-against="wall-right" aria-hidden="true" style="display: block">
+<g stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#b58c65" points="38,117 70,133 70,73 38,57"></polygon>
+<polygon fill="#98714f" points="70,133 80,128 80,68 70,73"></polygon>
+<polygon fill="#cda67e" points="38,57 70,73 80,68 48,52"></polygon>
+</g>
+<g stroke="#2e4b66" stroke-width="{{w15}}" stroke-linejoin="round">
+<rect x="41" y="108" width="8" height="11" rx="2.5" fill="#d4f1f4"></rect><rect x="52" y="113" width="8" height="12" rx="2.5" fill="#d4f1f4"></rect>
+<rect x="41" y="94" width="8" height="11" rx="2.5" fill="#d4f1f4"></rect><rect x="58" y="102" width="8" height="11" rx="2.5" fill="#d4f1f4"></rect>
+</g>
+<circle cx="45" cy="114" r="2.2" fill="#f59b62"></circle><ellipse cx="56" cy="120" rx="2.6" ry="1.8" fill="#f6aa98"></ellipse><circle cx="45" cy="100" r="1.8" fill="#fbf3f8"></circle><rect x="59" y="108" width="6" height="4" rx="1.5" fill="#f3e4c3"></rect>
+<path d="M50 88L50 80M50 84L46 79M50 83L54 78" fill="none" stroke="#2e4b66" stroke-width="{{w5}}" stroke-linecap="round"></path>
+<path d="M50 88L50 80M50 84L46 79M50 83L54 78" fill="none" stroke="#f6aa98" stroke-width="{{w2}}" stroke-linecap="round"></path>
+<path d="M38 102L70 118M38 87L70 103M38 72L70 88" fill="none" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linecap="round"></path>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.coralpot}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="furniture.coralpot" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<g stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<path fill="#f7e3d6" d="M38 112L41 128Q48 132 55 128L58 112Z"></path>
+<ellipse fill="#eacbb9" cx="48" cy="112" rx="10" ry="4.5"></ellipse>
+</g>
+<ellipse fill="#e6d1a6" cx="48" cy="112" rx="7" ry="2.8"></ellipse>
+<path d="M48 111L48 96M48 102L40 90M48 100L57 90M40 90L37 82M40 90L44 83M57 90L56 81M57 90L63 84M48 96L50 86" fill="none" stroke="#2e4b66" stroke-width="{{cor}}" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M48 111L48 96M48 102L40 90M48 100L57 90M40 90L37 82M40 90L44 83M57 90L56 81M57 90L63 84M48 96L50 86" fill="none" stroke="#f6aa98" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+<g fill="#fcd3c8"><circle cx="37" cy="82" r="1.6"></circle><circle cx="44" cy="83" r="1.6"></circle><circle cx="56" cy="81" r="1.6"></circle><circle cx="63" cy="84" r="1.6"></circle><circle cx="50" cy="86" r="1.6"></circle></g>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.jellylamp}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="furniture.jellylamp" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<circle cx="48" cy="78" r="20" fill="#fff6cc" fill-opacity="0.35"></circle>
+<ellipse cx="48" cy="128" rx="9" ry="4.5" fill="#dcaa48" stroke="#2e4b66" stroke-width="{{w3}}"></ellipse>
+<path d="M48 127L48 84" fill="none" stroke="#2e4b66" stroke-width="{{w6}}" stroke-linecap="round"></path>
+<path d="M48 127L48 84" fill="none" stroke="#f2c462" stroke-width="{{w25}}" stroke-linecap="round"></path>
+<path d="M40 84Q36 91 40 96Q44 101 40 106M56 84Q60 91 56 96Q52 101 56 106" fill="none" stroke="#d7a6cf" stroke-width="{{w24}}" stroke-linecap="round"></path>
+<path d="M34 82C34 67 62 67 62 82Q59 84.5 55.5 82Q52 84.5 48 82Q44 84.5 40.5 82Q37 84.5 34 82Z" fill="#f7d9ee" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round"></path>
+<ellipse cx="48" cy="76" rx="8.5" ry="4.5" fill="#fff6fb" fill-opacity="0.85"></ellipse>
+<path d="M39 76Q40 71 44 70" fill="none" stroke="#ffffff" stroke-width="{{w2}}" stroke-linecap="round"></path>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.clambed}}" hint-placeholder-val="{{false}}">
+<svg width="{{w21}}" height="{{h21}}" viewBox="0 0 128 208" data-asset-id="furniture.clambed" data-tiles="2x1" data-anchor="64,168" aria-hidden="true" style="display: block">
+<path d="M20 150Q16.4 140.5 24.2 133.5Q25.4 123.3 35.8 120.3Q41.7 111.4 52.7 113Q62 107.2 71.3 113Q82.3 111.4 88.2 120.3Q98.6 123.3 99.8 133.5Q107.6 140.5 104 150Z" fill="#f7e3d6" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round"></path>
+<path d="M62 150L25.1 142.4M62 150L32.4 128.7M62 150L45.6 119.2M62 150L62 115.8M62 150L78.4 119.2M62 150L91.6 128.7M62 150L98.9 142.4" fill="none" stroke="#eacbb9" stroke-width="{{w24}}" stroke-linecap="round"></path>
+<polygon points="16,146 48,130 112,162 80,178" fill="#fff5ee" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round"></polygon>
+<g stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="{{fab}}" points="24,146 50,133 106,161 80,174"></polygon>
+<polygon fill="{{fabL}}" points="69.6,142.8 106,161 80,174 43.6,155.8"></polygon>
+<ellipse fill="#f9fdfc" cx="36" cy="147" rx="11" ry="6" transform="rotate(-27 36 147)"></ellipse>
+<path fill="#f7e3d6" d="M16 160L80 192L80 178Q72 169 64 170Q56 161 48 162Q40 153 32 154Q24 145 16 146Z"></path>
+<path fill="#eacbb9" d="M80 192L112 176L112 162Q104 161 96 170Q88 169 80 178Z"></path>
+</g>
+<path d="M47 154L73 141" fill="none" stroke="{{fabR}}" stroke-width="{{w2}}" stroke-linecap="round"></path>
+<circle cx="20" cy="150" r="3.4" fill="#fbf3f8" stroke="#2e4b66" stroke-width="{{w2}}"></circle>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.rug}}" hint-placeholder-val="{{false}}">
+<svg width="{{w21}}" height="{{h21}}" viewBox="0 0 128 208" data-asset-id="furniture.rug" data-tiles="2x1" data-anchor="64,168" data-layer="floor" aria-hidden="true" style="display: block">
+<polygon points="50,150 104,177 78,190 24,163" fill="{{fab}}" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round"></polygon>
+<path d="M36 160Q44 156 50 162T64 169T78 176T92 183M46 155Q54 151 60 157T74 164T88 171T98 176" fill="none" stroke="{{fabL}}" stroke-width="{{w25}}" stroke-linecap="round"></path>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.kelp}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.kelp" data-tiles="1x1" data-anchor="48,128" data-sway="2" aria-hidden="true" style="display: block">
+<g transform="{{sw}}">
+<g stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round">
+<path fill="#5f8a4a" d="M44 126C38 104 50 88 42 66C36 50 44 36 40 26C48 34 52 50 48 66C54 86 46 104 50 126Z"></path>
+<path fill="#8fbf73" d="M40 128C28 108 36 92 26 74C20 62 24 50 22 42C30 50 34 62 32 74C40 92 36 108 46 128Z"></path>
+<path fill="#76a55e" d="M50 128C56 110 66 98 62 80C60 68 66 58 68 50C74 58 72 70 70 80C74 98 62 112 56 128Z"></path>
+</g>
+<path d="M45 110C44 96 46 82 43 68M42 116C38 104 36 90 30 78M53 116C58 104 64 94 65 82" fill="none" stroke="#b8dc9a" stroke-width="{{w16}}" stroke-linecap="round"></path>
+<g fill="#b8dc9a" stroke="#2e4b66" stroke-width="{{w2}}"><circle cx="43" cy="66" r="3.2"></circle><circle cx="27" cy="75" r="3"></circle><circle cx="65" cy="80" r="3"></circle></g>
+</g>
+<ellipse cx="48" cy="128" rx="12" ry="5" fill="#a1acb9" stroke="#2e4b66" stroke-width="{{w3}}"></ellipse>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.coral}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.coral" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<ellipse cx="48" cy="128" rx="14" ry="5.5" fill="#a1acb9" stroke="#2e4b66" stroke-width="{{w3}}"></ellipse>
+<path d="M48 126L48 104M48 112L36 98M48 108L60 94M36 98L30 86M36 98L40 84M60 94L58 80M60 94L68 84M48 104L50 88M30 86L26 78M68 84L72 76M58 80L60 72" fill="none" stroke="#2e4b66" stroke-width="{{corB}}" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M48 126L48 104M48 112L36 98M48 108L60 94M36 98L30 86M36 98L40 84M60 94L58 80M60 94L68 84M48 104L50 88M30 86L26 78M68 84L72 76M58 80L60 72" fill="none" stroke="#f59b62" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M46 118L46 108M36 100L32 92M60 96L64 90" fill="none" stroke="#f8b98a" stroke-width="2" stroke-linecap="round"></path>
+<g fill="#fde2c6"><circle cx="26" cy="78" r="2"></circle><circle cx="40" cy="84" r="2"></circle><circle cx="50" cy="88" r="2"></circle><circle cx="72" cy="76" r="2"></circle><circle cx="60" cy="72" r="2"></circle></g>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.braincoral}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.braincoral" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<path d="M20 126C20 102 34 92 48 92C62 92 76 102 76 126C66 132 30 132 20 126Z" fill="#e8cf8f"></path>
+<path d="M58 95C70 100 76 112 76 126C72 128 66 130 60 130C66 118 66 104 58 95Z" fill="#d9b977"></path>
+<path d="M27 118Q33 112 39 116T51 112T63 116T69 110M29 107Q35 101 43 105T57 101T67 104M37 98Q45 94 53 98T63 98M32 124Q40 120 48 124T62 123" fill="none" stroke="#c9ad6c" stroke-width="{{w2}}" stroke-linecap="round"></path>
+<path d="M20 126C20 102 34 92 48 92C62 92 76 102 76 126C66 132 30 132 20 126Z" fill="none" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round"></path>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.seagrass}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.seagrass" data-tiles="1x1" data-anchor="48,128" data-sway="2" aria-hidden="true" style="display: block">
+<g transform="{{sw}}" stroke="#2e4b66" stroke-width="{{w2}}" stroke-linejoin="round">
+<path fill="#76a55e" d="M42 129Q38.2 94 38 59Q46.2 94 46 129Z"></path>
+<path fill="#76a55e" d="M52 129Q50.6 92 60 55Q58.6 92 56 129Z"></path>
+<path fill="#8fbf73" d="M38 126Q33 97 28 68Q41 97 42 126Z"></path>
+<path fill="#8fbf73" d="M47 127Q44.6 96 50 65Q52.6 96 51 127Z"></path>
+<path fill="#8fbf73" d="M56 126Q55.6 98 69 70Q63.6 98 60 126Z"></path>
+<path fill="#76a55e" d="M44 131Q38.2 108 30 85Q46.2 108 48 131Z"></path>
+<path fill="#76a55e" d="M58 131Q58.6 109 76 87Q66.6 109 62 131Z"></path>
+</g>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.rock}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.rock" data-tiles="1x1" data-anchor="48,128" data-seat="48,103" aria-hidden="true" style="display: block">
+<path d="M18 128C16 114 24 104 36 102C44 96 58 96 66 102C78 104 80 116 78 128C66 134 30 134 18 128Z" fill="#a1acb9"></path>
+<path d="M66 102C78 104 80 116 78 128C72 131 64 132 58 133C68 124 70 110 66 102Z" fill="#8894a3"></path>
+<path d="M26 107C34 99 60 99 70 105C60 110 36 112 26 107Z" fill="#bac3cd"></path>
+<path d="M28 118L35 121M52 114L58 112" fill="none" stroke="#7d8998" stroke-width="{{w15}}" stroke-linecap="round"></path>
+<path d="M18 128C16 114 24 104 36 102C44 96 58 96 66 102C78 104 80 116 78 128C66 134 30 134 18 128Z" fill="none" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round"></path>
+<g transform="translate(26 122) rotate(-20) scale(0.55)"><path d="M0 -10L2.6 -3.6L9.5 -3.1L4.2 1.4L5.9 8.1L0 4.4L-5.9 8.1L-4.2 1.4L-9.5 -3.1L-2.6 -3.6Z" fill="#f59b62" stroke="#2e4b66" stroke-width="{{w36}}" stroke-linejoin="round"></path></g>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.jellypost}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.jellypost" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<circle cx="60" cy="54" r="19" fill="#fff6cc" fill-opacity="0.35"></circle>
+<ellipse cx="48" cy="128" rx="8" ry="4" fill="#c9d0d7" stroke="#2e4b66" stroke-width="{{w3}}"></ellipse>
+<path d="M48 127L48 50Q48 42 58 42" fill="none" stroke="#2e4b66" stroke-width="{{w6}}" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M48 127L48 50Q48 42 58 42" fill="none" stroke="#c9d0d7" stroke-width="{{w25}}" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M54 58Q51 65 55 71M66 58Q69 65 65 71M60 58Q62 66 59 74" fill="none" stroke="#d7a6cf" stroke-width="{{w2}}" stroke-linecap="round"></path>
+<path d="M49 56C49 42 71 42 71 56Q68 58.5 65 56Q62.5 58.5 60 56Q57.5 58.5 55 56Q52 58.5 49 56Z" fill="#f7d9ee" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round"></path>
+<ellipse cx="60" cy="51" rx="6.5" ry="3.4" fill="#fff6fb" fill-opacity="0.9"></ellipse>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.bench}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.bench" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<g fill="#a1acb9" stroke="#2e4b66" stroke-width="{{w3}}"><ellipse cx="34" cy="124" rx="7" ry="3.5"></ellipse><ellipse cx="62" cy="138" rx="7" ry="3.5"></ellipse></g>
+<path d="M30 112L66 130" fill="none" stroke="#2e4b66" stroke-width="{{logB}}" stroke-linecap="round"></path>
+<path d="M30 112L66 130" fill="none" stroke="#cda67e" stroke-width="14" stroke-linecap="round"></path>
+<path d="M30 107L62 123" fill="none" stroke="#e3c39d" stroke-width="3" stroke-linecap="round"></path>
+<path d="M36 118L58 129" fill="none" stroke="#b58c65" stroke-width="2" stroke-linecap="round"></path>
+<ellipse cx="67" cy="130.5" rx="5.6" ry="7" fill="#e3c39d" stroke="#2e4b66" stroke-width="{{w2}}"></ellipse>
+<ellipse cx="67" cy="130.5" rx="2.4" ry="3.2" fill="none" stroke="#b58c65" stroke-width="1.4"></ellipse>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.anemone}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.anemone" data-tiles="1x1" data-anchor="48,128" data-sway="2" aria-hidden="true" style="display: block">
+<path d="M38 128C38 118 40 112 42 109L54 109C56 112 58 118 58 128Q48 131 38 128Z" fill="#d98fb4" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round"></path>
+<g transform="{{swA}}">
+<path d="M48 108L40 94M48 108L34 100M48 108L46 90M48 108L54 91M48 108L62 96M48 108L63 104M48 108L32 108" fill="none" stroke="#2e4b66" stroke-width="{{tenB}}" stroke-linecap="round"></path>
+<path d="M48 108L40 94M48 108L34 100M48 108L46 90M48 108L54 91M48 108L62 96M48 108L63 104M48 108L32 108" fill="none" stroke="#f3b8d4" stroke-width="5" stroke-linecap="round"></path>
+<g fill="#fbe0ee"><circle cx="40" cy="94" r="1.6"></circle><circle cx="34" cy="100" r="1.6"></circle><circle cx="46" cy="90" r="1.6"></circle><circle cx="54" cy="91" r="1.6"></circle><circle cx="62" cy="96" r="1.6"></circle><circle cx="63" cy="104" r="1.6"></circle><circle cx="32" cy="108" r="1.6"></circle></g>
+</g>
+<g transform="translate(66 102)">
+<path d="M8 0L14 -5L14 5Z" fill="#f59b62" stroke="#2e4b66" stroke-width="{{w2}}" stroke-linejoin="round"></path>
+<ellipse cx="0" cy="0" rx="9" ry="5.6" fill="#f59b62" stroke="#2e4b66" stroke-width="{{w2}}"></ellipse>
+<path d="M-3 -5.2Q-1 0 -3 5.2M3.5 -4.8Q5 0 3.5 4.8" fill="none" stroke="#f9fdfc" stroke-width="2.2"></path>
+<circle cx="-5" cy="-1.2" r="1.3" fill="#1f3850"></circle>
+</g>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.board}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.board" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<path d="M32 121L32 84M62 136L62 99" fill="none" stroke="#2e4b66" stroke-width="{{w6}}" stroke-linecap="round"></path>
+<path d="M32 121L32 84M62 136L62 99" fill="none" stroke="#98714f" stroke-width="{{w25}}" stroke-linecap="round"></path>
+<polygon points="26,82 68,103 68,127 26,106" fill="#cda67e" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round"></polygon>
+<g stroke="#2e4b66" stroke-width="{{w15}}" stroke-linejoin="round" fill="#f9fdfc"><polygon points="31,89 42,94.5 42,106.5 31,101"></polygon><polygon points="46,97 60,104 60,113 46,106"></polygon></g>
+<path d="M33 95L40 98.5M33 99L39 102M48 103L58 108" fill="none" stroke="#b9d6d4" stroke-width="{{w15}}" stroke-linecap="round"></path>
+<circle cx="52" cy="116" r="3" fill="#f59b62" stroke="#2e4b66" stroke-width="{{w15}}"></circle>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.buoyfence}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.buoyfence" data-tiles="1x1" data-anchor="48,128" data-edge="x" aria-hidden="true" style="display: block">
+<path d="M24 118L24 98M72 142L72 122" fill="none" stroke="#2e4b66" stroke-width="{{w7}}" stroke-linecap="round"></path>
+<path d="M24 118L24 98M72 142L72 122" fill="none" stroke="#cda67e" stroke-width="{{w35}}" stroke-linecap="round"></path>
+<path d="M24 100Q48 120 72 124" fill="none" stroke="#b58c65" stroke-width="{{w25}}" stroke-linecap="round"></path>
+<g stroke="#2e4b66" stroke-width="{{w2}}"><ellipse cx="38.4" cy="114.5" rx="4.5" ry="5.5" fill="#f59b62"></ellipse><ellipse cx="48" cy="120" rx="4.5" ry="5.5" fill="#f9fdfc"></ellipse><ellipse cx="57.6" cy="124" rx="4.5" ry="5.5" fill="#f59b62"></ellipse></g>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.materials}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.materials" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<g stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#a1acb9" points="24,122 48,134 48,128 24,116"></polygon>
+<polygon fill="#8894a3" points="48,134 72,122 72,116 48,128"></polygon>
+<polygon fill="#bac3cd" points="48,104 72,116 48,128 24,116"></polygon>
+<polygon fill="#e8907d" points="34,112 50,120 50,112 34,104"></polygon>
+<polygon fill="#d27766" points="50,120 62,114 62,106 50,112"></polygon>
+<polygon fill="#f6aa98" points="46,98 62,106 50,112 34,104"></polygon>
+</g>
+<path d="M36 109Q39 108.5 42 112T48 115" fill="none" stroke="#d27766" stroke-width="{{w15}}" stroke-linecap="round"></path>
+<g fill="none" stroke="#2e4b66" stroke-width="{{w2}}"><ellipse cx="68" cy="130" rx="9" ry="4.5" fill="#cda67e"></ellipse><ellipse cx="68" cy="129" rx="5" ry="2.4"></ellipse></g>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.chest}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.chest" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<g stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#cda67e" points="48,95 70,106 70,86 48,75"></polygon>
+<polygon fill="#7d6248" points="48,95 70,106 48,117 26,106"></polygon>
+</g>
+<g fill="#f2c462" stroke="#2e4b66" stroke-width="{{w15}}"><circle cx="42" cy="104" r="3"></circle><circle cx="50" cy="101" r="3"></circle><circle cx="56" cy="106" r="3"></circle><circle cx="46" cy="109" r="3"></circle></g>
+<g fill="#fbf3f8" stroke="#2e4b66" stroke-width="{{w15}}"><circle cx="37" cy="107" r="2.4"></circle><circle cx="53" cy="110" r="2.4"></circle><circle cx="60" cy="103" r="2.2"></circle></g>
+<g stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#b58c65" points="26,122 48,133 48,117 26,106"></polygon>
+<polygon fill="#98714f" points="48,133 70,122 70,106 48,117"></polygon>
+</g>
+<path d="M37 111.5L37 127.5M59 111.5L59 127.5M59 81.5L59 100.5" fill="none" stroke="#dcaa48" stroke-width="{{w35}}" stroke-linecap="round"></path>
+<rect x="45" y="118" width="6" height="7" rx="1.5" fill="#f2c462" stroke="#2e4b66" stroke-width="{{w15}}"></rect>
+<g fill="#f3fcfd" fill-opacity="0.65" stroke="#2e4b66" stroke-width="{{w15}}"><circle cx="50" cy="86" r="3.6"></circle><circle cx="44" cy="70" r="2.8"></circle><circle cx="49" cy="56" r="2"></circle></g>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.starfish}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.starfish" data-tiles="1x1" data-anchor="48,128" data-layer="ground" aria-hidden="true" style="display: block">
+<g transform="translate(48 128) scale(1 0.55) rotate(15)"><path d="M0 -10L2.6 -3.6L9.5 -3.1L4.2 1.4L5.9 8.1L0 4.4L-5.9 8.1L-4.2 1.4L-9.5 -3.1L-2.6 -3.6Z" fill="#f59b62" stroke="#2e4b66" stroke-width="{{w26}}" stroke-linejoin="round"></path><circle fill="#fbd3b0" cx="0" cy="0" r="1.6"></circle></g>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.urchin}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.urchin" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<path d="M48 110L48 100M40 112L34 104M56 112L62 104M37 118L28 115M59 118L68 115M43 110L40 101M53 110L56 101M36 124L28 125M60 124L68 125" fill="none" stroke="#2e4b66" stroke-width="{{w25}}" stroke-linecap="round"></path>
+<circle cx="48" cy="121" r="10" fill="#7862ad" stroke="#2e4b66" stroke-width="{{w3}}"></circle>
+<path d="M42 117Q43.5 113 48 112.5" fill="none" stroke="#a893dc" stroke-width="{{w2}}" stroke-linecap="round"></path>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.clamfountain}}" hint-placeholder-val="{{false}}">
+<svg width="{{w22}}" height="{{h22}}" viewBox="0 0 160 256" data-asset-id="prop.clamfountain" data-tiles="2x2" data-anchor="80,208" aria-hidden="true" style="display: block">
+<path d="M24 214C22 196 44 184 80 184C116 184 138 196 136 214C122 232 38 232 24 214Z" fill="#a1acb9"></path>
+<path d="M118 192C132 198 138 206 136 214C130 222 118 226 104 228C116 220 122 206 118 192Z" fill="#8894a3"></path>
+<path d="M40 200C52 191 108 191 120 200C104 206 56 206 40 200Z" fill="#bac3cd"></path>
+<path d="M52 219L60 223M110 215L118 211" fill="none" stroke="#7d8998" stroke-width="{{w15}}" stroke-linecap="round"></path>
+<path d="M24 214C22 196 44 184 80 184C116 184 138 196 136 214C122 232 38 232 24 214Z" fill="none" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round"></path>
+<path d="M36 190Q31.7 179.2 39.3 170.9Q39.1 159.3 48.9 154.6Q52.7 144.1 63.2 143.8Q70.4 135.9 80 140Q89.6 135.9 96.8 143.8Q107.3 144.1 111.1 154.6Q120.9 159.3 120.7 170.9Q128.3 179.2 124 190Z" fill="#f7e3d6" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round"></path>
+<path d="M80 190L41.2 181.2M80 190L47.1 165M80 190L58 152.6M80 190L72.3 145.9M80 190L87.7 145.9M80 190L102 152.6M80 190L112.9 165M80 190L118.8 181.2" fill="none" stroke="#eacbb9" stroke-width="{{w24}}" stroke-linecap="round"></path>
+<ellipse cx="80" cy="192" rx="38" ry="11" fill="#6f97d8" stroke="#2e4b66" stroke-width="{{w25}}"></ellipse>
+<path d="M50 187Q54 184 58 187T66 187T74 187T82 187T90 187T98 187T106 187" fill="none" stroke="#b5d0f0" stroke-width="{{w18}}" stroke-linecap="round"></path>
+<path d="M36 190C36 212 58 222 80 222C102 222 124 212 124 190L116 196L108 188L100 197L92 189L84 198L76 189L68 198L60 189L52 197L44 188Z" fill="#fff5ee" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round"></path>
+<path d="M44 197Q46 208 52 215M60 198Q61 210 64 219M76 198Q77 211 78 221M92 198Q92 211 90 221M108 197Q106 208 102 216" fill="none" stroke="#eacbb9" stroke-width="{{w2}}" stroke-linecap="round"></path>
+<g fill="#f3fcfd" fill-opacity="0.65" stroke="#2e4b66" stroke-width="{{w18}}"><circle cx="82" cy="172" r="4"></circle><circle cx="76" cy="150" r="5.5"></circle><circle cx="84" cy="126" r="4.5"></circle><circle cx="78" cy="104" r="6"></circle><circle cx="83" cy="82" r="4"></circle><circle cx="79" cy="64" r="3"></circle></g>
+<g fill="#ffffff"><circle cx="74.2" cy="148.2" r="1.6"></circle><circle cx="76" cy="102" r="1.8"></circle><circle cx="82.5" cy="124.5" r="1.3"></circle></g>
+</svg>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"kind":{"editor":"enum","options":["clamchair","desk","shelf","coralpot","jellylamp","clambed","rug","kelp","coral","braincoral","seagrass","rock","jellypost","bench","anemone","board","buoyfence","materials","chest","starfish","urchin","clamfountain","tile-sand","tile-gravel","tile-plaza","tile-rock"],"default":"kelp"},"scale":{"editor":"float","min":0.5,"max":3,"step":0.25,"default":1},"fab":{"editor":"enum","options":["mustard","coral","blue","green","lavender"],"default":"coral"},"animate":{"editor":"boolean","default":true},"phase":{"editor":"int","min":0,"max":1,"default":0},"$preview":{"width":96,"height":160}}'>
+class Component extends DCLogic {
+componentDidMount() {
+this.timer = setInterval(() => {
+const a = this.props.animate;
+const kind = this.props.kind ?? 'kelp';
+if (a === false || a === 'false') return;
+if (kind !== 'kelp' && kind !== 'seagrass' && kind !== 'anemone') return;
+this.setState({ f: ((this.state && this.state.f) || 0) ? 0 : 1 });
+}, 900);
+}
+componentWillUnmount() {
+clearInterval(this.timer);
+}
+renderVals() {
+const kind = this.props.kind ?? 'kelp';
+const s = Math.max(0.25, Number(this.props.scale ?? 1));
+const FAB = {
+mustard: ['#f0b24a', '#d99a35', '#bb8024'], coral: ['#ec6f66', '#d45a53', '#b84842'],
+blue: ['#6f97d8', '#5a80c2', '#4769a6'], green: ['#5aa77a', '#478f65', '#377752'],
+lavender: ['#a893dc', '#9079c7', '#7862ad']
+};
+const f = FAB[this.props.fab] || FAB.coral;
+const two1 = kind === 'clambed' || kind === 'rug';
+const two2 = kind === 'clamfountain';
+const vbw = two2 ? 160 : (two1 ? 128 : 96);
+const vbh = two2 ? 256 : (two1 ? 208 : 160);
+const k = {};
+['clamchair', 'desk', 'shelf', 'coralpot', 'jellylamp', 'clambed', 'rug', 'kelp', 'coral', 'braincoral', 'seagrass', 'rock', 'jellypost', 'bench', 'anemone', 'board', 'buoyfence', 'materials', 'chest', 'starfish', 'urchin', 'clamfountain'].forEach((n) => { k[n] = kind === n; });
+k.tileSand = kind === 'tile-sand'; k.tileGravel = kind === 'tile-gravel'; k.tilePlaza = kind === 'tile-plaza'; k.tileRock = kind === 'tile-rock';
+const w = (px) => px / s;
+const fr = (((this.state && this.state.f) || 0) + Number(this.props.phase ?? 0)) % 2;
+return {
+k: k, rw: vbw * s, rh: vbh * s,
+w11: 96 * s, h11: 160 * s, w21: 128 * s, h21: 208 * s, w22: 160 * s, h22: 256 * s,
+w3: w(3), w2: w(2), w15: w(1.5), w16: w(1.6), w18: w(1.8), w24: w(2.4), w25: w(2.5), w26: w(2.6), w35: w(3.5), w36: w(3.6), w5: w(5), w6: w(6), w7: w(7),
+cor: 5 + w(6), corB: 7 + w(6), tenB: 5 + w(6), logB: 14 + w(6),
+sw: fr ? 'rotate(3 48 128)' : 'rotate(-3 48 128)',
+swA: fr ? 'rotate(4 48 108)' : 'rotate(-4 48 108)',
+fab: f[0], fabL: f[1], fabR: f[2]
+};
+}
+}
+</script>
+</body>
+</html>

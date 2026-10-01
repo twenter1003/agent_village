@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>바다 UI 스킨</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.hd{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;color:#1f3850;margin:0}
+.meta{font-size:12px;color:#4f6883;line-height:16px}
+.card{box-sizing:border-box;background:#f9fdfc;border:3px solid #2e4b66;border-radius:20px;padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.ic{fill:none;stroke:#1f3850;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.it{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:12px;color:#4f6883;text-align:center;line-height:15px}
+.ib{width:44px;height:44px;box-sizing:border-box;border:2px solid #2e4b66;border-radius:12px;background:#e6f3f1;display:flex;align-items:center;justify-content:center}
+.ib2{width:44px;height:44px;box-sizing:border-box;border:2px dashed #b9d6d4;border-radius:12px;background:#f9fdfc;display:flex;align-items:center;justify-content:center;opacity:0.7}
+.btn{height:44px;padding:0 20px;border:2px solid #2e4b66;border-radius:12px;box-shadow:0 3px 0 #2e4b66;font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:16px;color:#1f3850}
+.chip{display:inline-flex;align-items:center;gap:6px;height:28px;box-sizing:border-box;border:2px solid #2e4b66;border-radius:999px;background:#f9fdfc;font-size:13px;color:#1f3850;padding:0 12px 0 4px;white-space:nowrap}
+.dot{width:20px;height:20px;border-radius:50%;border:2px solid #2e4b66;box-sizing:border-box;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pip{width:10px;height:10px;border-radius:50%;border:2px solid #2e4b66;box-sizing:border-box}
+.face{flex-shrink:0;box-sizing:border-box;border:2px solid #2e4b66;border-radius:12px;overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+.toast{box-sizing:border-box;background:#f9fdfc;border:3px solid #2e4b66;border-radius:16px;box-shadow:0 6px 0 rgba(46,75,102,0.16);padding:12px 12px 14px 14px;display:flex;gap:12px;align-items:flex-start;position:relative;overflow:hidden}
+.tile{width:44px;height:44px;flex-shrink:0;border:2px solid #2e4b66;border-radius:12px;box-sizing:border-box;display:flex;align-items:center;justify-content:center}
+.tt{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:17px;color:#1f3850;line-height:22px}
+.ts{font-size:13px;color:#4f6883;line-height:18px}
+.lab{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:15px;color:#1f3850;width:110px;flex-shrink:0}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1260px; box-sizing: border-box; padding: 44px 56px; background: #e6f3f1; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #1f3850; display: flex; flex-direction: column; gap: 20px">
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 class="hd" style="font-size: 40px; line-height: 48px">UI 스킨 · 아이콘 · 카드</h1>
+<p style="margin: 0; font-size: 15px; color: #4f6883">글꼴, 크기, 간격, 모서리, 높이감은 잔디 마을(03 · 04 · 05)과 같습니다. 선과 바탕 색, 그리고 세계관이 드러나는 아이콘 8개만 바꿉니다.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: 560px minmax(0, 1fr); gap: 20px">
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">글자 · 같은 크기 체계</h2><span class="meta">Jua 제목·숫자 / Gowun Dodum 본문</span></div>
+<div style="display: grid; grid-template-columns: 136px minmax(0, 1fr); row-gap: 12px; column-gap: 14px; align-items: baseline">
+<div class="meta">화면 제목 · Jua 32</div><div style="font-family: 'Jua', sans-serif; font-size: 32px; line-height: 40px">수달 해초 카페 완공!</div>
+<div class="meta">섹션 제목 · Jua 22</div><div style="font-family: 'Jua', sans-serif; font-size: 22px; line-height: 28px">팀원 · 외부 방문자</div>
+<div class="meta">카드 제목 · Jua 17</div><div style="font-family: 'Jua', sans-serif; font-size: 17px; line-height: 24px">점박이물범 · 백엔드</div>
+<div class="meta">숫자 · Jua 16~24</div><div style="font-family: 'Jua', sans-serif; font-size: 24px; line-height: 28px">3,420 <span style="font-size: 16px">진주</span> <span style="font-size: 16px; color: #2f7d4f">+200</span></div>
+<div class="meta">본문 · Gowun 15</div><div style="font-size: 15px; line-height: 22px">결제 API 스키마를 정리하고 있어요.</div>
+<div class="meta">보조 · Gowun 13</div><div style="font-size: 13px; line-height: 18px; color: #4f6883">작업 2 / 4 · 12분 전</div>
+</div>
+</section>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">바뀌는 아이콘 8개</h2><span class="meta">흐린 칸 = 잔디 마을 · 진한 칸 = 바다 마을 · 24 격자 · 선 2</span></div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 16px; column-gap: 12px">
+<div class="it"><div style="display: flex; gap: 6px; align-items: center"><div class="ib2"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="4.5"></circle></svg></div><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12.5" r="7.5"></circle><path d="M8.3 10.6A4.2 4.2 0 0 1 10.8 8"></path></svg></div></div>코인 → 진주</div>
+<div class="it"><div style="display: flex; gap: 6px; align-items: center"><div class="ib2"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 9L12 4.5L20.5 9Z"></path><path d="M6 10.5V17M10 10.5V17M14 10.5V17M18 10.5V17M4 20H20"></path></svg></div><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11C4 5.5 20 5.5 20 11V19H4Z"></path><path d="M4 11H20"></path><path d="M10.5 11V14.5H13.5V11"></path></svg></div></div>금고 → 보물상자</div>
+<div class="it"><div style="display: flex; gap: 6px; align-items: center"><div class="ib2"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11L12 4L20 11"></path><path d="M6 9.5V20H18V9.5"></path><path d="M10 20V15H14V20"></path></svg></div><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 19.5C3.5 11 7.5 5 12 5C16.5 5 20.5 11 20.5 19.5Z"></path><path d="M10 19.5V16A2 2 0 0 1 14 16V19.5"></path><path d="M12 5V3.5"></path></svg></div></div>집 → 돔 집</div>
+<div class="it"><div style="display: flex; gap: 6px; align-items: center"><div class="ib2"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5L14 10L20.5 12L14 14L12 20.5L10 14L3.5 12L10 10Z"></path></svg></div><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4L11.6 9.4L17 11L11.6 12.6L10 18L8.4 12.6L3 11L8.4 9.4Z"></path><circle cx="18" cy="17.5" r="2.3"></circle><circle cx="19.2" cy="7" r="1.3"></circle></svg></div></div>완공 → 반짝·거품</div>
+<div class="it"><div style="display: flex; gap: 6px; align-items: center"><div class="ib2"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5C7 4 9.5 4 12 6C14.5 4 17 4 20 5.5V19C17 17.5 14.5 17.5 12 19.5C9.5 17.5 7 17.5 4 19Z"></path><path d="M12 6V19.5"></path></svg></div><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.5" cy="17.5" r="1.8"></circle><path d="M10.5 17.5A4 4 0 0 0 6.5 13.5M14.5 17.5A8 8 0 0 0 6.5 9.5M18.5 17.5A12 12 0 0 0 6.5 5.5"></path></svg></div></div>도서관 → 탐사 기지</div>
+<div class="it"><div style="display: flex; gap: 6px; align-items: center"><div class="ib2"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.8"></circle><path d="M11 6.8L6 20M13 6.8L18 20M8 15H16"></path></svg></div><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 6.5L14.2 12L12 17.5L9.8 12Z"></path></svg></div></div>설계사무소 → 해도실</div>
+<div class="it"><div style="display: flex; gap: 6px; align-items: center"><div class="ib2"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="8" width="17" height="11" rx="2"></rect><path d="M9 8V6A1 1 0 0 1 10 5H14A1 1 0 0 1 15 6V8M3.5 13H20.5"></path></svg></div><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.8"></circle><path d="M12 6.8V20M8.5 10H15.5M5 13.5C5 17.5 8.5 20 12 20C15.5 20 19 17.5 19 13.5M3.5 15L5 13.5L6.5 15M17.5 15L19 13.5L20.5 15"></path></svg></div></div>인력사무소 → 인력 부두</div>
+<div class="it"><div style="display: flex; gap: 6px; align-items: center"><div class="ib2" style="border-style: dotted"><span style="font-size: 11px; color: #4f6883">새로</span></div><div class="ib"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="14.5" r="5"></circle><circle cx="16.5" cy="7.5" r="3"></circle><circle cx="18" cy="16.5" r="1.8"></circle><path d="M6.8 12.6A2.6 2.6 0 0 1 8.4 11.4"></path></svg></div></div>거품 효과 설정</div>
+</div>
+</section>
+</div>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">컨트롤</h2><span class="meta">누를 수 있는 것은 남색 아래 턱 3px. 포커스 링은 말미잘 자홍 #b0357c (남색 선과 헷갈리지 않게)</span></div>
+<div style="display: flex; gap: 28px; align-items: center; flex-wrap: wrap">
+<span class="lab">버튼</span>
+<button type="button" class="btn" style="background: #f7cb52">가구 사기</button>
+<button type="button" class="btn" style="background: #f9fdfc">집 구경</button>
+<button type="button" style="height: 36px; padding: 0 12px; border: 2px solid transparent; border-radius: 12px; background: transparent; font-family: 'Gowun Dodum', sans-serif; font-size: 14px; color: #1f3850; text-decoration: underline; text-underline-offset: 3px">모두 읽음</button>
+<button type="button" class="btn" style="background: #c2413d; color: #f9fdfc">가구 팔기</button>
+<button type="button" disabled style="height: 44px; padding: 0 20px; border: 2px solid #a9c6c8; border-radius: 12px; background: #dcecea; font-family: 'Jua', sans-serif; font-size: 16px; color: #6f8aa0">진주 부족</button>
+<button type="button" class="btn" style="background: #f9fdfc; outline: 3px solid #b0357c; outline-offset: 3px">키보드 포커스</button>
+</div>
+<div style="display: flex; gap: 28px; align-items: center; flex-wrap: wrap; border-top: 2px dashed #b9d6d4; padding-top: 14px">
+<span class="lab">상태 칩</span>
+<span class="chip"><span class="dot" style="background: #f7cb52"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19.5L13 11.5M10.5 6.5L14.5 3.5L20.5 9.5L17.5 13.5Z" fill="none" stroke="#1f3850" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>작업 중 · 공방</span>
+<span class="chip"><span class="dot" style="background: #96c6ea"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.5H19A1.5 1.5 0 0 1 20.5 7V15A1.5 1.5 0 0 1 19 16.5H11L7 19.5V16.5H5A1.5 1.5 0 0 1 3.5 15V7A1.5 1.5 0 0 1 5 5.5Z" fill="none" stroke="#1f3850" stroke-width="3" stroke-linejoin="round"></path></svg></span>회의 중 · 광장</span>
+<span class="chip"><span class="dot" style="background: #bfdca8"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14.5A7.5 7.5 0 1 1 9.5 5A6 6 0 0 0 19 14.5Z" fill="none" stroke="#1f3850" stroke-width="3" stroke-linejoin="round"></path></svg></span>휴식 · 바위 위</span>
+<span class="chip"><span class="dot" style="background: #ec6f66"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4L20.5 19H3.5Z" fill="none" stroke="#1f3850" stroke-width="3" stroke-linejoin="round"></path></svg></span>막힘 · 테스트 실패</span>
+<div role="group" aria-label="보기 방식" style="display: flex; padding: 4px; gap: 4px; background: #f9fdfc; border: 2px solid #2e4b66; border-radius: 14px">
+<button type="button" aria-pressed="true" style="height: 34px; padding: 0 14px; border: 2px solid #2e4b66; border-radius: 10px; background: #f7cb52; font-family: 'Jua', sans-serif; font-size: 15px; color: #1f3850">마을</button>
+<button type="button" aria-pressed="false" style="height: 34px; padding: 0 14px; border: 2px solid transparent; border-radius: 10px; background: transparent; font-family: 'Jua', sans-serif; font-size: 15px; color: #1f3850">격자</button>
+</div>
+</div>
+<div style="display: flex; gap: 28px; align-items: center; flex-wrap: wrap; border-top: 2px dashed #b9d6d4; padding-top: 14px">
+<span class="lab">월드 UI</span>
+<div style="position: relative; padding: 8px 14px; background: #f9fdfc; border: 2.5px solid #2e4b66; border-radius: 16px; font-size: 14px">결제 API는 이렇게 가요!<svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true" style="position: absolute; left: 30px; bottom: -13px"><path d="M2 0L8 12L16 0" fill="#f9fdfc" stroke="#2e4b66" stroke-width="2.5" stroke-linejoin="round"></path><rect x="0" y="-3" width="20" height="4" fill="#f9fdfc"></rect></svg></div>
+<div style="display: flex; gap: 4px; padding: 8px 10px; background: #f9fdfc; border: 2.5px solid #2e4b66; border-radius: 14px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #4f6883"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #4f6883"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #4f6883"></span></div>
+<div style="display: flex; gap: 3px; padding: 4px 7px; background: #f9fdfc; border: 2px solid #2e4b66; border-radius: 999px"><span class="pip" style="background: #f7cb52"></span><span class="pip" style="background: #f7cb52"></span><span class="pip" style="background: #f7cb52"></span><span class="pip" style="background: #fbe9c4"></span><span class="pip" style="background: #f9fdfc"></span><span class="pip" style="background: #f9fdfc"></span></div>
+<span class="meta">말풍선 · 입력 중 · 공사 진행 점 3/6</span>
+<div style="display: flex; align-items: center; gap: 8px; padding: 4px 12px 4px 4px; background: #f9fdfc; border: 2px solid #2e4b66; border-radius: 999px"><svg width="26" height="26" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="8.5" fill="#fbf3f8" stroke="#2e4b66" stroke-width="2"></circle><path d="M14.5 13.5A5 5 0 0 1 8 15.5" fill="none" stroke="#e7d3e6" stroke-width="2.4" stroke-linecap="round"></path><circle cx="8.2" cy="8" r="2" fill="#ffffff"></circle></svg><span style="font-family: 'Jua', sans-serif; font-size: 17px">1,240</span></div>
+<span class="meta">진주 잔액 칩</span>
+</div>
+</section>
+
+<div style="display: flex; gap: 20px; align-items: flex-start">
+<article style="width: 330px; flex-shrink: 0; box-sizing: border-box; background: #f9fdfc; border: 3px solid #2e4b66; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; gap: 12px; align-items: center">
+<div class="face" style="width: 60px; height: 60px; background: #dde8f5"><dc-import name="SeaCritter" species="seal" mode="face" scale="0.64" animate="false" hint-size="56px,56px"></dc-import></div>
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<div style="display: flex; gap: 6px; align-items: center"><span style="font-family: 'Jua', sans-serif; font-size: 19px">점박이물범</span><span class="chip" style="padding: 0 9px; height: 24px; background: #dde8f5; color: #3f5f99; font-family: 'Jua', sans-serif">백엔드</span><span class="chip" style="padding: 0 9px; height: 24px; font-family: 'Jua', sans-serif">ISTJ</span></div>
+<div style="display: flex; gap: 6px"><span class="chip" style="height: 24px; font-size: 12px"><span class="dot" style="width: 16px; height: 16px; background: #f7cb52"></span>작업 중 · 공방</span></div>
+</div>
+</div>
+<div style="background: #d3e9e6; border-radius: 12px; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px">
+<span class="meta">지금 하는 작업</span>
+<span style="font-size: 15px; line-height: 20px">결제 API 스키마 작성</span>
+<div style="display: flex; align-items: center; gap: 8px"><span style="display: flex; gap: 3px"><span class="pip" style="background: #f7cb52"></span><span class="pip" style="background: #f7cb52"></span><span class="pip" style="background: #fbe9c4"></span><span class="pip" style="background: #f9fdfc"></span></span><span class="meta">결제 공방 · 2 / 4</span></div>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center">
+<span style="display: flex; align-items: center; gap: 6px"><svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="8.5" fill="#fbf3f8" stroke="#2e4b66" stroke-width="2"></circle><path d="M14.5 13.5A5 5 0 0 1 8 15.5" fill="none" stroke="#e7d3e6" stroke-width="2.4" stroke-linecap="round"></path><circle cx="8.2" cy="8" r="2" fill="#ffffff"></circle></svg><span style="font-family: 'Jua', sans-serif; font-size: 18px">1,240</span></span>
+<span style="font-family: 'Jua', sans-serif; font-size: 14px; color: #2f7d4f">오늘 +120</span>
+</div>
+</article>
+
+<div style="display: flex; flex-direction: column; gap: 10px; width: 340px; flex-shrink: 0">
+<span class="meta">팀원 행 · 선택됨은 겨자 테두리</span>
+<div style="display: flex; gap: 10px; align-items: center; background: #f9fdfc; border: 3px solid #e2ae33; outline: 2px solid #2e4b66; border-radius: 16px; padding: 8px 12px 8px 8px">
+<div class="face" style="width: 44px; height: 44px; background: #fadcd8"><dc-import name="SeaCritter" species="otter" mode="face" scale="0.46" animate="false" hint-size="40px,40px"></dc-import></div>
+<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1; min-width: 0"><span style="font-family: 'Jua', sans-serif; font-size: 16px">수달 <span style="font-size: 13px; color: #a8433d">프론트엔드</span></span><span class="meta">광장에서 회의 중</span></div>
+<span class="dot" style="width: 14px; height: 14px; background: #96c6ea"></span>
+</div>
+<div style="display: flex; gap: 10px; align-items: center; background: #f9fdfc; border: 3px solid #2e4b66; border-radius: 16px; padding: 8px 12px 8px 8px">
+<div class="face" style="width: 44px; height: 44px; background: #fbe9c4"><dc-import name="SeaCritter" species="hamster" mode="face" scale="0.46" animate="false" hint-size="40px,40px"></dc-import></div>
+<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1; min-width: 0"><span style="font-family: 'Jua', sans-serif; font-size: 16px">햄스터 <span style="font-size: 13px; color: #845614">QA</span></span><span class="meta">초소 현장으로 걸어가는 중</span></div>
+<span class="dot" style="width: 14px; height: 14px; background: #f7cb52"></span>
+</div>
+<span class="meta" style="margin-top: 2px">외부 방문자 (집 없음) · 점선 테두리</span>
+<div style="display: flex; gap: 10px; align-items: center; background: #f9fdfc; border: 2px dashed #2e4b66; border-radius: 16px; padding: 8px 12px 8px 8px">
+<div class="face" style="width: 44px; height: 44px; background: #efe8df"><dc-import name="SeaCritter" species="fish" role="explore" mode="face" scale="0.46" animate="false" hint-size="40px,40px"></dc-import></div>
+<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1; min-width: 0"><span style="font-family: 'Jua', sans-serif; font-size: 16px">Explore <span style="font-size: 13px; color: #6a5b46">탐사 기지</span></span><span class="meta">파일 23개 훑는 중 · 2분째</span></div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 12px; flex-grow: 1; min-width: 0">
+<span class="meta">토스트 · 자동으로 사라짐 5초 (아래 막대) / 막힘은 직접 닫을 때까지</span>
+<div class="toast">
+<div class="tile" style="background: #fbe9c4"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4L11.6 9.4L17 11L11.6 12.6L10 18L8.4 12.6L3 11L8.4 9.4Z"></path><circle cx="18" cy="17.5" r="2.3"></circle><circle cx="19.2" cy="7" r="1.3"></circle></svg></div>
+<div style="display: flex; flex-direction: column; gap: 2px; min-width: 0"><span class="tt">수달의 해초 카페 완공!</span><span class="ts">작업 4개 · 기여 수달 3 · 물범 1 · 진주 +80</span></div>
+<button type="button" aria-label="닫기" style="width: 32px; height: 32px; flex-shrink: 0; border: 0; border-radius: 10px; background: transparent; display: flex; align-items: center; justify-content: center; margin-left: auto"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18"></path></svg></button>
+<span style="position: absolute; left: 0; bottom: 0; width: 62%; height: 4px; background: #f7cb52"></span>
+</div>
+<div class="toast" style="border-color: #c2413d">
+<div class="tile" style="background: #fadcd8"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4L20.5 19H3.5Z"></path><path d="M12 10V14M12 16.8V17"></path></svg></div>
+<div style="display: flex; flex-direction: column; gap: 2px; min-width: 0"><span class="tt">햄스터가 막혔어요</span><span class="ts">테스트가 3번 연달아 실패했어요 · 초소 현장</span></div>
+<button type="button" aria-label="닫기" style="width: 32px; height: 32px; flex-shrink: 0; border: 0; border-radius: 10px; background: transparent; display: flex; align-items: center; justify-content: center; margin-left: auto"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18"></path></svg></button>
+</div>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1260}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

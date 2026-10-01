@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>상단 바</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1440px; height: 68px; box-sizing: border-box; display: flex; align-items: center; gap: 14px; padding: 0 20px; background: #fff9ee; border-bottom: 3px solid #7a3e3e; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #5a2e2e">
+<a href="ScreenMain.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #5a2e2e">
+<span style="width: 40px; height: 40px; box-sizing: border-box; border: 2.5px solid #7a3e3e; border-radius: 12px; background: #f7cb52; display: flex; align-items: center; justify-content: center"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11L12 4L20 11M6 9.5V20H18V9.5M10 20V15H14V20" fill="none" stroke="#5a2e2e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
+<span style="font-family: 'Jua', sans-serif; font-size: 22px">서브에이전트 타이쿤</span>
+</a>
+<button type="button" aria-label="프로젝트 바꾸기" style="display: flex; align-items: center; gap: 6px; height: 40px; padding: 0 12px 0 14px; border: 2px solid #7a3e3e; border-radius: 12px; background: #f5ecd7; box-shadow: 0 3px 0 #7a3e3e; font-family: 'Gowun Dodum', sans-serif; font-size: 14px; color: #5a2e2e">my-shop-app<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9L12 15L18 9" fill="none" stroke="#5a2e2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+<div style="flex-grow: 1"></div>
+<div style="display: flex; align-items: center; gap: 10px">
+<span style="font-family: 'Jua', sans-serif; font-size: 16px">마을 공사</span>
+<div role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="마을 공사 진행률" style="width: 180px; height: 16px; box-sizing: border-box; border: 2px solid #7a3e3e; border-radius: 999px; background: #f5ecd7; overflow: hidden"><div style="width: 60%; height: 100%; box-sizing: border-box; background: #f7cb52; border-right: 2px solid #7a3e3e"></div></div>
+<span style="font-size: 13px; color: #8a5a4a">작업 12 / 20 · 완공 3채</span>
+</div>
+<a href="ScreenEconomy.dc.html" style="display: flex; align-items: center; gap: 7px; height: 40px; box-sizing: border-box; padding: 0 12px 0 8px; border: 2px solid #7a3e3e; border-radius: 12px; background: {{vaultBg}}; box-shadow: 0 3px 0 #7a3e3e; font-size: 13px; color: #5a2e2e; text-decoration: none"><span style="width: 20px; height: 20px; box-sizing: border-box; border-radius: 50%; border: 2px solid #7a3e3e; background: #f7cb52"></span>팀 금고 <span style="font-family: 'Jua', sans-serif; font-size: 17px">3,420</span></a>
+<a href="ScreenEconomy.dc.html" style="display: flex; align-items: center; gap: 6px; height: 40px; box-sizing: border-box; padding: 0 12px; border: 2px solid #7a3e3e; border-radius: 12px; background: {{vaultBg}}; box-shadow: 0 3px 0 #7a3e3e; font-size: 13px; color: #5a2e2e; text-decoration: none">물가 <span style="font-family: 'Jua', sans-serif; font-size: 16px; color: #b8433f">▲ 1.8%</span></a>
+<button type="button" aria-label="알림 3개" style="position: relative; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 2px solid #7a3e3e; border-radius: 12px; background: #f5ecd7; box-shadow: 0 3px 0 #7a3e3e"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11A6 6 0 0 1 18 11V16L19.5 18H4.5ZM10 20.5A2 2 0 0 0 14 20.5" fill="none" stroke="#5a2e2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span style="position: absolute; top: -8px; right: -8px; min-width: 22px; height: 22px; box-sizing: border-box; padding: 0 5px; border-radius: 999px; background: #c2413d; border: 2px solid #fff9ee; color: #fff9ee; font-family: 'Jua', sans-serif; font-size: 12px; display: flex; align-items: center; justify-content: center">3</span></button>
+<button type="button" aria-label="설정" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 2px solid #7a3e3e; border-radius: 12px; background: #f5ecd7; box-shadow: 0 3px 0 #7a3e3e"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#5a2e2e" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"></circle><circle cx="12" cy="12" r="6"></circle><path d="M12 3.5V6M12 18V20.5M3.5 12H6M18 12H20.5M6 6L7.8 7.8M16.2 16.2L18 18M6 18L7.8 16.2M16.2 7.8L18 6"></path></g></svg></button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"active":{"editor":"enum","options":["village","economy"],"default":"village"},"$preview":{"width":1440,"height":68}}'>
+class Component extends DCLogic {
+renderVals() {
+const eco = (this.props.active ?? 'village') === 'economy';
+return { vaultBg: eco ? '#fbe9c4' : '#f5ecd7' };
+}
+}
+</script>
+</body>
+</html>

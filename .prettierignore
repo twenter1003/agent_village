@@ -1,0 +1,10 @@
+design/
+docs/
+fixtures/
+examples/
+*.md
+pnpm-lock.yaml
+packages/web/src/tokens.ts
+packages/web/src/assets/sea/data.ts
+packages/web/src/assets/sea/critter.ts
+.claude/

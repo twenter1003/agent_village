@@ -1,0 +1,13 @@
+{
+  "$comment": "게임 전용 설정. 에이전트 md의 frontmatter는 건드리지 않고 여기서 연결한다. 없으면 game.default.json 규칙으로 자동 배정.",
+  "projectName": "my-shop-app",
+  "members": {
+    "backend-dev":  { "species": "bear",    "job": "backend",  "accessory": "glasses" },
+    "frontend-dev": { "species": "rabbit",  "job": "frontend", "accessory": "beret" },
+    "qa-reviewer":  { "species": "raccoon", "job": "qa",       "accessory": "magnifier" }
+  },
+  "leader": { "species": "penguin", "job": "lead", "accessory": "bowtie", "label": "팀장" },
+  "overrides": {
+    "time": { "gameDayMs": 3600000 }
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "$comment": "게임 규칙 기본값. docs/01-기획서.md 5~8장의 수식이 이 값을 읽는다. 사용자 설정(.claude/tycoon.json)이 같은 키로 덮어쓸 수 있다.",
+
+  "time": {
+    "gameDayMs": 3600000,
+    "$gameDayMs": "게임 하루 = 에이전트가 실제로 일한 시간(활동 시간) 1시간 (01 문서 6.2, D4). 경제 정산, 성격 하루 이동 한도가 이 주기를 쓴다.",
+    "activeGapCapMs": 600000,
+    "$activeGapCapMs": "실행·메인 턴마다 그 일의 마지막 훅 이벤트 뒤로 활동 시간을 최대 이만큼만 센다. 끝나지 않은(버려진) 실행·턴이 시간을 끝없이 흘리지 않게 (01 문서 6.2).",
+    "frameMs": 150
+  },
+
+  "layout": {
+    "maxRing": 8,
+    "$maxRing": "섬 넓힘 상한 (D10, 02 문서 8.1): 구역에 부지가 모자라면 사방 4칸씩, 이 단계까지 (8 = 80×80)"
+  },
+
+  "roster": {
+    "maxSlots": 99,
+    "$maxSlots": "팀원 수 상한 (D10: 사실상 제한 없음, 섬을 넓혀 집을 더 짓는다). 슬롯 색은 1..6을 되풀이",
+    "leaderFromMainSession": true,
+    "$leaderFromMainSession": "true면 메인 세션(오케스트레이터)을 팀장 캐릭터로 보여준다. md 파일이 없어도 항상 존재.",
+    "leaderSpecies": "penguin",
+    "speciesCycle": ["bear", "rabbit", "raccoon", "gentoo", "polarbear", "walrus", "sealion", "gull", "seaotter", "clownfish", "puffin", "dugong", "flamingo", "harpseal", "loggerhead", "pelican", "elephantseal", "emperorchick", "iguana"],
+    "$speciesCycle": "마을 설정에 동물이 지정되지 않은 팀원은 이 순서로 배정. 동물 도감(D15)에 동물이 늘면 끝에 붙인다"
+  },
+
+  "jobPresets": [
+    { "id": "backend",  "keywords": ["backend", "api", "server", "db", "백엔드"],           "building": "workshop", "label": "공방", "body1f": "wood-1f",    "body2f": "brick-2f", "roof": "gable", "sign": "workshop", "accessory": "glasses",   "mbtiSeed": "ISTJ" },
+    { "id": "frontend", "keywords": ["frontend", "ui", "web", "react", "design", "ux", "프론트", "디자인"], "building": "cafe",     "label": "카페", "body1f": "plaster-1f", "body2f": "brick-2f", "roof": "flat",  "sign": "cafe",     "accessory": "beret",     "mbtiSeed": "ENFP" },
+    { "id": "qa",       "keywords": ["qa", "test", "review", "reviewer", "검증", "테스트"],  "building": "guard",    "label": "초소", "body1f": "plaster-1f", "body2f": "stone-2f", "roof": "hip",   "sign": "guard",    "accessory": "magnifier", "mbtiSeed": "ISTP" },
+    { "id": "lead",     "keywords": ["lead", "leader", "manager", "pm", "팀장"],             "building": "hall",     "label": "회관", "body1f": "wood-1f",    "body2f": "brick-2f", "roof": "gable", "sign": "hall",     "accessory": "bowtie",    "mbtiSeed": "ENTJ" }
+  ],
+  "fallbackPreset": { "id": "other", "building": "work", "label": "작업장", "body1f": "wood-1f", "body2f": "brick-2f", "roof": "hip", "sign": "work", "accessory": null, "mbtiSeed": "ISFJ" },
+
+  "visitors": {
+    "Explore":         { "facility": "library", "label": "도서관",     "cap": "explore" },
+    "Plan":            { "facility": "plan",    "label": "설계사무소", "cap": "plan" },
+    "general-purpose": { "facility": "agency",  "label": "인력사무소", "cap": "general", "helpsConstruction": true }
+  },
+
+  "buildings": {
+    "completeFxMs": 3000,
+    "cheerMs": 2000,
+    "$cheerMs": "일터 층이 오를 때 주인 환호 포즈 길이 (06 문서 5.4)"
+  },
+
+  "workplace": {
+    "levels": [
+      { "points": 0, "cost": 0, "level": 1 },
+      { "points": 750, "cost": 8000, "level": 1 },
+      { "points": 2250, "cost": 12000, "level": 4 },
+      { "points": 4500, "cost": 17000, "level": 7 }
+    ],
+    "$levels": "일터 층 (06 문서 5.3): i번째 줄 = i+1층 조건(마지막 = 큰 건물 3×3) — 누적 일 점수, 자재비(주인 잔고에서 한 번), 필요한 마을 레벨. 1층은 첫 일이 끝나면. 자재비 = 2026-10-01 두 마을 DB 복사본 재생 + 성장 시뮬레이션 보정 (06 문서 5.3). 점수·자재비 × 10 = 성장 속도 (D31, 06 문서 6.4)"
+  },
+
+  "village": {
+    "levels": [
+      { "points": 0, "cost": 0, "era": "village" },
+      { "points": 1500, "cost": 1500, "era": "village" },
+      { "points": 3500, "cost": 2500, "era": "village" },
+      { "points": 6000, "cost": 4000, "era": "town" },
+      { "points": 10000, "cost": 6000, "era": "town" },
+      { "points": 18000, "cost": 9000, "era": "town" },
+      { "points": 30000, "cost": 15000, "era": "city" },
+      { "points": 45000, "cost": 20000, "era": "city" },
+      { "points": 65000, "cost": 30000, "era": "city" },
+      { "points": 100000, "cost": 50000, "era": "capital" }
+    ],
+    "$levels": "마을 레벨 (06 문서 6.1): i번째 줄 = Lv.i+1 — 마을 전체 일 점수(팀원 일터 점수 합), 레벨업 공사비(마을 기금, 하루 정산), 시대(village 모래섬 마을 · town 읍 · city 도시 · capital 수도 = 시청 1·2·3층·해저 궁전). 레벨업마다 섬 사방 4칸, 마지막 레벨은 두 번째 랜드마크. 점수·공사비 × 10 = 성장 속도 (D31)"
+  },
+
+  "publicWorks": [
+    { "id": "streetlamp", "cost": 1000, "level": 1 },
+    { "id": "bench", "cost": 1000, "level": 1 },
+    { "id": "flowers", "cost": 1000, "level": 1 },
+    { "id": "park", "cost": 4000, "level": 4 },
+    { "id": "paving", "cost": 6000, "level": 4 },
+    { "id": "landmark", "cost": 20000, "level": 7 }
+  ],
+  "$publicWorks": "공공시설 (06 문서 6.2·6.4): 하루 정산 때 기금으로 하나. 가로등·벤치·꽃밭은 자리가 남는 동안 되풀이, 나머지는 한 번. 두 번째 랜드마크는 마지막 레벨업에 포함 (표에 없음). 값 × 10 (D31)",
+
+  "economy": {
+    "wagePerCall": 26,
+    "$wagePerCall": "급여 = wagePerCall × 서브에이전트 실행의 도구 호출 수 × 품질, 실행이 끝날 때 그 팀원에게 (D20, 06 문서 3.4). 쪼개도 합이 같다. 26 = 2 × 실측 중앙값 10.3 ÷ 0.8, 2026-09-30 실행 48개",
+    "quality": { "testsPassed": 1.2, "noTests": 1.0, "failed": 0.0 },
+    "taxRate": 0.2,
+    "autoBuy": {
+      "enabled": true,
+      "maxPerDay": 1,
+      "keepReserveRatio": 0.5,
+      "seed": 42
+    },
+    "tokens": {
+      "enabled": true,
+      "perPearl": 1000,
+      "weights": { "input": 1, "output": 5, "cacheWrite": 1.25, "cacheWrite1h": 2, "cacheRead": 0.1 },
+      "models": [
+        { "match": "opus-5-5", "scale": 1, "cacheRead": 0.05 },
+        { "match": "fable-5-1", "scale": 2.5, "cacheRead": 0.025 },
+        { "match": "mythos-5-1", "scale": 2.5, "cacheRead": 0.025 },
+        { "match": "fable", "scale": 2.5 },
+        { "match": "mythos", "scale": 2.5 },
+        { "match": "opus-4-1", "scale": 3.75 },
+        { "match": "opus-4-2025", "scale": 3.75 },
+        { "match": "opus", "scale": 1.25 },
+        { "match": "sonnet-5", "scale": 0.5 },
+        { "match": "sonnet", "scale": 0.75 },
+        { "match": "3-5-haiku", "scale": 0.2 },
+        { "match": "haiku", "scale": 0.25 }
+      ],
+      "fastScale": 2,
+      "$models": "모델 단가 (D13, 01 문서 6.7): 모델 id에 match가 들어간 첫 줄. 비용 환산 = scale × (입력 × input + 출력 × output + 캐시 쓰기 5분 × cacheWrite + 1시간 × cacheWrite1h + 캐시 읽기 × (그 줄 cacheRead 또는 weights.cacheRead)). 기준 Opus 5.5 입력 $4/MTok = 1, 2026-09-30 공식 요금표. 빠른 모드 × fastScale. 없는 모델·옛 기록은 scale 1",
+      "$tokens": "토큰 비용 (D11, 01 문서 6.2): 비용 환산 토큰 = 입력 × input + 출력 × output + 캐시 쓰기 × cacheWrite + 캐시 읽기 × cacheRead (모델 요금 비율). 진주 = 비용 환산 ÷ perPearl 반올림. 서브에이전트는 끝날 때 그 팀원이, 팀장은 메인 턴 끝에 새로 쓴 몫을 마을 기금에서 낸다 (D21)"
+    }
+  },
+
+  "furniture": [
+    { "id": "armchair", "label": "폭신 안락의자", "tiles": "1x1", "basePrice": 300, "tag": "rest",  "fabric": true },
+    { "id": "desk",     "label": "책상 · 노트북", "tiles": "1x1", "basePrice": 260, "tag": "work",  "fabric": false },
+    { "id": "bookcase", "label": "책장",         "tiles": "1x1", "basePrice": 220, "tag": "work",  "fabric": false, "against": "wall-right" },
+    { "id": "plant",    "label": "화분",         "tiles": "1x1", "basePrice": 80,  "tag": "decor", "fabric": false },
+    { "id": "lamp",     "label": "스탠드",       "tiles": "1x1", "basePrice": 120, "tag": "rest",  "fabric": true },
+    { "id": "bed",      "label": "침대",         "tiles": "2x1", "basePrice": 520, "tag": "rest",  "fabric": true },
+    { "id": "rug",      "label": "러그",         "tiles": "2x1", "basePrice": 180, "tag": "decor", "fabric": true, "layer": "floor" },
+    { "id": "flowers",  "label": "꽃밭",         "tiles": "1x1", "basePrice": 90,  "tag": "decor", "fabric": false, "outdoor": true }
+  ],
+  "fabricColors": ["mustard", "coral", "blue", "green", "lavender"],
+
+  "efficiency": {
+    "window": 20,
+    "minTasks": 3,
+    "alert": { "ratio": 3, "minTokens": 100000 },
+    "leaderCtxWarn": 200000,
+    "$efficiency": "효율 순위 (D12, 01 문서 6.6): 팀원마다 최근 window개 서브에이전트 실행의 비용 환산 토큰 ÷ 일 점수 (도구 호출 × 품질, D23). 실행이 minTasks개 미만이면 순위 밖. 팀장은 순위 밖. alert = 비싼 실행 알림(최근 건당 중앙값 × ratio, minTokens 이상), leaderCtxWarn = 팀장 대화 크기 알림 기준 토큰 (D13, 6.7)"
+  },
+
+  "personality": {
+    "window": 20,
+    "emaAlpha": 0.1,
+    "maxDriftPerDay": 2,
+    "flipHysteresis": [45, 55],
+    "bigEditChars": 400,
+    "$bigEditChars": "Edit 내용이 이 글자 수 이상이면 큰 편집(S/N의 N 쪽). 01 문서 7장",
+    "lexicon": {
+      "feeling": ["고마", "감사", "좋아요", "좋네", "멋", "잘했", "미안", "죄송", "thanks", "great", "nice", "sorry", "happy"],
+      "thinking": ["오류", "실패", "반드시", "원인", "수정", "must", "error", "fail", "fix", "because"]
+    }
+  },
+
+  "meetings": {
+    "onUserPrompt": true,
+    "maxMs": 90000,
+    "kickoffWhenParallel": 2,
+    "kickoffWindowMs": 10000,
+    "kickoffMs": 8000
+  },
+
+  "status": {
+    "blockedOnPermissionPrompt": true,
+    "blockedOnToolFailureStreak": 3
+  },
+
+  "collector": {
+    "keepLastMessage": true,
+    "$keepLastMessage": "서브에이전트 최종 메시지(앞 2000자)를 저장할지. 성격 계산용. false면 저장하지 않는다 (02 문서 2.3)",
+    "testCommands": ["test", "pytest", "vitest", "jest", "go test", "cargo test", "npm run test", "pnpm test"],
+    "$testCommands": "Bash 명령이 테스트인지 판별하는 목록. 명령 자리(맨 앞, 또는 npm·pnpm·npx·python 같은 실행기 뒤)에서만 본다 (01 문서 6.1)"
+  }
+}

@@ -1,0 +1,602 @@
+/*
+ * 메인 화면 패널 (03 문서 5·6장, 캔버스 SeaScreenMain · SeaTopBar · SeaTeamPanel · Cards). 토큰만 쓴다.
+ */
+
+/* ── 화면 틀: 1440×900이면 상단 68 / 마을 1080×642 / 기록 1080×190 / 패널 360×832 ── */
+.ms {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  grid-template-rows: 68px minmax(0, 1fr) 190px;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--cream);
+}
+.ms > .tb {
+  grid-column: 1 / -1;
+}
+.ms__village {
+  position: relative;
+  overflow: hidden;
+  background: var(--field);
+}
+.ms > .tp {
+  grid-column: 2;
+  grid-row: 2 / 4;
+}
+/* 건물 상세 (M6): 상단 바 아래 칸 전체를 덮는다. absolute라 다른 칸 자동 배치를 밀지 않는다.
+   마을·기록·패널은 visibility로 가린다 (포커스·읽기에서도 빠짐, 크기는 그대로라 카메라 맞춤이 안 깨짐) */
+.ms__detail {
+  position: absolute;
+  inset: 0;
+  grid-column: 1 / -1;
+  grid-row: 2 / 4;
+}
+.ms__detail:focus {
+  outline: none; /* 포커스 받는 틀일 뿐 (MainScreen) — 안의 컨트롤은 제 링 */
+}
+.ms--detail > :not(.tb, .ms__detail, .ts) {
+  visibility: hidden;
+}
+/* 격자 보기 (M9, 01 문서 8.3): 마을 칸 + 활동 기록 자리(1열 2~3행)를 덮는다. 마을은 가리기만 (카메라 그대로) */
+.ms__grid {
+  position: absolute;
+  inset: 0;
+  grid-column: 1 / 2;
+  grid-row: 2 / 4;
+  overflow: auto;
+  background: var(--sunk);
+}
+.ms--grid > .ms__village,
+.ms--grid > .af {
+  visibility: hidden;
+}
+/* 마을/격자 토글 줄: 마을 칸 왼쪽 위 (캔버스 SeaScreenMain·SeaScreenGrid 둘 다 16, 16) */
+.ms__mode {
+  position: absolute;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  top: var(--sp-4);
+  left: var(--sp-4);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+.ms__hint {
+  color: var(--text-2);
+  font-size: var(--fs-sub);
+}
+/* 마을이 없을 때 안내 + 훅 설치 안내 (LiveApp, 01 문서 10장) */
+.ms__empty {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  width: min(720px, calc(100% - 2 * var(--sp-4)));
+  max-height: calc(100% - 2 * var(--sp-4));
+  overflow: auto;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.ms__empty h2 {
+  margin: 0 0 var(--sp-2);
+  font-family: var(--font-display);
+  font-size: var(--fs-section);
+  font-weight: 400;
+}
+.ms__empty p {
+  margin: 0;
+  color: var(--text-2);
+  font-size: var(--fs-sub);
+  line-height: var(--lh-sub);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+/* 수집기 끊김: 마을 위 가운데 상태 칩(--paper 바탕 + --st-blocked 원). 마지막 상태는 그대로.
+   칩 전체를 --st-blocked로 칠하면 글자 대비 4.0:1이라 AA(4.5) 미달 */
+.ms__offline {
+  position: absolute;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  top: var(--sp-4);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 포커스 링 (버튼 외 컨트롤 공통, ui.css와 같음). .lv-hit = 마을 캐릭터 누르기 버튼(LiveVillage), .af__list = 스크롤 목록 */
+.tb__logo:focus-visible,
+.tb__pick select:focus-visible,
+.tb__chip:focus-visible,
+.tb__level:focus-visible,
+.tp-card:focus-visible,
+.tb__notif-box:focus-visible,
+.lv-hit:focus-visible,
+.af__list:focus-visible {
+  outline: var(--ui-line) solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* 건물 이름표 (LiveVillage NameTag): 많이 줄여 보면 숨기고 얼굴 간판만 (06 문서 7장, Camera TAG_MIN_ZOOM) */
+[data-far] .lv-tag {
+  display: none;
+}
+
+/* ── 상단 바 ─────────────────────────────────────── */
+.tb {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-sizing: border-box;
+  height: 68px;
+  padding: 0 var(--sp-5);
+  border-bottom: var(--ui-line) solid var(--ink);
+  background: var(--paper);
+  color: var(--text);
+}
+/* 버튼·칩·로고는 제 크기 그대로 — 좁으면 레벨 칸(.tb__level)이 줄어들고, 그것도 다 줄면 마을 고르기(.tb__pick) */
+.tb > * {
+  flex-shrink: 0;
+}
+.tb__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: var(--r-btn);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: var(--fs-section);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.tb__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: var(--r-btn);
+  background: var(--coin);
+}
+.tb__town {
+  color: var(--text-2);
+  font-size: var(--fs-body);
+}
+.tb__pick {
+  position: relative;
+  display: flex;
+  min-width: 120px;
+  flex-shrink: 1;
+  color: var(--text);
+}
+.tb__pick select {
+  appearance: none;
+  box-sizing: border-box;
+  height: 40px;
+  width: 100%;
+  max-width: 220px;
+  padding: 0 34px 0 14px;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: var(--r-btn);
+  background: var(--cream);
+  box-shadow: var(--lift-press);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.tb__pick select:hover {
+  background: var(--paper-hi);
+}
+.tb__pick > svg {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  pointer-events: none;
+}
+.tb__grow {
+  flex-grow: 1;
+}
+.tb__prog {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+/* 마을 레벨 칸 (06 문서 13장·6.4): 누르면 경제 패널. 칩이 아니라 글자·막대 그대로인 버튼.
+   상단 바에서 이 칸만 줄어든다 (QA M14: 1280~1440에서 큰 숫자면 알림·설정 버튼이 밖으로 밀렸다) —
+   보조 글자가 먼저 줄임표로, 그다음 막대·제목. 전체 글자는 title·aria-label에 */
+.tb__level {
+  min-width: 0;
+  flex-shrink: 100000; /* 마을 고르기(1)보다 먼저 다 줄어든다 */
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.tb__level .tb__prog-title {
+  flex-shrink: 0;
+}
+.tb__level .tb__sub {
+  min-width: 0;
+  overflow: hidden;
+  flex-shrink: 100;
+  text-overflow: ellipsis;
+}
+.tb__level .ui-vprog {
+  min-width: 48px;
+}
+.tb__prog-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+}
+.tb__sub {
+  color: var(--text-2);
+  font-size: var(--fs-sub);
+}
+/* 좁은 창 (QA: 1024에서 금고·기금·알림·설정 버튼이 화면 밖으로 밀려 누를 수 없었다): 로고 글자·진행 글자를 숨긴다.
+   로고는 aria-label, 진행은 막대 aria-valuenow + title에 남는다 */
+@media (max-width: 1200px) {
+  .tb__name,
+  .tb__sub {
+    display: none;
+  }
+}
+/* 금고·기금 칩 (40, 테두리 2) → 경제 패널. 누르는 것 = --lift-press, 올림·눌림은 ui-btn과 같음 (캔버스 SeaTopBar) */
+.tb__chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-sizing: border-box;
+  height: 40px;
+  padding: 0 12px;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: var(--r-btn);
+  background: var(--cream);
+  box-shadow: var(--lift-press);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-sub);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    transform 80ms,
+    box-shadow 80ms;
+}
+.tb__chip:hover {
+  box-shadow: 0 4px 0 var(--ink);
+  transform: translateY(-1px);
+}
+.tb__chip:active {
+  box-shadow: none;
+  transform: translateY(3px);
+}
+.tb__chip--vault,
+.tb__chip--fund {
+  gap: 7px;
+  padding-left: 8px;
+}
+/* 시청 적자 (D21): 위험 테두리·글자 + 막힘 아이콘 (색만으로 말하지 않게) */
+.tb__chip--deficit {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+.tb__num {
+  font-family: var(--font-display);
+  font-size: var(--fs-card);
+}
+/* 상단 바 아이콘 버튼은 --cream 바탕 (캔버스 SeaTopBar) */
+.tb__iconbtn:not(:hover, :active) {
+  background: var(--cream);
+}
+/* 아직 없는 기능 = 비활성 (03 문서 5장: --disabled-* 바탕·테두리·글자, 턱 없음). 올림·눌림도 없음 */
+.tb [aria-disabled='true'] {
+  border-color: var(--disabled-border);
+  background: var(--disabled-bg);
+  box-shadow: none;
+  color: var(--disabled-text);
+  transform: none;
+  cursor: not-allowed;
+}
+
+/* 알림 목록 (M9, 01 문서 8.1): 알림 버튼 바로 아래 오른쪽 맞춤 칸. 상세·토스트 위 */
+.tb__notif {
+  position: relative;
+}
+.tb__notif-box {
+  position: absolute;
+  top: calc(100% + var(--sp-2));
+  right: 0;
+  z-index: 10;
+  width: 340px;
+  max-height: 420px;
+  overflow: auto;
+}
+.tb__notif-title {
+  margin: 0 0 var(--sp-2);
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+  font-weight: 400;
+}
+.tb__notif-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tb__notif-list li {
+  display: flex;
+  gap: var(--sp-2);
+  justify-content: space-between;
+  font-size: var(--fs-sub);
+  line-height: var(--lh-sub);
+}
+.tb__notif-text {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.tb__notif-at,
+.tb__notif-empty {
+  flex-shrink: 0;
+  margin: 0;
+  color: var(--text-2);
+  font-size: var(--fs-min);
+}
+
+/* ── 팀원 패널 ───────────────────────────────────── */
+.tp {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-sizing: border-box;
+  min-height: 0;
+  padding: var(--sp-4);
+  overflow-y: auto;
+  border-left: var(--ui-line) solid var(--ink);
+  background: var(--paper);
+  color: var(--text);
+}
+.tp__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.tp__head h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+}
+.tp__head--visitors {
+  margin-top: 6px;
+}
+.tp__head--visitors h2 {
+  font-size: 18px;
+}
+.tp__count {
+  color: var(--text-2);
+  font-size: var(--fs-body);
+}
+.tp__meta {
+  color: var(--text-2);
+  font-size: var(--fs-min);
+  white-space: nowrap;
+}
+/* 팀원 카드: ui-card(테두리 3, 선택 = --coin-d + 바깥 --ink) + 버튼 */
+.tp-card {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  flex-shrink: 0;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--r-toast);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.tp-card:hover {
+  background: var(--paper-hi);
+}
+.tp-card--departed {
+  opacity: 0.55;
+}
+.tp-card__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tp-face {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: var(--r-btn);
+}
+.tp-card__main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  flex-grow: 1;
+  min-width: 0;
+}
+/* md 이름이 길면(frontend-dev) 칩이 다음 줄로 */
+.tp-card__names {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px 6px;
+  max-width: 100%;
+}
+.tp-card__name {
+  flex-shrink: 0;
+  max-width: 100%;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-size: var(--fs-card);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tp-card__bal {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  white-space: nowrap;
+}
+.tp-card__task {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: var(--sunk);
+  font-size: var(--fs-sub);
+}
+.tp-card__task-text {
+  flex-grow: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tp-card__task--idle .tp-card__task-text {
+  color: var(--text-2);
+}
+/* 외부인 행: 점선 2, 얼굴 38 --slotx-tint */
+.tp-visitor {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  padding: 6px 10px 6px 6px;
+  border: var(--ui-line-sm) dashed var(--ink);
+  border-radius: 14px;
+}
+.tp-face--visitor {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--slotx-tint);
+}
+.tp-visitor__name {
+  font-family: var(--font-display);
+  font-size: 15px;
+}
+.tp-visitor__fac {
+  color: var(--slotx-deep);
+  font-size: var(--fs-min);
+}
+
+/* ── 활동 기록 ───────────────────────────────────── */
+.af {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-sizing: border-box;
+  min-height: 0;
+  padding: 12px var(--sp-5);
+  border-top: var(--ui-line) solid var(--ink);
+  background: var(--paper);
+  color: var(--text);
+}
+.af__bar,
+.af__filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.af__bar h2 {
+  margin: 0 8px 0 0;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 400;
+}
+.af__filters .ui-chip--filter {
+  height: 30px;
+}
+.af__list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+.af__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  height: 26px;
+  font-size: 14px;
+}
+.af__row--empty {
+  color: var(--text-2);
+}
+.af__time {
+  flex-shrink: 0;
+  width: 40px;
+  color: var(--text-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-min);
+}
+.af__dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 22px;
+  height: 22px;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: 50%;
+}
+.af__text {
+  flex-grow: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.af__kind {
+  flex-shrink: 0;
+  color: var(--text-2);
+  font-size: var(--fs-min);
+  white-space: nowrap;
+}
+
+/* ── 토스트 쌓기: 마을 오른쪽 위, 폭 320, 간격 12. 빈 곳은 마을 드래그를 막지 않는다 ── */
+/* 마을 칸(1열 2행) 오른쪽 위. .ms의 절대 위치 자식이라 그 칸이 기준, DOM 끝이라 상세 위 (MainScreen).
+   끝 줄까지 적는다 — 절대 위치 칸은 끝이 auto면 격자 전체 끝까지 늘어난다 */
+.ts {
+  position: absolute;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  top: var(--sp-4);
+  right: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  width: 320px;
+  pointer-events: none;
+}
+.ts > .ui-toast {
+  width: 100%;
+  pointer-events: auto;
+}

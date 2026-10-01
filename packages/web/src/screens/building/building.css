@@ -1,0 +1,330 @@
+/*
+ * 건물 상세 (03 문서 5·6장, 캔버스 SeaScreenBuilding). 1440×900이면 상단 바 68 아래 공사 장면 820 + 정보 패널 620. 토큰만 쓴다.
+ */
+.bd {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 620px;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--cream);
+  color: var(--text);
+}
+/* 상세를 연 동안 토스트(MainScreen .ts)는 공사 장면 오른쪽 위 — 정보 패널의 이름·바꾸기를 가리지 않게 */
+.ms--detail > .ts {
+  grid-column: 1 / -1;
+  right: calc(620px + var(--sp-4));
+}
+.bd--missing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+}
+
+/* 포커스 링 (ui.css 버튼과 같음) */
+.bd-crumb__link:focus-visible,
+.bd-rename input:focus-visible {
+  outline: var(--ui-line) solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* ── 공사 장면 ───────────────────────────────────── */
+.bd-scene {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  background: linear-gradient(var(--water-bg-1), var(--water-bg-2) 60%, var(--water-bg-3));
+}
+.bd-rays {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: var(--sheen);
+  pointer-events: none;
+}
+.bd-crumb {
+  position: absolute;
+  top: 18px;
+  left: var(--sp-5);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: 14px;
+}
+.bd-crumb__link {
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.bd-crumb__sep {
+  color: var(--text-2);
+}
+.bd-crumb__here {
+  font-family: var(--font-display);
+  font-size: 18px;
+}
+/* 건물 가운데 = 장면 가운데, 위 166 (캔버스). 자식은 BuildingScreen at()으로 놓는다 */
+.bd-site {
+  position: absolute;
+  top: 166px;
+  left: 50%;
+}
+.bd-site > * {
+  position: absolute;
+}
+.bd-stepcard {
+  position: absolute;
+  right: var(--sp-5);
+  bottom: var(--sp-5);
+  left: var(--sp-5);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 16px;
+}
+/* 공사 스텝: 원 28 + 연결선 4. 지난 단계 --coin + 체크, 현재 테두리 3 + --coin-hi, 남은 단계 --cream */
+.bd-steps {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bd-step {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-1);
+  font-size: var(--fs-min);
+}
+.bd-step + .bd-step::before {
+  position: absolute;
+  top: 12px;
+  right: calc(50% + 14px);
+  left: calc(-50% + 14px);
+  height: 4px;
+  border-radius: 2px;
+  background: var(--rule);
+  content: '';
+}
+.bd-step + .bd-step:not(.bd-step--todo)::before {
+  background: var(--ink);
+}
+.bd-step__dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: 50%;
+  background: var(--cream);
+  font-family: var(--font-display);
+  font-size: var(--fs-sub);
+}
+.bd-step--done .bd-step__dot {
+  background: var(--coin);
+}
+.bd-step--cur .bd-step__dot {
+  border-width: var(--ui-line);
+  background: var(--coin-hi);
+}
+.bd-step--cur .bd-step__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-sub);
+}
+
+/* ── 정보 패널 ───────────────────────────────────── */
+.bd-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  box-sizing: border-box;
+  min-height: 0;
+  padding: var(--sp-4);
+  overflow-y: auto;
+  border-left: var(--ui-line) solid var(--ink);
+  background: var(--paper);
+}
+.bd-card {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 10px;
+  padding: 14px 16px;
+}
+.bd-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bd-grow {
+  flex-grow: 1;
+}
+.bd-name {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bd-cardhead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-2);
+}
+.bd-h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+}
+.bd-meta {
+  margin: 0;
+  color: var(--text-2);
+  font-size: var(--fs-min);
+  line-height: 17px;
+}
+.bd-owner,
+.bd-prog {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-size: var(--fs-sub);
+}
+.bd-prog .ui-vprog {
+  flex-shrink: 0;
+  width: 160px;
+}
+.bd-count {
+  font-family: var(--font-display);
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+/* 이름 바꾸기 */
+.bd-rename {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.bd-rename input {
+  flex-grow: 1;
+  min-width: 0;
+  box-sizing: border-box;
+  height: 36px;
+  padding: 0 12px;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: var(--r-btn);
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 18px;
+}
+.bd-rename input[aria-invalid='true'] {
+  border-color: var(--danger);
+}
+.bd-error {
+  margin: 0;
+  color: var(--danger);
+  font-size: var(--fs-sub);
+}
+
+/* 최근 일: 작업 제목 · +점수 · 걸린 시간 */
+.bd-tasks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bd-task {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  border-top: var(--ui-line-sm) solid var(--sunk);
+  font-size: 14px;
+}
+.bd-task__subject {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bd-task__time {
+  color: var(--text-2);
+  font-size: var(--fs-min);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* 얼굴 24(슬롯 tint 원) + 이름 */
+.bd-who {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  font-size: var(--fs-sub);
+}
+.bd-who__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bd-face {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: 50%;
+}
+
+/* 다음 층 조건 (06 문서 5.4): 맞으면 --text, 모자라면 --danger */
+.bd-conds {
+  display: grid;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bd-cond {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  color: var(--text);
+  font-size: var(--fs-min);
+}
+.bd-cond[data-ok='false'] {
+  color: var(--danger);
+}
+.bd-cond__val {
+  margin-left: auto;
+  font-family: var(--font-display);
+}
+.bd-wait {
+  border-color: var(--danger);
+}
+.bd-actions {
+  display: flex;
+  gap: 10px;
+}

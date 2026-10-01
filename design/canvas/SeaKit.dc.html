@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>바다 조립식 건물 키트</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.hd{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;color:#1f3850;margin:0}
+.meta{font-size:12px;color:#4f6883;line-height:17px}
+.card{box-sizing:border-box;background:#f9fdfc;border:3px solid #2e4b66;border-radius:20px;padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.row{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.cell{display:flex;flex-direction:column;align-items:center;gap:4px;width:160px}
+.scell{display:flex;flex-direction:column;align-items:center;gap:4px;width:118px}
+.nm{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:15px;color:#1f3850;text-align:center}
+.aid{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#4f6883;text-align:center}
+.frame{border-radius:14px;background:#bfe2e8;overflow:hidden}
+.rule{margin:0;padding-left:18px;font-size:14px;line-height:23px;color:#1f3850}
+.code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:#d3e9e6;border-radius:6px;padding:1px 6px}
+table{border-collapse:collapse;font-size:13px}
+th{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;font-size:14px;text-align:left;padding:6px 10px;border-bottom:2px solid #2e4b66;color:#1f3850}
+td{padding:6px 10px;border-bottom:1.5px solid #b9d6d4;color:#1f3850}
+td.c{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#4f6883}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1800px; box-sizing: border-box; padding: 44px 56px; background: #e6f3f1; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #1f3850; display: flex; flex-direction: column; gap: 20px">
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 class="hd" style="font-size: 40px; line-height: 48px">바다 조립식 건물 키트</h1>
+<p style="margin: 0; font-size: 15px; color: #4f6883">건물 = 몸체 × 지붕 × 색 × 간판, 규격은 잔디 마을과 같습니다 (2×2 · viewBox 160 × 256 · 기준점 80,208). 모래 타일과 그림자는 월드가 그리는 배경입니다.</p>
+</div>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">부품</h2><span class="meta">몸체 4 · 지붕 3. 지붕은 몸체의 data-wall-height만큼 올려 얹습니다 (1층 40, 2층 80). 창은 모두 황동 테 둥근 창, 현무암만 네모 창.</span></div>
+<div class="row">
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="shell-1f" roof="none" sign="none" slot="1" hint-size="160px,256px"></dc-import></div><span class="nm">자개 1층</span><span class="aid">body.shell-1f</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="coral-1f" roof="none" sign="none" slot="1" hint-size="160px,256px"></dc-import></div><span class="nm">산호석 1층</span><span class="aid">body.coral-1f</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="wreck-2f" roof="none" sign="none" slot="1" hint-size="160px,256px"></dc-import></div><span class="nm">난파선 목재 2층</span><span class="aid">body.wreck-2f</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="basalt-2f" roof="none" sign="none" slot="1" hint-size="160px,256px"></dc-import></div><span class="nm">현무암 2층</span><span class="aid">body.basalt-2f</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="shell-1f" roof="dome" sign="none" slot="1" ghost="true" hint-size="160px,256px"></dc-import></div><span class="nm">성게 돔</span><span class="aid">roof.dome</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="shell-1f" roof="scallop" sign="none" slot="2" ghost="true" hint-size="160px,256px"></dc-import></div><span class="nm">가리비 지붕</span><span class="aid">roof.scallop</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="shell-1f" roof="conch" sign="none" slot="3" ghost="true" hint-size="160px,256px"></dc-import></div><span class="nm">소라 지붕</span><span class="aid">roof.conch</span></div>
+</div>
+</section>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">간판 아이콘</h2><span class="meta">1층 왼쪽 벽에 붙는 판 · 판 바탕 = 슬롯 tint · 에셋 id는 잔디 마을과 같고 그림만 다릅니다 (도서관 id = 탐사 기지 그림).</span></div>
+<div class="row">
+<div class="scell"><div class="frame"><dc-import name="SeaBuilding" body="coral-1f" roof="none" sign="workshop" slot="1" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">공방</span><span class="aid">sign.workshop</span></div>
+<div class="scell"><div class="frame"><dc-import name="SeaBuilding" body="shell-1f" roof="none" sign="cafe" slot="2" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">카페</span><span class="aid">sign.cafe</span></div>
+<div class="scell"><div class="frame"><dc-import name="SeaBuilding" body="basalt-2f" roof="none" sign="guard" slot="3" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">초소</span><span class="aid">sign.guard</span></div>
+<div class="scell"><div class="frame"><dc-import name="SeaBuilding" body="wreck-2f" roof="none" sign="hall" slot="4" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">회관</span><span class="aid">sign.hall</span></div>
+<div class="scell"><div class="frame"><dc-import name="SeaBuilding" body="coral-1f" roof="none" sign="work" slot="5" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">작업장</span><span class="aid">sign.work</span></div>
+<div class="scell"><div class="frame"><dc-import name="SeaBuilding" body="shell-1f" roof="none" sign="home" slot="6" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">돔 집</span><span class="aid">sign.home</span></div>
+<div class="scell"><div class="frame"><dc-import name="SeaBuilding" body="basalt-2f" roof="none" sign="library" slot="x" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">탐사 기지</span><span class="aid">sign.library</span></div>
+<div class="scell"><div class="frame"><dc-import name="SeaBuilding" body="wreck-2f" roof="none" sign="plan" slot="x" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">해도실</span><span class="aid">sign.plan</span></div>
+<div class="scell"><div class="frame"><dc-import name="SeaBuilding" body="coral-1f" roof="none" sign="agency" slot="x" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">인력 부두</span><span class="aid">sign.agency</span></div>
+</div>
+</section>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">직업별 건물 · 조립 예</h2><span class="meta">가장 많이 기여한 팀원의 직업이 프리셋을 고르고, 그 팀원의 슬롯 색이 지붕·문·간판을 칠합니다.</span></div>
+<div class="row">
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="coral-1f" roof="scallop" sign="workshop" slot="1" hint-size="160px,256px"></dc-import></div><span class="nm">공방 · 백엔드</span><span class="meta" style="text-align: center">산호석 1층 + 가리비 + 렌치</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="shell-1f" roof="conch" sign="cafe" slot="2" hint-size="160px,256px"></dc-import></div><span class="nm">카페 · 프론트엔드</span><span class="meta" style="text-align: center">자개 1층 + 소라 + 컵</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="basalt-2f" roof="dome" sign="guard" slot="3" hint-size="160px,256px"></dc-import></div><span class="nm">초소 · QA</span><span class="meta" style="text-align: center">현무암 2층 + 성게 돔 + 돋보기</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="wreck-2f" roof="scallop" sign="hall" slot="4" hint-size="160px,256px"></dc-import></div><span class="nm">회관 · 팀장</span><span class="meta" style="text-align: center">난파선 2층 + 가리비 + 깃발</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="coral-1f" roof="dome" sign="work" slot="5" hint-size="160px,256px"></dc-import></div><span class="nm">작업장 · 기본형</span><span class="meta" style="text-align: center">직업 프리셋이 없을 때</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="shell-1f" roof="dome" sign="home" slot="1" hint-size="160px,256px"></dc-import></div><span class="nm">팀원 돔 집</span><span class="meta" style="text-align: center">집주인 슬롯 색 · 작업 건물 아님</span></div>
+</div>
+</section>
+
+<div style="display: flex; gap: 20px; flex-grow: 1">
+<section class="card" style="flex-shrink: 0">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">외부인 시설</h2><span class="meta">모래색 고정 · 집 없는 기본 에이전트가 드나드는 곳</span></div>
+<div class="row">
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="basalt-2f" roof="scallop" sign="library" slot="x" hint-size="160px,256px"></dc-import></div><span class="nm">탐사 기지 · Explore</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="wreck-2f" roof="conch" sign="plan" slot="x" hint-size="160px,256px"></dc-import></div><span class="nm">해도실 · Plan</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="coral-1f" roof="dome" sign="agency" slot="x" hint-size="160px,256px"></dc-import></div><span class="nm">인력 부두 · general</span></div>
+</div>
+</section>
+<section class="card" style="flex-grow: 1">
+<h2 class="hd" style="font-size: 22px">잔디 ↔ 바다 에셋 id 대응</h2>
+<table>
+<thead><tr><th>잔디 마을</th><th>바다 마을</th><th>잔디 마을</th><th>바다 마을</th></tr></thead>
+<tbody>
+<tr><td class="c">body.plaster-1f</td><td class="c">body.shell-1f</td><td class="c">roof.hip</td><td class="c">roof.dome</td></tr>
+<tr><td class="c">body.wood-1f</td><td class="c">body.coral-1f</td><td class="c">roof.gable</td><td class="c">roof.scallop</td></tr>
+<tr><td class="c">body.brick-2f</td><td class="c">body.wreck-2f</td><td class="c">roof.flat</td><td class="c">roof.conch</td></tr>
+<tr><td class="c">body.stone-2f</td><td class="c">body.basalt-2f</td><td class="c">sign.*</td><td class="c">sign.* (같은 id)</td></tr>
+</tbody>
+</table>
+<ul class="rule">
+<li>게임 로직은 잔디 마을 id로만 생각하고, 테마가 이 표로 바꿔 그립니다. 프리셋 표(공방 = 1층 나무 + 박공…)는 한 벌이면 됩니다.</li>
+<li>색은 에셋에 굽지 않습니다. 지붕·문은 <span class="code">--roof</span> <span class="code">--roof-l</span> <span class="code">--roof-r</span>, 간판 바탕은 <span class="code">--tint</span>.</li>
+<li>지붕 음영도 같은 규칙: 성게 돔·소라는 오른쪽 절반을 -l, 테두리·세로 줄은 -r.</li>
+</ul>
+</section>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1800}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>캐릭터 리그 규격</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.hd{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;color:#5a2e2e;margin:0}
+.meta{font-size:12px;color:#8a5a4a;line-height:17px}
+.s{stroke:#7a3e3e;stroke-width:3;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.m{fill:none;stroke:#5a2e2e;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.m3{fill:none;stroke:#5a2e2e;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.pw{fill:none;stroke:#fff9ee;stroke-width:13;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.pv{fill:none;stroke:#4769a6;stroke-width:8;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.fb{fill:none;stroke:#4769a6;stroke-width:2;stroke-dasharray:6 5;vector-effect:non-scaling-stroke}
+.an{fill:none;stroke:#c2413d;stroke-width:2.5;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.tile{display:flex;flex-direction:column;align-items:center;gap:6px;background:#f5ecd7;border-radius:14px;padding:10px 6px 8px}
+.cap{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#5a2e2e}
+.tree{margin:0;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:21px;color:#5a2e2e;white-space:pre}
+.th{padding:9px 12px;background:#f3e3c3;font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:14px}
+.td{padding:9px 12px;border-top:2px solid #e3cdb0;font-size:13px;line-height:18px}
+.rule{margin:0;padding-left:18px;font-size:14px;line-height:23px;color:#5a2e2e}
+.code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:#f3e3c3;border-radius:6px;padding:1px 6px}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1240px; box-sizing: border-box; padding: 44px 56px; background: #f5ecd7; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #5a2e2e; display: flex; flex-direction: column; gap: 20px">
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 class="hd" style="font-size: 40px; line-height: 48px">캐릭터 리그 규격</h1>
+<p style="margin: 0; font-size: 15px; color: #8a5a4a">Claude Code가 캐릭터를 움직일 때 읽는 약속입니다. 네 동물이 같은 몸통과 같은 회전 중심을 공유합니다. 그림은 곰 기준.</p>
+</div>
+
+<div style="display: flex; gap: 20px">
+
+<section style="width: 380px; flex-shrink: 0; box-sizing: border-box; background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 20px 22px; display: flex; flex-direction: column; gap: 12px">
+<h2 class="hd" style="font-size: 22px">조립된 모습</h2>
+<svg width="332" height="300" viewBox="-66 -92 132 120" role="img" aria-label="곰 캐릭터에 회전 중심, 얼굴 영역, 기준점을 표시한 그림">
+<rect class="fb" x="-44" y="-86" width="88" height="88" rx="2"></rect>
+<ellipse class="s" fill="#a86c40" cx="-16" cy="1" rx="9" ry="5"></ellipse><ellipse class="s" fill="#a86c40" cx="16" cy="1" rx="9" ry="5"></ellipse>
+<circle class="s" fill="#c0804f" cx="-26" cy="-64" r="10"></circle><circle fill="#eeb08f" cx="-26" cy="-66" r="4.5"></circle>
+<circle class="s" fill="#c0804f" cx="26" cy="-64" r="10"></circle><circle fill="#eeb08f" cx="26" cy="-66" r="4.5"></circle>
+<path class="s" fill="#c0804f" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<ellipse fill="#f6dfc3" cx="0" cy="-24" rx="18" ry="10.5"></ellipse>
+<ellipse fill="#f7a194" cx="-29" cy="-27" rx="5.5" ry="3.2"></ellipse><ellipse fill="#f7a194" cx="29" cy="-27" rx="5.5" ry="3.2"></ellipse>
+<ellipse fill="#5a2e2e" cx="0" cy="-29" rx="3.2" ry="2.3"></ellipse>
+<ellipse fill="#5a2e2e" cx="-17" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="17" cy="-38" rx="3.6" ry="4.4"></ellipse>
+<path class="m" d="M0 -26.7L0 -24.8M-5.5 -24.8Q-2.75 -21.3 0 -24.8Q2.75 -21.3 5.5 -24.8"></path>
+<circle class="s" fill="#fff9ee" fill-opacity="0.35" cx="-17" cy="-38" r="9"></circle><circle class="s" fill="#fff9ee" fill-opacity="0.35" cx="17" cy="-38" r="9"></circle><path class="s" fill="none" d="M-8 -39Q0 -42 8 -39"></path>
+<ellipse class="s" fill="#c0804f" cx="-41" cy="-20" rx="7" ry="9.5" transform="rotate(25 -41 -20)"></ellipse>
+<ellipse class="s" fill="#c0804f" cx="41" cy="-20" rx="7" ry="9.5" transform="rotate(-25 41 -20)"></ellipse>
+<path class="pw" d="M-22 -58h0M22 -58h0M0 -34h0M-34 -26h0M34 -26h0M-16 0h0M16 0h0"></path>
+<path class="pv" d="M-22 -58h0M22 -58h0M0 -34h0M-34 -26h0M34 -26h0M-16 0h0M16 0h0"></path>
+<path class="an" d="M-6 12L6 12M0 6L0 18"></path>
+<path class="an" d="M0 0L0 12" stroke-dasharray="2 3"></path>
+</svg>
+<div style="display: flex; flex-direction: column; gap: 6px; font-size: 13px">
+<span style="display: flex; align-items: center; gap: 8px"><span style="width: 12px; height: 12px; border-radius: 50%; background: #4769a6; border: 2px solid #fff9ee; outline: 1px solid #4769a6"></span>회전 중심 data-pivot (귀·얼굴·팔·발)</span>
+<span style="display: flex; align-items: center; gap: 8px"><span style="width: 14px; height: 10px; border: 2px dashed #4769a6"></span>프로필 얼굴 data-face-box = −44, −86, 88, 88</span>
+<span style="display: flex; align-items: center; gap: 8px"><span style="width: 14px; height: 3px; background: #c2413d; border-radius: 2px"></span>기준점 data-anchor = 0, 0 (body의 회전 중심과 같음)</span>
+</div>
+</section>
+
+<section style="flex-grow: 1; box-sizing: border-box; background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 20px 22px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">파츠</h2><span class="meta">id · 회전 중심. 오른쪽 파츠(ear-r, arm-r, foot-r)는 왼쪽의 x 부호만 바꾼 것</span></div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+<div class="tile"><svg width="136" height="92" viewBox="-50 -80 100 90" aria-hidden="true"><path class="s" fill="#c0804f" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path><path class="pw" d="M0 0h0"></path><path class="pv" d="M0 0h0"></path></svg><span class="cap">body · 0,0</span></div>
+<div class="tile"><svg width="136" height="92" viewBox="-44 -80 40 36" aria-hidden="true"><circle class="s" fill="#c0804f" cx="-26" cy="-64" r="10"></circle><circle fill="#eeb08f" cx="-26" cy="-66" r="4.5"></circle><path class="pw" d="M-22 -58h0"></path><path class="pv" d="M-22 -58h0"></path></svg><span class="cap">ear-l · −22,−58</span></div>
+<div class="tile"><svg width="136" height="92" viewBox="-36 -48 72 38" aria-hidden="true"><ellipse fill="#f6dfc3" cx="0" cy="-24" rx="18" ry="10.5"></ellipse><ellipse fill="#f7a194" cx="-29" cy="-27" rx="5.5" ry="3.2"></ellipse><ellipse fill="#f7a194" cx="29" cy="-27" rx="5.5" ry="3.2"></ellipse><ellipse fill="#5a2e2e" cx="0" cy="-29" rx="3.2" ry="2.3"></ellipse><ellipse fill="#5a2e2e" cx="-17" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="17" cy="-38" rx="3.6" ry="4.4"></ellipse><path class="m" d="M0 -26.7L0 -24.8M-5.5 -24.8Q-2.75 -21.3 0 -24.8Q2.75 -21.3 5.5 -24.8"></path><path class="pw" d="M0 -34h0"></path><path class="pv" d="M0 -34h0"></path></svg><span class="cap">face · 0,−34</span></div>
+<div class="tile"><svg width="136" height="92" viewBox="-30 -52 60 28" aria-hidden="true"><circle class="s" fill="#fff9ee" cx="-17" cy="-38" r="9"></circle><circle class="s" fill="#fff9ee" cx="17" cy="-38" r="9"></circle><path class="s" fill="none" d="M-8 -39Q0 -42 8 -39"></path><path class="pw" d="M0 -38h0"></path><path class="pv" d="M0 -38h0"></path></svg><span class="cap">accessory · 0,−38</span></div>
+<div class="tile"><svg width="136" height="92" viewBox="-56 -38 32 32" aria-hidden="true"><ellipse class="s" fill="#c0804f" cx="-41" cy="-20" rx="7" ry="9.5" transform="rotate(25 -41 -20)"></ellipse><path class="pw" d="M-34 -26h0"></path><path class="pv" d="M-34 -26h0"></path></svg><span class="cap">arm-l · −34,−26</span></div>
+<div class="tile"><svg width="136" height="92" viewBox="-32 -10 32 20" aria-hidden="true"><ellipse class="s" fill="#a86c40" cx="-16" cy="1" rx="9" ry="5"></ellipse><path class="pw" d="M-16 0h0"></path><path class="pv" d="M-16 0h0"></path></svg><span class="cap">foot-l · −16,0</span></div>
+<div class="tile"><svg width="136" height="92" viewBox="-68 -62 44 54" aria-hidden="true"><path class="s" fill="#aaa2ad" d="M-30 -12C-52 -4 -66 -28 -58 -50C-53 -60 -42 -56 -45 -46C-49 -34 -42 -24 -32 -26Z"></path><path fill="#5f5566" d="M-56.5 -43C-58 -49 -56 -55 -52 -57C-48 -58 -44 -55 -44.5 -50C-47 -48 -52 -45 -56.5 -43Z"></path><path class="pw" d="M-32 -18h0"></path><path class="pv" d="M-32 -18h0"></path></svg><span class="cap">tail · −32,−18 (너구리)</span></div>
+<div class="tile"><svg width="136" height="92" viewBox="30 -60 40 50" aria-hidden="true"><path d="M41 -18L56 -44" fill="none" stroke="#7a3e3e" stroke-width="9" stroke-linecap="round"></path><path d="M41 -18L56 -44" fill="none" stroke="#dca173" stroke-width="3" stroke-linecap="round"></path><rect class="s" fill="#cdc6d4" x="-11" y="-6" width="22" height="12" rx="3" transform="translate(56 -44) rotate(30)"></rect><path class="pw" d="M41 -18h0"></path><path class="pv" d="M41 -18h0"></path></svg><span class="cap">hold-r · 망치, 쥐는 점 41,−18</span></div>
+<div class="tile"><svg width="136" height="92" viewBox="-60 -30 120 40" aria-hidden="true"><rect class="s" fill="#dca173" x="-54" y="-17" width="108" height="8" rx="3"></rect><rect class="s" fill="#c4845a" x="-50" y="-9" width="100" height="8" rx="3"></rect><path class="pw" d="M0 -9h0"></path><path class="pv" d="M0 -9h0"></path></svg><span class="cap">carry · 널빤지 0,−9</span></div>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; border-top: 2px dashed #e3cdb0; padding-top: 12px">
+<span style="font-family: 'Jua', sans-serif; font-size: 16px; width: 88px; flex-shrink: 0">표정 층<br><span class="meta" style="font-family: 'Gowun Dodum', sans-serif">data-expr</span></span>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; flex-grow: 1">
+<div class="tile" style="padding: 6px"><svg width="72" height="40" viewBox="-34 -48 68 36" aria-hidden="true"><ellipse fill="#f6dfc3" cx="0" cy="-24" rx="18" ry="10.5"></ellipse><ellipse fill="#5a2e2e" cx="0" cy="-29" rx="3.2" ry="2.3"></ellipse><ellipse fill="#5a2e2e" cx="-17" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="17" cy="-38" rx="3.6" ry="4.4"></ellipse><path class="m" d="M0 -26.7L0 -24.8M-5.5 -24.8Q-2.75 -21.3 0 -24.8Q2.75 -21.3 5.5 -24.8"></path></svg><span class="cap">normal</span></div>
+<div class="tile" style="padding: 6px"><svg width="72" height="40" viewBox="-34 -48 68 36" aria-hidden="true"><ellipse fill="#f6dfc3" cx="0" cy="-24" rx="18" ry="10.5"></ellipse><ellipse fill="#5a2e2e" cx="0" cy="-29" rx="3.2" ry="2.3"></ellipse><path class="m3" d="M-21.5 -36.5Q-17 -42.5 -12.5 -36.5M12.5 -36.5Q17 -42.5 21.5 -36.5"></path><path fill="#7a3e3e" d="M-6 -25Q0 -23.5 6 -25Q5.5 -17.5 0 -17.5Q-5.5 -17.5 -6 -25Z"></path><ellipse fill="#f5a3a8" cx="0" cy="-19.8" rx="3" ry="1.6"></ellipse></svg><span class="cap">happy</span></div>
+<div class="tile" style="padding: 6px"><svg width="72" height="40" viewBox="-34 -48 68 36" aria-hidden="true"><ellipse fill="#f6dfc3" cx="0" cy="-24" rx="18" ry="10.5"></ellipse><ellipse fill="#5a2e2e" cx="0" cy="-29" rx="3.2" ry="2.3"></ellipse><ellipse fill="#5a2e2e" cx="-17" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="17" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#7a3e3e" cx="0" cy="-22" rx="3.4" ry="3.6"></ellipse></svg><span class="cap">talk</span></div>
+<div class="tile" style="padding: 6px"><svg width="72" height="40" viewBox="-34 -48 68 36" aria-hidden="true"><ellipse fill="#f6dfc3" cx="0" cy="-24" rx="18" ry="10.5"></ellipse><ellipse fill="#5a2e2e" cx="0" cy="-29" rx="3.2" ry="2.3"></ellipse><path class="m3" d="M-21.5 -38Q-17 -34 -12.5 -38M12.5 -38Q17 -34 21.5 -38"></path><path class="m" d="M-3 -23.5Q0 -21.5 3 -23.5"></path></svg><span class="cap">sleep</span></div>
+</div>
+</div>
+</section>
+
+<section style="width: 380px; flex-shrink: 0; box-sizing: border-box; background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 20px 22px; display: flex; flex-direction: column; gap: 12px">
+<h2 class="hd" style="font-size: 22px">계층 · 그리는 순서</h2>
+<pre class="tree">svg  data-asset-id="bear.walk"
+├ foot-l        −16,0
+├ foot-r         16,0
+└ body           0,0
+   ├ tail        너구리만 내용
+   ├ ear-l       펭귄은 빈 그룹
+   ├ ear-r
+   ├ (몸통 모양)
+   ├ face        0,−34
+   │  ├ 무늬 · 볼터치 · 코
+   │  ├ normal | happy
+   │  │  | talk | sleep
+   │  └ accessory  얼굴형 소품
+   ├ accessory   몸에 붙는 소품
+   ├ carry       두 손 소품 칸
+   ├ arm-l      −34,−26
+   └ arm-r       34,−26
+      └ hold-r   한 손 소품 칸</pre>
+<div class="meta">위에서 아래로 그립니다. 아래 줄일수록 앞에 보입니다. body 안의 파츠는 body를 따라 같이 기울고 뜁니다.</div>
+</section>
+</div>
+
+<div style="display: flex; gap: 20px; flex-grow: 1">
+<section style="flex-grow: 1; box-sizing: border-box; background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 20px 22px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">포즈 표</h2><span class="meta">정확한 수치는 캐릭터 시트 코드의 POSES 표 (파츠별 [dx, dy, 각도])</span></div>
+<div style="display: grid; grid-template-columns: 80px 150px 80px 120px 110px minmax(0, 1fr); border: 2px solid #7a3e3e; border-radius: 14px; overflow: hidden">
+<div class="th">포즈</div><div class="th">프레임</div><div class="th">한 프레임</div><div class="th">표정</div><div class="th">소품 칸</div><div class="th">움직이는 파츠</div>
+<div class="td">서기</div><div class="td">2 · 숨쉬기</div><div class="td">750ms</div><div class="td">normal</div><div class="td">—</div><div class="td">body 1.5 위로, 팔·귀 살짝 벌어짐</div>
+<div class="td">걷기</div><div class="td">4 · 왼발 · 모음 · 오른발 · 모음</div><div class="td">300ms</div><div class="td">normal, 시선 왼쪽</div><div class="td">—</div><div class="td">발 5 들기, body ±3°, 팔 교대, 꼬리 ±10°</div>
+<div class="td">망치질</div><div class="td">2 · 들기 · 내리치기</div><div class="td">450ms</div><div class="td">normal → happy</div><div class="td">hold-r 망치</div><div class="td">arm-r −40° ↔ +70°, body 앞으로 4°</div>
+<div class="td">나르기</div><div class="td">4 · 걷기와 같은 발</div><div class="td">300ms</div><div class="td">normal</div><div class="td">carry 널빤지</div><div class="td">팔은 −25° / +25°로 고정, 발만 교대</div>
+<div class="td">환호</div><div class="td">2 · 점프 · 착지</div><div class="td">450ms</div><div class="td">happy</div><div class="td">—</div><div class="td">body 9 위로, 발 7 위로, 팔 ±120°, 귀 벌어짐</div>
+<div class="td">말하기</div><div class="td">2 · 입 벌림 · 다묾</div><div class="td">450ms</div><div class="td">talk ↔ normal</div><div class="td">—</div><div class="td">arm-r 손짓 −35° ↔ −20°</div>
+<div class="td">쉬기</div><div class="td">2 · 숨쉬기</div><div class="td">900ms</div><div class="td">sleep</div><div class="td">—</div><div class="td">body −5° 기울기, 팔 모음, 귀 처짐</div>
+</div>
+</section>
+
+<section style="width: 480px; flex-shrink: 0; box-sizing: border-box; background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px">
+<h2 class="hd" style="font-size: 22px">규칙</h2>
+<ul class="rule">
+<li>포즈 = 파츠마다 <span class="code">translate(dx dy) rotate(각도 pivot)</span>. 크기(scale)는 바꾸지 않습니다.</li>
+<li>body 안 파츠의 값은 body 기준 상대값입니다.</li>
+<li>표정은 data-expr 층 중 하나만 보이게, 소품 칸은 포즈가 켭니다.</li>
+<li>좌우 반전은 캐릭터 전체에 <span class="code">scale(−1, 1)</span>. 파츠 규칙과 따로입니다.</li>
+<li>소품 붙는 자리가 4종 공통이라 바꿔 씌울 수 있습니다: 눈 (±17, −38), 머리 위 (0, −72), 가슴 (0, −12).</li>
+<li>월드 배율 0.45에서 선은 <span class="code">--sw = 3 / 0.45 ≈ 6.7</span>.</li>
+</ul>
+</section>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1240}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

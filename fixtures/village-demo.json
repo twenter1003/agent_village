@@ -1,0 +1,378 @@
+{
+ "$comment": "캔버스 바다 09 마을 장면(SeaVillage.dc.html의 B/P/F/C 호출)을 타일 좌표로 옮긴 것. 캐릭터 x,y는 발 위치(소수). depthY는 캔버스가 깊이를 직접 준 경우(바위 위 물범).",
+ "map": 16,
+ "buildings": [
+  {
+   "x": 1,
+   "y": 3,
+   "body": "basalt-2f",
+   "roof": "scallop",
+   "sign": "library",
+   "slot": "x",
+   "stage": "done",
+   "progress": 0.5
+  },
+  {
+   "x": 3,
+   "y": 1,
+   "body": "wreck-2f",
+   "roof": "conch",
+   "sign": "plan",
+   "slot": "x",
+   "stage": "done",
+   "progress": 0.5
+  },
+  {
+   "x": 4,
+   "y": 4,
+   "body": "coral-1f",
+   "roof": "dome",
+   "sign": "agency",
+   "slot": "x",
+   "stage": "done",
+   "progress": 0.5
+  },
+  {
+   "x": 11,
+   "y": 1,
+   "body": "coral-1f",
+   "roof": "scallop",
+   "sign": "workshop",
+   "slot": 1,
+   "stage": "done",
+   "progress": 0.5
+  },
+  {
+   "x": 11,
+   "y": 4,
+   "body": "shell-1f",
+   "roof": "conch",
+   "sign": "cafe",
+   "slot": 2,
+   "stage": "done",
+   "progress": 0.5
+  },
+  {
+   "x": 13,
+   "y": 9,
+   "body": "wreck-2f",
+   "roof": "scallop",
+   "sign": "hall",
+   "slot": 4,
+   "stage": "done",
+   "progress": 0.5
+  },
+  {
+   "x": 14,
+   "y": 2,
+   "body": "shell-1f",
+   "roof": "dome",
+   "sign": "none",
+   "slot": 1,
+   "stage": "planned",
+   "progress": 0.5
+  },
+  {
+   "x": 1,
+   "y": 10,
+   "body": "shell-1f",
+   "roof": "dome",
+   "sign": "home",
+   "slot": 1,
+   "stage": "done",
+   "progress": 0.5
+  },
+  {
+   "x": 4,
+   "y": 11,
+   "body": "coral-1f",
+   "roof": "scallop",
+   "sign": "home",
+   "slot": 2,
+   "stage": "done",
+   "progress": 0.5
+  },
+  {
+   "x": 1,
+   "y": 13,
+   "body": "shell-1f",
+   "roof": "scallop",
+   "sign": "home",
+   "slot": 3,
+   "stage": "done",
+   "progress": 0.5
+  },
+  {
+   "x": 4,
+   "y": 14,
+   "body": "coral-1f",
+   "roof": "dome",
+   "sign": "home",
+   "slot": 4,
+   "stage": "done",
+   "progress": 0.5
+  },
+  {
+   "x": 11,
+   "y": 11,
+   "body": "basalt-2f",
+   "roof": "dome",
+   "sign": "guard",
+   "slot": 3,
+   "stage": "frame",
+   "progress": 0.5
+  },
+  {
+   "x": 14,
+   "y": 11,
+   "body": "shell-1f",
+   "roof": "dome",
+   "sign": "none",
+   "slot": 1,
+   "stage": "foundation",
+   "progress": 0.5
+  },
+  {
+   "x": 11,
+   "y": 14,
+   "body": "shell-1f",
+   "roof": "dome",
+   "sign": "none",
+   "slot": 1,
+   "stage": "planned",
+   "progress": 0.5
+  }
+ ],
+ "props": [
+  {
+   "x": 6,
+   "y": 8,
+   "kind": "board"
+  },
+  {
+   "x": 9,
+   "y": 6,
+   "kind": "bench"
+  },
+  {
+   "x": 10,
+   "y": 6,
+   "kind": "jellypost"
+  },
+  {
+   "x": 9,
+   "y": 10,
+   "kind": "jellypost"
+  },
+  {
+   "x": 9,
+   "y": 13,
+   "kind": "jellypost"
+  },
+  {
+   "x": 5,
+   "y": 9,
+   "kind": "chest"
+  },
+  {
+   "x": 0,
+   "y": 1,
+   "kind": "kelp",
+   "phase": 0
+  },
+  {
+   "x": 2,
+   "y": 0,
+   "kind": "coral"
+  },
+  {
+   "x": 0,
+   "y": 6,
+   "kind": "kelp",
+   "phase": 1
+  },
+  {
+   "x": 15,
+   "y": 1,
+   "kind": "coral"
+  },
+  {
+   "x": 15,
+   "y": 5,
+   "kind": "kelp",
+   "phase": 1
+  },
+  {
+   "x": 0,
+   "y": 11,
+   "kind": "kelp",
+   "phase": 0
+  },
+  {
+   "x": 9,
+   "y": 15,
+   "kind": "coral"
+  },
+  {
+   "x": 15,
+   "y": 14,
+   "kind": "braincoral"
+  },
+  {
+   "x": 9,
+   "y": 3,
+   "kind": "seagrass",
+   "phase": 1
+  },
+  {
+   "x": 6,
+   "y": 12,
+   "kind": "braincoral"
+  },
+  {
+   "x": 13,
+   "y": 13,
+   "kind": "seagrass",
+   "phase": 0
+  },
+  {
+   "x": 3,
+   "y": 6,
+   "kind": "anemone",
+   "phase": 1
+  },
+  {
+   "x": 0,
+   "y": 14,
+   "kind": "anemone",
+   "phase": 0
+  },
+  {
+   "x": 3,
+   "y": 12,
+   "kind": "rock"
+  },
+  {
+   "x": 10,
+   "y": 13,
+   "kind": "materials"
+  },
+  {
+   "x": 5,
+   "y": 6,
+   "kind": "starfish"
+  },
+  {
+   "x": 12,
+   "y": 10,
+   "kind": "starfish"
+  },
+  {
+   "x": 10,
+   "y": 3,
+   "kind": "urchin"
+  },
+  {
+   "x": 6,
+   "y": 11,
+   "kind": "urchin"
+  },
+  {
+   "x": 7,
+   "y": 7,
+   "kind": "clamfountain"
+  }
+ ],
+ "characters": [
+  {
+   "x": 11.297,
+   "y": 13.391,
+   "species": "otter",
+   "pose": "hammer"
+  },
+  {
+   "x": 13.312,
+   "y": 13.312,
+   "species": "fish",
+   "pose": "carry",
+   "role": "general",
+   "phase": 1
+  },
+  {
+   "x": 6.031,
+   "y": 9.844,
+   "species": "turtle",
+   "pose": "talk",
+   "flip": true
+  },
+  {
+   "x": 7.656,
+   "y": 9.719,
+   "species": "hamster",
+   "pose": "talk",
+   "phase": 3,
+   "bubbles": true
+  },
+  {
+   "x": 2.719,
+   "y": 11.719,
+   "species": "seal",
+   "pose": "rest",
+   "depthY": 406
+  },
+  {
+   "x": 2.5,
+   "y": 6.375,
+   "species": "fish",
+   "pose": "walk",
+   "role": "explore",
+   "flip": true,
+   "phase": 2
+  },
+  {
+   "x": 4.719,
+   "y": 3.156,
+   "species": "fish",
+   "pose": "stand",
+   "role": "plan",
+   "phase": 4
+  }
+ ],
+ "worldUi": [
+  {
+   "kind": "speech",
+   "char": 2,
+   "text": "결제 API는 이렇게 가요!"
+  },
+  {
+   "kind": "typing",
+   "char": 3
+  },
+  {
+   "kind": "sleep",
+   "char": 4
+  },
+  {
+   "kind": "progress",
+   "building": 11,
+   "done": 3,
+   "partial": 1,
+   "total": 6
+  },
+  {
+   "kind": "visitorTag",
+   "char": 5,
+   "text": "Explore"
+  },
+  {
+   "kind": "visitorTag",
+   "char": 6,
+   "text": "Plan"
+  },
+  {
+   "kind": "visitorTag",
+   "char": 1,
+   "text": "general"
+  }
+ ]
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>물속 연출 층</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div data-layer="fx-water" style="position: relative; width: 1200px; height: 700px; pointer-events: none">
+<sc-if value="{{showFish}}" hint-placeholder-val="{{true}}">
+<sc-for list="{{fish}}" as="f" hint-placeholder-count="7"><svg width="25" height="12" viewBox="-1 -6 25 12" aria-hidden="true" style="position: absolute; left: {{f.l}}px; top: {{f.t}}px"><path d="M0 0C5 -5 13 -5 18 0C13 5 5 5 0 0ZM17 0L23 -4.5L23 4.5Z" fill="#8fc3cf"></path><circle cx="4" cy="-0.8" r="0.9" fill="#6fa9b8"></circle></svg></sc-for>
+</sc-if>
+<sc-if value="{{showBubbles}}" hint-placeholder-val="{{true}}">
+<sc-for list="{{bubs}}" as="b" hint-placeholder-count="16"><svg width="{{b.s}}" height="{{b.s}}" viewBox="{{b.vb}}" aria-hidden="true" style="position: absolute; left: {{b.l}}px; top: {{b.t}}px; opacity: {{b.o}}"><circle cx="0" cy="0" r="{{b.r}}" fill="#f3fcfd" fill-opacity="0.6" stroke="#2e4b66" stroke-width="1.6"></circle><circle cx="{{b.hx}}" cy="{{b.hy}}" r="{{b.hr}}" fill="#ffffff"></circle></svg></sc-for>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animate":{"editor":"boolean","default":true},"fish":{"editor":"boolean","default":true},"bubbles":{"editor":"boolean","default":true},"$preview":{"width":1200,"height":700}}'>
+class Component extends DCLogic {
+componentDidMount() {
+this.timer = setInterval(() => {
+const a = this.props.animate;
+if (a === false || a === 'false') return;
+this.setState({ tick: ((this.state && this.state.tick) || 0) + 1 });
+}, 200);
+}
+componentWillUnmount() {
+clearInterval(this.timer);
+}
+renderVals() {
+const on = (v, d) => (v === undefined || v === null ? d : (v === true || v === 'true'));
+const tick = (this.state && this.state.tick) || 0;
+const r1 = (v) => Math.round(v * 10) / 10;
+const SOURCES = [[601, 262, 0], [470, 316, 7], [1030, 404, 13], [168, 420, 20]];
+const bubs = [];
+SOURCES.forEach((src, si) => {
+for (let j = 0; j < 4; j++) {
+const life = 28;
+const t = (tick + src[2] + j * 7) % life;
+const r = 2.4 + ((j + si) % 3) * 1.1 + t * 0.05;
+const x = src[0] + Math.sin(t / 3 + j + si) * 4;
+const y = src[1] - t * 7;
+const o = t < 3 ? t / 3 : (t > life - 7 ? (life - t) / 7 : 1);
+const s = Math.ceil(r * 2 + 4);
+bubs.push({ l: r1(x - s / 2), t: r1(y - s / 2), s: s, vb: (-s / 2) + ' ' + (-s / 2) + ' ' + s + ' ' + s, r: r1(r), o: r1(o * 0.9), hx: r1(-r * 0.35), hy: r1(-r * 0.35), hr: r1(r * 0.3) });
+}
+});
+const OFF = [[0, 0], [26, -10], [30, 12], [58, -2], [62, 18], [90, 6], [96, -14]];
+const baseX = 1300 - ((tick * 2.5) % 1750);
+const fish = OFF.map((o, k) => ({ l: r1(baseX + o[0]), t: r1(40 + o[1] + Math.sin(tick / 4 + k) * 2) }));
+return { bubs: bubs, fish: fish, showFish: on(this.props.fish, true), showBubbles: on(this.props.bubbles, true) };
+}
+}
+</script>
+</body>
+</html>

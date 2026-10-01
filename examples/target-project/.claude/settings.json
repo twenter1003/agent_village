@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart":       [ { "hooks": [ { "type": "command", "command": "curl -s -m 1 -X POST -H 'Content-Type: application/json' --data-binary @- http://127.0.0.1:4777/hook >/dev/null 2>&1 || true", "async": true } ] } ],
+    "SessionEnd":         [ { "hooks": [ { "type": "command", "command": "curl -s -m 1 -X POST -H 'Content-Type: application/json' --data-binary @- http://127.0.0.1:4777/hook >/dev/null 2>&1 || true", "async": true } ] } ],
+    "UserPromptSubmit":   [ { "hooks": [ { "type": "command", "command": "curl -s -m 1 -X POST -H 'Content-Type: application/json' --data-binary @- http://127.0.0.1:4777/hook >/dev/null 2>&1 || true", "async": true } ] } ],
+    "PreToolUse":         [ { "matcher": "*", "hooks": [ { "type": "command", "command": "curl -s -m 1 -X POST -H 'Content-Type: application/json' --data-binary @- http://127.0.0.1:4777/hook >/dev/null 2>&1 || true", "async": true } ] } ],
+    "PostToolUse":        [ { "matcher": "*", "hooks": [ { "type": "command", "command": "curl -s -m 1 -X POST -H 'Content-Type: application/json' --data-binary @- http://127.0.0.1:4777/hook >/dev/null 2>&1 || true", "async": true } ] } ],
+    "PostToolUseFailure": [ { "matcher": "*", "hooks": [ { "type": "command", "command": "curl -s -m 1 -X POST -H 'Content-Type: application/json' --data-binary @- http://127.0.0.1:4777/hook >/dev/null 2>&1 || true", "async": true } ] } ],
+    "SubagentStart":      [ { "hooks": [ { "type": "command", "command": "curl -s -m 1 -X POST -H 'Content-Type: application/json' --data-binary @- http://127.0.0.1:4777/hook >/dev/null 2>&1 || true", "async": true } ] } ],
+    "SubagentStop":       [ { "hooks": [ { "type": "command", "command": "curl -s -m 1 -X POST -H 'Content-Type: application/json' --data-binary @- http://127.0.0.1:4777/hook >/dev/null 2>&1 || true", "async": true } ] } ],
+    "Stop":               [ { "hooks": [ { "type": "command", "command": "curl -s -m 1 -X POST -H 'Content-Type: application/json' --data-binary @- http://127.0.0.1:4777/hook >/dev/null 2>&1 || true", "async": true } ] } ],
+    "StopFailure":        [ { "hooks": [ { "type": "command", "command": "curl -s -m 1 -X POST -H 'Content-Type: application/json' --data-binary @- http://127.0.0.1:4777/hook >/dev/null 2>&1 || true", "async": true } ] } ],
+    "Notification":       [ { "hooks": [ { "type": "command", "command": "curl -s -m 1 -X POST -H 'Content-Type: application/json' --data-binary @- http://127.0.0.1:4777/hook >/dev/null 2>&1 || true", "async": true } ] } ]
+  }
+}

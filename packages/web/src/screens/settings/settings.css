@@ -1,0 +1,217 @@
+/*
+ * 설정 (01 문서 10장 화면 메모 M9). 캔버스 보드가 없어 경제 패널 머리 줄 + ui-card 칸으로 짠다. 토큰만 쓴다.
+ */
+.st {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  box-sizing: border-box;
+  height: 100%;
+  padding: var(--sp-4) var(--sp-5);
+  overflow: auto;
+  background: var(--cream);
+  color: var(--text);
+}
+/* 토스트: 화면 전체 패널이라 마을과 같은 오른쪽 위 (경제 패널과 같음) */
+.ms--detail:has(.st) > .ts {
+  right: var(--sp-4);
+}
+.st-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.st-back {
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: var(--fs-sub);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.st-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 400;
+}
+.st-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: var(--sp-4);
+  align-items: start;
+}
+.st-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  margin: 0;
+}
+.st-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.st-card h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-section);
+  font-weight: 400;
+}
+.st-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  margin: 0;
+  color: var(--text-2);
+  font-size: var(--fs-min);
+  line-height: var(--lh-min);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.st-meta--error {
+  color: var(--danger);
+}
+
+/* 팀원 한 줄: 이름 | 동물 | 직업 | 소품 */
+.st-member {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-2) var(--sp-3);
+  margin: 0;
+  padding: var(--sp-3) 0 0;
+  border: 0;
+  border-top: var(--ui-line-sm) solid var(--rule);
+}
+.st-member__name {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  float: left; /* legend를 칸 흐름에 넣는다 */
+  grid-column: 1 / -1;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+}
+.st-face {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 36px;
+  height: 36px;
+  overflow: hidden;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: 50%;
+}
+.st-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  font-size: var(--fs-sub);
+}
+.st-field select,
+.st-field input,
+.st-pref select {
+  box-sizing: border-box;
+  height: 36px;
+  padding: 0 var(--sp-2);
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: var(--r-sm);
+  background: var(--paper);
+  color: var(--text);
+  font: inherit;
+}
+.st-field select:disabled {
+  border-color: var(--disabled-border);
+  background: var(--disabled-bg);
+  color: var(--disabled-text);
+}
+.st-field input[aria-invalid='true'] {
+  border-color: var(--danger);
+}
+.st-field select:focus-visible,
+.st-field input:focus-visible,
+.st-pref select:focus-visible,
+.st-back:focus-visible,
+.hg__code:focus-visible {
+  outline: var(--ui-line) solid var(--focus);
+  outline-offset: 2px;
+}
+.st-num {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.st-num input {
+  width: 110px;
+}
+.st-save {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+}
+.st-msg {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  padding-top: var(--sp-1);
+}
+
+/* 표시 설정 한 줄: 이름 · 켜기/끄기 · 설명 */
+.st-pref {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-3);
+}
+.st-pref__name {
+  min-width: 110px;
+  font-size: var(--fs-sub);
+}
+
+/* ── 훅 설치 안내 (설정·빈 화면) ── */
+.hg {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  text-align: left;
+  font-size: var(--fs-sub);
+  line-height: var(--lh-sub);
+}
+.hg__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-3);
+  margin: 0;
+}
+.hg__url,
+.hg__note,
+.hg__msg {
+  color: var(--text-2);
+  font-size: var(--fs-min);
+}
+.hg__note {
+  margin: 0;
+}
+.hg__steps {
+  margin: 0;
+  padding-left: var(--sp-5);
+}
+.hg__code {
+  max-height: 220px;
+  margin: 0;
+  padding: var(--sp-2) var(--sp-3);
+  overflow: auto;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: var(--r-sm);
+  background: var(--sunk);
+  font-size: var(--fs-min);
+  line-height: var(--lh-min);
+  white-space: pre;
+}

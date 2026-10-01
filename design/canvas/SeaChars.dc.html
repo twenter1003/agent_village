@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>바다 캐릭터 시트</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.hd{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;color:#1f3850;margin:0}
+.meta{font-size:12px;color:#4f6883;line-height:17px}
+.aid{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:#4f6883}
+.cell{width:132px;flex-shrink:0;box-sizing:border-box;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;padding:6px 0 8px;background:#dcefef}
+.row{display:flex;gap:10px;align-items:stretch;background:#f9fdfc;border:3px solid #2e4b66;border-radius:20px;padding:12px 16px}
+.who{width:150px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:7px}
+.chip{display:inline-flex;align-items:center;height:26px;box-sizing:border-box;border:2px solid #2e4b66;border-radius:999px;padding:0 10px;font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:14px}
+.col{width:132px;flex-shrink:0;text-align:center}
+.cn{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:17px}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1320px; box-sizing: border-box; padding: 44px 56px; background: #e6f3f1; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #1f3850; display: flex; flex-direction: column; gap: 14px">
+
+<div style="display: flex; align-items: flex-end; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 class="hd" style="font-size: 40px; line-height: 48px">바다 캐릭터 시트</h1>
+<p style="margin: 0; font-size: 15px; color: #4f6883">팀원 4종 + 외부인 복어 × 7포즈 + 프로필. 잔디 마을과 같은 몸통·파츠·회전 중심을 쓰고, 이동 포즈만 종마다 헤엄 또는 걷기로 갈립니다.</p>
+</div>
+<span class="meta" style="text-align: right">조정(Tweaks)에서 움직임·거품을 켜고 끕니다<br>캐릭터 1명 = 인라인 SVG 1개 · data-asset-id = 종.포즈</span>
+</div>
+
+<div style="display: flex; gap: 10px; padding: 0 19px">
+<span style="width: 150px; flex-shrink: 0"></span>
+<div class="col"><div class="cn">서기</div><div class="meta">2프레임 · 750ms</div></div>
+<div class="col"><div class="cn">이동</div><div class="meta">헤엄 300ms · 걷기 450ms</div></div>
+<div class="col"><div class="cn">망치질</div><div class="meta">2프레임 · 450ms</div></div>
+<div class="col"><div class="cn">나르기</div><div class="meta">4프레임 · 300ms</div></div>
+<div class="col"><div class="cn">환호</div><div class="meta">2프레임 · 450ms</div></div>
+<div class="col"><div class="cn">말하기</div><div class="meta">2프레임 · 450ms</div></div>
+<div class="col"><div class="cn">쉬기</div><div class="meta">2프레임 · 900ms</div></div>
+<div class="col"><div class="cn">프로필</div><div class="meta">data-face-box 영역</div></div>
+</div>
+
+<div class="row">
+<div class="who">
+<span style="font-family: 'Jua', sans-serif; font-size: 25px">점박이물범</span>
+<span class="chip" style="background: #dde8f5; color: #3f5f99">백엔드</span>
+<span class="meta">슬롯 1 · 소품 헤드랜턴<br>귀가 없어 ear 파츠는 빈 칸<br>점무늬는 흐린 큰 점 3개만</span>
+</div>
+<div class="cell"><dc-import name="SeaCritter" species="seal" pose="stand" animate="{{animate}}" bubbles="{{bubbles}}" phase="0" hint-size="128px,138px"></dc-import><span class="aid">seal.stand</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="seal" pose="walk" animate="{{animate}}" bubbles="{{bubbles}}" phase="1" hint-size="128px,138px"></dc-import><span class="aid">seal.swim</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="seal" pose="hammer" animate="{{animate}}" bubbles="{{bubbles}}" phase="2" hint-size="128px,138px"></dc-import><span class="aid">seal.hammer</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="seal" pose="carry" animate="{{animate}}" bubbles="{{bubbles}}" phase="3" hint-size="128px,138px"></dc-import><span class="aid">seal.carry</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="seal" pose="cheer" animate="{{animate}}" bubbles="{{bubbles}}" phase="4" hint-size="128px,138px"></dc-import><span class="aid">seal.cheer</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="seal" pose="talk" animate="{{animate}}" bubbles="{{bubbles}}" phase="5" hint-size="128px,138px"></dc-import><span class="aid">seal.talk</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="seal" pose="rest" animate="{{animate}}" bubbles="{{bubbles}}" phase="6" hint-size="128px,138px"></dc-import><span class="aid">seal.rest</span></div>
+<div class="cell" style="background: #dde8f5"><dc-import name="SeaCritter" species="seal" mode="face" scale="1.27" animate="false" hint-size="112px,112px"></dc-import><span class="aid">seal.face</span></div>
+</div>
+
+<div class="row">
+<div class="who">
+<span style="font-family: 'Jua', sans-serif; font-size: 25px">수달</span>
+<span class="chip" style="background: #fadcd8; color: #a8433d">프론트엔드</span>
+<span class="meta">슬롯 2 · 소품 불가사리 핀<br>망치질 때 망치 대신 돌을 듦<br>(hold-r 안에서 켜고 끄기)</span>
+</div>
+<div class="cell"><dc-import name="SeaCritter" species="otter" pose="stand" animate="{{animate}}" bubbles="{{bubbles}}" phase="3" hint-size="128px,138px"></dc-import><span class="aid">otter.stand</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="otter" pose="walk" animate="{{animate}}" bubbles="{{bubbles}}" phase="0" hint-size="128px,138px"></dc-import><span class="aid">otter.swim</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="otter" pose="hammer" animate="{{animate}}" bubbles="{{bubbles}}" phase="1" hint-size="128px,138px"></dc-import><span class="aid">otter.hammer</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="otter" pose="carry" animate="{{animate}}" bubbles="{{bubbles}}" phase="2" hint-size="128px,138px"></dc-import><span class="aid">otter.carry</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="otter" pose="cheer" animate="{{animate}}" bubbles="{{bubbles}}" phase="5" hint-size="128px,138px"></dc-import><span class="aid">otter.cheer</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="otter" pose="talk" animate="{{animate}}" bubbles="{{bubbles}}" phase="4" hint-size="128px,138px"></dc-import><span class="aid">otter.talk</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="otter" pose="rest" animate="{{animate}}" bubbles="{{bubbles}}" phase="0" hint-size="128px,138px"></dc-import><span class="aid">otter.rest</span></div>
+<div class="cell" style="background: #fadcd8"><dc-import name="SeaCritter" species="otter" mode="face" scale="1.27" animate="false" hint-size="112px,112px"></dc-import><span class="aid">otter.face</span></div>
+</div>
+
+<div class="row">
+<div class="who">
+<span style="font-family: 'Jua', sans-serif; font-size: 22px; line-height: 26px">씨워크 헬멧<br>골든햄스터</span>
+<span class="chip" style="background: #fbe9c4; color: #845614">QA</span>
+<span class="meta">슬롯 3 · 소품 씨워크 헬멧<br>헤엄 대신 바닥을 걷고<br>얼굴은 창 안에서 움직임</span>
+</div>
+<div class="cell"><dc-import name="SeaCritter" species="hamster" pose="stand" animate="{{animate}}" bubbles="{{bubbles}}" phase="1" hint-size="128px,138px"></dc-import><span class="aid">hamster.stand</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="hamster" pose="walk" animate="{{animate}}" bubbles="{{bubbles}}" phase="2" hint-size="128px,138px"></dc-import><span class="aid">hamster.walk</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="hamster" pose="hammer" animate="{{animate}}" bubbles="{{bubbles}}" phase="0" hint-size="128px,138px"></dc-import><span class="aid">hamster.hammer</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="hamster" pose="carry" animate="{{animate}}" bubbles="{{bubbles}}" phase="1" hint-size="128px,138px"></dc-import><span class="aid">hamster.carry</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="hamster" pose="cheer" animate="{{animate}}" bubbles="{{bubbles}}" phase="3" hint-size="128px,138px"></dc-import><span class="aid">hamster.cheer</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="hamster" pose="talk" animate="{{animate}}" bubbles="{{bubbles}}" phase="2" hint-size="128px,138px"></dc-import><span class="aid">hamster.talk</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="hamster" pose="rest" animate="{{animate}}" bubbles="{{bubbles}}" phase="4" hint-size="128px,138px"></dc-import><span class="aid">hamster.rest</span></div>
+<div class="cell" style="background: #fbe9c4"><dc-import name="SeaCritter" species="hamster" mode="face" scale="1.27" animate="false" hint-size="112px,112px"></dc-import><span class="aid">hamster.face</span></div>
+</div>
+
+<div class="row">
+<div class="who">
+<span style="font-family: 'Jua', sans-serif; font-size: 25px">바다거북</span>
+<span class="chip" style="background: #dcebd2; color: #2f7049">팀장</span>
+<span class="meta">슬롯 4 · 소품 선장 모자<br>등딱지는 body 맨 뒤층이라<br>몸과 함께 기울어짐</span>
+</div>
+<div class="cell"><dc-import name="SeaCritter" species="turtle" pose="stand" animate="{{animate}}" bubbles="{{bubbles}}" phase="2" hint-size="128px,138px"></dc-import><span class="aid">turtle.stand</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="turtle" pose="walk" animate="{{animate}}" bubbles="{{bubbles}}" phase="3" hint-size="128px,138px"></dc-import><span class="aid">turtle.swim</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="turtle" pose="hammer" animate="{{animate}}" bubbles="{{bubbles}}" phase="1" hint-size="128px,138px"></dc-import><span class="aid">turtle.hammer</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="turtle" pose="carry" animate="{{animate}}" bubbles="{{bubbles}}" phase="0" hint-size="128px,138px"></dc-import><span class="aid">turtle.carry</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="turtle" pose="cheer" animate="{{animate}}" bubbles="{{bubbles}}" phase="1" hint-size="128px,138px"></dc-import><span class="aid">turtle.cheer</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="turtle" pose="talk" animate="{{animate}}" bubbles="{{bubbles}}" phase="0" hint-size="128px,138px"></dc-import><span class="aid">turtle.talk</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="turtle" pose="rest" animate="{{animate}}" bubbles="{{bubbles}}" phase="2" hint-size="128px,138px"></dc-import><span class="aid">turtle.rest</span></div>
+<div class="cell" style="background: #dcebd2"><dc-import name="SeaCritter" species="turtle" mode="face" scale="1.27" animate="false" hint-size="112px,112px"></dc-import><span class="aid">turtle.face</span></div>
+</div>
+
+<div class="row">
+<div class="who">
+<span style="font-family: 'Jua', sans-serif; font-size: 25px">복어 외부인</span>
+<span class="chip" style="background: #efe8df; color: #6a5b46">외부인</span>
+<span class="meta">모자 색 = 소속 시설<br>초록 Explore · 파랑 Plan<br>노랑 general</span>
+</div>
+<div class="cell"><dc-import name="SeaCritter" species="fish" role="explore" pose="stand" animate="{{animate}}" bubbles="{{bubbles}}" phase="4" hint-size="128px,138px"></dc-import><span class="aid">fish.stand</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="fish" role="plan" pose="walk" animate="{{animate}}" bubbles="{{bubbles}}" phase="1" hint-size="128px,138px"></dc-import><span class="aid">fish.swim</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="fish" role="general" pose="hammer" animate="{{animate}}" bubbles="{{bubbles}}" phase="2" hint-size="128px,138px"></dc-import><span class="aid">fish.hammer</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="fish" role="general" pose="carry" animate="{{animate}}" bubbles="{{bubbles}}" phase="3" hint-size="128px,138px"></dc-import><span class="aid">fish.carry</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="fish" role="explore" pose="cheer" animate="{{animate}}" bubbles="{{bubbles}}" phase="0" hint-size="128px,138px"></dc-import><span class="aid">fish.cheer</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="fish" role="plan" pose="talk" animate="{{animate}}" bubbles="{{bubbles}}" phase="1" hint-size="128px,138px"></dc-import><span class="aid">fish.talk</span></div>
+<div class="cell"><dc-import name="SeaCritter" species="fish" role="general" pose="rest" animate="{{animate}}" bubbles="{{bubbles}}" phase="3" hint-size="128px,138px"></dc-import><span class="aid">fish.rest</span></div>
+<div class="cell" style="background: #efe8df"><dc-import name="SeaCritter" species="fish" role="explore" mode="face" scale="1.27" animate="false" hint-size="112px,112px"></dc-import><span class="aid">fish.face</span></div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animate":{"editor":"boolean","default":true},"bubbles":{"editor":"boolean","default":false},"$preview":{"width":1440,"height":1320}}'>
+class Component extends DCLogic {
+renderVals() {
+const on = (v, d) => (v === undefined || v === null ? d : (v === true || v === 'true'));
+return { animate: on(this.props.animate, true), bubbles: on(this.props.bubbles, false) };
+}
+}
+</script>
+</body>
+</html>

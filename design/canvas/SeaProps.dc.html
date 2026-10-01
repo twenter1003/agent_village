@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>바다 가구와 소품</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.hd{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;color:#1f3850;margin:0}
+.meta{font-size:12px;color:#4f6883;line-height:17px}
+.card{box-sizing:border-box;background:#f9fdfc;border:3px solid #2e4b66;border-radius:20px;padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.row{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap}
+.cell{display:flex;flex-direction:column;align-items:center;gap:4px}
+.frame{border-radius:14px;background:#dcefef}
+.nm{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:15px;color:#1f3850;text-align:center}
+.aid{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#4f6883;text-align:center}
+.rule{margin:0;padding-left:18px;font-size:14px;line-height:23px;color:#1f3850}
+.code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:#d3e9e6;border-radius:6px;padding:1px 6px}
+.tilecrop{width:120px;height:70px;overflow:hidden;border-radius:12px;background:#dcefef}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1680px; box-sizing: border-box; padding: 44px 56px; background: #e6f3f1; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #1f3850; display: flex; flex-direction: column; gap: 20px">
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 class="hd" style="font-size: 40px; line-height: 48px">바다 가구 · 마을 소품 · 바닥</h1>
+<p style="margin: 0; font-size: 15px; color: #4f6883">모두 같은 64 × 32 타일 위의 독립 SVG입니다. 이 보드는 125%로 보여 주고 선은 3px로 보정했습니다 (--sw = 3 / 1.25).</p>
+</div>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">가구</h2><span class="meta">쿠션·이불·러그는 --fab 색 변수라 상점에서 색만 바꿔 팝니다. 가격과 효과는 잔디 마을 가구와 1:1.</span></div>
+<div class="row">
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="clamchair" scale="1.25" fab="coral" hint-size="120px,200px"></dc-import></div><span class="nm">조개 의자</span><span class="aid">furniture.clamchair · 1×1</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="desk" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">유목 책상</span><span class="aid">furniture.desk · 1×1</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="shelf" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">유리병 선반</span><span class="aid">furniture.shelf · 벽</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="coralpot" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">산호 화분</span><span class="aid">furniture.coralpot · 1×1</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="jellylamp" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">해파리 램프</span><span class="aid">furniture.jellylamp · 1×1</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="clambed" scale="1.25" fab="blue" hint-size="160px,260px"></dc-import></div><span class="nm">대합 침대</span><span class="aid">furniture.clambed · 2×1</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="rug" scale="1.25" fab="lavender" hint-size="160px,260px"></dc-import></div><span class="nm">물결 러그</span><span class="aid">furniture.rug · 2×1 · 바닥층</span></div>
+</div>
+</section>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">마을 소품</h2><span class="meta">1×1 · 기준점 48,128 · 켈프·잘피·말미잘은 2프레임 흔들림 (900ms)</span></div>
+<div class="row">
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="kelp" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">켈프</span><span class="aid">prop.kelp</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="coral" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">가지산호</span><span class="aid">prop.coral</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="braincoral" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">뇌산호</span><span class="aid">prop.braincoral</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="seagrass" scale="1.25" phase="1" hint-size="120px,200px"></dc-import></div><span class="nm">잘피</span><span class="aid">prop.seagrass</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="rock" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">바위</span><span class="aid">prop.rock · 앉는 자리</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="jellypost" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">해파리 등</span><span class="aid">prop.jellypost</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="bench" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">유목 벤치</span><span class="aid">prop.bench</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="anemone" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">말미잘 · 흰동가리</span><span class="aid">prop.anemone</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="board" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">게시판</span><span class="aid">prop.board · 회의 장소</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="buoyfence" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">부표 울타리</span><span class="aid">prop.buoyfence · x방향</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="materials" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">자재 더미</span><span class="aid">prop.materials · 공사장</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="chest" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">보물상자</span><span class="aid">prop.chest · 마을 금고</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="starfish" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">불가사리</span><span class="aid">prop.starfish · 바닥 장식</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="urchin" scale="1.25" hint-size="120px,200px"></dc-import></div><span class="nm">성게</span><span class="aid">prop.urchin · 바닥 장식</span></div>
+</div>
+</section>
+
+<div style="display: flex; gap: 20px; flex-grow: 1">
+<section class="card" style="flex-shrink: 0">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">대왕조개 분수</h2><span class="meta">2×2 · 광장 가운데</span></div>
+<div class="cell"><div class="frame"><dc-import name="SeaProp" kind="clamfountain" scale="1.25" hint-size="200px,320px"></dc-import></div><span class="aid">prop.clamfountain</span></div>
+</section>
+<section class="card" style="flex-grow: 1">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">바닥 타일</h2><span class="meta">외곽선 없음 · 이어 붙여도 이음새가 보이지 않게</span></div>
+<div class="row" style="align-items: flex-start">
+<div class="cell"><div class="tilecrop"><div style="margin-top: -125px"><dc-import name="SeaProp" kind="tile-sand" scale="1.25" hint-size="120px,200px"></dc-import></div></div><span class="nm">모래</span><span class="aid">tile.sand</span></div>
+<div class="cell"><div class="tilecrop"><div style="margin-top: -125px"><dc-import name="SeaProp" kind="tile-gravel" scale="1.25" hint-size="120px,200px"></dc-import></div></div><span class="nm">조개 자갈 길</span><span class="aid">tile.gravel</span></div>
+<div class="cell"><div class="tilecrop"><div style="margin-top: -125px"><dc-import name="SeaProp" kind="tile-plaza" scale="1.25" hint-size="120px,200px"></dc-import></div></div><span class="nm">넓적돌 광장</span><span class="aid">tile.plaza</span></div>
+<div class="cell"><div class="tilecrop"><div style="margin-top: -125px"><dc-import name="SeaProp" kind="tile-rock" scale="1.25" hint-size="120px,200px"></dc-import></div></div><span class="nm">현무암 · 부지</span><span class="aid">tile.rock</span></div>
+</div>
+<ul class="rule">
+<li>마을 가장자리에만 두께 12의 현무암 옆면과 3px 외곽선을 둘러 해저 대지처럼 보이게 합니다 (잔디 마을은 8).</li>
+<li>그리는 순서는 바닥 → 물결 무늬 → 바닥층 가구 → 나머지를 x + y 순으로. 같은 칸이면 소품 → 캐릭터.</li>
+<li>바위의 <span class="code">data-seat="48,103"</span>은 캐릭터가 올라앉는 자리입니다. 물범이 쉴 때 집 앞 바위를 찾아갑니다.</li>
+<li>불가사리·성게는 길 가장자리에 seed 고정 난수로 흩뿌립니다. 보물상자는 경제 패널로 가는 마을 금고입니다.</li>
+</ul>
+</section>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1680}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

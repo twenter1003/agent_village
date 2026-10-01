@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>바다 경제 패널</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.meta{font-size:12px;color:#4f6883;line-height:17px}
+.card{box-sizing:border-box;background:#f9fdfc;border:3px solid #2e4b66;border-radius:18px;padding:12px 16px;display:flex;flex-direction:column;gap:8px}
+.h2{margin:0;font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;font-size:18px}
+.tile{position:relative;box-sizing:border-box;background:#f9fdfc;border:3px solid #2e4b66;border-radius:18px;padding:12px 16px;display:flex;flex-direction:column;gap:2px}
+.lbl{font-size:13px;color:#4f6883}
+.val{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:28px;line-height:34px}
+.dl{font-size:12.5px}
+.seg{height:34px;padding:0 14px;box-sizing:border-box;border:2px solid transparent;border-radius:10px;background:transparent;font-family:'Jua',sans-serif;font-size:14px;color:#1f3850}
+.ax{font-family:'Gowun Dodum',sans-serif;font-size:11px;fill:#4f6883}
+.tip{position:absolute;padding:6px 10px;background:#f9fdfc;border:2px solid #2e4b66;border-radius:10px;box-shadow:0 4px 0 rgba(46,75,102,0.16);font-size:12px;white-space:nowrap;pointer-events:none}
+.face{width:26px;height:26px;box-sizing:border-box;border:2px solid #2e4b66;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.brow{display:grid;grid-template-columns:96px minmax(0,1fr) 60px;align-items:center;gap:10px;font-size:13px}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{text-align:left;font-family:'Jua',sans-serif;font-weight:400;padding:5px 8px;background:#d3e9e6}
+td{padding:5px 8px;border-top:1.5px solid #d3e9e6;font-variant-numeric:tabular-nums}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; display: flex; flex-direction: column; background: #e6f3f1; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #1f3850; overflow: hidden">
+<dc-import name="SeaTopBar" active="economy" hint-size="1440px,68px"></dc-import>
+<main style="box-sizing: border-box; height: 832px; padding: 16px 20px; display: flex; flex-direction: column; gap: 12px">
+
+<div style="display: flex; align-items: center; gap: 14px">
+<a href="SeaScreenMain.dc.html" style="font-size: 13px; color: #1f3850; text-underline-offset: 3px">마을</a>
+<h1 style="margin: 0; font-family: 'Jua', sans-serif; font-weight: 400; font-size: 26px">경제</h1>
+<div role="group" aria-label="기간" style="display: flex; padding: 3px; gap: 3px; background: #f9fdfc; border: 2.5px solid #2e4b66; border-radius: 13px">
+<button type="button" class="seg" aria-pressed="false">7일</button>
+<button type="button" class="seg" aria-pressed="true" style="background: #f7cb52; border-color: #2e4b66">30일</button>
+<button type="button" class="seg" aria-pressed="false">전체</button>
+</div>
+<span class="meta">모든 수치가 같은 기간 기준 · 매일 00:00에 중앙은행이 결정 · 화폐 단위 진주</span>
+<span style="flex-grow: 1"></span>
+<button type="button" onClick="{{toggleTable}}" aria-pressed="{{tablePressed}}" style="height: 38px; padding: 0 14px; border: 2px solid #2e4b66; border-radius: 12px; background: {{tableBg}}; box-shadow: 0 3px 0 #2e4b66; font-family: 'Jua', sans-serif; font-size: 14px; color: #1f3850">{{tableLabel}}</button>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px">
+<div class="tile"><span class="lbl">보물상자 · 팀 금고</span><span class="val">3,420</span><span class="dl" style="color: #2f7d4f">▲ 8% · 지난 30일 대비</span><div style="position: absolute; right: 6px; top: -14px"><dc-import name="SeaProp" kind="chest" scale="0.55" hint-size="53px,88px"></dc-import></div></div>
+<div class="tile"><span class="lbl">물가 지수</span><span class="val">104.2</span><span class="dl" style="color: #b8433f">▲ 1.8% · 지난 7일 · 목표 100</span></div>
+<div class="tile"><span class="lbl">기준금리</span><span class="val">2.50%</span><span class="dl" style="color: #4f6883">3일째 동결 · 이번 달 2번 인상</span></div>
+<div class="tile"><span class="lbl">이번 주 급여</span><span class="val">1,120</span><span class="dl" style="color: #2f7d4f">▲ 130 · 지난주 대비</span></div>
+<div class="tile"><span class="lbl">이번 주 지출</span><span class="val">640</span><span class="dl" style="color: #b8433f">▲ 40 · 관리비 · 세금 · 가구</span></div>
+</div>
+
+<sc-if value="{{showCharts}}" hint-placeholder-val="{{true}}">
+<div style="display: grid; grid-template-columns: 760px minmax(0, 1fr); gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 14px">
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 10px"><h2 class="h2">물가 지수</h2><span class="meta">가구 기준가에 곱하는 값 · 초록 띠 = 중앙은행 목표 범위 98–102 · 선 위에 마우스를 올리면 그날 값</span></div>
+<div style="position: relative; width: 700px; height: 220px">
+<svg width="700" height="220" viewBox="0 0 700 220" role="img" aria-label="물가 지수 30일: 100.0에서 104.2로 상승" style="display: block">
+<rect x="44" y="103" width="640" height="87" fill="#dcebd2" fill-opacity="0.55"></rect>
+<g stroke="#b9d6d4" stroke-width="1"><line x1="44" x2="684" y1="16" y2="16"></line><line x1="44" x2="684" y1="59.5" y2="59.5"></line><line x1="44" x2="684" y1="103" y2="103"></line><line x1="44" x2="684" y1="146.5" y2="146.5"></line></g>
+<line x1="44" x2="684" y1="190" y2="190" stroke="#9fbfc0" stroke-width="1"></line>
+<text class="ax" x="36" y="20" text-anchor="end">106</text><text class="ax" x="36" y="63" text-anchor="end">104</text><text class="ax" x="36" y="107" text-anchor="end">102</text><text class="ax" x="36" y="150" text-anchor="end">100</text><text class="ax" x="36" y="194" text-anchor="end">98</text>
+<text class="ax" x="44" y="210">30일 전</text><text class="ax" x="264.7" y="210" text-anchor="middle">20일 전</text><text class="ax" x="485.4" y="210" text-anchor="middle">10일 전</text><text class="ax" x="684" y="210" text-anchor="end">오늘</text>
+<path d="M44.0 146.5 L66.1 142.1 L88.1 144.3 L110.2 135.6 L132.3 126.9 L154.3 120.4 L176.4 124.8 L198.5 116.0 L220.6 107.4 L242.6 100.8 L264.7 103.0 L286.8 109.5 L308.8 105.2 L330.9 96.5 L353.0 90.0 L375.0 94.3 L397.1 85.6 L419.2 79.1 L441.2 81.2 L463.3 72.5 L485.4 76.9 L507.4 70.4 L529.5 61.7 L551.6 68.2 L573.7 63.9 L595.7 57.3 L617.8 61.7 L639.9 59.5 L661.9 53.0 L684.0 55.1 L684.0 190 L44.0 190 Z" fill="#4769a6" fill-opacity="0.1"></path>
+<path d="M44.0 146.5 L66.1 142.1 L88.1 144.3 L110.2 135.6 L132.3 126.9 L154.3 120.4 L176.4 124.8 L198.5 116.0 L220.6 107.4 L242.6 100.8 L264.7 103.0 L286.8 109.5 L308.8 105.2 L330.9 96.5 L353.0 90.0 L375.0 94.3 L397.1 85.6 L419.2 79.1 L441.2 81.2 L463.3 72.5 L485.4 76.9 L507.4 70.4 L529.5 61.7 L551.6 68.2 L573.7 63.9 L595.7 57.3 L617.8 61.7 L639.9 59.5 L661.9 53.0 L684.0 55.1" fill="none" stroke="#4769a6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+<circle cx="684" cy="55.1" r="5" fill="#4769a6" stroke="#f9fdfc" stroke-width="2"></circle>
+<text x="676" y="42" text-anchor="end" style="font-family: 'Jua', sans-serif; font-size: 15px; fill: #1f3850">104.2</text>
+<g display="{{hov.disp}}"><line x1="{{hov.x}}" x2="{{hov.x}}" y1="16" y2="190" stroke="#4f6883" stroke-width="1"></line><circle cx="{{hov.x}}" cy="{{hov.y}}" r="5" fill="#4769a6" stroke="#f9fdfc" stroke-width="2"></circle></g>
+<rect x="34" y="10" width="660" height="186" fill="transparent" onMouseMove="{{onMove}}" onMouseLeave="{{onLeave}}"></rect>
+</svg>
+<div class="tip" style="left: {{hov.bx}}px; top: 6px; display: {{hov.box}}"><div style="font-family: 'Jua', sans-serif; font-size: 16px">{{hov.v}}</div><div style="display: flex; align-items: center; gap: 6px; color: #4f6883"><span style="width: 12px; height: 2px; background: #4769a6"></span>물가 지수 · {{hov.day}}</div><div style="color: #4f6883">기준금리 {{hov.rate}}</div></div>
+</div>
+</section>
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 10px"><h2 class="h2">기준금리</h2><span class="meta">위 차트와 같은 날짜 축 · 금리가 오르면 급여 인상 폭이 줄어 물가를 식힙니다</span></div>
+<svg width="700" height="120" viewBox="0 0 700 120" role="img" aria-label="기준금리 30일: 2.00%에서 두 번 올라 2.50%" style="display: block">
+<g stroke="#b9d6d4" stroke-width="1"><line x1="44" x2="684" y1="34.5" y2="34.5"></line><line x1="44" x2="684" y1="75.5" y2="75.5"></line></g>
+<line x1="44" x2="684" y1="96" y2="96" stroke="#9fbfc0" stroke-width="1"></line>
+<text class="ax" x="36" y="38.5" text-anchor="end">2.5%</text><text class="ax" x="36" y="79.5" text-anchor="end">2.0%</text>
+<path d="M44.0 75.5 H264.7 V55.0 H441.2 V34.5 H684.0" fill="none" stroke="#4769a6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+<g fill="#4769a6" stroke="#f9fdfc" stroke-width="2"><circle cx="264.7" cy="55" r="5"></circle><circle cx="441.2" cy="34.5" r="5"></circle><circle cx="639.9" cy="34.5" r="5"></circle></g>
+<text class="ax" x="264.7" y="112" text-anchor="middle">인상 +0.25</text><text class="ax" x="441.2" y="112" text-anchor="middle">인상 +0.25</text><text class="ax" x="639.9" y="112" text-anchor="middle">동결</text>
+<text x="684" y="26" text-anchor="end" style="font-family: 'Jua', sans-serif; font-size: 14px; fill: #1f3850">2.50%</text>
+</svg>
+</section>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 14px">
+<section class="card">
+<div style="display: flex; align-items: center; gap: 12px"><h2 class="h2">보물상자 흐름</h2><span class="meta">주별 · 막대에 마우스를 올리면 값</span><span style="flex-grow: 1"></span><span style="display: flex; align-items: center; gap: 5px; font-size: 12px"><span style="width: 10px; height: 10px; border-radius: 2px; background: #4769a6"></span>수입 (급여 · 보너스)</span><span style="display: flex; align-items: center; gap: 5px; font-size: 12px"><span style="width: 10px; height: 10px; border-radius: 2px; background: #b84842"></span>지출</span></div>
+<div style="position: relative; width: 500px; height: 200px">
+<svg width="500" height="200" viewBox="0 0 500 200" role="img" aria-label="8주 동안 주별 수입과 지출. 이번 주 수입 1,120, 지출 640" style="display: block">
+<g stroke="#b9d6d4" stroke-width="1"><line x1="40" x2="490" y1="26.7" y2="26.7"></line><line x1="40" x2="490" y1="63.3" y2="63.3"></line><line x1="40" x2="490" y1="136.7" y2="136.7"></line><line x1="40" x2="490" y1="173.3" y2="173.3"></line></g>
+<line x1="40" x2="490" y1="100" y2="100" stroke="#2e4b66" stroke-width="1.5"></line>
+<text class="ax" x="34" y="30.7" text-anchor="end">1,000</text><text class="ax" x="34" y="67.3" text-anchor="end">500</text><text class="ax" x="34" y="104" text-anchor="end">0</text><text class="ax" x="34" y="140.7" text-anchor="end">500</text><text class="ax" x="34" y="177.3" text-anchor="end">1,000</text>
+<g fill="#4769a6">
+<path d="M58.1 100V43.9Q58.1 39.9 62.1 39.9H74.1Q78.1 39.9 78.1 43.9V100Z" onMouseEnter="{{wk.i0}}" onMouseLeave="{{wk.out}}"></path>
+<path d="M114.4 100V35.1Q114.4 31.1 118.4 31.1H130.4Q134.4 31.1 134.4 35.1V100Z" onMouseEnter="{{wk.i1}}" onMouseLeave="{{wk.out}}"></path>
+<path d="M170.6 100V48.3Q170.6 44.3 174.6 44.3H186.6Q190.6 44.3 190.6 48.3V100Z" onMouseEnter="{{wk.i2}}" onMouseLeave="{{wk.out}}"></path>
+<path d="M226.9 100V29.9Q226.9 25.9 230.9 25.9H242.9Q246.9 25.9 246.9 29.9V100Z" onMouseEnter="{{wk.i3}}" onMouseLeave="{{wk.out}}"></path>
+<path d="M283.1 100V39.5Q283.1 35.5 287.1 35.5H299.1Q303.1 35.5 303.1 39.5V100Z" onMouseEnter="{{wk.i4}}" onMouseLeave="{{wk.out}}"></path>
+<path d="M339.4 100V19.7Q339.4 15.7 343.4 15.7H355.4Q359.4 15.7 359.4 19.7V100Z" onMouseEnter="{{wk.i5}}" onMouseLeave="{{wk.out}}"></path>
+<path d="M395.6 100V31.4Q395.6 27.4 399.6 27.4H411.6Q415.6 27.4 415.6 31.4V100Z" onMouseEnter="{{wk.i6}}" onMouseLeave="{{wk.out}}"></path>
+<path d="M451.9 100V21.9Q451.9 17.9 455.9 17.9H467.9Q471.9 17.9 471.9 21.9V100Z" onMouseEnter="{{wk.i7}}" onMouseLeave="{{wk.out}}"></path>
+</g>
+<g fill="#b84842">
+<path d="M58.1 102V123.9Q58.1 127.9 62.1 127.9H74.1Q78.1 127.9 78.1 123.9V102Z" onMouseEnter="{{wk.i0}}" onMouseLeave="{{wk.out}}"></path>
+<path d="M114.4 102V126.1Q114.4 130.1 118.4 130.1H130.4Q134.4 130.1 134.4 126.1V102Z" onMouseEnter="{{wk.i1}}" onMouseLeave="{{wk.out}}"></path>
+<path d="M170.6 102V129Q170.6 133 174.6 133H186.6Q190.6 133 190.6 129V102Z" onMouseEnter="{{wk.i2}}" onMouseLeave="{{wk.out}}"></path>
+<path d="M226.9 102V130.5Q226.9 134.5 230.9 134.5H242.9Q246.9 134.5 246.9 130.5V102Z" onMouseEnter="{{wk.i3}}" onMouseLeave="{{wk.out}}"></path>
+<path d="M283.1 102V134.1Q283.1 138.1 287.1 138.1H299.1Q303.1 138.1 303.1 134.1V102Z" onMouseEnter="{{wk.i4}}" onMouseLeave="{{wk.out}}"></path>
+<path d="M339.4 102V137.1Q339.4 141.1 343.4 141.1H355.4Q359.4 141.1 359.4 137.1V102Z" onMouseEnter="{{wk.i5}}" onMouseLeave="{{wk.out}}"></path>
+<path d="M395.6 102V140Q395.6 144 399.6 144H411.6Q415.6 144 415.6 140V102Z" onMouseEnter="{{wk.i6}}" onMouseLeave="{{wk.out}}"></path>
+<path d="M451.9 102V142.9Q451.9 146.9 455.9 146.9H467.9Q471.9 146.9 471.9 142.9V102Z" onMouseEnter="{{wk.i7}}" onMouseLeave="{{wk.out}}"></path>
+</g>
+<text x="484" y="13" text-anchor="end" style="font-family: 'Jua', sans-serif; font-size: 13px; fill: #1f3850">+1,120</text>
+<text x="484" y="162" text-anchor="end" style="font-family: 'Jua', sans-serif; font-size: 13px; fill: #1f3850">−640</text>
+<text class="ax" x="68.1" y="194" text-anchor="middle">8주 전</text><text class="ax" x="237" y="194" text-anchor="middle">5주 전</text><text class="ax" x="461.9" y="194" text-anchor="middle">이번 주</text>
+</svg>
+<div class="tip" style="left: {{wtip.x}}px; top: 60px; display: {{wtip.box}}"><div style="font-family: 'Jua', sans-serif; font-size: 15px">{{wtip.name}}</div><div style="display: flex; align-items: center; gap: 6px"><span style="width: 12px; height: 2px; background: #4769a6"></span>수입 <b style="font-family: 'Jua', sans-serif; font-weight: 400">{{wtip.inc}}</b></div><div style="display: flex; align-items: center; gap: 6px"><span style="width: 12px; height: 2px; background: #b84842"></span>지출 <b style="font-family: 'Jua', sans-serif; font-weight: 400">{{wtip.exp}}</b></div></div>
+</div>
+</section>
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 10px"><h2 class="h2">팀원 잔고</h2><span class="meta">가구를 살 수 있는 진주 · 슬롯 색은 얼굴 타일로만</span></div>
+<div class="brow"><span style="display: flex; align-items: center; gap: 6px"><span class="face" style="background: #dcebd2"><dc-import name="SeaCritter" species="turtle" mode="face" scale="0.25" animate="false" hint-size="22px,22px"></dc-import></span>바다거북</span><div style="height: 14px"><div style="width: 100%; height: 100%; background: #4769a6; border-radius: 0 4px 4px 0"></div></div><span style="font-family: 'Jua', sans-serif; text-align: right">1,480</span></div>
+<div class="brow"><span style="display: flex; align-items: center; gap: 6px"><span class="face" style="background: #dde8f5"><dc-import name="SeaCritter" species="seal" mode="face" scale="0.25" animate="false" hint-size="22px,22px"></dc-import></span>물범</span><div style="height: 14px"><div style="width: 83.8%; height: 100%; background: #4769a6; border-radius: 0 4px 4px 0"></div></div><span style="font-family: 'Jua', sans-serif; text-align: right">1,240</span></div>
+<div class="brow"><span style="display: flex; align-items: center; gap: 6px"><span class="face" style="background: #fbe9c4"><dc-import name="SeaCritter" species="hamster" mode="face" scale="0.25" animate="false" hint-size="22px,22px"></dc-import></span>햄스터</span><div style="height: 14px"><div style="width: 68.9%; height: 100%; background: #4769a6; border-radius: 0 4px 4px 0"></div></div><span style="font-family: 'Jua', sans-serif; text-align: right">1,020</span></div>
+<div class="brow"><span style="display: flex; align-items: center; gap: 6px"><span class="face" style="background: #fadcd8"><dc-import name="SeaCritter" species="otter" mode="face" scale="0.25" animate="false" hint-size="22px,22px"></dc-import></span>수달</span><div style="height: 14px"><div style="width: 58.1%; height: 100%; background: #4769a6; border-radius: 0 4px 4px 0"></div></div><span style="font-family: 'Jua', sans-serif; text-align: right">860</span></div>
+</section>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{showTable}}" hint-placeholder-val="{{false}}">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+<section class="card"><h2 class="h2">물가 · 기준금리 (최근 10일)</h2>
+<table><thead><tr><th scope="col">날짜</th><th scope="col">물가 지수</th><th scope="col">기준금리</th></tr></thead><tbody>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="10"><tr><td>{{r.day}}</td><td>{{r.v}}</td><td>{{r.rate}}</td></tr></sc-for>
+</tbody></table></section>
+<section class="card"><h2 class="h2">보물상자 흐름 (주별)</h2>
+<table><thead><tr><th scope="col">주</th><th scope="col">수입</th><th scope="col">지출</th><th scope="col">순</th></tr></thead><tbody>
+<sc-for list="{{wrows}}" as="r" hint-placeholder-count="8"><tr><td>{{r.name}}</td><td>{{r.inc}}</td><td>{{r.exp}}</td><td>{{r.net}}</td></tr></sc-for>
+</tbody></table></section>
+</div>
+</sc-if>
+
+<section class="card" style="flex-direction: row; align-items: center; gap: 16px; padding: 12px 16px">
+<h2 class="h2" style="flex-shrink: 0">중앙은행 기록</h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; flex-grow: 1; font-size: 13px; line-height: 19px">
+<div><b style="font-family: 'Jua', sans-serif; font-weight: 400">20일 전 · 인상 2.00 → 2.25%</b><br><span style="color: #4f6883">물가가 목표 위(102.0)로 올라서 급여 인상 폭을 줄임</span></div>
+<div><b style="font-family: 'Jua', sans-serif; font-weight: 400">12일 전 · 인상 2.25 → 2.50%</b><br><span style="color: #4f6883">가구 구입이 몰리며 물가 103 돌파</span></div>
+<div><b style="font-family: 'Jua', sans-serif; font-weight: 400">3일 전 · 동결 2.50%</b><br><span style="color: #4f6883">오름세가 느려져 지켜보기로 함</span></div>
+</div>
+</section>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+const st = this.state || {};
+const P = [100.0, 100.2, 100.1, 100.5, 100.9, 101.2, 101.0, 101.4, 101.8, 102.1, 102.0, 101.7, 101.9, 102.3, 102.6, 102.4, 102.8, 103.1, 103.0, 103.4, 103.2, 103.5, 103.9, 103.6, 103.8, 104.1, 103.9, 104.0, 104.3, 104.2];
+const rate = (i) => (i < 10 ? '2.00%' : (i < 18 ? '2.25%' : '2.50%'));
+const X = (i) => 44 + i * 640 / 29;
+const Y = (v) => 190 - (v - 98) * 21.75;
+const dayName = (i) => (i === 29 ? '오늘' : (29 - i) + '일 전');
+const hi = st.hi;
+const on = hi !== undefined && hi !== null;
+const hov = on ? {
+disp: 'inline', box: 'block', x: X(hi), y: Y(P[hi]), v: P[hi].toFixed(1), day: dayName(hi), rate: rate(hi),
+bx: Math.max(0, Math.min(560, X(hi) + (X(hi) > 520 ? -150 : 12)))
+} : { disp: 'none', box: 'none', x: 0, y: 0, v: '', day: '', rate: '', bx: 0 };
+const INC = [820, 940, 760, 1010, 880, 1150, 990, 1120];
+const EXP = [380, 410, 450, 470, 520, 560, 600, 640];
+const wname = (i) => (i === 7 ? '이번 주' : (7 - i) + '주 전');
+const fmt = (n) => n.toLocaleString('en-US');
+const wk = { out: () => this.setState({ wi: null }) };
+for (let i = 0; i < 8; i++) wk['i' + i] = () => this.setState({ wi: i });
+const wi = st.wi;
+const won = wi !== undefined && wi !== null;
+const wtip = won ? { box: 'block', x: Math.min(380, 40 + 56.25 * wi + 40), name: wname(wi), inc: '+' + fmt(INC[wi]), exp: '−' + fmt(EXP[wi]) } : { box: 'none', x: 0, name: '', inc: '', exp: '' };
+const table = !!st.table;
+const rows = [];
+for (let i = 29; i >= 20; i--) rows.push({ day: dayName(i), v: P[i].toFixed(1), rate: rate(i) });
+const wrows = INC.map((v, i) => ({ name: wname(i), inc: '+' + fmt(v), exp: '−' + fmt(EXP[i]), net: (v - EXP[i] >= 0 ? '+' : '−') + fmt(Math.abs(v - EXP[i])) })).reverse();
+return {
+hov: hov, wk: wk, wtip: wtip,
+onMove: (e) => {
+const r = e.currentTarget.getBoundingClientRect();
+const x = (e.clientX - r.left) * 660 / r.width + 34;
+const i = Math.max(0, Math.min(29, Math.round((x - 44) / (640 / 29))));
+if (i !== (this.state && this.state.hi)) this.setState({ hi: i });
+},
+onLeave: () => this.setState({ hi: null }),
+toggleTable: () => this.setState({ table: !table }),
+showTable: table, showCharts: !table,
+tableLabel: table ? '차트로 보기' : '표로 보기', tablePressed: table ? 'true' : 'false', tableBg: table ? '#f7cb52' : '#f9fdfc',
+rows: rows, wrows: wrows
+};
+}
+}
+</script>
+</body>
+</html>

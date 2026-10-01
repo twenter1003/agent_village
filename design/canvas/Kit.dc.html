@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>조립식 건물 키트</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.hd{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;color:#5a2e2e;margin:0}
+.meta{font-size:12px;color:#8a5a4a;line-height:17px}
+.card{box-sizing:border-box;background:#fff9ee;border:3px solid #7a3e3e;border-radius:20px;padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.row{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.cell{display:flex;flex-direction:column;align-items:center;gap:4px;width:160px}
+.scell{display:flex;flex-direction:column;align-items:center;gap:4px;width:118px}
+.nm{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:15px;color:#5a2e2e;text-align:center}
+.aid{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#8a5a4a;text-align:center}
+.frame{border-radius:14px;background:#efe5c9;overflow:hidden}
+.rule{margin:0;padding-left:18px;font-size:14px;line-height:23px;color:#5a2e2e}
+.code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:#f3e3c3;border-radius:6px;padding:1px 6px}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1700px; box-sizing: border-box; padding: 44px 56px; background: #f5ecd7; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #5a2e2e; display: flex; flex-direction: column; gap: 20px">
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 class="hd" style="font-size: 40px; line-height: 48px">조립식 건물 키트</h1>
+<p style="margin: 0; font-size: 15px; color: #8a5a4a">건물 = 몸체 × 지붕 × 색 × 간판. 모든 부품이 같은 2×2 viewBox(160 × 256, 기준점 80,208)라 그대로 겹쳐 그립니다. 풀밭과 그림자는 월드가 그리는 배경입니다.</p>
+</div>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">부품</h2><span class="meta">몸체 4 · 지붕 3. 지붕은 몸체의 data-wall-height만큼 올려서 얹습니다 (1층 40, 2층 80).</span></div>
+<div class="row">
+<div class="cell"><div class="frame"><dc-import name="Building" body="plaster-1f" roof="none" sign="none" slot="1" hint-size="160px,256px"></dc-import></div><span class="nm">회벽 1층</span><span class="aid">body.plaster-1f</span></div>
+<div class="cell"><div class="frame"><dc-import name="Building" body="wood-1f" roof="none" sign="none" slot="1" hint-size="160px,256px"></dc-import></div><span class="nm">나무 1층</span><span class="aid">body.wood-1f</span></div>
+<div class="cell"><div class="frame"><dc-import name="Building" body="brick-2f" roof="none" sign="none" slot="1" hint-size="160px,256px"></dc-import></div><span class="nm">벽돌 2층</span><span class="aid">body.brick-2f</span></div>
+<div class="cell"><div class="frame"><dc-import name="Building" body="stone-2f" roof="none" sign="none" slot="1" hint-size="160px,256px"></dc-import></div><span class="nm">돌 2층</span><span class="aid">body.stone-2f</span></div>
+<div class="cell"><div class="frame"><dc-import name="Building" body="plaster-1f" roof="gable" sign="none" slot="1" ghost="true" hint-size="160px,256px"></dc-import></div><span class="nm">박공지붕</span><span class="aid">roof.gable</span></div>
+<div class="cell"><div class="frame"><dc-import name="Building" body="plaster-1f" roof="hip" sign="none" slot="1" ghost="true" hint-size="160px,256px"></dc-import></div><span class="nm">모임지붕</span><span class="aid">roof.hip</span></div>
+<div class="cell"><div class="frame"><dc-import name="Building" body="plaster-1f" roof="flat" sign="none" slot="1" ghost="true" hint-size="160px,256px"></dc-import></div><span class="nm">평지붕</span><span class="aid">roof.flat</span></div>
+</div>
+</section>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">간판 아이콘</h2><span class="meta">1층 왼쪽 벽에 붙는 판. 아이콘 세트를 <span class="code">matrix(1 0.5 0 1 …)</span>로 벽면에 눕혔고 글자는 없습니다. 판 바탕 = 슬롯 tint.</span></div>
+<div class="row">
+<div class="scell"><div class="frame"><dc-import name="Building" body="wood-1f" roof="none" sign="workshop" slot="1" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">공방</span><span class="aid">sign.workshop</span></div>
+<div class="scell"><div class="frame"><dc-import name="Building" body="plaster-1f" roof="none" sign="cafe" slot="2" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">카페</span><span class="aid">sign.cafe</span></div>
+<div class="scell"><div class="frame"><dc-import name="Building" body="stone-2f" roof="none" sign="guard" slot="4" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">초소</span><span class="aid">sign.guard</span></div>
+<div class="scell"><div class="frame"><dc-import name="Building" body="brick-2f" roof="none" sign="hall" slot="3" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">회관</span><span class="aid">sign.hall</span></div>
+<div class="scell"><div class="frame"><dc-import name="Building" body="wood-1f" roof="none" sign="work" slot="5" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">작업장</span><span class="aid">sign.work</span></div>
+<div class="scell"><div class="frame"><dc-import name="Building" body="plaster-1f" roof="none" sign="home" slot="6" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">집</span><span class="aid">sign.home</span></div>
+<div class="scell"><div class="frame"><dc-import name="Building" body="stone-2f" roof="none" sign="library" slot="x" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">도서관</span><span class="aid">sign.library</span></div>
+<div class="scell"><div class="frame"><dc-import name="Building" body="brick-2f" roof="none" sign="plan" slot="x" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">설계사무소</span><span class="aid">sign.plan</span></div>
+<div class="scell"><div class="frame"><dc-import name="Building" body="wood-1f" roof="none" sign="agency" slot="x" crop="sign" hint-size="110px,110px"></dc-import></div><span class="nm">인력사무소</span><span class="aid">sign.agency</span></div>
+</div>
+</section>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">직업별 건물 · 조립 예</h2><span class="meta">가장 많이 기여한 팀원의 직업이 프리셋을 고르고, 그 팀원의 슬롯 색이 지붕·문·간판을 칠합니다.</span></div>
+<div class="row">
+<div class="cell"><div class="frame"><dc-import name="Building" body="wood-1f" roof="gable" sign="workshop" slot="1" hint-size="160px,256px"></dc-import></div><span class="nm">공방 · 백엔드</span><span class="meta" style="text-align: center">나무 1층 + 박공 + 렌치</span></div>
+<div class="cell"><div class="frame"><dc-import name="Building" body="plaster-1f" roof="flat" sign="cafe" slot="2" hint-size="160px,256px"></dc-import></div><span class="nm">카페 · 프론트엔드</span><span class="meta" style="text-align: center">회벽 1층 + 평지붕 + 컵</span></div>
+<div class="cell"><div class="frame"><dc-import name="Building" body="stone-2f" roof="hip" sign="guard" slot="4" hint-size="160px,256px"></dc-import></div><span class="nm">초소 · QA</span><span class="meta" style="text-align: center">돌 2층 + 모임 + 돋보기</span></div>
+<div class="cell"><div class="frame"><dc-import name="Building" body="brick-2f" roof="gable" sign="hall" slot="3" hint-size="160px,256px"></dc-import></div><span class="nm">회관 · 팀장</span><span class="meta" style="text-align: center">벽돌 2층 + 박공 + 깃발</span></div>
+<div class="cell"><div class="frame"><dc-import name="Building" body="wood-1f" roof="hip" sign="work" slot="5" hint-size="160px,256px"></dc-import></div><span class="nm">작업장 · 기본형</span><span class="meta" style="text-align: center">직업 프리셋이 없을 때</span></div>
+<div class="cell"><div class="frame"><dc-import name="Building" body="plaster-1f" roof="hip" sign="home" slot="1" hint-size="160px,256px"></dc-import></div><span class="nm">팀원 집</span><span class="meta" style="text-align: center">집주인 슬롯 색 · 작업 건물 아님</span></div>
+</div>
+</section>
+
+<div style="display: flex; gap: 20px; flex-grow: 1">
+<section class="card" style="flex-shrink: 0">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">외부인 시설</h2><span class="meta">모래색 고정 · 집이 없는 기본 에이전트가 드나드는 곳</span></div>
+<div class="row">
+<div class="cell"><div class="frame"><dc-import name="Building" body="stone-2f" roof="gable" sign="library" slot="x" hint-size="160px,256px"></dc-import></div><span class="nm">도서관 · Explore</span></div>
+<div class="cell"><div class="frame"><dc-import name="Building" body="brick-2f" roof="flat" sign="plan" slot="x" hint-size="160px,256px"></dc-import></div><span class="nm">설계사무소 · Plan</span></div>
+<div class="cell"><div class="frame"><dc-import name="Building" body="wood-1f" roof="hip" sign="agency" slot="x" hint-size="160px,256px"></dc-import></div><span class="nm">인력사무소 · general</span></div>
+</div>
+</section>
+<section class="card" style="flex-grow: 1">
+<h2 class="hd" style="font-size: 22px">조립 규칙</h2>
+<ul class="rule">
+<li>그리는 순서: 몸체 → 지붕(<span class="code">translate(0, −wall-height)</span>) → 간판. 공사 중에는 공사 층을 씁니다 (10 공사 단계).</li>
+<li>색은 에셋에 굽지 않습니다. 지붕·문은 <span class="code">--roof</span> <span class="code">--roof-l</span> <span class="code">--roof-r</span>, 간판 바탕은 <span class="code">--tint</span>로 받습니다.</li>
+<li>작업 3~4개 건물은 1층 몸체, 5~6개는 2층 몸체. 부지는 모두 2×2라 마을 배치가 격자로 단순해집니다.</li>
+<li>직업 → 프리셋은 직업 이름 키워드로 찾고, 못 찾으면 작업장 기본형.</li>
+<li>에셋 안에 글자는 없습니다. 이름은 UI 라벨로만.</li>
+</ul>
+</section>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1700}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>선 · 음영 · 타일 규칙</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.hd{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;color:#5a2e2e;margin:0}
+.s{stroke:#7a3e3e;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.d{stroke:#7a3e3e;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.z5 .s{stroke-width:5}
+.z5 .d{stroke-width:3.3}
+.thinS .s{stroke-width:3}
+.thinS .d{stroke-width:2}
+.lbl{font-family:'Gowun Dodum','Apple SD Gothic Neo',sans-serif;font-size:13px;fill:#5a2e2e}
+.lbl2{font-family:'Gowun Dodum','Apple SD Gothic Neo',sans-serif;font-size:12px;fill:#8a5a4a}
+.lead{fill:none;stroke:#8a5a4a;stroke-width:1.5;stroke-dasharray:3 3;stroke-linecap:round}
+.grid{fill:none;stroke:#b7bd7f;stroke-width:1.5}
+.ok{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:15px;fill:#2f7d4f}
+.no{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:15px;fill:#b8433f}
+.rule{margin:0;padding-left:18px;font-size:14px;line-height:22px;color:#5a2e2e}
+.code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:#f3e3c3;border-radius:6px;padding:1px 6px}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1360px; box-sizing: border-box; padding: 48px 56px; background: #f5ecd7; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #5a2e2e; display: flex; flex-direction: column; gap: 24px">
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 class="hd" style="font-size: 40px; line-height: 48px">선 · 음영 · 타일</h1>
+<p style="margin: 0; font-size: 15px; color: #8a5a4a">모든 에셋이 같은 손으로 그린 것처럼 보이게 하는 규칙입니다. 숫자는 화면 1배율(마을 확대 100%) 기준입니다.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; flex-grow: 1">
+
+<section style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 class="hd" style="font-size: 24px">선</h2>
+<svg width="600" height="150" viewBox="0 0 600 150" role="img" aria-label="선 굵기와 선 끝 모양 비교">
+<g transform="translate(20 10)">
+<polygon class="s" fill="#f8e8cc" points="0,46 48,70 48,122 0,98"></polygon>
+<polygon class="s" fill="#ecd2ab" points="48,70 96,46 96,98 48,122"></polygon>
+<polygon class="s" fill="#fff5e2" points="48,22 96,46 48,70 0,46"></polygon>
+<polygon class="d" fill="#c2e8f2" points="60,74 84,62 84,86 60,98"></polygon>
+<path class="d" fill="none" d="M72 68L72 92M60 86L84 74"></path>
+<text class="lbl" x="116" y="62">기본 3px</text>
+<text class="lbl2" x="116" y="80">모든 외곽선</text>
+<text class="lbl" x="116" y="104">세부 2px</text>
+<text class="lbl2" x="116" y="122">창살 · 판자 이음 · 입</text>
+</g>
+<g transform="translate(300 18)">
+<path class="s" fill="none" d="M0 90L30 30L60 90L90 30"></path>
+<circle fill="#5aa77a" cx="45" cy="118" r="10"></circle>
+<path d="M40 118l4 4 7-8" fill="none" stroke="#fff9ee" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+<path fill="none" stroke="#7a3e3e" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt" d="M150 90L180 30L210 90L240 30"></path>
+<circle fill="#c2413d" cx="195" cy="118" r="10"></circle>
+<path d="M191 114l8 8M199 114l-8 8" fill="none" stroke="#fff9ee" stroke-width="2.5" stroke-linecap="round"></path>
+<text class="lbl2" x="0" y="4">둥근 끝 · 둥근 모서리 (stroke-linecap/linejoin: round)</text>
+</g>
+</svg>
+<div style="display: flex; gap: 18px; align-items: center">
+<svg width="300" height="140" viewBox="0 0 300 140" role="img" aria-label="축소된 캐릭터의 선 보정 비교">
+<ellipse cx="75" cy="120" rx="50" ry="12" fill="#e3d3b2"></ellipse>
+<ellipse cx="225" cy="120" rx="50" ry="12" fill="#e3d3b2"></ellipse>
+<g class="thinS" transform="translate(75 120) scale(0.6)">
+<circle class="s" fill="#c0804f" cx="-26" cy="-64" r="10"></circle><circle class="s" fill="#c0804f" cx="26" cy="-64" r="10"></circle>
+<path class="s" fill="#c0804f" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<ellipse fill="#f6dfc3" cx="0" cy="-14" rx="21" ry="12"></ellipse>
+<ellipse fill="#5a2e2e" cx="-15" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="15" cy="-38" rx="3.6" ry="4.4"></ellipse>
+<ellipse fill="#5a2e2e" cx="0" cy="-30" rx="3.2" ry="2.3"></ellipse>
+</g>
+<g class="z5" transform="translate(225 120) scale(0.6)">
+<circle class="s" fill="#c0804f" cx="-26" cy="-64" r="10"></circle><circle class="s" fill="#c0804f" cx="26" cy="-64" r="10"></circle>
+<path class="s" fill="#c0804f" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<ellipse fill="#f6dfc3" cx="0" cy="-14" rx="21" ry="12"></ellipse>
+<ellipse fill="#5a2e2e" cx="-15" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="15" cy="-38" rx="3.6" ry="4.4"></ellipse>
+<ellipse fill="#5a2e2e" cx="0" cy="-30" rx="3.2" ry="2.3"></ellipse>
+</g>
+<text class="no" x="12" y="20">✕ 같이 줄어듦</text>
+<text class="ok" x="168" y="20">✓ 3px 유지</text>
+</svg>
+<ul class="rule">
+<li>에셋을 축소해 넣을 때 선이 가늘어지면 따로 그린 것처럼 보입니다.</li>
+<li>에셋 안 선 굵기는 <span class="code">--sw = 3 / 배율</span>로 보정합니다. (0.6배 → 5)</li>
+<li>마을 전체 확대·축소는 보정하지 않고 같이 커지고 작아지게 둡니다.</li>
+</ul>
+</div>
+</section>
+
+<section style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 22px 24px; display: flex; flex-direction: column; gap: 10px">
+<h2 class="hd" style="font-size: 24px">음영</h2>
+<svg width="620" height="420" viewBox="0 0 620 420" role="img" aria-label="집 한 채로 보는 면별 음영 규칙">
+<defs>
+<radialGradient id="rules-house-sh" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#7a3e3e" stop-opacity="0.24"></stop><stop offset="0.65" stop-color="#7a3e3e" stop-opacity="0.14"></stop><stop offset="1" stop-color="#7a3e3e" stop-opacity="0"></stop></radialGradient>
+</defs>
+<polygon class="s" fill="#b7bd7f" points="150,300 300,375 300,389 150,314"></polygon>
+<polygon class="s" fill="#a0a66b" points="300,375 450,300 450,314 300,389"></polygon>
+<polygon class="s" fill="#cfd59a" points="300,225 450,300 300,375 150,300"></polygon>
+<ellipse cx="318" cy="312" rx="128" ry="56" fill="url(#rules-house-sh)"></ellipse>
+<polygon class="s" fill="#f8e8cc" points="200,300 300,350 300,240 200,190"></polygon>
+<polygon class="s" fill="#ecd2ab" points="300,350 400,300 400,190 300,240"></polygon>
+<polygon class="s" fill="#c4845a" points="252,326 278,339 278,284 252,271"></polygon>
+<circle fill="#7a3e3e" cx="272" cy="310" r="2"></circle>
+<polygon class="s" fill="#c2e8f2" points="330,335 370,315 370,270 330,290"></polygon>
+<path class="d" fill="none" d="M350 325L350 280M330 312.5L370 292.5"></path>
+<polygon class="s" fill="#6f97d8" points="186,192 300,249 300,108"></polygon>
+<polygon class="s" fill="#5a80c2" points="300,249 414,192 300,108"></polygon>
+<g transform="translate(70 62)">
+<circle fill="#f7cb52" class="s" cx="0" cy="0" r="16"></circle>
+<path d="M28 18L78 52" fill="none" stroke="#e2ae33" stroke-width="4" stroke-linecap="round"></path>
+<path d="M66 52L78 52L72 41" fill="none" stroke="#e2ae33" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+<text class="lbl2" x="-30" y="38">빛: 왼쪽 위 뒤에서</text>
+</g>
+<path class="lead" d="M150 206L226 230"></path>
+<text class="lbl" x="18" y="198">왼쪽 아래 면</text>
+<text class="lbl2" x="18" y="216">한 단계 어둡게 (-l)</text>
+<path class="lead" d="M468 236L386 262"></path>
+<text class="lbl" x="472" y="230">오른쪽 아래 면</text>
+<text class="lbl2" x="472" y="248">두 단계 어둡게 (-r)</text>
+<path class="lead" d="M436 112L330 176"></path>
+<text class="lbl" x="440" y="104">지붕 경사면</text>
+<text class="lbl2" x="440" y="122">왼쪽 경사 = 기본</text>
+<text class="lbl2" x="440" y="138">오른쪽 경사 = 한 단계</text>
+<path class="lead" d="M190 360L238 330"></path>
+<text class="lbl" x="92" y="378">윗면 = 기준 톤</text>
+<path class="lead" d="M470 360L400 336"></path>
+<text class="lbl" x="474" y="358">바닥 그림자</text>
+<text class="lbl2" x="474" y="376">빛 반대편으로 살짝</text>
+</svg>
+<ul class="rule">
+<li>그라데이션, 반사광, 하이라이트 선은 쓰지 않습니다. 면마다 평면 한 톤.</li>
+<li>유리 · 간판 아이콘 · 캐릭터는 면 규칙 예외 (고정 색).</li>
+</ul>
+</section>
+
+<section style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px">
+<h2 class="hd" style="font-size: 24px">바닥 그림자</h2>
+<svg width="620" height="200" viewBox="0 0 620 200" role="img" aria-label="그림자 표현 세 가지 비교">
+<defs>
+<radialGradient id="rules-soft" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#7a3e3e" stop-opacity="0.3"></stop><stop offset="0.6" stop-color="#7a3e3e" stop-opacity="0.2"></stop><stop offset="1" stop-color="#7a3e3e" stop-opacity="0"></stop></radialGradient>
+</defs>
+<g transform="translate(100 0)">
+<polygon class="s" fill="#cfd59a" points="0,110 90,155 0,200 -90,155"></polygon>
+<ellipse cx="0" cy="155" rx="34" ry="13" fill="#7a3e3e" fill-opacity="0.2" stroke="#7a3e3e" stroke-width="3"></ellipse>
+<g class="z5" transform="translate(0 155) scale(0.6)">
+<ellipse class="s" fill="#a86c40" cx="-16" cy="1" rx="9" ry="5"></ellipse><ellipse class="s" fill="#a86c40" cx="16" cy="1" rx="9" ry="5"></ellipse>
+<circle class="s" fill="#c0804f" cx="-26" cy="-64" r="10"></circle><circle class="s" fill="#c0804f" cx="26" cy="-64" r="10"></circle>
+<path class="s" fill="#c0804f" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<ellipse fill="#f6dfc3" cx="0" cy="-14" rx="21" ry="12"></ellipse>
+<ellipse fill="#5a2e2e" cx="-15" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="15" cy="-38" rx="3.6" ry="4.4"></ellipse>
+<ellipse fill="#5a2e2e" cx="0" cy="-30" rx="3.2" ry="2.3"></ellipse>
+</g>
+<text class="no" x="-52" y="22">✕ 외곽선 있음</text>
+</g>
+<g transform="translate(310 0)">
+<polygon class="s" fill="#cfd59a" points="0,110 90,155 0,200 -90,155"></polygon>
+<ellipse cx="0" cy="155" rx="34" ry="13" fill="#7a3e3e" fill-opacity="0.5"></ellipse>
+<g class="z5" transform="translate(0 155) scale(0.6)">
+<ellipse class="s" fill="#a86c40" cx="-16" cy="1" rx="9" ry="5"></ellipse><ellipse class="s" fill="#a86c40" cx="16" cy="1" rx="9" ry="5"></ellipse>
+<circle class="s" fill="#c0804f" cx="-26" cy="-64" r="10"></circle><circle class="s" fill="#c0804f" cx="26" cy="-64" r="10"></circle>
+<path class="s" fill="#c0804f" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<ellipse fill="#f6dfc3" cx="0" cy="-14" rx="21" ry="12"></ellipse>
+<ellipse fill="#5a2e2e" cx="-15" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="15" cy="-38" rx="3.6" ry="4.4"></ellipse>
+<ellipse fill="#5a2e2e" cx="0" cy="-30" rx="3.2" ry="2.3"></ellipse>
+</g>
+<text class="no" x="-58" y="22">✕ 진하고 딱딱함</text>
+</g>
+<g transform="translate(520 0)">
+<polygon class="s" fill="#cfd59a" points="0,110 90,155 0,200 -90,155"></polygon>
+<ellipse cx="3" cy="157" rx="40" ry="16" fill="url(#rules-soft)"></ellipse>
+<g class="z5" transform="translate(0 155) scale(0.6)">
+<ellipse class="s" fill="#a86c40" cx="-16" cy="1" rx="9" ry="5"></ellipse><ellipse class="s" fill="#a86c40" cx="16" cy="1" rx="9" ry="5"></ellipse>
+<circle class="s" fill="#c0804f" cx="-26" cy="-64" r="10"></circle><circle class="s" fill="#c0804f" cx="26" cy="-64" r="10"></circle>
+<path class="s" fill="#c0804f" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<ellipse fill="#f6dfc3" cx="0" cy="-14" rx="21" ry="12"></ellipse>
+<ellipse fill="#5a2e2e" cx="-15" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="15" cy="-38" rx="3.6" ry="4.4"></ellipse>
+<ellipse fill="#5a2e2e" cx="0" cy="-30" rx="3.2" ry="2.3"></ellipse>
+</g>
+<text class="ok" x="-50" y="22">✓ 부드럽게</text>
+</g>
+</svg>
+<ul class="rule">
+<li>외곽선 없이 <span class="code">--ink</span>를 방사형 투명도(30% → 0%)로. 블러 필터는 쓰지 않습니다.</li>
+<li>모양은 가로:세로 2:1 타원, 가로 = 발 너비 × 1.2. 빛 반대(오른쪽 아래)로 2~4 밀기.</li>
+<li>건물은 바닥 다이아몬드보다 조금 큰 타원 하나. 공사 비계에는 그림자를 따로 두지 않습니다.</li>
+</ul>
+</section>
+
+<section style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 22px 24px; display: flex; flex-direction: column; gap: 12px">
+<h2 class="hd" style="font-size: 24px">아이소메트릭 타일</h2>
+<div style="display: flex; gap: 16px; align-items: flex-start">
+<svg width="400" height="270" viewBox="0 0 440 270" role="img" aria-label="64 곱하기 32 타일 격자와 기준점">
+<polygon fill="#e9edc6" points="220,16 412,112 220,208 28,112"></polygon>
+<path class="grid" d="M220 16L412 112M172 40L364 136M124 64L316 160M76 88L268 184M28 112L220 208"></path>
+<path class="grid" d="M220 16L28 112M268 40L76 136M316 64L124 160M364 88L172 184M412 112L220 208"></path>
+<polygon fill="#f3bd93" stroke="#7a3e3e" stroke-width="2" stroke-linejoin="round" points="220,112 316,160 220,208 124,160"></polygon>
+<circle cx="220" cy="160" r="6" fill="#fff9ee" stroke="#7a3e3e" stroke-width="2.5"></circle>
+<circle cx="220" cy="160" r="2" fill="#7a3e3e"></circle>
+<polygon fill="#f7cb52" stroke="#7a3e3e" stroke-width="2" stroke-linejoin="round" points="220,16 268,40 220,64 172,40"></polygon>
+<path d="M172 76L268 76" fill="none" stroke="#7a3e3e" stroke-width="1.5"></path>
+<path d="M172 71L172 81M268 71L268 81" fill="none" stroke="#7a3e3e" stroke-width="1.5"></path>
+<text class="lbl" x="206" y="94">64</text>
+<path d="M290 16L290 64" fill="none" stroke="#7a3e3e" stroke-width="1.5"></path>
+<path d="M285 16L295 16M285 64L295 64" fill="none" stroke="#7a3e3e" stroke-width="1.5"></path>
+<text class="lbl" x="298" y="45">32</text>
+<path d="M412 112L430 121" fill="none" stroke="#7a3e3e" stroke-width="2" stroke-linecap="round"></path>
+<text class="lbl" x="398" y="146">x →</text>
+<path d="M28 112L10 121" fill="none" stroke="#7a3e3e" stroke-width="2" stroke-linecap="round"></path>
+<text class="lbl" x="14" y="146">← y</text>
+<path class="lead" d="M228 166L300 222"></path>
+<text class="lbl" x="276" y="240">기준점 = 바닥 면 중앙</text>
+<text class="lbl2" x="276" y="258">2×2 건물 · data-anchor</text>
+<text class="lbl2" x="12" y="262">격자는 150%로 그린 그림</text>
+</svg>
+<div style="display: flex; flex-direction: column; gap: 10px; flex-grow: 1">
+<div style="font-size: 14px; line-height: 22px">화면 좌표<br><span class="code">sx = (x − y) × 32</span><br><span class="code">sy = (x + y) × 16</span></div>
+<div style="font-size: 14px; line-height: 22px">그리는 순서<br><span style="color: #8a5a4a">x + y 작은 것부터, 같으면 x 작은 것부터 (뒤 → 앞)</span></div>
+<div style="font-size: 14px; line-height: 22px">크기 기준<br><span style="color: #8a5a4a">1층 높이 40 · 캐릭터 폭 약 36 (타일 폭의 절반쯤)</span></div>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: 1.1fr repeat(4, minmax(0, 1fr)); border: 2px solid #7a3e3e; border-radius: 14px; overflow: hidden; font-size: 13px">
+<div style="padding: 8px 12px; background: #f3e3c3; font-family: 'Jua', sans-serif">차지 타일</div>
+<div style="padding: 8px 12px; background: #f3e3c3; font-family: 'Jua', sans-serif">1×1</div>
+<div style="padding: 8px 12px; background: #f3e3c3; font-family: 'Jua', sans-serif">2×1</div>
+<div style="padding: 8px 12px; background: #f3e3c3; font-family: 'Jua', sans-serif">2×2</div>
+<div style="padding: 8px 12px; background: #f3e3c3; font-family: 'Jua', sans-serif">3×3</div>
+<div style="padding: 8px 12px; border-top: 2px solid #e3cdb0">viewBox</div>
+<div style="padding: 8px 12px; border-top: 2px solid #e3cdb0">96 × 160</div>
+<div style="padding: 8px 12px; border-top: 2px solid #e3cdb0">128 × 208</div>
+<div style="padding: 8px 12px; border-top: 2px solid #e3cdb0">160 × 256</div>
+<div style="padding: 8px 12px; border-top: 2px solid #e3cdb0">224 × 320</div>
+<div style="padding: 8px 12px; border-top: 2px solid #e3cdb0">data-anchor</div>
+<div style="padding: 8px 12px; border-top: 2px solid #e3cdb0">48,128</div>
+<div style="padding: 8px 12px; border-top: 2px solid #e3cdb0">64,168</div>
+<div style="padding: 8px 12px; border-top: 2px solid #e3cdb0">80,208</div>
+<div style="padding: 8px 12px; border-top: 2px solid #e3cdb0">112,256</div>
+</div>
+<div style="font-size: 12.5px; color: #8a5a4a">공식: 폭 = 32(w+h) + 32, 기준점 = (폭 ÷ 2, 높이 − 16 − 8(w+h)). 같은 타일 수면 같은 viewBox, 에셋 안에는 글자를 넣지 않습니다.</div>
+</section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1360}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

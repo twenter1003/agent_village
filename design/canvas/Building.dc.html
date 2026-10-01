@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>건물 조립기</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="position: relative; width: {{rw}}px; height: {{rh}}px; overflow: hidden">
+<div style="position: absolute; left: {{ox}}px; top: {{oy}}px; width: 160px; height: 256px">
+
+<sc-if value="{{ground}}" hint-placeholder-val="{{true}}">
+<svg width="160" height="256" viewBox="0 0 160 256" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<defs><radialGradient id="{{shId}}" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#7a3e3e" stop-opacity="0.28"></stop><stop offset="0.6" stop-color="#7a3e3e" stop-opacity="0.16"></stop><stop offset="1" stop-color="#7a3e3e" stop-opacity="0"></stop></radialGradient></defs>
+<g stroke="#7a3e3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#b7bd7f" points="16,208 80,240 80,248 16,216"></polygon>
+<polygon fill="#a0a66b" points="80,240 144,208 144,216 80,248"></polygon>
+<polygon fill="#cfd59a" points="80,176 144,208 80,240 16,208"></polygon>
+</g>
+<ellipse display="{{shadowDisp}}" cx="88" cy="214" rx="60" ry="26" fill="url(#{{shId}})"></ellipse>
+</svg>
+</sc-if>
+
+<sc-if value="{{isPlanned}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="site.planned" data-tiles="2x2" data-anchor="80,208" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<polygon points="80,182 132,208 80,234 28,208" fill="none" stroke="#fff9ee" stroke-width="2" stroke-dasharray="5 4" stroke-linejoin="round"></polygon>
+<path d="M28 200L80 174L132 200" fill="none" stroke="#a86c48" stroke-width="2" stroke-linecap="round"></path>
+<path d="M80 182L80 170M28 208L28 196M132 208L132 196" fill="none" stroke="#7a3e3e" stroke-width="6" stroke-linecap="round"></path>
+<path d="M80 182L80 170M28 208L28 196M132 208L132 196" fill="none" stroke="#dca173" stroke-width="2.5" stroke-linecap="round"></path>
+<path d="M28 200L80 226L132 200" fill="none" stroke="#a86c48" stroke-width="2" stroke-linecap="round"></path>
+<path d="M80 234L80 222M28 196L28 184" fill="none" stroke="#7a3e3e" stroke-width="6" stroke-linecap="round"></path>
+<path d="M80 234L80 222M28 196L28 184" fill="none" stroke="#dca173" stroke-width="2.5" stroke-linecap="round"></path>
+<path d="M28 184L42 188.5L28 193Z" fill="#f7cb52" stroke="#7a3e3e" stroke-width="2" stroke-linejoin="round"></path>
+</svg>
+</sc-if>
+
+<sc-if value="{{isFound}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="site.foundation" data-tiles="2x2" data-anchor="80,208" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<polygon points="80,179 138,208 80,237 22,208" fill="#e2c091" stroke="#7a3e3e" stroke-width="2" stroke-linejoin="round"></polygon>
+<g stroke="#7a3e3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#dccfb9" points="28,202 80,228 80,234 28,208"></polygon>
+<polygon fill="#c6b79d" points="80,228 132,202 132,208 80,234"></polygon>
+<polygon fill="#efe6d6" points="80,176 132,202 80,228 28,202"></polygon>
+</g>
+<path d="M54 202L80 189L106 202L80 215Z" fill="none" stroke="#dccfb9" stroke-width="2" stroke-linejoin="round"></path>
+</svg>
+</sc-if>
+
+<sc-if value="{{isFrame1}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="site.frame-1f" data-tiles="2x2" data-anchor="80,208" data-reveal="bottom-up" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<defs><clipPath id="{{clipId}}"><rect x="0" y="{{clipY}}" width="160" height="256"></rect></clipPath></defs>
+<g clip-path="url(#{{clipId}})" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M80 176L80 136M28 162L80 136L132 162" stroke="#7a3e3e" stroke-width="8.5"></path>
+<path d="M80 176L80 136M28 162L80 136L132 162" stroke="#dca173" stroke-width="3"></path>
+<path d="M28 202L28 162M132 202L132 162" stroke="#7a3e3e" stroke-width="8.5"></path>
+<path d="M28 202L28 162M132 202L132 162" stroke="#dca173" stroke-width="3"></path>
+<path d="M28 162L80 188L132 162M28 202L54 175M132 202L106 175M54 215L54 175M106 215L106 175M80 228L80 188" stroke="#7a3e3e" stroke-width="8.5"></path>
+<path d="M28 162L80 188L132 162M28 202L54 175M132 202L106 175M54 215L54 175M106 215L106 175M80 228L80 188" stroke="#dca173" stroke-width="3"></path>
+</g>
+</svg>
+</sc-if>
+
+<sc-if value="{{isFrame2}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="site.frame-2f" data-tiles="2x2" data-anchor="80,208" data-reveal="bottom-up" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<defs><clipPath id="{{clipId}}"><rect x="0" y="{{clipY}}" width="160" height="256"></rect></clipPath></defs>
+<g clip-path="url(#{{clipId}})" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M80 176L80 96M28 162L80 136L132 162M28 122L80 96L132 122" stroke="#7a3e3e" stroke-width="8.5"></path>
+<path d="M80 176L80 96M28 162L80 136L132 162M28 122L80 96L132 122" stroke="#dca173" stroke-width="3"></path>
+<path d="M28 202L28 122M132 202L132 122" stroke="#7a3e3e" stroke-width="8.5"></path>
+<path d="M28 202L28 122M132 202L132 122" stroke="#dca173" stroke-width="3"></path>
+<path d="M28 162L80 188L132 162M28 122L80 148L132 122M28 202L54 175M132 202L106 175M54 215L54 135M106 215L106 135M80 228L80 148" stroke="#7a3e3e" stroke-width="8.5"></path>
+<path d="M28 162L80 188L132 162M28 122L80 148L132 122M28 202L54 175M132 202L106 175M54 215L54 135M106 215L106 135M80 228L80 148" stroke="#dca173" stroke-width="3"></path>
+</g>
+</svg>
+</sc-if>
+
+<sc-if value="{{bPl}}" hint-placeholder-val="{{true}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="body.plaster-1f" data-tiles="2x2" data-anchor="80,208" data-wall-height="40" aria-hidden="true" style="position: absolute; left: 0; top: 0; opacity: {{bodyOp}}">
+<g stroke="#7a3e3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#fff5e2" points="80,142 132,168 80,194 28,168"></polygon>
+<polygon fill="#f8e8cc" points="28,208 80,234 80,194 28,168"></polygon>
+<polygon fill="#ecd2ab" points="80,234 132,208 132,168 80,194"></polygon>
+<polygon fill="{{roofL}}" points="34,211 48,218 48,192 34,185"></polygon>
+<polygon fill="#c2e8f2" points="94,215 118,203 118,187 94,199"></polygon>
+</g>
+<path d="M106 209L106 193M94 207L118 195" fill="none" stroke="#7a3e3e" stroke-width="2" stroke-linecap="round"></path>
+<circle cx="45" cy="204" r="1.8" fill="#7a3e3e"></circle>
+</svg>
+</sc-if>
+
+<sc-if value="{{bWd}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="body.wood-1f" data-tiles="2x2" data-anchor="80,208" data-wall-height="40" aria-hidden="true" style="position: absolute; left: 0; top: 0; opacity: {{bodyOp}}">
+<g stroke="#7a3e3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#dca173" points="80,142 132,168 80,194 28,168"></polygon>
+<polygon fill="#c4845a" points="28,208 80,234 80,194 28,168"></polygon>
+<polygon fill="#a86c48" points="80,234 132,208 132,168 80,194"></polygon>
+</g>
+<path d="M28 200L80 226M28 192L80 218M28 184L80 210M28 176L80 202M80 226L132 200M80 218L132 192M80 210L132 184M80 202L132 176" fill="none" stroke="#7a3e3e" stroke-width="1.5" stroke-opacity="0.3" stroke-linecap="round"></path>
+<g stroke="#7a3e3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="{{roofL}}" points="34,211 48,218 48,192 34,185"></polygon>
+<polygon fill="#c2e8f2" points="94,215 118,203 118,187 94,199"></polygon>
+</g>
+<path d="M106 209L106 193M94 207L118 195" fill="none" stroke="#7a3e3e" stroke-width="2" stroke-linecap="round"></path>
+<circle cx="45" cy="204" r="1.8" fill="#7a3e3e"></circle>
+</svg>
+</sc-if>
+
+<sc-if value="{{bBr}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="body.brick-2f" data-tiles="2x2" data-anchor="80,208" data-wall-height="80" aria-hidden="true" style="position: absolute; left: 0; top: 0; opacity: {{bodyOp}}">
+<g stroke="#7a3e3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#e8a07a" points="80,102 132,128 80,154 28,128"></polygon>
+<polygon fill="#d4865f" points="28,208 80,234 80,154 28,128"></polygon>
+<polygon fill="#bd7050" points="80,234 132,208 132,128 80,154"></polygon>
+</g>
+<path d="M28 198L80 224M28 188L80 214M28 178L80 204M28 158L80 184M28 148L80 174M28 138L80 164M80 224L132 198M80 214L132 188M80 204L132 178M80 184L132 158M80 174L132 148M80 164L132 138" fill="none" stroke="#7a3e3e" stroke-width="1.5" stroke-opacity="0.28" stroke-linecap="round"></path>
+<path d="M28 168L80 194L132 168" fill="none" stroke="#7a3e3e" stroke-width="2" stroke-opacity="0.6" stroke-linecap="round" stroke-linejoin="round"></path>
+<g stroke="#7a3e3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="{{roofL}}" points="34,211 48,218 48,192 34,185"></polygon>
+<polygon fill="#c2e8f2" points="94,215 118,203 118,187 94,199"></polygon>
+<polygon fill="#c2e8f2" points="94,175 118,163 118,147 94,159"></polygon>
+<polygon fill="#c2e8f2" points="34,157 48,164 48,146 34,139"></polygon>
+<polygon fill="#c2e8f2" points="58,169 72,176 72,158 58,151"></polygon>
+</g>
+<path d="M106 209L106 193M94 207L118 195M106 169L106 153M94 167L118 155M41 160.5L41 142.5M65 172.5L65 154.5" fill="none" stroke="#7a3e3e" stroke-width="2" stroke-linecap="round"></path>
+<circle cx="45" cy="204" r="1.8" fill="#7a3e3e"></circle>
+</svg>
+</sc-if>
+
+<sc-if value="{{bSt}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="body.stone-2f" data-tiles="2x2" data-anchor="80,208" data-wall-height="80" aria-hidden="true" style="position: absolute; left: 0; top: 0; opacity: {{bodyOp}}">
+<g stroke="#7a3e3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#efe6d6" points="80,102 132,128 80,154 28,128"></polygon>
+<polygon fill="#dccfb9" points="28,208 80,234 80,154 28,128"></polygon>
+<polygon fill="#c6b79d" points="80,234 132,208 132,128 80,154"></polygon>
+</g>
+<path d="M28 192L80 218M28 176L80 202M28 160L80 186M28 144L80 170M80 218L132 192M80 202L132 176M80 186L132 160M80 170L132 144M46 217L46 201M66 227L66 211M62 193L62 177M70 181L70 165M52 156L52 140M100 224L100 208M124 212L124 196M88 214L88 198M128 194L128 178M96 194L96 178M120 182L120 166M90 181L90 165M124 164L124 148M104 158L104 142" fill="none" stroke="#7a3e3e" stroke-width="1.5" stroke-opacity="0.3" stroke-linecap="round"></path>
+<g stroke="#7a3e3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="{{roofL}}" points="34,211 48,218 48,192 34,185"></polygon>
+<polygon fill="#c2e8f2" points="94,215 118,203 118,187 94,199"></polygon>
+<polygon fill="#c2e8f2" points="94,175 118,163 118,147 94,159"></polygon>
+<polygon fill="#c2e8f2" points="34,157 48,164 48,146 34,139"></polygon>
+<polygon fill="#c2e8f2" points="58,169 72,176 72,158 58,151"></polygon>
+</g>
+<path d="M106 209L106 193M94 207L118 195M106 169L106 153M94 167L118 155M41 160.5L41 142.5M65 172.5L65 154.5" fill="none" stroke="#7a3e3e" stroke-width="2" stroke-linecap="round"></path>
+<circle cx="45" cy="204" r="1.8" fill="#7a3e3e"></circle>
+</svg>
+</sc-if>
+
+<sc-if value="{{rGa}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="roof.gable" data-tiles="2x2" data-anchor="80,208" data-lift="wall-height" aria-hidden="true" style="position: absolute; left: 0; top: {{roofY}}px">
+<g stroke="#7a3e3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="{{roofL}}" points="50,157 110,187 140,208 80,178"></polygon>
+<polygon fill="#a86c48" points="80,234 132,208 106,187"></polygon>
+<polygon fill="{{roof}}" points="20,208 80,238 110,187 50,157"></polygon>
+</g>
+<circle cx="107" cy="211" r="4.5" fill="#c2e8f2" stroke="#7a3e3e" stroke-width="2"></circle>
+</svg>
+</sc-if>
+
+<sc-if value="{{rHi}}" hint-placeholder-val="{{true}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="roof.hip" data-tiles="2x2" data-anchor="80,208" data-lift="wall-height" aria-hidden="true" style="position: absolute; left: 0; top: {{roofY}}px">
+<g stroke="#7a3e3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="{{roof}}" points="20,208 80,238 80,164"></polygon>
+<polygon fill="{{roofL}}" points="80,238 140,208 80,164"></polygon>
+<circle fill="{{roofR}}" cx="80" cy="162" r="3.5"></circle>
+</g>
+</svg>
+</sc-if>
+
+<sc-if value="{{rFl}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="roof.flat" data-tiles="2x2" data-anchor="80,208" data-lift="wall-height" aria-hidden="true" style="position: absolute; left: 0; top: {{roofY}}px">
+<g stroke="#7a3e3e" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="{{roofL}}" points="20,200 80,230 80,238 20,208"></polygon>
+<polygon fill="{{roofR}}" points="80,230 140,200 140,208 80,238"></polygon>
+<polygon fill="{{roof}}" points="80,170 140,200 80,230 20,200"></polygon>
+<polygon fill="{{roofL}}" points="80,178 124,200 80,222 36,200"></polygon>
+<polygon fill="#cdc6d4" points="90,198 98,202 98,192 90,188"></polygon>
+<polygon fill="#b3aabd" points="98,202 106,198 106,188 98,192"></polygon>
+<polygon fill="#ebe7ee" points="98,184 106,188 98,192 90,188"></polygon>
+</g>
+</svg>
+</sc-if>
+
+<sc-if value="{{sWorkshop}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="sign.workshop" data-tiles="2x2" data-anchor="80,208" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<g transform="matrix(1 0.5 0 1 54 221)"><rect x="0" y="-36" width="24" height="22" rx="4" fill="{{tint}}" stroke="#7a3e3e" stroke-width="2.5"></rect><g transform="translate(3.6 -33.4) scale(0.7)" fill="none" stroke="#5a2e2e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4A4.5 4.5 0 0 0 10.8 10.1L4.5 16.4A1.8 1.8 0 0 0 7.1 19L13.4 12.7A4.5 4.5 0 0 0 19.5 8.5L16.8 11.2L14.2 10.5L13.5 7.9L16.2 5.2A4.5 4.5 0 0 0 15 4Z"></path></g></g>
+</svg>
+</sc-if>
+<sc-if value="{{sCafe}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="sign.cafe" data-tiles="2x2" data-anchor="80,208" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<g transform="matrix(1 0.5 0 1 54 221)"><rect x="0" y="-36" width="24" height="22" rx="4" fill="{{tint}}" stroke="#7a3e3e" stroke-width="2.5"></rect><g transform="translate(3.6 -33.4) scale(0.7)" fill="none" stroke="#5a2e2e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9H17V13.5A5 5 0 0 1 12 18.5H10A5 5 0 0 1 5 13.5Z"></path><path d="M17 10.5H18.5A2.5 2.5 0 0 1 18.5 15.5H16.5"></path><path d="M9 3.5Q10.5 5 9 6.5M13 3.5Q14.5 5 13 6.5"></path></g></g>
+</svg>
+</sc-if>
+<sc-if value="{{sGuard}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="sign.guard" data-tiles="2x2" data-anchor="80,208" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<g transform="matrix(1 0.5 0 1 54 221)"><rect x="0" y="-36" width="24" height="22" rx="4" fill="{{tint}}" stroke="#7a3e3e" stroke-width="2.5"></rect><g transform="translate(3.6 -33.4) scale(0.7)" fill="none" stroke="#5a2e2e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6"></circle><path d="M15 15L20 20M8 10.5L10 12.5L13 9"></path></g></g>
+</svg>
+</sc-if>
+<sc-if value="{{sHall}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="sign.hall" data-tiles="2x2" data-anchor="80,208" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<g transform="matrix(1 0.5 0 1 54 221)"><rect x="0" y="-36" width="24" height="22" rx="4" fill="{{tint}}" stroke="#7a3e3e" stroke-width="2.5"></rect><g transform="translate(3.6 -33.4) scale(0.7)" fill="none" stroke="#5a2e2e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4M6 5H17L14.5 8.5L17 12H6"></path></g></g>
+</svg>
+</sc-if>
+<sc-if value="{{sWork}}" hint-placeholder-val="{{true}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="sign.work" data-tiles="2x2" data-anchor="80,208" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<g transform="matrix(1 0.5 0 1 54 221)"><rect x="0" y="-36" width="24" height="22" rx="4" fill="{{tint}}" stroke="#7a3e3e" stroke-width="2.5"></rect><g transform="translate(3.6 -33.4) scale(0.7)" fill="none" stroke="#5a2e2e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5L13 11.5M10.5 6.5L14.5 3.5L20.5 9.5L17.5 13.5Z"></path></g></g>
+</svg>
+</sc-if>
+<sc-if value="{{sHome}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="sign.home" data-tiles="2x2" data-anchor="80,208" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<g transform="matrix(1 0.5 0 1 54 221)"><rect x="0" y="-36" width="24" height="22" rx="4" fill="{{tint}}" stroke="#7a3e3e" stroke-width="2.5"></rect><g transform="translate(3.6 -33.4) scale(0.7)" fill="none" stroke="#5a2e2e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11L12 4L20 11M6 9.5V20H18V9.5M10 20V15H14V20"></path></g></g>
+</svg>
+</sc-if>
+<sc-if value="{{sLibrary}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="sign.library" data-tiles="2x2" data-anchor="80,208" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<g transform="matrix(1 0.5 0 1 54 221)"><rect x="0" y="-36" width="24" height="22" rx="4" fill="{{tint}}" stroke="#7a3e3e" stroke-width="2.5"></rect><g transform="translate(3.6 -33.4) scale(0.7)" fill="none" stroke="#5a2e2e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C7 4 9.5 4 12 6C14.5 4 17 4 20 5.5V19C17 17.5 14.5 17.5 12 19.5C9.5 17.5 7 17.5 4 19Z"></path><path d="M12 6V19.5"></path></g></g>
+</svg>
+</sc-if>
+<sc-if value="{{sPlan}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="sign.plan" data-tiles="2x2" data-anchor="80,208" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<g transform="matrix(1 0.5 0 1 54 221)"><rect x="0" y="-36" width="24" height="22" rx="4" fill="{{tint}}" stroke="#7a3e3e" stroke-width="2.5"></rect><g transform="translate(3.6 -33.4) scale(0.7)" fill="none" stroke="#5a2e2e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1.8"></circle><path d="M11 6.8L6 20M13 6.8L18 20M8 15H16"></path></g></g>
+</svg>
+</sc-if>
+<sc-if value="{{sAgency}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="sign.agency" data-tiles="2x2" data-anchor="80,208" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<g transform="matrix(1 0.5 0 1 54 221)"><rect x="0" y="-36" width="24" height="22" rx="4" fill="{{tint}}" stroke="#7a3e3e" stroke-width="2.5"></rect><g transform="translate(3.6 -33.4) scale(0.7)" fill="none" stroke="#5a2e2e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="17" height="11" rx="2"></rect><path d="M9 8V6A1 1 0 0 1 10 5H14A1 1 0 0 1 15 6V8M3.5 13H20.5"></path></g></g>
+</svg>
+</sc-if>
+
+<sc-if value="{{isScaf1}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="site.scaffold-1f" data-tiles="2x2" data-anchor="80,208" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M18 202L49 179.5M49 217.5L80 195M142 202L111 179.5M111 217.5L80 195" stroke="#7a3e3e" stroke-width="1.5"></path>
+<path d="M18 202L18 156M49 217.5L49 171.5M80 233L80 187M111 217.5L111 171.5M142 202L142 156" stroke="#7a3e3e" stroke-width="6"></path>
+<path d="M18 202L18 156M49 217.5L49 171.5M80 233L80 187M111 217.5L111 171.5M142 202L142 156" stroke="#cdc6d4" stroke-width="2.5"></path>
+<path d="M18 164L80 195L142 164" stroke="#7a3e3e" stroke-width="8"></path>
+<path d="M18 164L80 195L142 164" stroke="#dca173" stroke-width="3.5"></path>
+</g>
+</svg>
+</sc-if>
+
+<sc-if value="{{isScaf2}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="site.scaffold-2f" data-tiles="2x2" data-anchor="80,208" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M18 202L49 179.5M49 217.5L80 195M142 202L111 179.5M111 217.5L80 195M18 164L49 145.5M49 179.5L80 161M142 164L111 145.5M111 179.5L80 161" stroke="#7a3e3e" stroke-width="1.5"></path>
+<path d="M18 202L18 124M49 217.5L49 139.5M80 233L80 155M111 217.5L111 139.5M142 202L142 124" stroke="#7a3e3e" stroke-width="6"></path>
+<path d="M18 202L18 124M49 217.5L49 139.5M80 233L80 155M111 217.5L111 139.5M142 202L142 124" stroke="#cdc6d4" stroke-width="2.5"></path>
+<path d="M18 164L80 195L142 164M18 130L80 161L142 130" stroke="#7a3e3e" stroke-width="8"></path>
+<path d="M18 164L80 195L142 164M18 130L80 161L142 130" stroke="#dca173" stroke-width="3.5"></path>
+</g>
+</svg>
+</sc-if>
+
+<sc-if value="{{fx}}" hint-placeholder-val="{{false}}">
+<svg width="160" height="256" viewBox="0 0 160 256" data-asset-id="fx.complete" data-tiles="2x2" data-anchor="80,208" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<g stroke="#7a3e3e" stroke-width="2" stroke-linejoin="round">
+<path fill="#f7cb52" d="M34 104Q34 112 26 112Q34 112 34 120Q34 112 42 112Q34 112 34 104Z"></path>
+<path fill="#fff9ee" d="M128 88Q128 98 118 98Q128 98 128 108Q128 98 138 98Q128 98 128 88Z"></path>
+<path fill="#f7cb52" d="M84 58Q84 65 77 65Q84 65 84 72Q84 65 91 65Q84 65 84 58Z"></path>
+<path fill="#fff9ee" d="M22 150Q22 156 16 156Q22 156 22 162Q22 156 28 156Q22 156 22 150Z"></path>
+<path fill="#f7cb52" d="M146 146Q146 152 140 152Q146 152 146 158Q146 152 152 152Q146 152 146 146Z"></path>
+</g>
+<g stroke="#7a3e3e" stroke-width="1.5">
+<rect x="52" y="78" width="7" height="4" rx="1" fill="#ec6f66" transform="rotate(-25 55 80)"></rect>
+<rect x="108" y="70" width="7" height="4" rx="1" fill="#6f97d8" transform="rotate(30 111 72)"></rect>
+<rect x="60" y="116" width="6" height="4" rx="1" fill="#5aa77a" transform="rotate(15 63 118)"></rect>
+<rect x="138" y="122" width="6" height="4" rx="1" fill="#a893dc" transform="rotate(-40 141 124)"></rect>
+<rect x="100" y="112" width="6" height="4" rx="1" fill="#f0b24a" transform="rotate(50 103 114)"></rect>
+<rect x="14" y="128" width="6" height="4" rx="1" fill="#4fb3ad" transform="rotate(-15 17 130)"></rect>
+</g>
+</svg>
+</sc-if>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"body":{"editor":"enum","options":["plaster-1f","wood-1f","brick-2f","stone-2f"],"default":"plaster-1f"},"roof":{"editor":"enum","options":["hip","gable","flat","none"],"default":"hip"},"sign":{"editor":"enum","options":["work","workshop","cafe","guard","hall","home","library","plan","agency","none"],"default":"work"},"slot":{"editor":"enum","options":["1","2","3","4","5","6","x"],"default":"1"},"stage":{"editor":"enum","options":["done","planned","foundation","frame"],"default":"done"},"progress":{"editor":"range","min":0,"max":1,"step":0.05,"default":0.5},"fx":{"editor":"boolean","default":false},"ghost":{"editor":"boolean","default":false},"ground":{"editor":"boolean","default":true},"crop":{"editor":"enum","options":["none","sign"],"default":"none"},"$preview":{"width":160,"height":256}}'>
+class Component extends DCLogic {
+renderVals() {
+if (!this.uid) this.uid = 'b' + Math.random().toString(36).slice(2, 9);
+const p = this.props;
+const truthy = (v, d) => (v === undefined || v === null ? d : (v === true || v === 'true'));
+const body = p.body ?? 'plaster-1f';
+const roof = p.roof ?? 'hip';
+const sign = p.sign ?? 'work';
+const slot = String(p.slot ?? '1');
+const stage = p.stage ?? 'done';
+const prog = Math.max(0, Math.min(1, Number(p.progress ?? 0.5)));
+const crop = p.crop ?? 'none';
+const SLOTS = {
+'1': ['#6f97d8', '#5a80c2', '#4769a6', '#dde8f5'],
+'2': ['#ec6f66', '#d45a53', '#b84842', '#fadcd8'],
+'3': ['#f0b24a', '#d99a35', '#bb8024', '#fbe9c4'],
+'4': ['#5aa77a', '#478f65', '#377752', '#dcebd2'],
+'5': ['#a893dc', '#9079c7', '#7862ad', '#e8e1f6'],
+'6': ['#4fb3ad', '#3e9a95', '#2f807b', '#d6efec'],
+'x': ['#bcae9c', '#a69884', '#8d7f6c', '#efe8df']
+};
+const c = SLOTS[slot] || SLOTS['1'];
+const done = stage === 'done';
+const two = body === 'brick-2f' || body === 'stone-2f';
+const cropSign = crop === 'sign';
+return {
+shId: this.uid + '-sh', clipId: this.uid + '-clip',
+rw: cropSign ? 110 : 160, rh: cropSign ? 110 : 256, ox: cropSign ? -18 : 0, oy: cropSign ? -146 : 0,
+ground: truthy(p.ground, true), shadowDisp: stage === 'planned' ? 'none' : 'inline',
+isPlanned: stage === 'planned', isFound: stage === 'foundation' || stage === 'frame',
+isFrame1: stage === 'frame' && !two, isFrame2: stage === 'frame' && two,
+isScaf1: stage === 'frame' && !two, isScaf2: stage === 'frame' && two,
+clipY: 236 - prog * (two ? 146 : 106),
+bPl: done && body === 'plaster-1f', bWd: done && body === 'wood-1f', bBr: done && body === 'brick-2f', bSt: done && body === 'stone-2f',
+bodyOp: truthy(p.ghost, false) ? 0.35 : 1,
+rGa: done && roof === 'gable', rHi: done && roof === 'hip', rFl: done && roof === 'flat',
+roofY: two ? -80 : -40,
+sWorkshop: done && sign === 'workshop', sCafe: done && sign === 'cafe', sGuard: done && sign === 'guard', sHall: done && sign === 'hall',
+sWork: done && sign === 'work', sHome: done && sign === 'home', sLibrary: done && sign === 'library', sPlan: done && sign === 'plan', sAgency: done && sign === 'agency',
+roof: c[0], roofL: c[1], roofR: c[2], tint: c[3],
+fx: done && truthy(p.fx, false)
+};
+}
+}
+</script>
+</body>
+</html>

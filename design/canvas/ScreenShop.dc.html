@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>가구 상점</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.meta{font-size:12px;color:#8a5a4a;line-height:17px}
+.item{display:flex;flex-direction:column;border:3px solid #7a3e3e;border-radius:18px;background:#fff9ee;overflow:hidden}
+.illo{height:140px;background:#f5ecd7;border-bottom:3px solid #7a3e3e;overflow:hidden;display:flex;justify-content:center}
+.bd{padding:10px 12px 12px;display:flex;flex-direction:column;gap:7px}
+.nm{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:16px}
+.price{display:flex;align-items:center;gap:5px}
+.coin{width:16px;height:16px;box-sizing:border-box;border-radius:50%;border:2px solid #7a3e3e;background:#f7cb52;flex-shrink:0}
+.sw{width:18px;height:18px;border-radius:50%;border:2px solid #7a3e3e;box-sizing:border-box;padding:0}
+.buy{height:34px;padding:0 14px;border:2px solid #7a3e3e;border-radius:10px;background:#f7cb52;box-shadow:0 3px 0 #7a3e3e;font-family:'Jua',sans-serif;font-size:14px;color:#5a2e2e}
+.own{height:34px;padding:0 12px;display:inline-flex;align-items:center;border:2px dashed #7a3e3e;border-radius:10px;font-size:12px;color:#5a2e2e;box-sizing:border-box}
+.tab{height:36px;padding:0 14px;box-sizing:border-box;border:2px solid transparent;border-radius:10px;background:transparent;font-family:'Jua',sans-serif;font-size:15px;color:#5a2e2e}
+.who{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 12px 0 4px;border:2px solid #7a3e3e;border-radius:999px;background:#fff9ee;font-size:13px;color:#5a2e2e;font-family:'Gowun Dodum',sans-serif}
+.face{width:30px;height:30px;box-sizing:border-box;border:2px solid #7a3e3e;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.row{display:flex;justify-content:space-between;font-size:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 18px;border:2px solid #7a3e3e;border-radius:12px;box-shadow:0 3px 0 #7a3e3e;font-family:'Jua',sans-serif;font-size:16px;color:#5a2e2e;text-decoration:none}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; display: flex; flex-direction: column; background: #f5ecd7; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #5a2e2e; overflow: hidden">
+<dc-import name="TopBar" active="village" hint-size="1440px,68px"></dc-import>
+<div style="display: flex; height: 832px">
+<main style="width: 1000px; box-sizing: border-box; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: flex-end; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<nav aria-label="위치" style="font-size: 13px"><a href="ScreenHouse.dc.html" style="color: #5a2e2e; text-underline-offset: 3px">집으로</a></nav>
+<h1 style="margin: 0; font-family: 'Jua', sans-serif; font-weight: 400; font-size: 30px">가구 상점</h1>
+<span style="font-size: 13px; color: #8a5a4a">오늘 물가 지수 104.2 · 모든 가격이 기준가보다 4.2% 높아요</span>
+</div>
+<div role="radiogroup" aria-label="누가 살까요" style="display: flex; gap: 8px; align-items: center">
+<span class="meta" style="margin-right: 2px">사는 팀원</span>
+<button type="button" class="who" role="radio" aria-checked="false"><span class="face" style="background: #dde8f5"><dc-import name="Critter" species="bear" mode="face" scale="0.3" hint-size="26px,26px"></dc-import></span>곰 1,240</button>
+<button type="button" class="who" role="radio" aria-checked="true" style="background: #fbe9c4; border-width: 3px"><span class="face" style="background: #fadcd8"><dc-import name="Critter" species="rabbit" mode="face" scale="0.3" hint-size="26px,26px"></dc-import></span>토끼 860</button>
+<button type="button" class="who" role="radio" aria-checked="false"><span class="face" style="background: #fbe9c4"><dc-import name="Critter" species="penguin" mode="face" scale="0.3" hint-size="26px,26px"></dc-import></span>펭귄 1,480</button>
+<button type="button" class="who" role="radio" aria-checked="false"><span class="face" style="background: #dcebd2"><dc-import name="Critter" species="raccoon" mode="face" scale="0.3" hint-size="26px,26px"></dc-import></span>너구리 1,020</button>
+</div>
+</div>
+<div role="tablist" aria-label="가구 종류" style="display: flex; align-self: flex-start; padding: 4px; gap: 4px; background: #fff9ee; border: 2.5px solid #7a3e3e; border-radius: 14px">
+<button type="button" role="tab" aria-selected="true" class="tab" style="background: #f7cb52; border-color: #7a3e3e">전체 8</button>
+<button type="button" role="tab" aria-selected="false" class="tab">쉬기 3</button>
+<button type="button" role="tab" aria-selected="false" class="tab">일하기 2</button>
+<button type="button" role="tab" aria-selected="false" class="tab">꾸미기 3</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+<div class="item" style="border-color: #e2ae33; outline: 2px solid #7a3e3e">
+<div class="illo"><div style="margin-top: -58px"><dc-import name="Prop" kind="armchair" scale="1.25" fab="mustard" hint-size="120px,200px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; justify-content: space-between; align-items: center"><span class="nm">폭신 안락의자</span><span class="meta">1×1 · 쉬기</span></div>
+<div style="display: flex; gap: 5px" role="radiogroup" aria-label="색"><button type="button" class="sw" aria-label="머스터드" aria-checked="true" role="radio" style="background: #f0b24a; outline: 2px solid #7a3e3e; outline-offset: 2px"></button><button type="button" class="sw" aria-label="산호" role="radio" aria-checked="false" style="background: #ec6f66"></button><button type="button" class="sw" aria-label="하늘" role="radio" aria-checked="false" style="background: #6f97d8"></button><button type="button" class="sw" aria-label="풀잎" role="radio" aria-checked="false" style="background: #5aa77a"></button><button type="button" class="sw" aria-label="라벤더" role="radio" aria-checked="false" style="background: #a893dc"></button></div>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; flex-direction: column"><span class="price"><span class="coin"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">313</span></span><span style="font-size: 11.5px; color: #b8433f">기준 300 ▲</span></span><button type="button" class="buy">고름</button></div></div>
+</div>
+<div class="item">
+<div class="illo"><div style="margin-top: -58px"><dc-import name="Prop" kind="desk" scale="1.25" hint-size="120px,200px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; justify-content: space-between; align-items: center"><span class="nm">책상 · 노트북</span><span class="meta">1×1 · 일하기</span></div>
+<span class="meta">일할 때 기분 + · 집중 이벤트</span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; flex-direction: column"><span class="price"><span class="coin"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">271</span></span><span style="font-size: 11.5px; color: #b8433f">기준 260 ▲</span></span><button type="button" class="buy">사기</button></div></div>
+</div>
+<div class="item">
+<div class="illo"><div style="margin-top: -58px"><dc-import name="Prop" kind="bookcase" scale="1.25" hint-size="120px,200px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; justify-content: space-between; align-items: center"><span class="nm">책장</span><span class="meta">벽 · 일하기</span></div>
+<span class="meta">오른쪽 벽에만 놓임</span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; flex-direction: column"><span class="price"><span class="coin"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">229</span></span><span style="font-size: 11.5px; color: #b8433f">기준 220 ▲</span></span><button type="button" class="buy">사기</button></div></div>
+</div>
+<div class="item">
+<div class="illo"><div style="margin-top: -58px"><dc-import name="Prop" kind="flowers" scale="1.25" hint-size="120px,200px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; justify-content: space-between; align-items: center"><span class="nm">꽃밭</span><span class="meta">1×1 · 꾸미기</span></div>
+<span class="meta">집 앞마당에 놓이는 바깥 가구</span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; flex-direction: column"><span class="price"><span class="coin"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">94</span></span><span style="font-size: 11.5px; color: #b8433f">기준 90 ▲</span></span><button type="button" class="buy">사기</button></div></div>
+</div>
+<div class="item">
+<div class="illo"><div style="margin-top: -110px"><dc-import name="Prop" kind="bed" scale="1.25" fab="blue" hint-size="160px,260px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; justify-content: space-between; align-items: center"><span class="nm">침대</span><span class="meta">2×1 · 쉬기</span></div>
+<span class="meta">하늘색으로 가지고 있음</span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; flex-direction: column"><span class="price"><span class="coin"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">542</span></span><span style="font-size: 11.5px; color: #b8433f">기준 520 ▲</span></span><span class="own">보유 중</span></div></div>
+</div>
+<div class="item">
+<div class="illo"><div style="margin-top: -118px"><dc-import name="Prop" kind="rug" scale="1.25" fab="lavender" hint-size="160px,260px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; justify-content: space-between; align-items: center"><span class="nm">러그</span><span class="meta">2×1 · 꾸미기</span></div>
+<span class="meta">라벤더로 가지고 있음</span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; flex-direction: column"><span class="price"><span class="coin"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">188</span></span><span style="font-size: 11.5px; color: #b8433f">기준 180 ▲</span></span><span class="own">보유 중</span></div></div>
+</div>
+<div class="item">
+<div class="illo"><div style="margin-top: -58px"><dc-import name="Prop" kind="plant" scale="1.25" hint-size="120px,200px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; justify-content: space-between; align-items: center"><span class="nm">화분</span><span class="meta">1×1 · 꾸미기</span></div>
+<span class="meta">1개 가지고 있음 · 여러 개 가능</span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; flex-direction: column"><span class="price"><span class="coin"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">83</span></span><span style="font-size: 11.5px; color: #b8433f">기준 80 ▲</span></span><button type="button" class="buy">사기</button></div></div>
+</div>
+<div class="item">
+<div class="illo"><div style="margin-top: -58px"><dc-import name="Prop" kind="lamp" scale="1.25" fab="coral" hint-size="120px,200px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; justify-content: space-between; align-items: center"><span class="nm">스탠드</span><span class="meta">1×1 · 쉬기</span></div>
+<span class="meta">산호색으로 가지고 있음</span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; flex-direction: column"><span class="price"><span class="coin"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">125</span></span><span style="font-size: 11.5px; color: #b8433f">기준 120 ▲</span></span><span class="own">보유 중</span></div></div>
+</div>
+</div>
+</main>
+
+<aside aria-label="고른 가구" style="width: 440px; box-sizing: border-box; padding: 18px 16px; display: flex; flex-direction: column; gap: 12px; background: #fff9ee; border-left: 3px solid #7a3e3e">
+<h2 style="margin: 0; font-family: 'Jua', sans-serif; font-weight: 400; font-size: 20px">토끼의 방에 놓아 보기</h2>
+<div style="position: relative; height: 250px; border: 3px solid #7a3e3e; border-radius: 18px; background: #efe5c9; overflow: hidden">
+<svg width="402" height="244" viewBox="0 0 402 244" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<g stroke="#7a3e3e" stroke-width="3" stroke-linejoin="round">
+<polygon fill="#ecd2ab" points="201,110 105,158 105,78 201,30"></polygon>
+<polygon fill="#f8e8cc" points="201,110 297,158 297,78 201,30"></polygon>
+<polygon fill="#cfa877" points="105,158 201,206 201,214 105,166"></polygon>
+<polygon fill="#b98f5f" points="201,206 297,158 297,166 201,214"></polygon>
+<polygon fill="#e2c091" points="201,110 297,158 201,206 105,158"></polygon>
+</g>
+<path d="M169 126L265 174M137 142L233 190M233 126L137 174M265 142L169 190" fill="none" stroke="#cfa877" stroke-width="1.5"></path>
+<polygon fill="#c2e8f2" stroke="#7a3e3e" stroke-width="2.5" stroke-linejoin="round" points="232,95 262,110 262,80 232,65"></polygon>
+<polygon fill="none" stroke="#6f97d8" stroke-width="2" stroke-dasharray="4 3" points="201,142 233,158 201,174 169,158"></polygon>
+</svg>
+<div style="position: absolute; left: 122px; top: 96px"><dc-import name="Critter" species="rabbit" pose="cheer" scale="0.45" hint-size="58px,62px"></dc-import></div>
+<div style="position: absolute; left: 153px; top: 30px"><dc-import name="Prop" kind="armchair" fab="mustard" hint-size="96px,160px"></dc-import></div>
+</div>
+<span class="meta">파란 점선 칸에 놓입니다. 방에서 다시 옮길 수 있어요.</span>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; border: 3px solid #7a3e3e; border-radius: 18px">
+<div class="row"><span style="font-family: 'Jua', sans-serif; font-size: 17px">폭신 안락의자 · 머스터드</span><span class="price"><span class="coin"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">313</span></span></div>
+<div class="row" style="font-size: 13px; color: #8a5a4a"><span>기준가 300 × 물가 1.042</span><span>+13</span></div>
+<div class="row"><span>토끼 잔고</span><span style="font-family: 'Jua', sans-serif">860 → 547</span></div>
+<div class="row" style="font-size: 13px; color: #8a5a4a"><span>관리비</span><span>가구 1개당 하루 +2</span></div>
+</div>
+<div style="display: flex; gap: 10px">
+<button type="button" class="btn" style="flex-grow: 1; background: #f7cb52">313 코인에 사기</button>
+<a href="ScreenHouse.dc.html" class="btn" style="background: #fff9ee">취소</a>
+</div>
+<p style="margin: 0; font-size: 13px; line-height: 20px; color: #8a5a4a">가격은 기준가 × 물가 지수입니다. 물가가 목표(100)를 넘어서면 중앙은행이 금리를 올려 급여 인상이 느려지고, 물가가 다시 내려옵니다.</p>
+</aside>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

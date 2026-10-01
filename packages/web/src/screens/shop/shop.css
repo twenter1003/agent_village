@@ -1,0 +1,300 @@
+/*
+ * 가구 상점 (03 문서 6장, 캔버스 SeaScreenShop). 1440×900이면 상단 바 68 아래 목록 1000(4열) + 미리보기 패널 440. 토큰만 쓴다.
+ */
+.sh {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 440px;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--cream);
+  color: var(--text);
+}
+/* 상세를 연 동안 토스트(MainScreen .ts)는 정보 패널 440을 비켜 선다 (01 문서 8.2 화면 메모, 건물 상세는 building.css) */
+.ms--detail:has(.sh) > .ts {
+  right: calc(440px + var(--sp-4));
+}
+.sh--missing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+}
+.sh-link:focus-visible,
+.sh-who:focus-visible,
+.sh-tab:focus-visible,
+.sh-sw:focus-visible {
+  outline: var(--ui-line) solid var(--focus);
+  outline-offset: 3px;
+}
+.sh-meta {
+  color: var(--text-2);
+  font-size: var(--fs-min);
+  line-height: 17px;
+}
+
+/* ── 목록 ───────────────────────────────────── */
+.sh-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-sizing: border-box;
+  min-height: 0;
+  padding: 18px var(--sp-5);
+  overflow-y: auto;
+}
+.sh-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sp-3);
+}
+.sh-title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+.sh-link {
+  align-self: flex-start;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: var(--fs-sub);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.sh-h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 400;
+}
+.sh-buyers {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.sh-who {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-sizing: border-box;
+  height: 40px;
+  padding: 0 12px 0 4px;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: var(--r-pill);
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-sub);
+  cursor: pointer;
+}
+.sh-who[aria-checked='true'] {
+  border-width: var(--ui-line);
+  background: var(--slot3-tint);
+}
+.sh-face {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: 50%;
+}
+
+/* 종류 탭 (캔버스: 전환 토글 모양) */
+.sh-tabs {
+  display: flex;
+  align-self: flex-start;
+  gap: var(--sp-1);
+  padding: var(--sp-1);
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: 14px;
+  background: var(--paper);
+}
+.sh-tab {
+  box-sizing: border-box;
+  height: 36px;
+  padding: 0 14px;
+  border: var(--ui-line-sm) solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 15px;
+  cursor: pointer;
+}
+.sh-tab[aria-selected='true'] {
+  border-color: var(--ink);
+  background: var(--coin);
+}
+
+/* 카드 4열 */
+.sh-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--sp-4);
+}
+.sh-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0; /* 캔버스 .item: 그림 칸이 테두리까지 (ui-card 16px 안쪽 여백이면 이름 줄이 좁아 "노 / 트북"으로 끊김) */
+  overflow: hidden;
+}
+.sh-illo {
+  display: flex;
+  justify-content: center;
+  height: 140px;
+  overflow: hidden;
+  border-bottom: var(--ui-line) solid var(--ink);
+  background: var(--sunk);
+}
+.sh-bd {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 7px;
+  padding: 10px 12px 12px;
+}
+.sh-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+}
+.sh-row > .sh-meta {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.sh-name {
+  margin: 0;
+  word-break: keep-all; /* 한글 낱말 가운데서 끊지 않는다 */
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 400;
+}
+.sh-owned {
+  align-self: flex-start;
+  border-style: dashed;
+}
+.sh-swatches {
+  display: flex;
+  gap: 5px;
+}
+.sh-sw {
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: 50%;
+  cursor: pointer;
+}
+/* 고른 색 테는 포커스가 없을 때만 — 같은 명시도라 뒤에 오면 3px --focus 테를 덮는다 */
+.sh-sw[aria-checked='true']:not(:focus-visible) {
+  outline: var(--ui-line-sm) solid var(--ink);
+  outline-offset: 2px;
+}
+.sh-price {
+  display: flex;
+  flex-direction: column;
+}
+.sh-amount {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.sh-num {
+  font-family: var(--font-display);
+  font-size: 18px;
+}
+.sh-buyrow {
+  margin-top: auto;
+}
+
+/* ── 미리보기 패널 ───────────────────────────────── */
+.sh-side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  box-sizing: border-box;
+  min-height: 0;
+  padding: 18px var(--sp-4);
+  overflow-y: auto;
+  border-left: var(--ui-line) solid var(--ink);
+  background: var(--paper);
+}
+.sh-h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+}
+.sh-preview {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  overflow: hidden;
+  border: var(--ui-line) solid var(--ink);
+  border-radius: var(--r-card);
+  background: var(--water-bg-2);
+}
+.sh-sum {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: 14px 16px;
+  border: var(--ui-line) solid var(--ink);
+  border-radius: var(--r-card);
+  font-size: 14px;
+}
+.sh-sumname {
+  font-family: var(--font-display);
+  font-size: 17px;
+}
+.sh-short {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: var(--expense-text);
+  font-size: var(--fs-sub);
+}
+.sh-actions {
+  display: flex;
+  gap: 10px;
+}
+.sh-grow {
+  flex-grow: 1;
+}
+.sh-msg {
+  margin: 0;
+}
+.sh-msg:not(:empty) {
+  padding: 6px 10px;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-sub);
+}
+.sh-msg--alert {
+  border-color: var(--danger);
+}
+.sh-explain {
+  margin: 0;
+  color: var(--text-2);
+  font-size: var(--fs-sub);
+  line-height: 20px;
+  word-break: keep-all;
+}

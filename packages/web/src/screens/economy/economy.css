@@ -1,0 +1,402 @@
+/*
+ * 경제 패널 (03 문서 6장, 캔버스 SeaScreenEconomy). 필터 한 줄 → 타일 3개 → 2열(760 / 나머지). 물가·금리·중앙은행은 없다 (D20).
+ * 차트 색은 --chart-1(수입) / --chart-2(지출)만. 격자·축은 --rule 1px 실선. 토큰만 쓴다.
+ */
+.ec {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  box-sizing: border-box;
+  height: 100%;
+  padding: var(--sp-4) var(--sp-5);
+  overflow: auto;
+  background: var(--cream);
+  color: var(--text);
+}
+/* 토스트(MainScreen .ts): 패널이 화면 전체라 마을과 같은 오른쪽 위 (건물 상세의 620 비키기를 되돌림, 01 문서 8.2 화면 메모) */
+.ms--detail:has(.ec) > .ts {
+  right: var(--sp-4);
+}
+.ec-grow {
+  flex-grow: 1;
+}
+.ec-meta {
+  color: var(--text-2);
+  font-size: var(--fs-min);
+  line-height: 17px;
+  word-break: keep-all;
+}
+
+/* ── 머리 줄: 마을 · 경제 · 기간 · 설명 · 표로 보기 ── */
+.ec-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+.ec-back {
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: var(--fs-sub);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.ec-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 400;
+}
+.ec-tablebtn[aria-pressed='true'] {
+  background: var(--coin);
+}
+
+/* ── 지표 타일 3개 (물가·금리 타일은 D20으로 뺐다) ── */
+.ec-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.ec-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--sp-3) var(--sp-4);
+}
+.ec-tile__label {
+  color: var(--text-2);
+  font-size: var(--fs-sub);
+}
+.ec-tile__val {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 34px;
+}
+.ec-tile__delta {
+  font-size: 12.5px;
+  line-height: 17px;
+}
+.ec-tile__deco {
+  position: absolute;
+  top: -14px;
+  right: 6px;
+  pointer-events: none;
+}
+.ec-tone--good {
+  color: var(--income-text);
+}
+.ec-tone--bad {
+  color: var(--expense-text);
+}
+.ec-tone--flat {
+  color: var(--text-2);
+}
+
+/* ── 본문 2열 ──────────────────────────────────── */
+.ec-body {
+  display: grid;
+  grid-template-columns: minmax(0, 760px) minmax(0, 1fr);
+  align-items: start;
+  gap: var(--sp-4);
+  transition: opacity 150ms;
+}
+.ec--loading .ec-body {
+  opacity: 0.6; /* 다시 받는 동안 앞 그림을 흐리게 (틀은 그대로) */
+}
+.ec-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+.ec-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-3) var(--sp-4);
+}
+.ec-cardhead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 10px;
+}
+.ec-h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+}
+.ec-empty {
+  min-height: 200px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* ── 차트 (charts.tsx) ─────────────────────────── */
+.ec-plot {
+  position: relative;
+  border-radius: var(--r-sm);
+}
+.ec-plot:focus-visible,
+.ec-back:focus-visible {
+  outline: var(--ui-line) solid var(--focus);
+  outline-offset: 3px;
+}
+.ec-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.ec-ax {
+  fill: var(--text-2);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+.ec-gridline {
+  stroke: var(--rule);
+  stroke-width: 1;
+}
+.ec-end {
+  fill: var(--text);
+  font-family: var(--font-display);
+  font-size: 15px;
+}
+.ec-end--sm {
+  font-size: 13px;
+}
+.ec-inc {
+  fill: var(--chart-1);
+}
+.ec-exp {
+  fill: var(--chart-2);
+}
+.ec-zero {
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+.ec-colhi {
+  fill: var(--sunk);
+  fill-opacity: 0.6;
+}
+
+/* 범례: 막대 계열은 네모, 툴팁 줄은 짧은 선 */
+.ec-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--fs-min);
+}
+.ec-key {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+.ec-key--1,
+.ec-linekey--1 {
+  background: var(--chart-1);
+}
+.ec-key--2,
+.ec-linekey--2 {
+  background: var(--chart-2);
+}
+.ec-linekey {
+  flex-shrink: 0;
+  width: 12px;
+  height: 2px;
+}
+
+/* 툴팁: 값 먼저(Jua), 이름은 보조 글자 */
+.ec-tip {
+  position: absolute;
+  top: 6px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 10px;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: 10px;
+  background: var(--paper);
+  box-shadow: var(--lift-float);
+  font-size: var(--fs-min);
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translateX(12px);
+}
+.ec-tip--flip {
+  transform: translateX(calc(-100% - 12px));
+}
+.ec-tip__val {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 400;
+}
+.ec-tip__row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-2);
+}
+.ec-tip__num {
+  margin-left: auto;
+  padding-left: var(--sp-2);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+/* ── 팀원 잔고 막대 (슬롯 색은 얼굴 타일로만) ──────── */
+.ec-bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ec-brow,
+.ec-erow {
+  display: grid;
+  grid-template-columns: minmax(0, 140px) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--fs-sub);
+}
+.ec-who {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.ec-who__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ec-face {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 26px;
+  height: 26px;
+  overflow: hidden;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: 50%;
+}
+.ec-track {
+  height: 14px;
+}
+.ec-fill {
+  display: block;
+  height: 100%;
+  border-radius: 0 4px 4px 0;
+  background: var(--chart-1);
+}
+/* 효율 순위 (01 문서 6.6): 순위 칸 + 이름 뒤 직업. 순위 밖은 흐리게 */
+.ec-erow {
+  grid-template-columns: 20px minmax(0, 200px) minmax(0, 1fr) auto;
+}
+.ec-erow--out {
+  opacity: 0.6;
+}
+/* 줄 아래 주원인 · 비교 · 급여 보정 (01 문서 6.7) — 이름 칸부터 끝까지 */
+.ec-esub {
+  grid-column: 2 / -1;
+  margin-top: -6px;
+}
+.ec-rank {
+  font-family: var(--font-display);
+  text-align: right;
+}
+.ec-job {
+  flex-shrink: 0;
+  color: var(--text-2);
+  font-size: var(--fs-min);
+}
+.ec-bnum {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-display);
+  text-align: right;
+}
+.ec-hard {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--expense-text);
+  font-family: var(--font-body);
+  font-size: var(--fs-min);
+}
+
+/* ── 표로 보기 ─────────────────────────────────── */
+.ec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-sub);
+}
+.ec-table thead th {
+  padding: 5px 8px;
+  background: var(--sunk);
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-align: left;
+}
+.ec-table tbody th,
+.ec-table td {
+  padding: 5px 8px;
+  border-top: 1.5px solid var(--sunk);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  text-align: left;
+}
+
+/* ── 기금 흐름 (D21): 집 지갑 줄(hs-row)과 같은 모양 ── */
+.ec-frow {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-sub);
+}
+.ec-fnum {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+}
+.ec-frow--sub {
+  color: var(--text-2);
+}
+.ec-frow--total {
+  padding-top: var(--sp-2);
+  border-top: 1.5px solid var(--sunk);
+  font-size: var(--fs-card);
+}
+.ec-deficit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px var(--sp-2);
+  margin: 0;
+}
+
+@media (max-width: 1100px) {
+  .ec-tiles {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+  .ec-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

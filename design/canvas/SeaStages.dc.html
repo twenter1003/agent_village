@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>바다 공사 단계</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.hd{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;color:#1f3850;margin:0}
+.meta{font-size:12px;color:#4f6883;line-height:17px}
+.card{box-sizing:border-box;background:#f9fdfc;border:3px solid #2e4b66;border-radius:20px;padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.strip{display:flex;align-items:center;gap:6px}
+.cell{display:flex;flex-direction:column;align-items:center;gap:6px;width:160px}
+.frame{border-radius:14px;background:#bfe2e8;overflow:hidden}
+.nm{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:15px;color:#1f3850}
+.pips{display:flex;gap:3px}
+.pip{width:10px;height:10px;border-radius:50%;border:2px solid #2e4b66;box-sizing:border-box;background:#f9fdfc}
+.on{background:#f7cb52}
+.arrow{flex-shrink:0;margin-bottom:60px}
+.th{padding:9px 12px;background:#d3e9e6;font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:14px}
+.td{padding:9px 12px;border-top:2px solid #b9d6d4;font-size:13px;line-height:19px}
+.aid{font-family:ui-monospace,Menlo,monospace;font-size:12px}
+.rule{margin:0;padding-left:18px;font-size:14px;line-height:23px;color:#1f3850}
+.code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:#d3e9e6;border-radius:6px;padding:1px 6px}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1500px; box-sizing: border-box; padding: 44px 56px; background: #e6f3f1; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #1f3850; display: flex; flex-direction: column; gap: 20px">
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 class="hd" style="font-size: 40px; line-height: 48px">바다 공사 단계</h1>
+<p style="margin: 0; font-size: 15px; color: #4f6883">규칙은 잔디 마을과 같고 그림만 물속 공사로 바꿨습니다. 부표로 부지를 표시하고, 산호 복원 프레임을 세우고, 리프트 백으로 자재를 띄워 올립니다.</p>
+</div>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">작업 4개 건물 (1층)</h2><span class="meta">공방 프리셋 · 슬롯 1. 프레임은 완료 비율(완료 ÷ N)만큼 아래부터 드러납니다.</span></div>
+<div class="strip">
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="coral-1f" roof="scallop" sign="workshop" slot="1" stage="planned" hint-size="160px,256px"></dc-import></div><span class="nm">예정 부지 · 부표</span><div class="pips"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><span class="meta">완료 0 / 4</span></div>
+<svg class="arrow" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5L15 12L8 19" fill="none" stroke="#4f6883" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="coral-1f" roof="scallop" sign="workshop" slot="1" stage="foundation" hint-size="160px,256px"></dc-import></div><span class="nm">기초 · 현무암 판</span><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><span class="meta">완료 1 / 4</span></div>
+<svg class="arrow" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5L15 12L8 19" fill="none" stroke="#4f6883" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="coral-1f" roof="scallop" sign="workshop" slot="1" stage="frame" progress="0.5" hint-size="160px,256px"></dc-import></div><span class="nm">프레임 · 비계 50%</span><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><span class="meta">완료 2 / 4</span></div>
+<svg class="arrow" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5L15 12L8 19" fill="none" stroke="#4f6883" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="coral-1f" roof="scallop" sign="workshop" slot="1" stage="frame" progress="0.75" hint-size="160px,256px"></dc-import></div><span class="nm">프레임 · 비계 75%</span><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><span class="meta">완료 3 / 4</span></div>
+<svg class="arrow" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5L15 12L8 19" fill="none" stroke="#4f6883" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="coral-1f" roof="scallop" sign="workshop" slot="1" stage="done" fx="true" hint-size="160px,256px"></dc-import></div><span class="nm">완공 · 종류 공개</span><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><span class="meta">반짝임 + 거품 3초</span></div>
+</div>
+</section>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">작업 6개 건물 (2층)</h2><span class="meta">초소 프리셋 · 슬롯 3. 프레임과 비계가 2층용으로 바뀌고 리프트 백이 더 높이 뜹니다.</span></div>
+<div class="strip">
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="basalt-2f" roof="dome" sign="guard" slot="3" stage="frame" progress="0.33" hint-size="160px,256px"></dc-import></div><span class="nm">완료 2 / 6</span><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+<svg class="arrow" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5L15 12L8 19" fill="none" stroke="#4f6883" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="basalt-2f" roof="dome" sign="guard" slot="3" stage="frame" progress="0.5" hint-size="160px,256px"></dc-import></div><span class="nm">완료 3 / 6</span><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div></div>
+<svg class="arrow" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5L15 12L8 19" fill="none" stroke="#4f6883" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="basalt-2f" roof="dome" sign="guard" slot="3" stage="frame" progress="0.67" hint-size="160px,256px"></dc-import></div><span class="nm">완료 4 / 6</span><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div></div>
+<svg class="arrow" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5L15 12L8 19" fill="none" stroke="#4f6883" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="basalt-2f" roof="dome" sign="guard" slot="3" stage="frame" progress="0.83" hint-size="160px,256px"></dc-import></div><span class="nm">완료 5 / 6</span><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div></div>
+<svg class="arrow" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5L15 12L8 19" fill="none" stroke="#4f6883" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div class="cell"><div class="frame"><dc-import name="SeaBuilding" body="basalt-2f" roof="dome" sign="guard" slot="3" stage="done" hint-size="160px,256px"></dc-import></div><span class="nm">완공</span><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div></div>
+</div>
+</section>
+
+<div style="display: flex; gap: 20px; flex-grow: 1">
+<section class="card" style="width: 330px; flex-shrink: 0">
+<h2 class="hd" style="font-size: 22px">직접 돌려 보기</h2>
+<span class="meta">오른쪽 위 조정(Tweaks)에서 작업 수 N, 완료 수, 프리셋을 바꿔 보세요.</span>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 8px">
+<div class="frame"><dc-import name="SeaBuilding" body="{{demo.body}}" roof="{{demo.roof}}" sign="{{demo.sign}}" slot="{{demo.slot}}" stage="{{demo.stage}}" progress="{{demo.p}}" fx="{{demo.fx}}" hint-size="160px,256px"></dc-import></div>
+<span class="nm">{{demo.label}}</span>
+<div class="pips"><sc-for list="{{demo.pips}}" as="pp" hint-placeholder-count="4"><span class="pip" style="background: {{pp.bg}}"></span></sc-for></div>
+<span class="meta">완료 {{demo.done}} / {{demo.n}} · 프레임 {{demo.pct}}</span>
+</div>
+</section>
+<section class="card" style="flex-grow: 1">
+<h2 class="hd" style="font-size: 22px">단계별로 겹치는 에셋</h2>
+<div style="display: grid; grid-template-columns: 120px 1.4fr 1fr; border: 2px solid #2e4b66; border-radius: 14px; overflow: hidden">
+<div class="th">단계</div><div class="th">아래 → 위</div><div class="th">바뀌는 때</div>
+<div class="td">예정 부지</div><div class="td"><span class="aid">site.planned</span> · 부표 말뚝 4개 + 밧줄 + 표시 부표</div><div class="td">작업이 추가되자마자</div>
+<div class="td">기초</div><div class="td"><span class="aid">site.foundation</span> · 다진 모래 + 현무암 판</div><div class="td">첫 작업 완료</div>
+<div class="td">프레임 · 비계</div><div class="td"><span class="aid">site.foundation → site.frame-1f|2f → site.scaffold-1f|2f</span></div><div class="td">완료 2 ~ N−1 · 프레임 clip 높이 = 완료 ÷ N</div>
+<div class="td">완공</div><div class="td"><span class="aid">body.* → roof.* → sign.* → fx.complete</span></div><div class="td">마지막 작업 완료 · 효과는 3초 뒤 제거</div>
+</div>
+<ul class="rule">
+<li>프레임은 실제 산호 복원 방식처럼 금속 격자에 산호 조각이 붙은 모양입니다. 누구 건물이 될지 모르게 무채색 금속 + 여러 색 산호 조각으로 둡니다.</li>
+<li>비계의 노란 풍선은 수중 공사에서 쓰는 리프트 백입니다. 완공 순간 끈이 풀려 위로 떠오르며 사라지게 하면 완공 연출과 자연스럽게 이어집니다.</li>
+<li>N이 늘어 완료 비율이 내려가도 이미 드러난 높이는 유지하고, 다음 완료 때 따라잡습니다 (잔디 마을과 같음).</li>
+</ul>
+</section>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"n":{"editor":"int","min":3,"max":6,"default":5,"section":"직접 돌려 보기"},"done":{"editor":"int","min":0,"max":6,"default":3,"section":"직접 돌려 보기"},"preset":{"editor":"enum","options":["공방","카페","초소","회관"],"default":"카페","section":"직접 돌려 보기"},"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+renderVals() {
+const n = Math.max(3, Math.min(6, Number(this.props.n ?? 5)));
+const done = Math.max(0, Math.min(n, Number(this.props.done ?? 3)));
+const PRE = {
+'공방': { b1: 'coral-1f', b2: 'wreck-2f', roof: 'scallop', sign: 'workshop', slot: '1' },
+'카페': { b1: 'shell-1f', b2: 'wreck-2f', roof: 'conch', sign: 'cafe', slot: '2' },
+'초소': { b1: 'shell-1f', b2: 'basalt-2f', roof: 'dome', sign: 'guard', slot: '3' },
+'회관': { b1: 'coral-1f', b2: 'wreck-2f', roof: 'scallop', sign: 'hall', slot: '4' }
+};
+const pr = PRE[this.props.preset] || PRE['카페'];
+let stage = 'frame';
+let label = '프레임 · 비계';
+if (done === 0) { stage = 'planned'; label = '예정 부지'; }
+else if (done === 1) { stage = 'foundation'; label = '기초'; }
+else if (done >= n) { stage = 'done'; label = '완공'; }
+const p = done / n;
+const pips = [];
+for (let i = 0; i < n; i++) pips.push({ bg: i < done ? '#f7cb52' : (i === done ? '#fbe9c4' : '#f9fdfc') });
+return {
+demo: {
+body: n <= 4 ? pr.b1 : pr.b2, roof: pr.roof, sign: pr.sign, slot: pr.slot,
+stage: stage, p: p, fx: stage === 'done', label: label, pips: pips, done: done, n: n,
+pct: stage === 'frame' ? Math.round(p * 100) + '%' : '—'
+}
+};
+}
+}
+</script>
+</body>
+</html>

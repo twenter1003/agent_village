@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src",
+    "../../design/rig.json",
+    "../../design/rig.sea.json",
+    "../../fixtures/village-demo.json",
+    "../../design/theme-map.sea.json"
+  ],
+  "references": [
+    {
+      "path": "../core"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": { "outDir": "dist", "resolveJsonModule": true },
+  "include": ["src", "../../design/game.default.json", "../../design/theme-map.sea.json"]
+}

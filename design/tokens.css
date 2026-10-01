@@ -1,0 +1,110 @@
+/*
+ * 서브에이전트 타이쿤 디자인 토큰
+ * 원본: design/canvas/Main.dc.html (01 색상 토큰), Rules.dc.html (02), Type.dc.html (03)
+ * 규칙: 컴포넌트와 에셋은 여기 있는 값만 쓴다. 새 색이 필요하면 이 파일에 먼저 추가한다.
+ * 다크 모드는 없음 (월드가 낮 장면 하나라서). 필요해지면 별도 결정.
+ * 테마: 바다 마을은 design/tokens-sea.css가 <html data-theme="sea">에서 덮어쓴다 (docs/05-바다-테마.md).
+ */
+:root {
+  /* ── 기본: 선, 글자, 바탕 ───────────────────────── */
+  --ink: #7a3e3e;          /* 모든 외곽선 */
+  --text: #5a2e2e;         /* 글자, 캐릭터 눈·코 */
+  --text-2: #8a5a4a;       /* 보조 글자 (종이 위 5.5:1) */
+  --paper: #fff9ee;        /* 카드, 패널 */
+  --cream: #f5ecd7;        /* 앱 바탕 */
+  --sunk: #f3e3c3;         /* 움푹한 면, 표 머리 */
+  --field: #efe5c9;        /* 마을 뷰 바탕 */
+  --rule: #e3cdb0;         /* 구분선 */
+  --focus: #4769a6;        /* 키보드 포커스 링 */
+
+  /* ── 재질 램프: top 윗면 / l 왼쪽 아래 면(한 단계) / r 오른쪽 아래 면(두 단계) ── */
+  --grass-top: #cfd59a;   --grass-l: #b7bd7f;   --grass-r: #a0a66b;
+  --path-top: #f3bd93;    --path-l: #e8a579;    --path-r: #d68d62;
+  --dirt-top: #e2c091;    --dirt-l: #cfa877;    --dirt-r: #b98f5f;
+  --stone-top: #efe6d6;   --stone-l: #dccfb9;   --stone-r: #c6b79d;
+  --plaster-top: #fff5e2; --plaster-l: #f8e8cc; --plaster-r: #ecd2ab;
+  --wood-top: #dca173;    --wood-l: #c4845a;    --wood-r: #a86c48;
+  --brick-top: #e8a07a;   --brick-l: #d4865f;   --brick-r: #bd7050;
+  --leaf-top: #4f9a68;    --leaf-l: #3d8358;    --leaf-r: #2e6a47;   --leaf-hi: #7cbf8c;
+  --water-top: #b5e0ec;   --water-l: #92cbe0;   --water-r: #72b2cc;  --water-hi: #effafc;
+  --metal-top: #ebe7ee;   --metal-l: #cdc6d4;   --metal-r: #b3aabd;
+  --glass: #c2e8f2;       --glass-hi: #effafc;
+  --smoke: #ece4d6;
+  --shadow-ink: rgba(122, 62, 62, 0.3);   /* 바닥 그림자 중심. 가장자리 0으로 방사형 */
+  --cap-edge: #dcb58c;                     /* 방 벽 두께 면 */
+
+  /* ── 팀원 슬롯 색 (순서 = 색약 검사 통과 순서, 바꾸지 말 것) ──
+     base = 지붕 왼쪽 경사·기본, l = 한 단계, r = 두 단계, tint = 카드·칩 바탕, deep = tint 위 글자 */
+  --slot1: #6f97d8; --slot1-l: #5a80c2; --slot1-r: #4769a6; --slot1-tint: #dde8f5; --slot1-deep: #3f5f99; /* 하늘 */
+  --slot2: #ec6f66; --slot2-l: #d45a53; --slot2-r: #b84842; --slot2-tint: #fadcd8; --slot2-deep: #a8433d; /* 산호 */
+  --slot3: #f0b24a; --slot3-l: #d99a35; --slot3-r: #bb8024; --slot3-tint: #fbe9c4; --slot3-deep: #845614; /* 겨자 */
+  --slot4: #5aa77a; --slot4-l: #478f65; --slot4-r: #377752; --slot4-tint: #dcebd2; --slot4-deep: #2f7049; /* 풀잎 */
+  --slot5: #a893dc; --slot5-l: #9079c7; --slot5-r: #7862ad; --slot5-tint: #e8e1f6; --slot5-deep: #6a55a3; /* 라벤더 */
+  --slot6: #4fb3ad; --slot6-l: #3e9a95; --slot6-r: #2f807b; --slot6-tint: #d6efec; --slot6-deep: #226a66; /* 청록 */
+  --slotx: #bcae9c; --slotx-l: #a69884; --slotx-r: #8d7f6c; --slotx-tint: #efe8df; --slotx-deep: #6a5b46; /* 외부인 모래 */
+
+  /* ── 캐릭터 털 ─────────────────────────────────── */
+  --bear-fur: #c0804f;    --bear-in: #eeb08f;    --bear-muzzle: #f6dfc3; --bear-shade: #a86c40;
+  --rabbit-fur: #fbf3e8;  --rabbit-in: #f5a3a8;  --rabbit-shade: #eadbc7;
+  --raccoon-fur: #aaa2ad; --raccoon-mask: #5f5566; --raccoon-shade: #938a97;
+  --penguin-fur: #4a5a7e; --penguin-beak: #f4a340; --penguin-shade: #3b4968;
+  --visitor-fur: #d9ccb8; --visitor-shade: #bcae9c;   /* 외부인 (잠정) */
+  --cap-explore: #5aa77a; --cap-plan: #6f97d8; --cap-general: #f0b24a;
+  --blush: #f7a194;
+
+  /* ── 상태 (색만으로 구분하지 않음: 항상 아이콘과 함께) ── */
+  --st-working: #f7cb52;
+  --st-meeting: #96c6ea;
+  --st-resting: #bfdca8;
+  --st-blocked: #ec6f66;
+
+  /* ── 경제 ─────────────────────────────────────── */
+  --coin: #f7cb52;        --coin-d: #e2ae33;      /* UI 강조색이기도 함: 주 버튼, 선택, 진행 채움 */
+  --currency: var(--coin); --currency-d: var(--coin-d);  /* 화폐 아이콘. 테마가 바꿀 수 있음 (바다 = 진주) */
+  --income-text: #2f7d4f;
+  --expense-text: #b8433f;   /* 지출, 물가 ▲ */
+  --price-down-text: #3f5f99;/* 물가 ▼ */
+  --danger: #c2413d;         /* 위험 버튼, 숫자 뱃지 (흰 글자 5:1) */
+  --meeting-tint: #d9ecf8;
+  --personality: #a893dc;    /* 성격 변화 표시 */
+
+  /* ── 비활성 (03 문서 5장 버튼 상태) ──────────────── */
+  --disabled-bg: #efe5c9;  --disabled-border: #c9b59a;  --disabled-text: #a8907f;
+
+  /* ── 버튼 올림·눌림 (03 문서 5장, 값은 Controls.dc.html). 보조 눌림 = --sunk, 주 눌림 = --coin-d ── */
+  --coin-hi: #fad879;      /* 주 버튼 올림 */
+  --paper-hi: #fdf0d8;     /* 보조·아이콘 버튼 올림. 바다가 덮어씀 */
+  --danger-hi: #cd4c47;    --danger-d: #a8433d;  /* 위험 버튼 올림 / 눌림 */
+
+  /* ── 차트 (색약 검사 통과 조합만) ───────────────── */
+  --chart-1: #4769a6;        /* 단일 계열, 수입 */
+  --chart-2: #b84842;        /* 지출 */
+  --chart-band: #dcebd2;     /* 목표 범위 띠 (투명도 0.55) */
+
+  /* ── 선 굵기 ───────────────────────────────────── */
+  --sw: 3px;        /* 월드 외곽선. 축소 에셋은 3 / 배율로 보정 */
+  --sw-detail: 2px; /* 창살, 판자 이음, 입 */
+  --ui-line: 3px;   /* 패널, 카드, 상단바 */
+  --ui-line-sm: 2px;/* 높이 44 이하 컨트롤 */
+
+  /* ── 모서리 ────────────────────────────────────── */
+  --r-sm: 8px; --r-btn: 12px; --r-toast: 16px; --r-card: 18px; --r-panel: 20px; --r-pill: 999px;
+
+  /* ── 간격 (4 단위) ─────────────────────────────── */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 20px; --sp-6: 24px; --sp-8: 32px;
+
+  /* ── 높이감: 흐린 그림자 대신 어긋난 단색 ─────────── */
+  --lift-press: 0 3px 0 var(--ink);                 /* 누르는 것 */
+  --lift-float: 0 6px 0 rgba(122, 62, 62, 0.16);    /* 떠 있는 것: 토스트, 팝오버 */
+
+  /* ── 글꼴 (Google Fonts) ───────────────────────── */
+  --font-display: 'Jua', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;      /* 제목, 숫자 */
+  --font-body: 'Gowun Dodum', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; /* 본문 */
+  --font-mono: ui-monospace, Menlo, monospace;                                     /* 시각, id */
+  --fs-screen: 32px;  --lh-screen: 40px;
+  --fs-section: 22px; --lh-section: 28px;
+  --fs-card: 17px;    --lh-card: 24px;
+  --fs-body: 15px;    --lh-body: 22px;
+  --fs-sub: 13px;     --lh-sub: 18px;
+  --fs-min: 12px;     --lh-min: 16px;
+}

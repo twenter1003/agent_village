@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>소품 · 가구 · 바닥</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="position: relative; width: {{rw}}px; height: {{rh}}px">
+
+<sc-if value="{{k.tileGrass}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="tile.grass" data-tiles="1x1" data-anchor="48,128" data-layer="ground" aria-hidden="true" style="display: block">
+<polygon fill="#cfd59a" points="48,112 80,128 48,144 16,128"></polygon>
+<path d="M34 128L36 124L38 128M56 134L58 130L60 134M50 120L52 116L54 120" fill="none" stroke="#b7bd7f" stroke-width="{{w15}}" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</sc-if>
+<sc-if value="{{k.tilePath}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="tile.path" data-tiles="1x1" data-anchor="48,128" data-layer="ground" aria-hidden="true" style="display: block">
+<polygon fill="#f3bd93" points="48,112 80,128 48,144 16,128"></polygon>
+<ellipse cx="38" cy="128" rx="2.6" ry="1.4" fill="#e8a579"></ellipse><ellipse cx="56" cy="123" rx="2.2" ry="1.2" fill="#e8a579"></ellipse><ellipse cx="52" cy="135" rx="2.8" ry="1.4" fill="#e8a579"></ellipse>
+</svg>
+</sc-if>
+<sc-if value="{{k.tilePlaza}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="tile.plaza" data-tiles="1x1" data-anchor="48,128" data-layer="ground" aria-hidden="true" style="display: block">
+<polygon fill="#efe6d6" points="48,112 80,128 48,144 16,128"></polygon>
+<path d="M32 120L64 136M64 120L32 136" fill="none" stroke="#dccfb9" stroke-width="{{w15}}" stroke-linecap="round"></path>
+</svg>
+</sc-if>
+<sc-if value="{{k.tileDirt}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="tile.dirt" data-tiles="1x1" data-anchor="48,128" data-layer="ground" aria-hidden="true" style="display: block">
+<polygon fill="#e2c091" points="48,112 80,128 48,144 16,128"></polygon>
+<circle cx="40" cy="124" r="1.4" fill="#cfa877"></circle><circle cx="58" cy="130" r="1.6" fill="#cfa877"></circle><circle cx="47" cy="136" r="1.2" fill="#cfa877"></circle>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.armchair}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="furniture.armchair" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<g stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="{{fabL}}" points="20,128 48,142 48,128 20,114"></polygon>
+<polygon fill="{{fabR}}" points="48,142 76,128 76,114 48,128"></polygon>
+<polygon fill="{{fab}}" points="48,100 76,114 48,128 20,114"></polygon>
+<polygon fill="{{fabR}}" points="26,117 54,103 54,93 26,107"></polygon>
+<polygon fill="{{fabL}}" points="20,114 26,117 26,107 20,104"></polygon>
+<polygon fill="{{fab}}" points="20,104 26,107 54,93 48,90"></polygon>
+<polygon fill="{{fabL}}" points="41,103.5 69,117.5 69,95.5 41,81.5"></polygon>
+<polygon fill="{{fabR}}" points="69,117.5 76,114 76,92 69,95.5"></polygon>
+<polygon fill="{{fab}}" points="41,81.5 69,95.5 76,92 48,78"></polygon>
+<polygon fill="{{fabL}}" points="42,125 48,128 48,118 42,115"></polygon>
+<polygon fill="{{fabR}}" points="48,128 76,114 76,104 48,118"></polygon>
+<polygon fill="{{fab}}" points="42,115 48,118 76,104 70,101"></polygon>
+</g>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.desk}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="furniture.desk" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<path d="M21 105L21 127M48 119L48 141M75 105L75 127" fill="none" stroke="#7a3e3e" stroke-width="{{w6}}" stroke-linecap="round"></path>
+<path d="M21 105L21 127M48 119L48 141M75 105L75 127" fill="none" stroke="#c4845a" stroke-width="{{w25}}" stroke-linecap="round"></path>
+<g stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#c4845a" points="20,102 48,116 48,120 20,106"></polygon>
+<polygon fill="#a86c48" points="48,116 76,102 76,106 48,120"></polygon>
+<polygon fill="#dca173" points="48,88 76,102 48,116 20,102"></polygon>
+<polygon fill="#ebe7ee" points="44,95 56,101 46,106 34,100"></polygon>
+<polygon fill="#c2e8f2" points="44,95 56,101 56,86 44,80"></polygon>
+<path fill="#fff9ee" d="M59 104L59 110Q62 112 65 110L65 104Z"></path>
+</g>
+<ellipse cx="62" cy="104" rx="3" ry="1.5" fill="#a86c48" stroke="#7a3e3e" stroke-width="{{w15}}"></ellipse>
+<path d="M47 88L53 91M47 92L51 94" fill="none" stroke="#6f97d8" stroke-width="{{w15}}" stroke-linecap="round"></path>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.bookcase}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="furniture.bookcase" data-tiles="1x1" data-anchor="48,128" data-against="wall-right" aria-hidden="true" style="display: block">
+<g stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#c4845a" points="38,117 70,133 70,73 38,57"></polygon>
+<polygon fill="#a86c48" points="70,133 80,128 80,68 70,73"></polygon>
+<polygon fill="#dca173" points="38,57 70,73 80,68 48,52"></polygon>
+</g>
+<g stroke="#7a3e3e" stroke-width="{{w15}}" stroke-linejoin="round">
+<polygon fill="#ec6f66" points="41,116.5 45,118.5 45,106.5 41,104.5"></polygon>
+<polygon fill="#6f97d8" points="45,118.5 49,120.5 49,109.5 45,107.5"></polygon>
+<polygon fill="#f0b24a" points="50,121 53,122.5 53,112.5 50,111"></polygon>
+<polygon fill="#5aa77a" points="42,102 46,104 46,92 42,90"></polygon>
+<polygon fill="#a893dc" points="46,104 49,105.5 49,94.5 46,93"></polygon>
+<polygon fill="#ec6f66" points="56,94 60,96 60,85 56,83"></polygon>
+<polygon fill="#6f97d8" points="60,96 64,98 64,86 60,84"></polygon>
+</g>
+<path d="M38 102L70 118M38 87L70 103M38 72L70 88" fill="none" stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linecap="round"></path>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.plant}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="furniture.plant" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<g stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<path fill="#e8a07a" d="M38 112L41 128Q48 132 55 128L58 112Z"></path>
+<ellipse fill="#d4865f" cx="48" cy="112" rx="10" ry="4.5"></ellipse>
+</g>
+<ellipse fill="#a86c48" cx="48" cy="112" rx="7" ry="2.8"></ellipse>
+<g fill="#7a3e3e"><circle cx="48" cy="96" r="{{r11}}"></circle><circle cx="38" cy="101" r="{{r8}}"></circle><circle cx="58" cy="101" r="{{r8}}"></circle><circle cx="48" cy="85" r="{{r8}}"></circle></g>
+<g fill="#4f9a68"><circle cx="48" cy="96" r="11"></circle><circle cx="38" cy="101" r="8"></circle><circle cx="58" cy="101" r="8"></circle><circle cx="48" cy="85" r="8"></circle></g>
+<circle cx="57" cy="103" r="5" fill="#3d8358"></circle>
+<ellipse cx="44" cy="87" rx="3.5" ry="2.3" fill="#7cbf8c"></ellipse><ellipse cx="36" cy="99" rx="2.8" ry="1.8" fill="#7cbf8c"></ellipse>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.lamp}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="furniture.lamp" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<ellipse cx="48" cy="128" rx="9" ry="4.5" fill="#cdc6d4" stroke="#7a3e3e" stroke-width="{{w3}}"></ellipse>
+<path d="M48 127L48 80" fill="none" stroke="#7a3e3e" stroke-width="{{w6}}" stroke-linecap="round"></path>
+<path d="M48 127L48 80" fill="none" stroke="#cdc6d4" stroke-width="{{w25}}" stroke-linecap="round"></path>
+<ellipse cx="48" cy="84" rx="7" ry="2.5" fill="#fff9ee"></ellipse>
+<g stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<path fill="{{fab}}" d="M37 82L59 82L55 62L41 62Z"></path>
+</g>
+<path fill="{{fabL}}" d="M49 81L57.5 81L54 63.5L49 63.5Z"></path>
+<path d="M37 82L59 82L55 62L41 62Z" fill="none" stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round"></path>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.bed}}" hint-placeholder-val="{{false}}">
+<svg width="{{w21}}" height="{{h21}}" viewBox="0 0 128 208" data-asset-id="furniture.bed" data-tiles="2x1" data-anchor="64,168" aria-hidden="true" style="display: block">
+<g stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#a86c48" points="24,160 48,148 48,114 24,126"></polygon>
+<polygon fill="#dca173" points="24,126 48,114 51,115.5 27,127.5"></polygon>
+<polygon fill="#c4845a" points="24,160 80,188 80,176 24,148"></polygon>
+<polygon fill="#a86c48" points="80,188 104,176 104,164 80,176"></polygon>
+<polygon fill="#fff9ee" points="48,136 104,164 80,176 24,148"></polygon>
+<ellipse fill="#fff9ee" cx="40" cy="146" rx="10" ry="5.5" transform="rotate(-26.6 40 146)"></ellipse>
+<polygon fill="{{fabL}}" points="45.3,158.6 80,176 80,184 45.3,166.6"></polygon>
+<polygon fill="{{fabR}}" points="80,176 104,164 104,172 80,184"></polygon>
+<polygon fill="{{fab}}" points="69.3,146.6 104,164 80,176 45.3,158.6"></polygon>
+</g>
+<path d="M62 150L50 156" fill="none" stroke="#fff9ee" stroke-width="{{w2}}" stroke-linecap="round" stroke-opacity="0.7"></path>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.rug}}" hint-placeholder-val="{{false}}">
+<svg width="{{w21}}" height="{{h21}}" viewBox="0 0 128 208" data-asset-id="furniture.rug" data-tiles="2x1" data-anchor="64,168" data-layer="floor" aria-hidden="true" style="display: block">
+<g stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="{{fabL}}" points="30,159 80,184 80,186 30,161"></polygon>
+<polygon fill="{{fabR}}" points="80,184 98,175 98,177 80,186"></polygon>
+<polygon fill="{{fab}}" points="48,150 98,175 80,184 30,159"></polygon>
+</g>
+<polygon points="51.2,152.6 91.2,173.6 76.8,180.6 36.8,160.6" fill="none" stroke="#fff9ee" stroke-width="{{w2}}" stroke-dasharray="4 3" stroke-linejoin="round"></polygon>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.tree}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.tree" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<polygon fill="#a86c48" stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" points="44,128 45.5,106 50.5,106 52,128"></polygon>
+<g fill="#7a3e3e"><circle cx="48" cy="92" r="{{rT20}}"></circle><circle cx="34" cy="100" r="{{rT13}}"></circle><circle cx="62" cy="100" r="{{rT13}}"></circle><circle cx="48" cy="74" r="{{rT15}}"></circle><circle cx="38" cy="82" r="{{rT12}}"></circle><circle cx="58" cy="82" r="{{rT12}}"></circle></g>
+<g fill="#4f9a68"><circle cx="48" cy="92" r="20"></circle><circle cx="34" cy="100" r="13"></circle><circle cx="62" cy="100" r="13"></circle><circle cx="48" cy="74" r="15"></circle><circle cx="38" cy="82" r="12"></circle><circle cx="58" cy="82" r="12"></circle></g>
+<circle cx="61" cy="102" r="9" fill="#3d8358"></circle><circle cx="52" cy="107" r="6.5" fill="#3d8358"></circle>
+<ellipse cx="42" cy="70" rx="6" ry="4" fill="#7cbf8c"></ellipse><ellipse cx="31" cy="95" rx="4.5" ry="3" fill="#7cbf8c"></ellipse><ellipse cx="55" cy="80" rx="5" ry="3.3" fill="#7cbf8c"></ellipse>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.pine}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.pine" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<polygon fill="#a86c48" stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" points="45,128 46,114 50,114 51,128"></polygon>
+<path fill="#3d8358" d="M48 76L72 116Q48 124 24 116Z"></path><path fill="#4f9a68" d="M48 76L24 116Q36 121 48 121Z"></path><path fill="none" stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" d="M48 76L72 116Q48 124 24 116Z"></path>
+<path fill="#3d8358" d="M48 56L68 92Q48 99 28 92Z"></path><path fill="#4f9a68" d="M48 56L28 92Q38 96 48 96Z"></path><path fill="none" stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" d="M48 56L68 92Q48 99 28 92Z"></path>
+<path fill="#3d8358" d="M48 38L63 68Q48 74 33 68Z"></path><path fill="#4f9a68" d="M48 38L33 68Q40 71 48 71Z"></path><path fill="none" stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" d="M48 38L63 68Q48 74 33 68Z"></path>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.bush}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.bush" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<g fill="#7a3e3e"><circle cx="38" cy="122" r="{{rB9}}"></circle><circle cx="50" cy="117" r="{{rB11}}"></circle><circle cx="61" cy="124" r="{{rB8}}"></circle></g>
+<g fill="#4f9a68"><circle cx="38" cy="122" r="9"></circle><circle cx="50" cy="117" r="11"></circle><circle cx="61" cy="124" r="8"></circle></g>
+<circle cx="60" cy="126" r="5" fill="#3d8358"></circle>
+<g stroke="#7a3e3e" stroke-width="{{w12}}"><circle cx="42" cy="115" r="2.4" fill="#ec6f66"></circle><circle cx="54" cy="111" r="2.4" fill="#fff9ee"></circle><circle cx="60" cy="120" r="2.4" fill="#ec6f66"></circle><circle cx="34" cy="121" r="2.2" fill="#fff9ee"></circle></g>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.streetlamp}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.streetlamp" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<circle cx="48" cy="56" r="16" fill="#f7cb52" fill-opacity="0.18"></circle>
+<ellipse cx="48" cy="128" rx="7" ry="3.5" fill="#b3aabd" stroke="#7a3e3e" stroke-width="{{w3}}"></ellipse>
+<path d="M48 126L48 64" fill="none" stroke="#7a3e3e" stroke-width="{{w7}}" stroke-linecap="round"></path>
+<path d="M48 126L48 64" fill="none" stroke="#4a5a7e" stroke-width="{{w3}}" stroke-linecap="round"></path>
+<g stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<path fill="#fbe9c4" d="M41 64L55 64L53 48L43 48Z"></path>
+<path fill="#4a5a7e" d="M38 48L58 48L48 39Z"></path>
+</g>
+<circle cx="48" cy="38" r="2" fill="#7a3e3e"></circle>
+<path d="M48 50L48 62" fill="none" stroke="#f7cb52" stroke-width="{{w2}}" stroke-linecap="round"></path>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.bench}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.bench" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<g stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#c4845a" points="33.6,104 72,123.2 72,107.2 33.6,88"></polygon>
+<polygon fill="#dca173" points="33.6,88 72,107.2 74.4,106 36,86.8"></polygon>
+</g>
+<path d="M27 112L27 122.5M59 129L59 139" fill="none" stroke="#7a3e3e" stroke-width="{{w5}}" stroke-linecap="round"></path>
+<path d="M27 112L27 122.5M59 129L59 139" fill="none" stroke="#a86c48" stroke-width="{{w2}}" stroke-linecap="round"></path>
+<g stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#c4845a" points="24,108.8 62.4,128 62.4,132 24,112.8"></polygon>
+<polygon fill="#a86c48" points="62.4,128 72,123.2 72,127.2 62.4,132"></polygon>
+<polygon fill="#dca173" points="33.6,104 72,123.2 62.4,128 24,108.8"></polygon>
+</g>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.flowers}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.flowers" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<g stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#c4845a" points="24,128 48,140 48,134 24,122"></polygon>
+<polygon fill="#a86c48" points="48,140 72,128 72,122 48,134"></polygon>
+<polygon fill="#b98f5f" points="48,110 72,122 48,134 24,122"></polygon>
+</g>
+<g fill="#4f9a68"><ellipse cx="36" cy="121" rx="4" ry="2"></ellipse><ellipse cx="50" cy="117" rx="4" ry="2"></ellipse><ellipse cx="60" cy="123" rx="4" ry="2"></ellipse><ellipse cx="46" cy="127" rx="4" ry="2"></ellipse></g>
+<g stroke="#7a3e3e" stroke-width="{{w12}}"><circle cx="38" cy="118" r="3.2" fill="#ec6f66"></circle><circle cx="48" cy="114" r="3.2" fill="#f7cb52"></circle><circle cx="58" cy="120" r="3.2" fill="#fff9ee"></circle><circle cx="44" cy="124" r="3.2" fill="#a893dc"></circle><circle cx="54" cy="127" r="3.2" fill="#ec6f66"></circle><circle cx="64" cy="124" r="2.8" fill="#f7cb52"></circle></g>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.board}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.board" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<path d="M34 122L34 82M60 135L60 95" fill="none" stroke="#7a3e3e" stroke-width="{{w6}}" stroke-linecap="round"></path>
+<path d="M34 122L34 82M60 135L60 95" fill="none" stroke="#a86c48" stroke-width="{{w25}}" stroke-linecap="round"></path>
+<g transform="matrix(1 0.5 0 1 30 114)">
+<rect x="0" y="-28" width="34" height="26" rx="3" fill="#dca173" stroke="#7a3e3e" stroke-width="{{w3}}"></rect>
+<rect x="3" y="-25" width="28" height="20" rx="2" fill="#e2c091"></rect>
+<g stroke="#7a3e3e" stroke-width="{{w12}}"><rect x="5" y="-22" width="9" height="7" fill="#fff9ee"></rect><rect x="16" y="-23" width="8" height="6" fill="#c2e8f2"></rect><rect x="25" y="-21" width="5" height="8" fill="#f7cb52"></rect><rect x="8" y="-13" width="11" height="7" fill="#fadcd8"></rect><rect x="21" y="-12" width="8" height="6" fill="#fff9ee"></rect></g>
+</g>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.fence}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.fence" data-tiles="1x1" data-anchor="48,128" data-edge="x" aria-hidden="true" style="display: block">
+<path d="M31 119.5L31 98M41 124.5L41 103M51 129.5L51 108M61 134.5L61 113" fill="none" stroke="#7a3e3e" stroke-width="{{w7}}" stroke-linecap="round"></path>
+<path d="M31 119.5L31 98M41 124.5L41 103M51 129.5L51 108M61 134.5L61 113" fill="none" stroke="#fff5e2" stroke-width="{{w35}}" stroke-linecap="round"></path>
+<path d="M26 112L66 132M26 104L66 124" fill="none" stroke="#7a3e3e" stroke-width="{{w5}}" stroke-linecap="round"></path>
+<path d="M26 112L66 132M26 104L66 124" fill="none" stroke="#f8e8cc" stroke-width="{{w2}}" stroke-linecap="round"></path>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.materials}}" hint-placeholder-val="{{false}}">
+<svg width="{{w11}}" height="{{h11}}" viewBox="0 0 96 160" data-asset-id="prop.materials" data-tiles="1x1" data-anchor="48,128" aria-hidden="true" style="display: block">
+<g stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#c4845a" points="18,121 50,137 50,129 18,113"></polygon>
+<polygon fill="#a86c48" points="50,137 62,131 62,123 50,129"></polygon>
+<polygon fill="#dca173" points="30,107 62,123 50,129 18,113"></polygon>
+</g>
+<path d="M24 110L56 126" fill="none" stroke="#7a3e3e" stroke-width="{{w15}}" stroke-opacity="0.4" stroke-linecap="round"></path>
+<g stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#d4865f" points="54,128 64,133 64,123 54,118"></polygon>
+<polygon fill="#bd7050" points="64,133 74,128 74,118 64,123"></polygon>
+<polygon fill="#e8a07a" points="64,113 74,118 64,123 54,118"></polygon>
+</g>
+<path d="M54 123L64 128L74 123" fill="none" stroke="#7a3e3e" stroke-width="{{w15}}" stroke-opacity="0.35" stroke-linecap="round"></path>
+</svg>
+</sc-if>
+
+<sc-if value="{{k.fountain}}" hint-placeholder-val="{{false}}">
+<svg width="{{w22}}" height="{{h22}}" viewBox="0 0 160 256" data-asset-id="prop.fountain" data-tiles="2x2" data-anchor="80,208" aria-hidden="true" style="display: block">
+<path fill="#dccfb9" d="M26 196L26 208A54 27 0 0 0 134 208L134 196A54 27 0 0 1 26 196Z"></path>
+<path fill="#c6b79d" d="M80 223L80 235A54 27 0 0 0 134 208L134 196A54 27 0 0 1 80 223Z"></path>
+<path fill="none" stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" d="M26 196L26 208A54 27 0 0 0 134 208L134 196"></path>
+<ellipse cx="80" cy="196" rx="54" ry="27" fill="#efe6d6" stroke="#7a3e3e" stroke-width="{{w3}}"></ellipse>
+<ellipse cx="80" cy="197" rx="45" ry="21" fill="#b5e0ec" stroke="#7a3e3e" stroke-width="{{w2}}"></ellipse>
+<path d="M50 202Q60 208 72 207M96 189Q106 189 112 194" fill="none" stroke="#effafc" stroke-width="{{w2}}" stroke-linecap="round"></path>
+<path fill="#dccfb9" stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" d="M72 198L72 170A8 4 0 0 1 88 170L88 198A8 4 0 0 1 72 198Z"></path>
+<path fill="#dccfb9" stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" d="M58 166Q60 178 80 179Q100 178 102 166Z"></path>
+<ellipse cx="80" cy="166" rx="22" ry="11" fill="#efe6d6" stroke="#7a3e3e" stroke-width="{{w3}}"></ellipse>
+<ellipse cx="80" cy="166" rx="17" ry="7.5" fill="#b5e0ec"></ellipse>
+<path fill="#dccfb9" stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" d="M77 166L77 151L83 151L83 166Z"></path>
+<circle cx="80" cy="148" r="4" fill="#efe6d6" stroke="#7a3e3e" stroke-width="{{w3}}"></circle>
+<path d="M76 149Q64 144 60 160M84 149Q96 144 100 160M59 169Q54 177 53 189M101 169Q106 177 107 189" fill="none" stroke="#92cbe0" stroke-width="{{w3}}" stroke-linecap="round"></path>
+<path d="M76 149Q64 144 60 160M84 149Q96 144 100 160" fill="none" stroke="#effafc" stroke-width="{{w12}}" stroke-linecap="round"></path>
+<g fill="#b5e0ec" stroke="#7a3e3e" stroke-width="{{w12}}"><circle cx="66" cy="140" r="2"></circle><circle cx="95" cy="138" r="2"></circle><circle cx="48" cy="182" r="1.8"></circle><circle cx="112" cy="182" r="1.8"></circle></g>
+</svg>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"kind":{"editor":"enum","options":["armchair","desk","bookcase","plant","lamp","bed","rug","tree","pine","bush","streetlamp","bench","flowers","board","fence","materials","fountain","tile-grass","tile-path","tile-plaza","tile-dirt"],"default":"tree"},"scale":{"editor":"float","min":0.5,"max":3,"step":0.25,"default":1},"fab":{"editor":"enum","options":["mustard","coral","blue","green","lavender"],"default":"mustard"},"$preview":{"width":96,"height":160}}'>
+class Component extends DCLogic {
+renderVals() {
+const kind = this.props.kind ?? 'tree';
+const s = Math.max(0.25, Number(this.props.scale ?? 1));
+const FAB = {
+mustard: ['#f0b24a', '#d99a35', '#bb8024'], coral: ['#ec6f66', '#d45a53', '#b84842'],
+blue: ['#6f97d8', '#5a80c2', '#4769a6'], green: ['#5aa77a', '#478f65', '#377752'],
+lavender: ['#a893dc', '#9079c7', '#7862ad']
+};
+const f = FAB[this.props.fab] || FAB.mustard;
+const two1 = kind === 'bed' || kind === 'rug';
+const two2 = kind === 'fountain';
+const vbw = two2 ? 160 : (two1 ? 128 : 96);
+const vbh = two2 ? 256 : (two1 ? 208 : 160);
+const k = {};
+['armchair', 'desk', 'bookcase', 'plant', 'lamp', 'bed', 'rug', 'tree', 'pine', 'bush', 'streetlamp', 'bench', 'flowers', 'board', 'fence', 'materials', 'fountain'].forEach((n) => { k[n] = kind === n; });
+k.tileGrass = kind === 'tile-grass'; k.tilePath = kind === 'tile-path'; k.tilePlaza = kind === 'tile-plaza'; k.tileDirt = kind === 'tile-dirt';
+const w = (px) => px / s;
+const out = (r) => r + 3 / s;
+return {
+k: k, rw: vbw * s, rh: vbh * s,
+w11: 96 * s, h11: 160 * s, w21: 128 * s, h21: 208 * s, w22: 160 * s, h22: 256 * s,
+w3: w(3), w2: w(2), w15: w(1.5), w12: w(1.2), w5: w(5), w6: w(6), w7: w(7), w25: w(2.5), w35: w(3.5),
+r11: out(11), r8: out(8), rT20: out(20), rT13: out(13), rT15: out(15), rT12: out(12), rB9: out(9), rB11: out(11), rB8: out(8),
+fab: f[0], fabL: f[1], fabR: f[2]
+};
+}
+}
+</script>
+</body>
+</html>

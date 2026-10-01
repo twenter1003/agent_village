@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>바다 가구 상점</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.meta{font-size:12px;color:#4f6883;line-height:17px}
+.item{display:flex;flex-direction:column;border:3px solid #2e4b66;border-radius:18px;background:#f9fdfc;overflow:hidden}
+.illo{height:140px;background:#dcefef;border-bottom:3px solid #2e4b66;overflow:hidden;display:flex;justify-content:center}
+.bd{padding:10px 12px 12px;display:flex;flex-direction:column;gap:7px}
+.nm{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:16px}
+.price{display:flex;align-items:center;gap:5px}
+.pearl{width:16px;height:16px;box-sizing:border-box;border-radius:50%;border:2px solid #2e4b66;background:#fbf3f8;box-shadow:inset -3px -3px 0 #e7d3e6;flex-shrink:0}
+.sw{width:18px;height:18px;border-radius:50%;border:2px solid #2e4b66;box-sizing:border-box;padding:0}
+.buy{height:34px;padding:0 14px;border:2px solid #2e4b66;border-radius:10px;background:#f7cb52;box-shadow:0 3px 0 #2e4b66;font-family:'Jua',sans-serif;font-size:14px;color:#1f3850}
+.own{height:34px;padding:0 12px;display:inline-flex;align-items:center;border:2px dashed #2e4b66;border-radius:10px;font-size:12px;color:#1f3850;box-sizing:border-box}
+.tab{height:36px;padding:0 14px;box-sizing:border-box;border:2px solid transparent;border-radius:10px;background:transparent;font-family:'Jua',sans-serif;font-size:15px;color:#1f3850}
+.who{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 12px 0 4px;border:2px solid #2e4b66;border-radius:999px;background:#f9fdfc;font-size:13px;color:#1f3850;font-family:'Gowun Dodum',sans-serif}
+.face{width:30px;height:30px;box-sizing:border-box;border:2px solid #2e4b66;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.row{display:flex;justify-content:space-between;font-size:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 18px;border:2px solid #2e4b66;border-radius:12px;box-shadow:0 3px 0 #2e4b66;font-family:'Jua',sans-serif;font-size:16px;color:#1f3850;text-decoration:none}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; display: flex; flex-direction: column; background: #e6f3f1; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #1f3850; overflow: hidden">
+<dc-import name="SeaTopBar" active="village" hint-size="1440px,68px"></dc-import>
+<div style="display: flex; height: 832px">
+<main style="width: 1000px; box-sizing: border-box; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: flex-end; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<nav aria-label="위치" style="font-size: 13px"><a href="SeaScreenHouse.dc.html" style="color: #1f3850; text-underline-offset: 3px">집으로</a></nav>
+<h1 style="margin: 0; font-family: 'Jua', sans-serif; font-weight: 400; font-size: 30px">가구 상점</h1>
+<span style="font-size: 13px; color: #4f6883">오늘 물가 지수 104.2 · 모든 가격이 기준가보다 4.2% 높아요</span>
+</div>
+<div role="radiogroup" aria-label="누가 살까요" style="display: flex; gap: 8px; align-items: center">
+<span class="meta" style="margin-right: 2px">사는 팀원</span>
+<button type="button" class="who" role="radio" aria-checked="false"><span class="face" style="background: #dde8f5"><dc-import name="SeaCritter" species="seal" mode="face" scale="0.3" animate="false" hint-size="26px,26px"></dc-import></span>물범 1,240</button>
+<button type="button" class="who" role="radio" aria-checked="true" style="background: #fbe9c4; border-width: 3px"><span class="face" style="background: #fadcd8"><dc-import name="SeaCritter" species="otter" mode="face" scale="0.3" animate="false" hint-size="26px,26px"></dc-import></span>수달 860</button>
+<button type="button" class="who" role="radio" aria-checked="false"><span class="face" style="background: #fbe9c4"><dc-import name="SeaCritter" species="hamster" mode="face" scale="0.3" animate="false" hint-size="26px,26px"></dc-import></span>햄스터 1,020</button>
+<button type="button" class="who" role="radio" aria-checked="false"><span class="face" style="background: #dcebd2"><dc-import name="SeaCritter" species="turtle" mode="face" scale="0.3" animate="false" hint-size="26px,26px"></dc-import></span>거북 1,480</button>
+</div>
+</div>
+<div role="tablist" aria-label="가구 종류" style="display: flex; align-self: flex-start; padding: 4px; gap: 4px; background: #f9fdfc; border: 2.5px solid #2e4b66; border-radius: 14px">
+<button type="button" role="tab" aria-selected="true" class="tab" style="background: #f7cb52; border-color: #2e4b66">전체 8</button>
+<button type="button" role="tab" aria-selected="false" class="tab">쉬기 3</button>
+<button type="button" role="tab" aria-selected="false" class="tab">일하기 2</button>
+<button type="button" role="tab" aria-selected="false" class="tab">꾸미기 3</button>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+<div class="item" style="border-color: #e2ae33; outline: 2px solid #2e4b66">
+<div class="illo"><div style="margin-top: -58px"><dc-import name="SeaProp" kind="clamchair" scale="1.25" fab="mustard" hint-size="120px,200px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; justify-content: space-between; align-items: center"><span class="nm">폭신 조개 의자</span><span class="meta">1×1 · 쉬기</span></div>
+<div style="display: flex; gap: 5px" role="radiogroup" aria-label="쿠션 색"><button type="button" class="sw" aria-label="겨자" aria-checked="true" role="radio" style="background: #f0b24a; outline: 2px solid #2e4b66; outline-offset: 2px"></button><button type="button" class="sw" aria-label="산호" role="radio" aria-checked="false" style="background: #ec6f66"></button><button type="button" class="sw" aria-label="파랑" role="radio" aria-checked="false" style="background: #6f97d8"></button><button type="button" class="sw" aria-label="초록" role="radio" aria-checked="false" style="background: #5aa77a"></button><button type="button" class="sw" aria-label="라벤더" role="radio" aria-checked="false" style="background: #a893dc"></button></div>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; flex-direction: column"><span class="price"><span class="pearl"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">313</span></span><span style="font-size: 11.5px; color: #b8433f">기준 300 ▲</span></span><button type="button" class="buy">고름</button></div></div>
+</div>
+<div class="item">
+<div class="illo"><div style="margin-top: -58px"><dc-import name="SeaProp" kind="desk" scale="1.25" hint-size="120px,200px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; justify-content: space-between; align-items: center"><span class="nm">유목 책상 · 노트북</span><span class="meta">1×1 · 일하기</span></div>
+<span class="meta">일할 때 기분 + · 집중 이벤트</span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; flex-direction: column"><span class="price"><span class="pearl"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">271</span></span><span style="font-size: 11.5px; color: #b8433f">기준 260 ▲</span></span><button type="button" class="buy">사기</button></div></div>
+</div>
+<div class="item">
+<div class="illo"><div style="margin-top: -58px"><dc-import name="SeaProp" kind="shelf" scale="1.25" hint-size="120px,200px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; justify-content: space-between; align-items: center"><span class="nm">유리병 선반</span><span class="meta">벽 · 일하기</span></div>
+<span class="meta">오른쪽 벽에만 놓임</span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; flex-direction: column"><span class="price"><span class="pearl"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">229</span></span><span style="font-size: 11.5px; color: #b8433f">기준 220 ▲</span></span><button type="button" class="buy">사기</button></div></div>
+</div>
+<div class="item">
+<div class="illo"><div style="margin-top: -58px"><dc-import name="SeaProp" kind="anemone" scale="1.25" hint-size="120px,200px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; justify-content: space-between; align-items: center"><span class="nm">말미잘 화단</span><span class="meta">1×1 · 꾸미기</span></div>
+<span class="meta">집 앞마당에 놓이는 바깥 가구 · 흰동가리 포함</span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; flex-direction: column"><span class="price"><span class="pearl"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">94</span></span><span style="font-size: 11.5px; color: #b8433f">기준 90 ▲</span></span><button type="button" class="buy">사기</button></div></div>
+</div>
+<div class="item">
+<div class="illo"><div style="margin-top: -110px"><dc-import name="SeaProp" kind="clambed" scale="1.25" fab="blue" hint-size="160px,260px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; justify-content: space-between; align-items: center"><span class="nm">대합 침대</span><span class="meta">2×1 · 쉬기</span></div>
+<span class="meta">파랑 이불로 가지고 있음</span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; flex-direction: column"><span class="price"><span class="pearl"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">542</span></span><span style="font-size: 11.5px; color: #b8433f">기준 520 ▲</span></span><span class="own">보유 중</span></div></div>
+</div>
+<div class="item">
+<div class="illo"><div style="margin-top: -118px"><dc-import name="SeaProp" kind="rug" scale="1.25" fab="lavender" hint-size="160px,260px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; justify-content: space-between; align-items: center"><span class="nm">물결 러그</span><span class="meta">2×1 · 꾸미기</span></div>
+<span class="meta">라벤더로 가지고 있음</span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; flex-direction: column"><span class="price"><span class="pearl"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">188</span></span><span style="font-size: 11.5px; color: #b8433f">기준 180 ▲</span></span><span class="own">보유 중</span></div></div>
+</div>
+<div class="item">
+<div class="illo"><div style="margin-top: -58px"><dc-import name="SeaProp" kind="coralpot" scale="1.25" hint-size="120px,200px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; justify-content: space-between; align-items: center"><span class="nm">산호 화분</span><span class="meta">1×1 · 꾸미기</span></div>
+<span class="meta">1개 가지고 있음 · 여러 개 가능</span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; flex-direction: column"><span class="price"><span class="pearl"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">83</span></span><span style="font-size: 11.5px; color: #b8433f">기준 80 ▲</span></span><button type="button" class="buy">사기</button></div></div>
+</div>
+<div class="item">
+<div class="illo"><div style="margin-top: -58px"><dc-import name="SeaProp" kind="jellylamp" scale="1.25" hint-size="120px,200px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; justify-content: space-between; align-items: center"><span class="nm">해파리 램프</span><span class="meta">1×1 · 쉬기</span></div>
+<span class="meta">가지고 있음 · 밤이면 방이 은은해짐</span>
+<div style="display: flex; justify-content: space-between; align-items: center"><span style="display: flex; flex-direction: column"><span class="price"><span class="pearl"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">125</span></span><span style="font-size: 11.5px; color: #b8433f">기준 120 ▲</span></span><span class="own">보유 중</span></div></div>
+</div>
+</div>
+</main>
+
+<aside aria-label="고른 가구" style="width: 440px; box-sizing: border-box; padding: 18px 16px; display: flex; flex-direction: column; gap: 12px; background: #f9fdfc; border-left: 3px solid #2e4b66">
+<h2 style="margin: 0; font-family: 'Jua', sans-serif; font-weight: 400; font-size: 20px">수달의 방에 놓아 보기</h2>
+<div style="position: relative; height: 250px; border: 3px solid #2e4b66; border-radius: 18px; background: #bfe2e8; overflow: hidden">
+<svg width="402" height="244" viewBox="0 0 402 244" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<g stroke="#2e4b66" stroke-width="3" stroke-linejoin="round">
+<polygon fill="#eacbb9" points="201,110 105,158 105,78 201,30"></polygon>
+<polygon fill="#f7e3d6" points="201,110 297,158 297,78 201,30"></polygon>
+<polygon fill="#b58c65" points="105,158 201,206 201,214 105,166"></polygon>
+<polygon fill="#98714f" points="201,206 297,158 297,166 201,214"></polygon>
+<polygon fill="#cda67e" points="201,110 297,158 201,206 105,158"></polygon>
+</g>
+<path d="M169 126L265 174M137 142L233 190M233 126L137 174M265 142L169 190" fill="none" stroke="#b58c65" stroke-width="1.5"></path>
+<g transform="matrix(1 0.5 0 1 247 80)"><circle r="14" fill="#dcaa48" stroke="#2e4b66" stroke-width="2.5"></circle><circle r="9.5" fill="#bfe2e8" stroke="#2e4b66" stroke-width="2"></circle></g>
+<polygon fill="none" stroke="#b0357c" stroke-width="2" stroke-dasharray="4 3" points="201,142 233,158 201,174 169,158"></polygon>
+</svg>
+<div style="position: absolute; left: 122px; top: 96px"><dc-import name="SeaCritter" species="otter" pose="cheer" scale="0.45" bubbles="true" hint-size="58px,62px"></dc-import></div>
+<div style="position: absolute; left: 153px; top: 30px"><dc-import name="SeaProp" kind="clamchair" fab="mustard" hint-size="96px,160px"></dc-import></div>
+</div>
+<span class="meta">자홍 점선 칸에 놓입니다. 방에서 다시 옮길 수 있어요.</span>
+<div style="display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; border: 3px solid #2e4b66; border-radius: 18px">
+<div class="row"><span style="font-family: 'Jua', sans-serif; font-size: 17px">폭신 조개 의자 · 겨자</span><span class="price"><span class="pearl"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">313</span></span></div>
+<div class="row" style="font-size: 13px; color: #4f6883"><span>기준가 300 × 물가 1.042</span><span>+13</span></div>
+<div class="row"><span>수달 잔고</span><span style="font-family: 'Jua', sans-serif">860 → 547</span></div>
+<div class="row" style="font-size: 13px; color: #4f6883"><span>관리비</span><span>가구 1개당 하루 +2</span></div>
+</div>
+<div style="display: flex; gap: 10px">
+<button type="button" class="btn" style="flex-grow: 1; background: #f7cb52">313 진주에 사기</button>
+<a href="SeaScreenHouse.dc.html" class="btn" style="background: #f9fdfc">취소</a>
+</div>
+<p style="margin: 0; font-size: 13px; line-height: 20px; color: #4f6883">가격은 기준가 × 물가 지수입니다. 물가가 목표(100)를 넘어서면 중앙은행이 금리를 올려 급여 인상이 느려지고, 물가가 다시 내려옵니다.</p>
+</aside>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

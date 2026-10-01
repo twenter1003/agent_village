@@ -1,0 +1,55 @@
+/* 방 장면 (03 문서 3.5). 자식은 RoomScene이 px로 놓는다. 토큰만 쓴다 */
+.rs {
+  position: relative;
+  flex-shrink: 0;
+  isolation: isolate; /* 가구 z-index(깊이)가 장면 밖 버튼과 다투지 않게 */
+}
+.rs > * {
+  position: absolute;
+}
+.rs-shell,
+.rs-mark {
+  top: 0;
+  left: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+.rs-item,
+.rs-who {
+  display: block;
+  line-height: 0;
+  pointer-events: none;
+}
+/* 옮기기 모드: 가구 버튼. 상자는 크게 겹치므로 그림이 칠해진 곳만 누를 수 있다 */
+button.rs-item {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: none;
+  cursor: grab;
+  touch-action: none;
+}
+button.rs-item svg * {
+  pointer-events: visiblePainted;
+}
+button.rs-item:focus-visible {
+  outline: var(--ui-line) solid var(--focus);
+  outline-offset: 3px;
+}
+.rs-item--bad {
+  opacity: 0.55;
+}
+.rs--edit {
+  touch-action: none;
+}
+/* 칸 표시: 놓일 자리 = 자홍 점선(캔버스 17), 못 놓는 자리 = 위험 색 + 옅은 채움 */
+.rs-mark--ok polygon {
+  fill: none;
+  stroke: var(--focus);
+}
+.rs-mark--bad polygon {
+  fill: var(--danger);
+  fill-opacity: 0.18;
+  stroke: var(--danger);
+}

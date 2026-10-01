@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>물범의 집</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.meta{font-size:12px;color:#4f6883;line-height:17px}
+.h2{margin:0;font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;font-size:18px}
+.card{box-sizing:border-box;background:#f9fdfc;border:3px solid #2e4b66;border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.ax{display:grid;grid-template-columns:22px minmax(0,1fr) 22px;align-items:center;gap:8px;font-family:'Jua',sans-serif;font-size:14px}
+.tr{position:relative;height:10px;border:2px solid #2e4b66;border-radius:999px;background:#e6f3f1}
+.mk{position:absolute;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border:2.5px solid #2e4b66;border-radius:50%;box-sizing:border-box;background:#f9fdfc}
+.mid{position:absolute;left:50%;top:-4px;bottom:-4px;width:2px;margin-left:-1px;background:#b9d6d4}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:44px;padding:0 18px;border:2px solid #2e4b66;border-radius:12px;box-shadow:0 3px 0 #2e4b66;font-family:'Jua',sans-serif;font-size:16px;color:#1f3850;text-decoration:none}
+.fi{display:inline-flex;align-items:center;height:26px;padding:0 10px;border:2px solid #2e4b66;border-radius:999px;background:#f9fdfc;font-size:12px}
+.row{display:flex;justify-content:space-between;font-size:13px}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; display: flex; flex-direction: column; background: #e6f3f1; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #1f3850; overflow: hidden">
+<dc-import name="SeaTopBar" active="village" hint-size="1440px,68px"></dc-import>
+<div style="display: flex; height: 832px">
+<main style="position: relative; width: 1000px; height: 832px; background: linear-gradient(#d3eff2, #bfe2e8 60%, #a9d9e2); overflow: hidden">
+<nav aria-label="위치" style="position: absolute; left: 20px; top: 18px; display: flex; align-items: center; gap: 8px; font-size: 14px"><a href="SeaScreenMain.dc.html" style="color: #1f3850; text-underline-offset: 3px">마을</a><span style="color: #4f6883">›</span><span style="font-family: 'Jua', sans-serif; font-size: 18px">물범의 집</span></nav>
+<div style="position: absolute; right: 20px; top: 14px; display: flex; gap: 10px">
+<button type="button" class="btn" style="background: #f9fdfc; height: 40px; font-size: 15px"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4V20M4 12H20M12 4L9 7M12 4L15 7M12 20L9 17M12 20L15 17M4 12L7 9M4 12L7 15M20 12L17 9M20 12L17 15" fill="none" stroke="#1f3850" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>가구 옮기기</button>
+<a href="SeaScreenShop.dc.html" class="btn" style="background: #f7cb52; height: 40px; font-size: 15px"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11V8.5A2 2 0 0 1 7 6.5H17A2 2 0 0 1 19 8.5V11M3 12.5A2 2 0 0 1 7 12.5V14.5H17V12.5A2 2 0 0 1 21 12.5V17.5H3ZM5 17.5V19.5M19 17.5V19.5" fill="none" stroke="#1f3850" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>가구 상점</a>
+</div>
+
+<svg width="1000" height="832" viewBox="0 0 1000 832" role="img" aria-label="물범의 방: 둥근 창, 수면 풍경 액자, 난파선 목재 마루" style="position: absolute; left: 0; top: 0">
+<defs><radialGradient id="sea-room-sh" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#2e4b66" stop-opacity="0.18"></stop><stop offset="1" stop-color="#2e4b66" stop-opacity="0"></stop></radialGradient></defs>
+<ellipse cx="505" cy="640" rx="330" ry="60" fill="url(#sea-room-sh)"></ellipse>
+<g stroke="#2e4b66" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#eacbb9" points="500,300 192.8,453.6 192.8,283.6 500,130"></polygon>
+<polygon fill="#f7e3d6" points="500,300 807.2,453.6 807.2,283.6 500,130"></polygon>
+<polygon fill="#e0c1ad" points="184.8,279.6 192.8,283.6 192.8,453.6 184.8,449.6"></polygon>
+<polygon fill="#e0c1ad" points="807.2,283.6 815.2,279.6 815.2,449.6 807.2,453.6"></polygon>
+<polygon fill="#fff5ee" points="492,126 500,130 192.8,283.6 184.8,279.6"></polygon>
+<polygon fill="#fff5ee" points="500,130 508,126 815.2,279.6 807.2,283.6"></polygon>
+<polygon fill="#fff5ee" points="492,126 500,122 508,126 500,130"></polygon>
+<polygon fill="#b58c65" points="192.8,453.6 500,607.2 500,621.2 192.8,467.6"></polygon>
+<polygon fill="#98714f" points="500,607.2 807.2,453.6 807.2,467.6 500,621.2"></polygon>
+<polygon fill="#cda67e" points="500,300 807.2,453.6 500,607.2 192.8,453.6"></polygon>
+</g>
+<path d="M448.8 325.6L756 479.2M397.6 351.2L704.8 504.8M346.4 376.8L653.6 530.4M295.2 402.4L602.4 556M244 428L551.2 581.6" fill="none" stroke="#b58c65" stroke-width="2" stroke-linecap="round"></path>
+<path d="M240 300Q320 258 400 230M600 230Q680 268 760 300" fill="none" stroke="#e3d6f0" stroke-width="4" stroke-linecap="round" stroke-opacity="0.8"></path>
+<g transform="matrix(1 0.5 0 1 643 262)">
+<circle r="31" fill="#dcaa48" stroke="#2e4b66" stroke-width="3"></circle>
+<circle r="23" fill="#bfe2e8" stroke="#2e4b66" stroke-width="2.5"></circle>
+<path d="M-12 4C-8 0 -2 0 2 4C-2 8 -8 8 -12 4ZM1 4L6 0.5L6 7.5Z" fill="#8fc3cf"></path>
+<path d="M-15 -8A17 17 0 0 1 -6 -16" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"></path>
+<g fill="#bd8c31"><circle cx="0" cy="-27" r="2"></circle><circle cx="27" cy="0" r="2"></circle><circle cx="0" cy="27" r="2"></circle><circle cx="-27" cy="0" r="2"></circle></g>
+</g>
+<g stroke="#2e4b66" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+<polygon fill="#cda67e" points="366.9,296.6 315.7,322.2 315.7,272.2 366.9,246.6"></polygon>
+<polygon fill="#d3eff2" points="361.9,289.6 320.7,310.2 320.7,277.2 361.9,256.6"></polygon>
+</g>
+<path d="M320.7 302L330 296L340 297L350 290L361.9 286L361.9 289.6L320.7 310.2Z" fill="#6f97d8" stroke="#2e4b66" stroke-width="1.5" stroke-linejoin="round"></path>
+<circle cx="346" cy="271" r="4.5" fill="#f7cb52" stroke="#2e4b66" stroke-width="1.5"></circle>
+</svg>
+
+<div style="position: absolute; left: 423px; top: 172px"><dc-import name="SeaProp" kind="rug" scale="1.6" fab="green" hint-size="205px,333px"></dc-import></div>
+<div style="position: absolute; left: 474px; top: 146px"><dc-import name="SeaProp" kind="shelf" scale="1.6" hint-size="154px,256px"></dc-import></div>
+<div style="position: absolute; left: 321px; top: 172px"><dc-import name="SeaProp" kind="desk" scale="1.6" hint-size="154px,256px"></dc-import></div>
+<div style="position: absolute; left: 577px; top: 146px"><dc-import name="SeaProp" kind="clambed" scale="1.6" fab="blue" hint-size="205px,333px"></dc-import></div>
+<div style="position: absolute; left: 270px; top: 249px"><dc-import name="SeaProp" kind="jellylamp" scale="1.6" hint-size="154px,256px"></dc-import></div>
+<div style="position: absolute; left: 372px; top: 249px"><dc-import name="SeaProp" kind="clamchair" scale="1.6" fab="mustard" hint-size="154px,256px"></dc-import></div>
+<div style="position: absolute; left: 422px; top: 352px"><dc-import name="SeaCritter" species="seal" pose="rest" scale="0.9" bubbles="true" hint-size="115px,124px"></dc-import></div>
+<div style="position: absolute; left: 628px; top: 274px"><dc-import name="SeaProp" kind="coralpot" scale="1.6" hint-size="154px,256px"></dc-import></div>
+<div style="position: absolute; left: 520px; top: 318px; font-family: 'Jua', sans-serif; font-size: 26px; color: #4f6883">z<span style="font-size: 18px; vertical-align: 12px">z</span></div>
+
+<div style="position: absolute; left: 20px; bottom: 20px; display: flex; gap: 10px; align-items: center">
+<span class="fi" style="background: #dde8f5">방 꾸밈 78%</span>
+<span class="fi">가구 9개 중 7개 배치</span>
+<span class="fi">둥근 창 · 액자는 기본 제공</span>
+</div>
+</main>
+
+<aside aria-label="집주인 정보" style="width: 440px; box-sizing: border-box; padding: 16px; display: flex; flex-direction: column; gap: 12px; background: #f9fdfc; border-left: 3px solid #2e4b66; overflow: hidden">
+<section class="card" style="flex-direction: row; align-items: center; gap: 14px">
+<span style="width: 96px; height: 96px; flex-shrink: 0; box-sizing: border-box; border: 3px solid #2e4b66; border-radius: 22px; background: #dde8f5; overflow: hidden; display: flex; align-items: center; justify-content: center"><dc-import name="SeaCritter" species="seal" mode="face" scale="1" animate="false" hint-size="88px,88px"></dc-import></span>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: center; gap: 8px"><span style="font-family: 'Jua', sans-serif; font-size: 26px">점박이물범</span><span style="padding: 0 9px; height: 22px; display: inline-flex; align-items: center; border: 2px solid #2e4b66; border-radius: 999px; background: #dde8f5; color: #3f5f99; font-family: 'Jua', sans-serif; font-size: 13px">백엔드</span></div>
+<span style="display: flex; align-items: center; gap: 6px; font-size: 13px"><span style="width: 11px; height: 11px; border-radius: 50%; border: 2px solid #2e4b66; background: #bfdca8"></span>집에서 쉬는 중 · 12분째</span>
+<span class="meta">.claude/agents/backend-dev.md · 슬롯 1</span>
+</div>
+</section>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; justify-content: space-between"><h2 class="h2">성격 <span style="font-size: 22px">IST<span style="padding: 0 4px; border-radius: 6px; background: #e8e1f6; color: #6a55a3">J</span></span></h2><span class="meta">최근 작업 20개로 계산 · 하루 최대 2%</span></div>
+<div class="ax"><span>E</span><div class="tr"><span class="mid"></span><span class="mk" style="left: 72%"></span></div><span style="text-align: right">I</span></div>
+<div class="ax"><span>S</span><div class="tr"><span class="mid"></span><span class="mk" style="left: 28%"></span></div><span style="text-align: right">N</span></div>
+<div class="ax"><span>T</span><div class="tr"><span class="mid"></span><span class="mk" style="left: 30%"></span></div><span style="text-align: right">F</span></div>
+<div class="ax"><span>J</span><div class="tr" style="background: #e8e1f6"><span class="mid"></span><span style="position: absolute; left: 26%; top: -1px; bottom: -1px; width: 12%; background: #a893dc; border-radius: 3px"></span><span class="mk" style="left: 26%; background: #a893dc"></span></div><span style="text-align: right">P</span></div>
+<p style="margin: 0; font-size: 13px; line-height: 20px">J 쪽으로 더 단단해졌어요 (38% → 26%). 작업을 시작하기 전에 계획 메모부터 남기는 일이 늘어난 게 이유입니다.</p>
+</section>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; justify-content: space-between"><h2 class="h2">지갑</h2><span style="display: flex; align-items: center; gap: 6px"><svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="8.5" fill="#fbf3f8" stroke="#2e4b66" stroke-width="2"></circle><path d="M14.5 13.5A5 5 0 0 1 8 15.5" fill="none" stroke="#e7d3e6" stroke-width="2.4" stroke-linecap="round"></path><circle cx="8.2" cy="8" r="2" fill="#ffffff"></circle></svg><span style="font-family: 'Jua', sans-serif; font-size: 22px">1,240</span></span></div>
+<div class="row"><span>이번 주 급여</span><span style="font-family: 'Jua', sans-serif; color: #2f7d4f">+450</span></div>
+<div class="row"><span>관리비 · 세금</span><span style="font-family: 'Jua', sans-serif; color: #b8433f">−80</span></div>
+<div class="row"><span>가구 구입</span><span style="font-family: 'Jua', sans-serif; color: #b8433f">−100</span></div>
+</section>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; justify-content: space-between"><h2 class="h2">가구 9</h2><span class="meta">2개는 창고에</span></div>
+<div style="display: flex; flex-wrap: wrap; gap: 6px"><span class="fi">대합 침대</span><span class="fi">물결 러그</span><span class="fi">조개 의자</span><span class="fi">유목 책상</span><span class="fi">유리병 선반</span><span class="fi">산호 화분</span><span class="fi">해파리 램프</span><span class="fi" style="border-style: dashed">유목 벤치 · 창고</span><span class="fi" style="border-style: dashed">말미잘 · 창고</span></div>
+</section>
+<div style="display: flex; gap: 10px">
+<a href="SeaScreenShop.dc.html" class="btn" style="flex-grow: 1; background: #f7cb52">가구 사러 가기</a>
+<a href="SeaScreenMain.dc.html" class="btn" style="background: #f9fdfc">마을로</a>
+</div>
+</aside>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

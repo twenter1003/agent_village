@@ -1,0 +1,420 @@
+/*
+ * 집 상세 (03 문서 6장, 캔버스 SeaScreenHouse). 1440×900이면 상단 바 68 아래 방 장면 1000 + 정보 패널 440. 토큰만 쓴다.
+ */
+.hs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 440px;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--cream);
+  color: var(--text);
+}
+/* 상세를 연 동안 토스트(MainScreen .ts)는 정보 패널 440을 비켜 선다 (01 문서 8.2 화면 메모, 건물 상세는 building.css) */
+/* 위는 .hs-tools(위 14 + 버튼 36) 아래로 — 그 버튼(z-index 2)이 토스트 위에 겹쳐 그려졌다 (M8 성격 토스트) */
+.ms--detail:has(.hs) > .ts {
+  top: 64px;
+  right: calc(440px + var(--sp-4));
+}
+.hs--missing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+}
+.hs-crumb__link:focus-visible,
+.hs-fi__place:focus-visible {
+  outline: var(--ui-line) solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* ── 방 장면 ───────────────────────────────────── */
+.hs-scene {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  background: linear-gradient(var(--water-bg-1), var(--water-bg-2) 60%, var(--water-bg-3));
+}
+/* 입주 전 안내 (01 문서 3.3): 빈 방 위 왼쪽 */
+.hs-notyet {
+  position: absolute;
+  top: 56px;
+  left: var(--sp-5);
+  z-index: 2;
+  max-width: 420px;
+  margin: 0;
+  font-size: var(--fs-sub);
+  word-break: keep-all;
+}
+.hs-crumb {
+  position: absolute;
+  top: 18px;
+  left: var(--sp-5);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: 14px;
+}
+.hs-crumb__link {
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.hs-crumb__sep {
+  color: var(--text-2);
+}
+.hs-crumb__here {
+  font-family: var(--font-display);
+  font-size: 18px;
+}
+.hs-tools {
+  position: absolute;
+  top: 14px;
+  right: var(--sp-5);
+  z-index: 2;
+  display: flex;
+  gap: 10px;
+}
+/* 방 원점(바닥 위 꼭짓점) = 장면 가운데, 위 300 (캔버스). RoomScene 상자 원점은 (315.2, 179.6)px */
+.hs-scene > .hs-room {
+  position: absolute;
+  top: 120.4px;
+  left: calc(50% - 315.2px);
+}
+.hs-foot {
+  position: absolute;
+  right: var(--sp-5);
+  bottom: var(--sp-5);
+  left: var(--sp-5);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  pointer-events: none;
+}
+.hs-foot > * {
+  pointer-events: auto;
+}
+.hs-hint,
+.hs-msg {
+  margin: 0;
+  font-size: var(--fs-sub);
+}
+/* 알림 칸(role=status)은 비어 있어도 둔다 — 숨겼다 보이면 화면 읽기가 못 읽는다 */
+.hs-msg:not(:empty) {
+  align-self: flex-start;
+  padding: var(--sp-1) 10px;
+  border: var(--ui-line-sm) solid var(--danger);
+  border-radius: var(--r-sm);
+  background: var(--paper);
+}
+.hs-chips {
+  display: flex;
+  gap: 10px;
+}
+
+/* ── 정보 패널 ───────────────────────────────────── */
+.hs-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  box-sizing: border-box;
+  min-height: 0;
+  padding: var(--sp-4);
+  overflow-y: auto;
+  border-left: var(--ui-line) solid var(--ink);
+  background: var(--paper);
+}
+.hs-card {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 10px;
+  padding: 14px 16px;
+}
+.hs-profile {
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+}
+.hs-face {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 96px;
+  height: 96px;
+  overflow: hidden;
+  border: var(--ui-line) solid var(--ink);
+  border-radius: 22px;
+}
+.hs-profile__main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+}
+.hs-names {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+}
+.hs-name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 400;
+}
+.hs-cardhead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-2);
+}
+.hs-h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+}
+.hs-mbti {
+  font-size: 22px;
+}
+/* 바뀌는 중인 글자 = MBTI 칩과 같은 라벤더 (03 문서 5장, 캔버스 SeaScreenHouse) */
+.hs-drift {
+  padding: 0 4px;
+  border-radius: 6px;
+  background: var(--slot5-tint);
+  color: var(--slot5-deep);
+}
+.hs-meta {
+  margin: 0;
+  color: var(--text-2);
+  font-size: var(--fs-min);
+  line-height: 17px;
+}
+
+/* 성격 축: 글자 · 트랙(히스테리시스 띠 + 가운데 선 + 원) · 글자 (캔버스 .ax). 바뀌는 중인 축은 라벤더 + 아래 한 줄 */
+.hs-ax {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) 22px;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-display);
+  font-size: 14px;
+}
+.hs-ax > :nth-child(3) {
+  text-align: right;
+}
+.hs-ax__track {
+  position: relative;
+  height: 10px;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: var(--r-pill);
+  background: var(--cream);
+}
+.hs-ax__mid {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  background: var(--rule);
+}
+/* 45~55: 글자가 안 바뀌는 띠 (01 문서 7장 flipHysteresis). 트랙 안에만, 연하게 */
+.hs-ax__band {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--sunk);
+}
+.hs-ax__mark {
+  position: absolute;
+  top: 50%;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: 50%;
+  background: var(--paper);
+}
+
+.hs-ax--drift .hs-ax__track {
+  background: var(--slot5-tint);
+}
+.hs-ax--drift .hs-ax__mark {
+  background: var(--personality);
+}
+.hs-ax__drift {
+  grid-column: 2;
+  color: var(--slot5-deep);
+  font-size: var(--fs-min);
+}
+.hs-reason {
+  margin: 0;
+  font-size: var(--fs-sub);
+  line-height: 20px;
+}
+
+/* 지갑 */
+.hs-balance {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 22px;
+}
+.hs-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-sub);
+}
+.hs-num {
+  font-family: var(--font-display);
+}
+.hs-num--in {
+  color: var(--income-text);
+}
+.hs-num--out {
+  color: var(--expense-text);
+}
+.hs-hardship {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 6px 10px;
+  border: var(--ui-line-sm) solid var(--danger);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-sub);
+}
+.hs-hardship__dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--st-blocked);
+}
+
+/* 토큰 영수증 (01 문서 6.7): 원인 · 막대(전체 대비) · 값 */
+.hs-rc {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.hs-rc li {
+  display: grid;
+  grid-template-columns: minmax(0, 130px) minmax(0, 1fr) 8.5em; /* 값 칸 너비를 고정해 막대 길이를 줄마다 맞춘다 */
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-sub);
+}
+.hs-rc__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hs-rc__track {
+  height: 10px;
+  overflow: hidden;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: var(--r-pill);
+  background: var(--cream);
+}
+.hs-rc__fill {
+  display: block;
+  height: 100%;
+  background: var(--chart-1);
+}
+.hs-rc__num {
+  font-family: var(--font-display);
+  text-align: right;
+  white-space: nowrap;
+}
+.hs-h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 400;
+}
+.hs-tips {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding-left: 18px;
+  font-size: var(--fs-sub);
+  line-height: 19px;
+}
+.hs-warn {
+  color: var(--expense-text);
+}
+
+/* 가구 목록 (캔버스 .fi): 창고는 점선 */
+.hs-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.hs-fi {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  box-sizing: border-box;
+  min-height: 26px;
+  padding: 0 10px;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: var(--r-pill);
+  background: var(--paper);
+  font-size: var(--fs-min);
+}
+.hs-fi--stored {
+  border-style: dashed;
+}
+.hs-swatch {
+  width: 10px;
+  height: 10px;
+  border: var(--ui-line-sm) solid var(--ink);
+  border-radius: 50%;
+}
+.hs-fi__place {
+  margin-left: var(--sp-1);
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.hs-actions {
+  display: flex;
+  gap: 10px;
+}
+.hs-grow {
+  flex-grow: 1;
+}

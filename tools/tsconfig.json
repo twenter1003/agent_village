@@ -1,0 +1,7 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": { "outDir": "dist", "resolveJsonModule": true },
+  "include": ["."],
+  "exclude": ["dist"],
+  "references": [{ "path": "../packages/core" }, { "path": "../packages/server" }, { "path": "../packages/web" }]
+}

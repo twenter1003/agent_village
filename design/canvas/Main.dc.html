@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>색상 토큰</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.hd{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;color:#5a2e2e;margin:0}
+.nm{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:15px;color:#5a2e2e;line-height:20px}
+.tk{font-size:12px;color:#8a5a4a;line-height:16px}
+.sw{height:52px;border:2px solid #7a3e3e;border-radius:12px;box-sizing:border-box}
+.mini{width:22px;height:22px;border:2px solid #7a3e3e;border-radius:7px;box-sizing:border-box;flex-shrink:0}
+.slot{width:52px;height:34px;border:2px solid #7a3e3e;border-radius:9px;box-sizing:border-box;flex-shrink:0}
+.s{stroke:#7a3e3e;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.s4{stroke:#7a3e3e;stroke-width:4.5;stroke-linejoin:round;stroke-linecap:round}
+.ln{fill:none;stroke:#5a2e2e;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1360px; box-sizing: border-box; padding: 48px 56px; background: #f5ecd7; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #5a2e2e; display: flex; flex-direction: column; gap: 28px">
+
+<div style="display: flex; align-items: flex-end; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 class="hd" style="font-size: 40px; line-height: 48px">색상 토큰</h1>
+<p style="margin: 0; font-size: 15px; color: #8a5a4a">팔레트는 여기서 고정합니다. 이름은 개발용 CSS 변수와 1:1로 맞춥니다 (예: 잔디 윗면 → --grass-top).</p>
+</div>
+<div style="display: flex; gap: 8px; font-size: 13px; color: #8a5a4a">
+<span style="padding: 4px 12px; border: 2px solid #7a3e3e; border-radius: 999px; background: #fff9ee">-top 윗면 · 기준</span>
+<span style="padding: 4px 12px; border: 2px solid #7a3e3e; border-radius: 999px; background: #fff9ee">-l 왼쪽 면 · 한 단계</span>
+<span style="padding: 4px 12px; border: 2px solid #7a3e3e; border-radius: 999px; background: #fff9ee">-r 오른쪽 면 · 두 단계</span>
+</div>
+</div>
+
+<section style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 20px 22px; display: flex; flex-direction: column; gap: 14px">
+<h2 class="hd" style="font-size: 22px">기본 · 선, 글자, 바탕</h2>
+<div style="display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 6px"><div class="sw" style="background: #7a3e3e"></div><div class="nm">외곽선</div><div class="tk">--ink #7a3e3e</div></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><div class="sw" style="background: #5a2e2e"></div><div class="nm">글자 · 눈</div><div class="tk">--text #5a2e2e</div></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><div class="sw" style="background: #8a5a4a"></div><div class="nm">보조 글자</div><div class="tk">--text-2 #8a5a4a</div></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><div class="sw" style="background: #fff9ee"></div><div class="nm">종이 · 카드</div><div class="tk">--paper #fff9ee</div></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><div class="sw" style="background: #f5ecd7"></div><div class="nm">크림 바탕</div><div class="tk">--cream #f5ecd7</div></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><div class="sw" style="background: #f3e3c3"></div><div class="nm">움푹한 면</div><div class="tk">--sunk #f3e3c3</div></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><div class="sw" style="background: #efe5c9"></div><div class="nm">마을 배경</div><div class="tk">--field #efe5c9</div></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><div class="sw" style="background: #e3cdb0"></div><div class="nm">구분선</div><div class="tk">--rule #e3cdb0</div></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><div class="sw" style="background: #4769a6"></div><div class="nm">포커스 링</div><div class="tk">--focus #4769a6</div></div>
+</div>
+</section>
+
+<section style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">재질 램프 · 월드</h2><span style="font-size: 13px; color: #8a5a4a">모든 입체는 이 세 톤만 씁니다. 잎의 하이라이트처럼 예외 톤은 --*-hi로 따로 둡니다.</span></div>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px">
+
+<div style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 18px; padding: 14px; display: flex; gap: 12px; align-items: center">
+<svg width="76" height="80" viewBox="0 0 80 84" aria-hidden="true" style="flex-shrink: 0"><polygon class="s" fill="#b7bd7f" points="8,26 40,42 40,76 8,60"></polygon><polygon class="s" fill="#a0a66b" points="40,42 72,26 72,60 40,76"></polygon><polygon class="s" fill="#cfd59a" points="40,10 72,26 40,42 8,26"></polygon></svg>
+<div style="display: flex; flex-direction: column; gap: 5px"><div class="nm">잔디 · grass</div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #cfd59a"></span><span class="tk">#cfd59a</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #b7bd7f"></span><span class="tk">#b7bd7f</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #a0a66b"></span><span class="tk">#a0a66b</span></div></div>
+</div>
+
+<div style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 18px; padding: 14px; display: flex; gap: 12px; align-items: center">
+<svg width="76" height="80" viewBox="0 0 80 84" aria-hidden="true" style="flex-shrink: 0"><polygon class="s" fill="#e8a579" points="8,26 40,42 40,76 8,60"></polygon><polygon class="s" fill="#d68d62" points="40,42 72,26 72,60 40,76"></polygon><polygon class="s" fill="#f3bd93" points="40,10 72,26 40,42 8,26"></polygon></svg>
+<div style="display: flex; flex-direction: column; gap: 5px"><div class="nm">길 · path</div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #f3bd93"></span><span class="tk">#f3bd93</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #e8a579"></span><span class="tk">#e8a579</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #d68d62"></span><span class="tk">#d68d62</span></div></div>
+</div>
+
+<div style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 18px; padding: 14px; display: flex; gap: 12px; align-items: center">
+<svg width="76" height="80" viewBox="0 0 80 84" aria-hidden="true" style="flex-shrink: 0"><polygon class="s" fill="#cfa877" points="8,26 40,42 40,76 8,60"></polygon><polygon class="s" fill="#b98f5f" points="40,42 72,26 72,60 40,76"></polygon><polygon class="s" fill="#e2c091" points="40,10 72,26 40,42 8,26"></polygon></svg>
+<div style="display: flex; flex-direction: column; gap: 5px"><div class="nm">흙 · 부지 · dirt</div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #e2c091"></span><span class="tk">#e2c091</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #cfa877"></span><span class="tk">#cfa877</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #b98f5f"></span><span class="tk">#b98f5f</span></div></div>
+</div>
+
+<div style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 18px; padding: 14px; display: flex; gap: 12px; align-items: center">
+<svg width="76" height="80" viewBox="0 0 80 84" aria-hidden="true" style="flex-shrink: 0"><polygon class="s" fill="#dccfb9" points="8,26 40,42 40,76 8,60"></polygon><polygon class="s" fill="#c6b79d" points="40,42 72,26 72,60 40,76"></polygon><polygon class="s" fill="#efe6d6" points="40,10 72,26 40,42 8,26"></polygon></svg>
+<div style="display: flex; flex-direction: column; gap: 5px"><div class="nm">돌 · stone</div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #efe6d6"></span><span class="tk">#efe6d6</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #dccfb9"></span><span class="tk">#dccfb9</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #c6b79d"></span><span class="tk">#c6b79d</span></div></div>
+</div>
+
+<div style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 18px; padding: 14px; display: flex; gap: 12px; align-items: center">
+<svg width="76" height="80" viewBox="0 0 80 84" aria-hidden="true" style="flex-shrink: 0"><polygon class="s" fill="#f8e8cc" points="8,26 40,42 40,76 8,60"></polygon><polygon class="s" fill="#ecd2ab" points="40,42 72,26 72,60 40,76"></polygon><polygon class="s" fill="#fff5e2" points="40,10 72,26 40,42 8,26"></polygon></svg>
+<div style="display: flex; flex-direction: column; gap: 5px"><div class="nm">회벽 · plaster</div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #fff5e2"></span><span class="tk">#fff5e2</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #f8e8cc"></span><span class="tk">#f8e8cc</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #ecd2ab"></span><span class="tk">#ecd2ab</span></div></div>
+</div>
+
+<div style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 18px; padding: 14px; display: flex; gap: 12px; align-items: center">
+<svg width="76" height="80" viewBox="0 0 80 84" aria-hidden="true" style="flex-shrink: 0"><polygon class="s" fill="#c4845a" points="8,26 40,42 40,76 8,60"></polygon><polygon class="s" fill="#a86c48" points="40,42 72,26 72,60 40,76"></polygon><polygon class="s" fill="#dca173" points="40,10 72,26 40,42 8,26"></polygon></svg>
+<div style="display: flex; flex-direction: column; gap: 5px"><div class="nm">나무 · wood</div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #dca173"></span><span class="tk">#dca173</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #c4845a"></span><span class="tk">#c4845a</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #a86c48"></span><span class="tk">#a86c48</span></div></div>
+</div>
+
+<div style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 18px; padding: 14px; display: flex; gap: 12px; align-items: center">
+<svg width="76" height="80" viewBox="0 0 80 84" aria-hidden="true" style="flex-shrink: 0"><polygon class="s" fill="#d4865f" points="8,26 40,42 40,76 8,60"></polygon><polygon class="s" fill="#bd7050" points="40,42 72,26 72,60 40,76"></polygon><polygon class="s" fill="#e8a07a" points="40,10 72,26 40,42 8,26"></polygon></svg>
+<div style="display: flex; flex-direction: column; gap: 5px"><div class="nm">벽돌 · brick</div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #e8a07a"></span><span class="tk">#e8a07a</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #d4865f"></span><span class="tk">#d4865f</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #bd7050"></span><span class="tk">#bd7050</span></div></div>
+</div>
+
+<div style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 18px; padding: 14px; display: flex; gap: 12px; align-items: center">
+<svg width="76" height="80" viewBox="0 0 80 84" aria-hidden="true" style="flex-shrink: 0"><polygon class="s" fill="#3d8358" points="8,26 40,42 40,76 8,60"></polygon><polygon class="s" fill="#2e6a47" points="40,42 72,26 72,60 40,76"></polygon><polygon class="s" fill="#4f9a68" points="40,10 72,26 40,42 8,26"></polygon><ellipse fill="#7cbf8c" cx="34" cy="22" rx="7" ry="3.5"></ellipse></svg>
+<div style="display: flex; flex-direction: column; gap: 5px"><div class="nm">잎 · leaf</div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #4f9a68"></span><span class="tk">#4f9a68</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #3d8358"></span><span class="tk">#3d8358</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #2e6a47"></span><span class="tk">#2e6a47 · hi #7cbf8c</span></div></div>
+</div>
+
+<div style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 18px; padding: 14px; display: flex; gap: 12px; align-items: center">
+<svg width="76" height="80" viewBox="0 0 80 84" aria-hidden="true" style="flex-shrink: 0"><polygon class="s" fill="#92cbe0" points="8,26 40,42 40,76 8,60"></polygon><polygon class="s" fill="#72b2cc" points="40,42 72,26 72,60 40,76"></polygon><polygon class="s" fill="#b5e0ec" points="40,10 72,26 40,42 8,26"></polygon><path d="M28 24Q34 20 40 24T52 24" fill="none" stroke="#effafc" stroke-width="2.5" stroke-linecap="round"></path></svg>
+<div style="display: flex; flex-direction: column; gap: 5px"><div class="nm">물 · water</div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #b5e0ec"></span><span class="tk">#b5e0ec</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #92cbe0"></span><span class="tk">#92cbe0</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #72b2cc"></span><span class="tk">#72b2cc · hi #effafc</span></div></div>
+</div>
+
+<div style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 18px; padding: 14px; display: flex; gap: 12px; align-items: center">
+<svg width="76" height="80" viewBox="0 0 80 84" aria-hidden="true" style="flex-shrink: 0"><polygon class="s" fill="#cdc6d4" points="8,26 40,42 40,76 8,60"></polygon><polygon class="s" fill="#b3aabd" points="40,42 72,26 72,60 40,76"></polygon><polygon class="s" fill="#ebe7ee" points="40,10 72,26 40,42 8,26"></polygon></svg>
+<div style="display: flex; flex-direction: column; gap: 5px"><div class="nm">금속 · metal</div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #ebe7ee"></span><span class="tk">#ebe7ee</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #cdc6d4"></span><span class="tk">#cdc6d4</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #b3aabd"></span><span class="tk">#b3aabd</span></div></div>
+</div>
+
+</div>
+</section>
+
+<div style="display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px">
+
+<section style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 20px 22px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 4px"><h2 class="hd" style="font-size: 22px">팀원 슬롯 색</h2><span style="font-size: 13px; color: #8a5a4a">직업 구성이 프로젝트마다 바뀌므로 색은 직업 이름이 아니라 슬롯 순서에 묶습니다. 지붕·간판·카드·칩이 모두 이 색을 따릅니다.</span><span style="font-size: 12px; color: #8a5a4a">순서는 색약 검사(이웃한 두 색의 적록색약 구분도) 통과 순서입니다. 5↔6은 경계선이라 얼굴·이름과 늘 함께 씁니다. 겨자는 바탕 대비가 낮아 차트 막대로는 쓰지 않습니다.</span></div>
+<div style="display: grid; grid-template-columns: 112px repeat(5, 52px) minmax(0, 1fr); column-gap: 10px; row-gap: 8px; align-items: center; font-size: 12px; color: #8a5a4a">
+<span></span><span>기본</span><span>-l</span><span>-r</span><span>tint</span><span>deep</span><span>쓰임 예</span>
+
+<span class="nm">1 · 하늘</span><span class="slot" style="background: #6f97d8"></span><span class="slot" style="background: #5a80c2"></span><span class="slot" style="background: #4769a6"></span><span class="slot" style="background: #dde8f5"></span><span class="slot" style="background: #3f5f99"></span>
+<span style="justify-self: start; padding: 3px 12px; border: 2px solid #7a3e3e; border-radius: 999px; background: #dde8f5; color: #3f5f99; font-family: 'Jua', sans-serif; font-size: 14px">백엔드</span>
+
+<span class="nm">2 · 산호</span><span class="slot" style="background: #ec6f66"></span><span class="slot" style="background: #d45a53"></span><span class="slot" style="background: #b84842"></span><span class="slot" style="background: #fadcd8"></span><span class="slot" style="background: #a8433d"></span>
+<span style="justify-self: start; padding: 3px 12px; border: 2px solid #7a3e3e; border-radius: 999px; background: #fadcd8; color: #a8433d; font-family: 'Jua', sans-serif; font-size: 14px">프론트엔드</span>
+
+<span class="nm">3 · 겨자</span><span class="slot" style="background: #f0b24a"></span><span class="slot" style="background: #d99a35"></span><span class="slot" style="background: #bb8024"></span><span class="slot" style="background: #fbe9c4"></span><span class="slot" style="background: #845614"></span>
+<span style="justify-self: start; padding: 3px 12px; border: 2px solid #7a3e3e; border-radius: 999px; background: #fbe9c4; color: #845614; font-family: 'Jua', sans-serif; font-size: 14px">팀장</span>
+
+<span class="nm">4 · 풀잎</span><span class="slot" style="background: #5aa77a"></span><span class="slot" style="background: #478f65"></span><span class="slot" style="background: #377752"></span><span class="slot" style="background: #dcebd2"></span><span class="slot" style="background: #2f7049"></span>
+<span style="justify-self: start; padding: 3px 12px; border: 2px solid #7a3e3e; border-radius: 999px; background: #dcebd2; color: #2f7049; font-family: 'Jua', sans-serif; font-size: 14px">QA</span>
+
+<span class="nm">5 · 라벤더</span><span class="slot" style="background: #a893dc"></span><span class="slot" style="background: #9079c7"></span><span class="slot" style="background: #7862ad"></span><span class="slot" style="background: #e8e1f6"></span><span class="slot" style="background: #6a55a3"></span>
+<span style="justify-self: start; padding: 3px 12px; border: 2px solid #7a3e3e; border-radius: 999px; background: #e8e1f6; color: #6a55a3; font-family: 'Jua', sans-serif; font-size: 14px">다섯째 직업</span>
+
+<span class="nm">6 · 청록</span><span class="slot" style="background: #4fb3ad"></span><span class="slot" style="background: #3e9a95"></span><span class="slot" style="background: #2f807b"></span><span class="slot" style="background: #d6efec"></span><span class="slot" style="background: #226a66"></span>
+<span style="justify-self: start; padding: 3px 12px; border: 2px solid #7a3e3e; border-radius: 999px; background: #d6efec; color: #226a66; font-family: 'Jua', sans-serif; font-size: 14px">여섯째 직업</span>
+
+<span class="nm">외부인 · 모래</span><span class="slot" style="background: #bcae9c"></span><span class="slot" style="background: #a69884"></span><span class="slot" style="background: #8d7f6c"></span><span class="slot" style="background: #efe8df"></span><span class="slot" style="background: #6a5b46"></span>
+<span style="justify-self: start; padding: 3px 12px; border: 2px solid #7a3e3e; border-radius: 999px; background: #efe8df; color: #6a5b46; font-family: 'Jua', sans-serif; font-size: 14px">Explore · 도서관</span>
+</div>
+</section>
+
+<section style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 20px 22px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 4px"><h2 class="hd" style="font-size: 22px">캐릭터 털 · 공통</h2><span style="font-size: 13px; color: #8a5a4a">캐릭터는 입체 음영 없이 평면 채색. 뒤쪽 팔다리만 -shade로 한 단계 내립니다.</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+
+<div style="display: flex; gap: 10px; align-items: center; background: #f3e3c3; border: 2px solid #7a3e3e; border-radius: 14px; padding: 8px 10px">
+<svg width="70" height="78" viewBox="-56 -112 112 124" aria-hidden="true" style="flex-shrink: 0">
+<ellipse class="s4" fill="#a86c40" cx="-16" cy="1" rx="9" ry="5"></ellipse><ellipse class="s4" fill="#a86c40" cx="16" cy="1" rx="9" ry="5"></ellipse>
+<circle class="s4" fill="#c0804f" cx="-26" cy="-64" r="10"></circle><circle class="s4" fill="#c0804f" cx="26" cy="-64" r="10"></circle>
+<circle fill="#eeb08f" cx="-26" cy="-67" r="4.5"></circle><circle fill="#eeb08f" cx="26" cy="-67" r="4.5"></circle>
+<path class="s4" fill="#c0804f" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<ellipse fill="#f6dfc3" cx="0" cy="-14" rx="21" ry="12"></ellipse>
+<ellipse fill="#5a2e2e" cx="-15" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="15" cy="-38" rx="3.6" ry="4.4"></ellipse>
+<ellipse fill="#5a2e2e" cx="0" cy="-30" rx="3.2" ry="2.3"></ellipse>
+<ellipse fill="#f7a194" cx="-27" cy="-27" rx="5.5" ry="3.2"></ellipse><ellipse fill="#f7a194" cx="27" cy="-27" rx="5.5" ry="3.2"></ellipse>
+</svg>
+<div style="display: flex; flex-direction: column; gap: 4px"><div class="nm">곰</div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #c0804f"></span><span class="tk">털 #c0804f</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #eeb08f"></span><span class="tk">귀속 #eeb08f</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #f6dfc3"></span><span class="tk">주둥이 #f6dfc3</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #a86c40"></span><span class="tk">-shade #a86c40</span></div></div>
+</div>
+
+<div style="display: flex; gap: 10px; align-items: center; background: #f3e3c3; border: 2px solid #7a3e3e; border-radius: 14px; padding: 8px 10px">
+<svg width="70" height="78" viewBox="-56 -112 112 124" aria-hidden="true" style="flex-shrink: 0">
+<ellipse class="s4" fill="#fbf3e8" cx="-15" cy="-86" rx="9" ry="22" transform="rotate(-10 -15 -86)"></ellipse><ellipse class="s4" fill="#fbf3e8" cx="15" cy="-86" rx="9" ry="22" transform="rotate(10 15 -86)"></ellipse>
+<ellipse fill="#f5a3a8" cx="-15" cy="-86" rx="4" ry="15" transform="rotate(-10 -15 -86)"></ellipse><ellipse fill="#f5a3a8" cx="15" cy="-86" rx="4" ry="15" transform="rotate(10 15 -86)"></ellipse>
+<ellipse class="s4" fill="#eadbc7" cx="-16" cy="1" rx="9" ry="5"></ellipse><ellipse class="s4" fill="#eadbc7" cx="16" cy="1" rx="9" ry="5"></ellipse>
+<path class="s4" fill="#fbf3e8" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<ellipse fill="#5a2e2e" cx="-15" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="15" cy="-38" rx="3.6" ry="4.4"></ellipse>
+<ellipse fill="#f5a3a8" cx="0" cy="-30" rx="3.2" ry="2.3"></ellipse>
+<ellipse fill="#f7a194" cx="-27" cy="-27" rx="5.5" ry="3.2"></ellipse><ellipse fill="#f7a194" cx="27" cy="-27" rx="5.5" ry="3.2"></ellipse>
+</svg>
+<div style="display: flex; flex-direction: column; gap: 4px"><div class="nm">토끼</div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #fbf3e8"></span><span class="tk">털 #fbf3e8</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #f5a3a8"></span><span class="tk">귀속 · 코 #f5a3a8</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #eadbc7"></span><span class="tk">-shade #eadbc7</span></div></div>
+</div>
+
+<div style="display: flex; gap: 10px; align-items: center; background: #f3e3c3; border: 2px solid #7a3e3e; border-radius: 14px; padding: 8px 10px">
+<svg width="70" height="78" viewBox="-56 -112 112 124" aria-hidden="true" style="flex-shrink: 0">
+<path class="s4" fill="#aaa2ad" d="M-38 -48Q-42 -76 -20 -68Q-14 -63 -16 -56Z"></path><path class="s4" fill="#aaa2ad" d="M38 -48Q42 -76 20 -68Q14 -63 16 -56Z"></path>
+<ellipse class="s4" fill="#938a97" cx="-16" cy="1" rx="9" ry="5"></ellipse><ellipse class="s4" fill="#938a97" cx="16" cy="1" rx="9" ry="5"></ellipse>
+<path class="s4" fill="#aaa2ad" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<path fill="#5f5566" d="M-31 -45Q-15 -51 -4 -43Q0 -41 4 -43Q15 -51 31 -45Q32 -33 18 -32Q8 -33 0 -34Q-8 -33 -18 -32Q-32 -33 -31 -45Z"></path>
+<ellipse fill="#fff9ee" cx="0" cy="-22" rx="12" ry="8"></ellipse>
+<circle fill="#fff9ee" cx="-15" cy="-39.5" r="4.8"></circle><circle fill="#fff9ee" cx="15" cy="-39.5" r="4.8"></circle>
+<ellipse fill="#5a2e2e" cx="-15" cy="-39.5" rx="3" ry="3.6"></ellipse><ellipse fill="#5a2e2e" cx="15" cy="-39.5" rx="3" ry="3.6"></ellipse>
+<ellipse fill="#5a2e2e" cx="0" cy="-27" rx="3.2" ry="2.3"></ellipse>
+<ellipse fill="#f7a194" cx="-28" cy="-23" rx="5.5" ry="3.2"></ellipse><ellipse fill="#f7a194" cx="28" cy="-23" rx="5.5" ry="3.2"></ellipse>
+</svg>
+<div style="display: flex; flex-direction: column; gap: 4px"><div class="nm">너구리</div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #aaa2ad"></span><span class="tk">털 #aaa2ad</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #5f5566"></span><span class="tk">가면 #5f5566</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #938a97"></span><span class="tk">-shade #938a97</span></div></div>
+</div>
+
+<div style="display: flex; gap: 10px; align-items: center; background: #f3e3c3; border: 2px solid #7a3e3e; border-radius: 14px; padding: 8px 10px">
+<svg width="70" height="78" viewBox="-56 -112 112 124" aria-hidden="true" style="flex-shrink: 0">
+<ellipse class="s4" fill="#f4a340" cx="-14" cy="1" rx="9" ry="4.5"></ellipse><ellipse class="s4" fill="#f4a340" cx="14" cy="1" rx="9" ry="4.5"></ellipse>
+<path class="s4" fill="#4a5a7e" d="M-3 -70Q1 -82 9 -77Q4 -75 3 -70Z"></path>
+<path class="s4" fill="#4a5a7e" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<path fill="#fff9ee" d="M0 -58C-10 -66 -30 -60 -30 -40C-32 -18 -22 -3 0 -3C22 -3 32 -18 30 -40C30 -60 10 -66 0 -58Z"></path>
+<ellipse fill="#5a2e2e" cx="-13" cy="-40" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="13" cy="-40" rx="3.6" ry="4.4"></ellipse>
+<path class="s4" fill="#f4a340" stroke-width="2.4" d="M-6 -33Q0 -38 6 -33Q0 -27 -6 -33Z"></path>
+<ellipse fill="#f7a194" cx="-23" cy="-30" rx="5.5" ry="3.2"></ellipse><ellipse fill="#f7a194" cx="23" cy="-30" rx="5.5" ry="3.2"></ellipse>
+</svg>
+<div style="display: flex; flex-direction: column; gap: 4px"><div class="nm">펭귄</div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #4a5a7e"></span><span class="tk">털 #4a5a7e</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #f4a340"></span><span class="tk">부리 · 발 #f4a340</span></div>
+<div style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #3b4968"></span><span class="tk">-shade #3b4968</span></div></div>
+</div>
+
+</div>
+<div style="display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: #8a5a4a">
+<span style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #f7a194"></span>볼터치 --blush #f7a194</span>
+<span style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #5a2e2e"></span>눈 · 코 --text</span>
+<span style="display: flex; align-items: center; gap: 6px"><span class="mini" style="background: #fff9ee"></span>배 · 눈 반사 --paper</span>
+</div>
+</section>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px">
+<section style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 18px 22px; display: flex; flex-direction: column; gap: 10px">
+<h2 class="hd" style="font-size: 20px">상태</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 14px; font-size: 13px">
+<span style="display: flex; align-items: center; gap: 8px"><span class="mini" style="background: #f7cb52"></span>작업 중 #f7cb52</span>
+<span style="display: flex; align-items: center; gap: 8px"><span class="mini" style="background: #96c6ea"></span>회의 중 #96c6ea</span>
+<span style="display: flex; align-items: center; gap: 8px"><span class="mini" style="background: #bfdca8"></span>휴식 #bfdca8</span>
+<span style="display: flex; align-items: center; gap: 8px"><span class="mini" style="background: #ec6f66"></span>막힘 #ec6f66</span>
+</div>
+<span style="font-size: 12px; color: #8a5a4a">색만으로 구분하지 않습니다. 상태마다 아이콘을 함께 씁니다.</span>
+</section>
+<section style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 18px 22px; display: flex; flex-direction: column; gap: 10px">
+<h2 class="hd" style="font-size: 20px">경제</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 14px; font-size: 13px">
+<span style="display: flex; align-items: center; gap: 8px"><span class="mini" style="background: #f7cb52"></span>코인 #f7cb52 / #e2ae33</span>
+<span style="display: flex; align-items: center; gap: 8px"><span class="mini" style="background: #2f7d4f"></span>수입 글자 #2f7d4f</span>
+<span style="display: flex; align-items: center; gap: 8px"><span class="mini" style="background: #b8433f"></span>지출 · 물가▲ #b8433f</span>
+<span style="display: flex; align-items: center; gap: 8px"><span class="mini" style="background: #3f5f99"></span>물가▼ #3f5f99</span>
+</div>
+<span style="font-size: 12px; color: #8a5a4a">물가는 오르면 적갈 빨강 ▲, 내리면 파랑 ▼ (국내 표기 관례, 색약 구분).</span>
+</section>
+<section style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 18px 22px; display: flex; flex-direction: column; gap: 10px">
+<h2 class="hd" style="font-size: 20px">기타 월드</h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 14px; font-size: 13px">
+<span style="display: flex; align-items: center; gap: 8px"><span class="mini" style="background: #c2e8f2"></span>유리 #c2e8f2</span>
+<span style="display: flex; align-items: center; gap: 8px"><span class="mini" style="background: #effafc"></span>반사 #effafc</span>
+<span style="display: flex; align-items: center; gap: 8px"><span class="mini" style="background: #ece4d6"></span>연기 · 먼지 #ece4d6</span>
+<span style="display: flex; align-items: center; gap: 8px"><span class="mini" style="background: rgba(122, 62, 62, 0.2)"></span>그림자 ink 20%</span>
+</div>
+<span style="font-size: 12px; color: #8a5a4a">그림자는 --ink를 투명도로만 씁니다. 바닥 색과 자연스럽게 섞입니다.</span>
+</section>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1360}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

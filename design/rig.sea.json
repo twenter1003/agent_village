@@ -1,0 +1,730 @@
+{
+  "$comment": "바다 테마 리그 (부록). design/rig.json 위에 이 파일을 덮는다: viewBox·anchor·faceBox·hierarchy·pivots·표정은 rig.json 그대로, poses는 같은 이름만 교체, props·species·accessories·fx는 이 파일 것을 쓴다. 원본: design/canvas/SeaCritter.dc.html (값의 정본), SeaChars.dc.html, SeaRig.dc.html. 설명: docs/05-바다-테마.md 6장.",
+  "extends": "rig.json",
+  "movePose": {
+    "$comment": "게임 로직은 이동을 항상 'walk'로 요청한다. 그릴 때 species.move 값의 포즈로 바꾼다 (swim | walk). 'swim'을 직접 요청해도 같은 규칙.",
+    "requests": ["walk", "swim"],
+    "use": "species.move"
+  },
+  "poses": {
+    "stand": {
+      "$comment": "잔디와 같고 두 번째 프레임에 꼬리 4° 흔들림만 추가.",
+      "rate": 5,
+      "frames": [
+        {},
+        {
+          "body": [0, -1.5, 0],
+          "armL": [0, 0, 6],
+          "armR": [0, 0, -6],
+          "earL": [0, 0, -3],
+          "earR": [0, 0, 3],
+          "tail": [0, 0, 4]
+        }
+      ]
+    },
+    "walk": {
+      "$comment": "바닥 걷기 (씨워크 헬멧 쓴 종). 잔디 걷기보다 느리고(rate 3) 보폭이 작다. 귀 흔들림 없음.",
+      "rate": 3,
+      "frames": [
+        {
+          "footL": [0, -4, -10],
+          "body": [0, -1.5, -4],
+          "armL": [0, 0, 14],
+          "armR": [0, 0, 6],
+          "face": [-3, 0, 0],
+          "tail": [0, 0, 8]
+        },
+        {
+          "body": [0, 0, -1],
+          "face": [-3, 0, 0],
+          "armL": [0, 0, 4],
+          "armR": [0, 0, -4]
+        },
+        {
+          "footR": [0, -4, 10],
+          "body": [0, -1.5, 4],
+          "armL": [0, 0, -6],
+          "armR": [0, 0, -14],
+          "face": [-3, 0, 0],
+          "tail": [0, 0, -8]
+        },
+        {
+          "body": [0, 0, 1],
+          "face": [-3, 0, 0],
+          "armL": [0, 0, 4],
+          "armR": [0, 0, -4]
+        }
+      ]
+    },
+    "swim": {
+      "$comment": "헤엄. 몸을 10~14 띄우고 약 -10° 기울임. 발은 몸 아래에 붙게 같이 올림. 그림자는 바닥에 두고 fx.shadowLift로 줄임.",
+      "rate": 2,
+      "frames": [
+        {
+          "body": [0, -12, -10],
+          "footL": [0, -9, -22],
+          "footR": [0, -15, 14],
+          "armL": [0, 0, 45],
+          "armR": [0, 0, -15],
+          "face": [-3, 0, 0],
+          "earL": [0, 0, -6],
+          "earR": [0, 0, -6],
+          "tail": [0, 0, 14]
+        },
+        {
+          "body": [0, -14, -9],
+          "footL": [0, -11, -8],
+          "footR": [0, -17, 4],
+          "armL": [0, 0, 15],
+          "armR": [0, 0, 5],
+          "face": [-3, 0, 0],
+          "tail": [0, 0, 4]
+        },
+        {
+          "body": [0, -12, -10],
+          "footL": [0, -9, 12],
+          "footR": [0, -15, -22],
+          "armL": [0, 0, -15],
+          "armR": [0, 0, 40],
+          "face": [-3, 0, 0],
+          "earL": [0, 0, 6],
+          "earR": [0, 0, 6],
+          "tail": [0, 0, -12]
+        },
+        {
+          "body": [0, -10, -11],
+          "footL": [0, -7, 4],
+          "footR": [0, -13, -8],
+          "armL": [0, 0, 10],
+          "armR": [0, 0, 15],
+          "face": [-3, 0, 0],
+          "tail": [0, 0, -4]
+        }
+      ]
+    },
+    "carry": {
+      "$comment": "잔디와 같은 프레임, 소품만 blocks.",
+      "rate": 2,
+      "prop": "blocks",
+      "frames": [
+        {
+          "footL": [0, -4, -10],
+          "body": [0, -1.5, -2],
+          "armL": [-4, 6, -25],
+          "armR": [4, 6, 25]
+        },
+        {
+          "armL": [-4, 6, -25],
+          "armR": [4, 6, 25]
+        },
+        {
+          "footR": [0, -4, 10],
+          "body": [0, -1.5, 2],
+          "armL": [-4, 6, -25],
+          "armR": [4, 6, 25]
+        },
+        {
+          "armL": [-4, 6, -25],
+          "armR": [4, 6, 25]
+        }
+      ]
+    }
+  },
+  "props": {
+    "hammer": {
+      "slot": "hold-r",
+      "grip": [41, -18],
+      "variantBySpecies": {
+        "otter": "stone"
+      }
+    },
+    "stone": {
+      "slot": "hold-r",
+      "grip": [41, -18],
+      "$comment": "수달 전용 망치 대체. 수달이 돌로 조개를 깨는 습성. 현무암 색 타원 (48,-27) rx 9 ry 7.2, -25°"
+    },
+    "blocks": {
+      "slot": "carry",
+      "anchor": [0, -9],
+      "$comment": "널빤지 대신 산호석 블록 2개. 윗 블록 x -27..27 y -29..-17, 아랫 블록 x -31..31 y -17..-5. 결은 점이 아니라 물결 선 1줄씩"
+    }
+  },
+  "accessories": {
+    "$comment": "바다 소품은 모두 body 공간(얼굴 시선 이동을 따라가지 않음). 몸통 path가 모든 종에 같아서 어느 종에 씌워도 맞는다. 단, seaWalkHelmet은 햄스터 전용.",
+    "headlamp": {
+      "space": "body",
+      "anchor": [0, -64],
+      "$comment": "이마 끈 M-39 -47C-26 -62 26 -62 39 -47 (잉크 7.5 + --hose 3.5) + 황동 몸통 + 불빛 --jelly-glow"
+    },
+    "starfishPin": {
+      "space": "body",
+      "anchor": [19, -64],
+      "rotate": 18,
+      "scale": 0.9,
+      "$comment": "불가사리 5갈래 --starfish, 가운데 점 하나만 --starfish-hi"
+    },
+    "captainHat": {
+      "space": "body",
+      "anchor": [0, -74],
+      "rotate": -7,
+      "$comment": "흰 모자 + 잉크 띠 + 챙 + 황동 단추"
+    },
+    "cap": {
+      "space": "body",
+      "anchor": [0, -70],
+      "colorByRole": {
+        "explore": "--cap-explore",
+        "plan": "--cap-plan",
+        "general": "--cap-general"
+      }
+    },
+    "seaWalkHelmet": {
+      "space": "body",
+      "lockedTo": "hamster",
+      "hidesParts": ["ear-l", "ear-r"],
+      "window": {
+        "x": -31,
+        "y": -64,
+        "w": 62,
+        "h": 42,
+        "cornerR": 11,
+        "glassOpacity": 0.28
+      },
+      "requiresFaceOff": [0, -4],
+      "bubbleSource": "collar",
+      "layers": ["collar", "dome (evenodd로 창을 뚫음)", "right shade", "outline", "glass 28%", "highlight", "rivets x6", "hose", "valve"],
+      "hose": {
+        "path": "M3 -104C10 -114 22 -112 30 -121",
+        "coupler": [31, -122],
+        "$comment": "에셋 안에서는 짧게 끝남. 마을에서는 월드 층이 수면(y<0)까지 이어 그린다"
+      }
+    }
+  },
+  "fx": {
+    "shadowLift": {
+      "$comment": "몸이 뜬 만큼 그림자를 줄인다. lift = 현재 프레임 body dy (뜨면 음수)",
+      "rx": "38 + lift * 0.45",
+      "ry": "9 + lift * 0.12"
+    },
+    "bubbles": {
+      "$comment": "캐릭터 거품 층. 파츠가 아니라 별도 층(data-fx=bubbles)이고 150ms 전역 틱을 쓴다. 마을에서는 말하는 팀원과 seaWalkHelmet만 켠다.",
+      "count": 3,
+      "lifeTicks": 26,
+      "phaseStep": 9,
+      "t": "(tick + i * phaseStep) % lifeTicks",
+      "radius": "2.2 + (i % 3) * 0.9 + t * 0.05",
+      "opacity": "0.95 * (t < 3 ? t / 3 : t > lifeTicks - 6 ? (lifeTicks - t) / 6 : 1)",
+      "style": {
+        "fill": "--bubble",
+        "fillOpacity": 0.6,
+        "stroke": "--ink",
+        "strokeWidth": 1.6,
+        "highlight": {
+          "offset": -0.35,
+          "rScale": 0.3,
+          "fill": "#ffffff"
+        }
+      },
+      "sources": {
+        "head": {
+          "x": "24 + sin(t / 2.5 + i * 2) * 2.5",
+          "y": "-62 + lift - t * 3.2"
+        },
+        "collar": {
+          "x": "side * (47 + min(t, 6) * 0.5) + sin(t / 2.5 + i) * 2",
+          "y": "-18 + lift - t * 4",
+          "side": "i % 2 == 0 ? -1 : 1"
+        }
+      },
+      "onWhen": ["pose:talk", "accessory:seaWalkHelmet"]
+    }
+  },
+  "species": {
+    "seal": {
+      "name": "점박이물범",
+      "fur": "#cdd4dc",
+      "arm": "#bcc5cf",
+      "foot": "#a9b3be",
+      "footR": [10, 5],
+      "armR": [7, 10.5],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "earL": null,
+      "earR": null,
+      "tail": null,
+      "move": "swim",
+      "eye": [16, -39, 4.6, 5.4, 1.6],
+      "blush": [27, -24, 5, 3],
+      "faceOff": [0, 0],
+      "defaultAccessory": "headlamp",
+      "shapes": ["spots x3 (--seal-spot)", "muzzle (--seal-muzzle)", "whiskers"]
+    },
+    "otter": {
+      "name": "수달",
+      "fur": "#a8744d",
+      "arm": "#8f5f3e",
+      "foot": "#8f5f3e",
+      "footR": [9, 5],
+      "armR": [7, 9.5],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "earL": [-27, -55],
+      "earR": [27, -55],
+      "tail": [-30, -12],
+      "move": "swim",
+      "eye": [16, -40, 3.4, 4.1, 1.1],
+      "blush": [28, -25, 5.5, 3.2],
+      "faceOff": [0, 0],
+      "defaultAccessory": "starfishPin",
+      "shapes": ["muzzle (--otter-face)", "round ears"]
+    },
+    "hamster": {
+      "name": "골든햄스터",
+      "fur": "#e9a35b",
+      "arm": "#fbf0dc",
+      "foot": "#f0a3a6",
+      "footR": [8.5, 4.6],
+      "armR": [6.5, 9],
+      "nose": "#f0a3a6",
+      "lid": "#1f3850",
+      "earL": null,
+      "earR": null,
+      "tail": null,
+      "move": "walk",
+      "eye": [15, -42, 4.2, 4.8, 1.5],
+      "blush": [19, -29, 5, 3],
+      "faceOff": [0, -4],
+      "defaultAccessory": "seaWalkHelmet",
+      "shapes": ["cheek pouches (--hamster-cream, face 안)", "belly (--hamster-cream)", "pink nose + ink 1.4"],
+      "$comment": "씨워크 헬멧 전용 종. 귀는 헬멧 속, 꼬리는 너무 짧아 그리지 않지만 ear-l · ear-r · tail 빈 칸은 둔다."
+    },
+    "turtle": {
+      "name": "바다거북",
+      "fur": "#b3cf8f",
+      "arm": "#a4c27e",
+      "foot": "#93b16c",
+      "footR": [9.5, 5],
+      "armR": [7, 12.5],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "earL": null,
+      "earR": null,
+      "tail": null,
+      "move": "swim",
+      "eye": [16, -40, 3.8, 4.6, 1.3],
+      "blush": [28, -26, 5.5, 3.2],
+      "faceOff": [0, 0],
+      "defaultAccessory": "captainHat",
+      "shapes": ["shell (body 경로보다 먼저)", "plastron"]
+    },
+    "fish": {
+      "name": "복어 외부인",
+      "fur": "#e6dcc8",
+      "arm": "#d5c6aa",
+      "foot": "#d5c6aa",
+      "footR": [7, 3.8],
+      "armR": [5.5, 8.5],
+      "nose": null,
+      "lid": "#1f3850",
+      "earL": null,
+      "earR": null,
+      "tail": [-34, -16],
+      "move": "swim",
+      "eye": [17, -40, 4.8, 5.4, 1.7],
+      "blush": [28, -26, 5.5, 3.2],
+      "faceOff": [0, 0],
+      "defaultAccessory": "cap",
+      "shapes": ["spines (body 경로보다 먼저)", "belly", "tail fin"],
+      "$comment": "외부인. 모자 색 = 소속 시설. 몸을 부풀리는 동작은 크기 변경이라 하지 않는다 (05 문서 결정 S3)."
+    },
+    "gentoo": {
+      "name": "펭귄",
+      "fur": "#34435c",
+      "arm": "#2c3a51",
+      "foot": "#f29a4a",
+      "footR": [10, 4.5],
+      "armR": [6.5, 12],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "faceOff": [0, 0],
+      "earL": null,
+      "earR": null,
+      "tail": null,
+      "move": "swim",
+      "eye": [15, -41, 3.8, 4.4, 1.3],
+      "blush": [22, -29, 4.2, 2.6],
+      "defaultAccessory": "starfishPin",
+      "parts": ["belly", "maskHeart", "beak"],
+      "face": "#f7f8f6",
+      "beak": "#f29a4a",
+      "shapes": ["부품: belly · maskHeart · beak (05 문서 6.5)"]
+    },
+    "polarbear": {
+      "name": "북극곰",
+      "fur": "#f1f4f6",
+      "arm": "#e1e7eb",
+      "foot": "#d3dbe1",
+      "footR": [10, 5.5],
+      "armR": [7.5, 10],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "faceOff": [0, 0],
+      "earL": [-26, -62],
+      "earR": [26, -62],
+      "tail": [-38, -14],
+      "move": "walk",
+      "eye": [15, -42, 3.6, 4.2, 1.2],
+      "blush": [26, -27, 5, 3],
+      "defaultAccessory": "starfishPin",
+      "parts": ["earRound", "tailRound", "muzzle", "noseBig"],
+      "face": "#f6eedb",
+      "shade": "#c4cdd5",
+      "shapes": [
+        "부품: earRound · tailRound · muzzle · noseBig"
+      ]
+    },
+    "walrus": {
+      "name": "바다코끼리",
+      "fur": "#b98b6e",
+      "arm": "#a67a5d",
+      "foot": "#a67a5d",
+      "footR": [10, 4.5],
+      "armR": [7, 11],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "faceOff": [0, 0],
+      "earL": null,
+      "earR": null,
+      "tail": null,
+      "move": "swim",
+      "eye": [15, -43, 3.2, 3.8, 1.1],
+      "blush": [27, -33, 4.5, 2.8],
+      "defaultAccessory": "captainHat",
+      "parts": ["whiskerPads", "noseSmall", "whiskers", "tusks"],
+      "face": "#e6c7a8",
+      "shapes": [
+        "부품: whiskerPads · noseSmall · whiskers · tusks"
+      ]
+    },
+    "sealion": {
+      "name": "바다사자",
+      "fur": "#6f5a4b",
+      "arm": "#614e41",
+      "foot": "#56453a",
+      "footR": [10, 4.5],
+      "armR": [6.5, 12],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "faceOff": [0, 0],
+      "earL": [-40, -50],
+      "earR": [40, -50],
+      "tail": null,
+      "move": "swim",
+      "eye": [16, -41, 4.2, 5, 1.5],
+      "blush": [27, -26, 5, 3],
+      "defaultAccessory": "headlamp",
+      "parts": ["earFlap", "muzzle", "noseSmall", "whiskers"],
+      "face": "#b39a82",
+      "shade": "#56453a",
+      "shapes": [
+        "부품: earFlap · muzzle · noseSmall · whiskers"
+      ]
+    },
+    "gull": {
+      "name": "갈매기",
+      "fur": "#f5f6f3",
+      "arm": "#b7c1cb",
+      "foot": "#f1b54b",
+      "footR": [8.5, 4],
+      "armR": [6.5, 12],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "faceOff": [0, 0],
+      "earL": null,
+      "earR": null,
+      "tail": [-34, -14],
+      "move": "walk",
+      "eye": [15, -42, 3.6, 4.2, 1.2],
+      "blush": [24, -29, 4.5, 2.8],
+      "defaultAccessory": "cap",
+      "parts": ["beak", "beakSpot", "tailFeather"],
+      "beak": "#f3c64a",
+      "shade": "#b7c1cb",
+      "shapes": ["부품: beak · beakSpot · tailFeather"]
+    },
+    "seaotter": {
+      "name": "해달",
+      "fur": "#5b4435",
+      "arm": "#4e3a2d",
+      "foot": "#4e3a2d",
+      "footR": [9.5, 5],
+      "armR": [7, 10.5],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "faceOff": [0, 0],
+      "earL": [-31, -55],
+      "earR": [31, -55],
+      "tail": null,
+      "move": "swim",
+      "eye": [15, -42, 3.6, 4.2, 1.2],
+      "blush": [25, -28, 4.8, 2.9],
+      "defaultAccessory": "cap",
+      "parts": ["headPale", "earSmall", "noseBig", "whiskers"],
+      "face": "#e9dfd0",
+      "shade": "#4e3a2d",
+      "shapes": [
+        "부품: headPale · earSmall · noseBig · whiskers (05 문서 6.5)"
+      ]
+    },
+    "clownfish": {
+      "name": "흰동가리",
+      "fur": "#f28c38",
+      "arm": "#e27a28",
+      "foot": "#e27a28",
+      "footR": [8, 4],
+      "armR": [6, 9.5],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "faceOff": [0, 0],
+      "earL": null,
+      "earR": null,
+      "tail": [-34, -16],
+      "move": "swim",
+      "eye": [16, -41, 4.6, 5.2, 1.6],
+      "blush": [24, -30, 4.2, 2.6],
+      "defaultAccessory": "starfishPin",
+      "parts": ["bands", "tailFin"],
+      "face": "#fbfaf6",
+      "shade": "#e27a28",
+      "shapes": ["부품: bands · tailFin (05 문서 6.5)"]
+    },
+    "puffin": {
+      "name": "퍼핀",
+      "fur": "#2b2f38",
+      "arm": "#23262e",
+      "foot": "#f28a3c",
+      "footR": [9, 4.5],
+      "armR": [6.5, 11.5],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "faceOff": [0, 0],
+      "earL": null,
+      "earR": null,
+      "tail": null,
+      "move": "walk",
+      "eye": [15, -43, 3.4, 4, 1.2],
+      "blush": [23, -31, 4, 2.5],
+      "defaultAccessory": "captainHat",
+      "parts": ["belly", "maskHeart", "beakTri"],
+      "face": "#f2f3f0",
+      "beak": "#f07a3a",
+      "shade": "#9aa3ad",
+      "shapes": [
+        "부품: belly · maskHeart · beakTri (05 문서 6.5)"
+      ]
+    },
+    "dugong": {
+      "name": "듀공",
+      "fur": "#8ea0aa",
+      "arm": "#7b8d97",
+      "foot": "#7b8d97",
+      "footR": [9, 4.5],
+      "armR": [6.5, 11.5],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "faceOff": [0, 0],
+      "earL": null,
+      "earR": null,
+      "tail": [-34, -16],
+      "move": "swim",
+      "eye": [16, -44, 3, 3.6, 1],
+      "blush": [28, -36, 4.5, 2.8],
+      "defaultAccessory": "headlamp",
+      "parts": ["muzzleWide", "nostrils", "whiskers", "tailFluke"],
+      "face": "#b9c6cc",
+      "shade": "#7b8d97",
+      "shapes": [
+        "부품: muzzleWide · nostrils · whiskers · tailFluke (05 문서 6.5)"
+      ]
+    },
+    "flamingo": {
+      "name": "플라밍고",
+      "fur": "#f2a3b8",
+      "arm": "#e98aa5",
+      "foot": "#e98aa5",
+      "footR": [8.5, 4],
+      "armR": [6.5, 12],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "faceOff": [0, 0],
+      "earL": null,
+      "earR": null,
+      "tail": [-34, -14],
+      "move": "walk",
+      "eye": [15, -43, 3.4, 4, 1.2],
+      "blush": [24, -30, 4.5, 2.8],
+      "defaultAccessory": "starfishPin",
+      "parts": ["beakBent", "tailFeather"],
+      "beak": "#f8e3e6",
+      "shade": "#2b2f38",
+      "shapes": ["부품: beakBent · tailFeather (05 문서 6.5)"]
+    },
+    "harpseal": {
+      "name": "하프물범",
+      "fur": "#f7f4ea",
+      "arm": "#e8e3d3",
+      "foot": "#dcd6c3",
+      "footR": [10, 5],
+      "armR": [7, 10.5],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "faceOff": [0, 0],
+      "earL": null,
+      "earR": null,
+      "tail": null,
+      "move": "swim",
+      "eye": [16, -40, 5.4, 6.2, 2],
+      "blush": [27, -26, 5, 3],
+      "defaultAccessory": "starfishPin",
+      "parts": ["noseSmall", "whiskers"],
+      "shapes": ["부품: noseSmall · whiskers (05 문서 6.5)"]
+    },
+    "loggerhead": {
+      "name": "붉은바다거북",
+      "fur": "#d9a066",
+      "arm": "#c98f56",
+      "foot": "#c98f56",
+      "footR": [9.5, 5],
+      "armR": [7, 12.5],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "faceOff": [0, 0],
+      "earL": null,
+      "earR": null,
+      "tail": null,
+      "move": "swim",
+      "eye": [16, -40, 3.8, 4.6, 1.3],
+      "blush": [28, -26, 5.5, 3.2],
+      "defaultAccessory": "starfishPin",
+      "parts": ["shell", "plastron", "nostrils"],
+      "face": "#f3e1b6",
+      "shade": "#9a4f2e",
+      "shapes": [
+        "부품: shell · plastron · nostrils (05 문서 6.5)"
+      ]
+    },
+    "pelican": {
+      "name": "갈색펠리컨",
+      "fur": "#8f8577",
+      "arm": "#7c7266",
+      "foot": "#3f3a36",
+      "footR": [9, 4.5],
+      "armR": [6.5, 12],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "faceOff": [0, 0],
+      "earL": null,
+      "earR": null,
+      "tail": [-34, -14],
+      "move": "walk",
+      "eye": [14, -45, 3.2, 3.8, 1.1],
+      "blush": [24, -36, 4.2, 2.6],
+      "defaultAccessory": "captainHat",
+      "parts": ["headPale", "beakLong", "tailFeather"],
+      "face": "#f6f3ea",
+      "beak": "#f0c35a",
+      "shade": "#d9a38a",
+      "shapes": [
+        "부품: headPale · beakLong · tailFeather (05 문서 6.5)"
+      ]
+    },
+    "elephantseal": {
+      "name": "코끼리물범",
+      "fur": "#9a8674",
+      "arm": "#86735f",
+      "foot": "#86735f",
+      "footR": [10, 5],
+      "armR": [7, 11],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "faceOff": [0, 0],
+      "earL": null,
+      "earR": null,
+      "tail": null,
+      "move": "swim",
+      "eye": [15, -43, 3.6, 4.2, 1.2],
+      "blush": [26, -34, 4.5, 2.8],
+      "defaultAccessory": "cap",
+      "parts": ["trunkNose", "whiskers"],
+      "shade": "#7a6654",
+      "shapes": ["부품: trunkNose · whiskers (05 문서 6.5)"]
+    },
+    "emperorchick": {
+      "name": "황제펭귄 아기",
+      "fur": "#aeb6be",
+      "arm": "#9aa3ab",
+      "foot": "#6f7882",
+      "footR": [9, 4.5],
+      "armR": [6.5, 11],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "faceOff": [0, 0],
+      "earL": null,
+      "earR": null,
+      "tail": null,
+      "move": "walk",
+      "eye": [15, -41, 3.8, 4.4, 1.3],
+      "blush": [22, -29, 4.2, 2.6],
+      "defaultAccessory": "starfishPin",
+      "parts": ["hood", "maskHeart"],
+      "face": "#f7f8f6",
+      "shade": "#2b2f38",
+      "shapes": ["부품: hood · maskHeart (05 문서 6.5)"]
+    },
+    "iguana": {
+      "name": "바다이구아나",
+      "fur": "#6a7480",
+      "arm": "#5a636e",
+      "foot": "#5a636e",
+      "footR": [9, 4.5],
+      "armR": [6.5, 10.5],
+      "nose": "#1f3850",
+      "lid": "#1f3850",
+      "faceOff": [0, 0],
+      "earL": null,
+      "earR": null,
+      "tail": [-30, -12],
+      "move": "walk",
+      "eye": [16, -42, 4, 4.6, 1.4],
+      "blush": [26, -28, 5, 3],
+      "defaultAccessory": "starfishPin",
+      "parts": ["spikes", "tailLong"],
+      "shade": "#e0775a",
+      "shapes": ["부품: spikes · tailLong (05 문서 6.5)"]
+    }
+  },
+  "landToSea": {
+    "bear": "seal",
+    "rabbit": "otter",
+    "raccoon": "hamster",
+    "penguin": "turtle",
+    "visitor": "fish",
+    "gentoo": "gentoo",
+    "polarbear": "polarbear",
+    "walrus": "walrus",
+    "sealion": "sealion",
+    "gull": "gull",
+    "seaotter": "seaotter",
+    "clownfish": "clownfish",
+    "puffin": "puffin",
+    "dugong": "dugong",
+    "flamingo": "flamingo",
+    "harpseal": "harpseal",
+    "loggerhead": "loggerhead",
+    "pelican": "pelican",
+    "elephantseal": "elephantseal",
+    "emperorchick": "emperorchick",
+    "iguana": "iguana"
+  },
+  "patternRule": "몸 표면에 작은 점을 모아 찍지 않는다 (징그럽다는 피드백). 무늬가 종의 특징이면 큰 점 3개 이하, 바탕보다 한 단계만 어둡게. 재질 결은 점 대신 선으로."
+}

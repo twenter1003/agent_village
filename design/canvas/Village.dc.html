@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>마을 장면</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="position: relative; width: {{w}}px; height: {{h}}px; overflow: hidden; background: #efe5c9; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #5a2e2e">
+<div style="position: absolute; left: {{wx}}px; top: {{wy}}px; width: 1200px; height: 700px; transform: scale({{zoom}}); transform-origin: 0 0">
+
+<svg width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-label="마을 바닥: 잔디, 십자 길, 가운데 광장" style="position: absolute; left: 0; top: 0">
+<defs><radialGradient id="vil-sh" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#7a3e3e" stop-opacity="0.26"></stop><stop offset="0.6" stop-color="#7a3e3e" stop-opacity="0.15"></stop><stop offset="1" stop-color="#7a3e3e" stop-opacity="0"></stop></radialGradient></defs>
+<g stroke="#7a3e3e" stroke-width="3" stroke-linejoin="round">
+<polygon fill="#b7bd7f" points="88,406 600,662 600,674 88,418"></polygon>
+<polygon fill="#a0a66b" points="600,662 1112,406 1112,418 600,674"></polygon>
+<polygon fill="#cfd59a" points="600,150 1112,406 600,662 88,406"></polygon>
+</g>
+<polygon fill="#f3bd93" points="376,262 888,518 824,550 312,294"></polygon>
+<polygon fill="#f3bd93" points="824,262 888,294 376,550 312,518"></polygon>
+<polygon fill="#efe6d6" points="600,342 728,406 600,470 472,406"></polygon>
+<path d="M568 358L696 422M536 374L664 438M504 390L632 454M632 358L504 422M664 374L536 438M696 390L568 454" fill="none" stroke="#dccfb9" stroke-width="1.5"></path>
+<g fill="#e8a579"><ellipse cx="420" cy="290" rx="2.6" ry="1.3"></ellipse><ellipse cx="780" cy="470" rx="2.4" ry="1.2"></ellipse><ellipse cx="838" cy="300" rx="2.6" ry="1.3"></ellipse><ellipse cx="420" cy="522" rx="2.4" ry="1.2"></ellipse><ellipse cx="352" cy="286" rx="2" ry="1"></ellipse></g>
+<path d="M200 380L202 376L204 380M470 250L472 246L474 250M760 300L762 296L764 300M980 400L982 396L984 400M700 610L702 606L704 610M260 440L262 436L264 440M880 440L882 436L884 440M420 600L422 596L424 600M560 214L562 210L564 214" fill="none" stroke="#b7bd7f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+<g fill="url(#vil-sh)">
+<ellipse cx="544" cy="252" rx="60" ry="26"></ellipse><ellipse cx="672" cy="252" rx="60" ry="26"></ellipse><ellipse cx="608" cy="316" rx="60" ry="26"></ellipse>
+<ellipse cx="928" cy="380" rx="60" ry="26"></ellipse><ellipse cx="832" cy="428" rx="60" ry="26"></ellipse><ellipse cx="736" cy="540" rx="60" ry="26"></ellipse>
+<ellipse cx="320" cy="364" rx="60" ry="26"></ellipse><ellipse cx="384" cy="428" rx="60" ry="26"></ellipse><ellipse cx="224" cy="412" rx="60" ry="26"></ellipse><ellipse cx="288" cy="476" rx="60" ry="26"></ellipse>
+<ellipse cx="608" cy="540" rx="60" ry="26"></ellipse><ellipse cx="606" cy="414" rx="62" ry="28"></ellipse>
+</g>
+</svg>
+
+<sc-for list="{{ents}}" as="e" hint-placeholder-count="30">
+<div style="position: absolute; left: {{e.l}}px; top: {{e.t}}px">
+<sc-if value="{{e.isB}}" hint-placeholder-val="{{false}}"><dc-import name="Building" body="{{e.body}}" roof="{{e.roof}}" sign="{{e.sign}}" slot="{{e.slot}}" stage="{{e.stage}}" progress="{{e.p}}" ground="false" hint-size="160px,256px"></dc-import></sc-if>
+<sc-if value="{{e.isP}}" hint-placeholder-val="{{false}}"><dc-import name="Prop" kind="{{e.kind}}" scale="1" hint-size="96px,160px"></dc-import></sc-if>
+<sc-if value="{{e.isC}}" hint-placeholder-val="{{false}}"><dc-import name="Critter" species="{{e.sp}}" pose="{{e.pose}}" role="{{e.role}}" scale="0.45" flip="{{e.flip}}" phase="{{e.phase}}" hint-size="58px,62px"></dc-import></sc-if>
+</div>
+</sc-for>
+
+<sc-if value="{{labels}}" hint-placeholder-val="{{true}}">
+<div style="position: absolute; left: 404px; top: 292px; padding: 6px 12px; background: #fff9ee; border: 2.5px solid #7a3e3e; border-radius: 14px; font-size: 13px; white-space: nowrap">결제 API는 이렇게 가요!</div>
+<svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true" style="position: absolute; left: 456px; top: 322px"><path d="M2 0L10 12L16 0" fill="#fff9ee" stroke="#7a3e3e" stroke-width="2.5" stroke-linejoin="round"></path><rect x="0" y="-3" width="20" height="4" fill="#fff9ee"></rect></svg>
+<div style="position: absolute; left: 556px; top: 330px; display: flex; gap: 4px; padding: 8px 10px; background: #fff9ee; border: 2.5px solid #7a3e3e; border-radius: 14px"><span style="width: 6px; height: 6px; border-radius: 50%; background: #8a5a4a"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #8a5a4a"></span><span style="width: 6px; height: 6px; border-radius: 50%; background: #8a5a4a"></span></div>
+<div style="position: absolute; left: 196px; top: 372px; font-family: 'Jua', sans-serif; font-size: 18px; color: #8a5a4a">z<span style="font-size: 13px; vertical-align: 8px">z</span></div>
+<div style="position: absolute; left: 551px; top: 462px; display: flex; gap: 3px; padding: 4px 7px; background: #fff9ee; border: 2px solid #7a3e3e; border-radius: 999px"><span style="width: 8px; height: 8px; border-radius: 50%; border: 2px solid #7a3e3e; background: #f7cb52"></span><span style="width: 8px; height: 8px; border-radius: 50%; border: 2px solid #7a3e3e; background: #f7cb52"></span><span style="width: 8px; height: 8px; border-radius: 50%; border: 2px solid #7a3e3e; background: #f7cb52"></span><span style="width: 8px; height: 8px; border-radius: 50%; border: 2px solid #7a3e3e; background: #fbe9c4"></span><span style="width: 8px; height: 8px; border-radius: 50%; border: 2px solid #7a3e3e; background: #fff9ee"></span><span style="width: 8px; height: 8px; border-radius: 50%; border: 2px solid #7a3e3e; background: #fff9ee"></span></div>
+<div style="position: absolute; left: 518px; top: 460px; width: 26px; height: 26px; box-sizing: border-box; border: 2.5px solid #7a3e3e; border-radius: 50%; background: #f7cb52; display: flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19.5L13 11.5M10.5 6.5L14.5 3.5L20.5 9.5L17.5 13.5Z" fill="none" stroke="#5a2e2e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
+<span style="position: absolute; left: 454px; top: 298px; padding: 1px 7px; background: #efe8df; border: 2px dashed #7a3e3e; border-radius: 999px; font-size: 11px">Explore</span>
+<span style="position: absolute; left: 632px; top: 282px; padding: 1px 7px; background: #efe8df; border: 2px dashed #7a3e3e; border-radius: 999px; font-size: 11px">Plan</span>
+<span style="position: absolute; left: 576px; top: 582px; padding: 1px 7px; background: #efe8df; border: 2px dashed #7a3e3e; border-radius: 999px; font-size: 11px">general</span>
+</sc-if>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"w":{"editor":"int","default":1440},"h":{"editor":"int","default":900},"zoom":{"editor":"range","min":0.6,"max":1.6,"step":0.05,"default":1.15},"dx":{"editor":"int","default":0},"dy":{"editor":"int","default":0},"labels":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+const p = this.props;
+const w = Number(p.w ?? 1440);
+const h = Number(p.h ?? 900);
+const zoom = Number(p.zoom ?? 1.15);
+const labels = !(p.labels === false || p.labels === 'false');
+const iso = (x, y) => [600 + 32 * (x - y), 150 + 16 * (x + y)];
+const ents = [];
+const B = (x0, y0, o) => { const c = iso(x0 + 1, y0 + 1); ents.push(Object.assign({ isB: true, isP: false, isC: false, l: c[0] - 80, t: c[1] - 208, d: c[1], body: 'plaster-1f', roof: 'hip', sign: 'none', slot: '1', stage: 'done', p: 0.5 }, o)); };
+const P = (x, y, kind) => { const c = iso(x + 0.5, y + 0.5); ents.push({ isB: false, isP: true, isC: false, l: c[0] - 48, t: c[1] - 128, d: c[1] - 0.5, kind: kind }); };
+const F = (x0, y0) => { const c = iso(x0 + 1, y0 + 1); ents.push({ isB: false, isP: true, isC: false, l: c[0] - 80, t: c[1] - 208, d: c[1], kind: 'fountain' }); };
+const C = (sx, sy, o) => { ents.push(Object.assign({ isB: false, isP: false, isC: true, l: sx - 28.8, t: sy - 56.7, d: sy + 0.5, role: 'general', flip: false, phase: 0 }, o)); };
+// 외부인 시설 (북쪽)
+B(1, 3, { body: 'stone-2f', roof: 'gable', sign: 'library', slot: 'x' });
+B(3, 1, { body: 'brick-2f', roof: 'flat', sign: 'plan', slot: 'x' });
+B(4, 4, { body: 'wood-1f', roof: 'hip', sign: 'agency', slot: 'x' });
+// 완공된 작업 건물 (동쪽)
+B(11, 1, { body: 'wood-1f', roof: 'gable', sign: 'workshop', slot: '1' });
+B(11, 4, { body: 'plaster-1f', roof: 'flat', sign: 'cafe', slot: '2' });
+B(13, 9, { body: 'brick-2f', roof: 'gable', sign: 'hall', slot: '3' });
+B(14, 2, { stage: 'planned' });
+// 팀원 집 (서쪽)
+B(1, 10, { body: 'plaster-1f', roof: 'hip', sign: 'home', slot: '1' });
+B(4, 11, { body: 'wood-1f', roof: 'gable', sign: 'home', slot: '2' });
+B(1, 13, { body: 'plaster-1f', roof: 'gable', sign: 'home', slot: '4' });
+B(4, 14, { body: 'wood-1f', roof: 'hip', sign: 'home', slot: '3' });
+// 공사 현장 (남쪽)
+B(11, 11, { body: 'stone-2f', roof: 'hip', sign: 'guard', slot: '4', stage: 'frame', p: 0.5 });
+B(14, 11, { stage: 'foundation' });
+B(11, 14, { stage: 'planned' });
+// 광장과 소품
+F(7, 7);
+P(6, 8, 'board'); P(9, 6, 'bench'); P(10, 6, 'streetlamp'); P(9, 10, 'streetlamp'); P(9, 13, 'streetlamp');
+P(0, 1, 'tree'); P(2, 0, 'pine'); P(0, 6, 'tree'); P(15, 1, 'pine'); P(15, 5, 'pine'); P(0, 11, 'tree'); P(9, 15, 'pine');
+P(15, 14, 'bush'); P(9, 3, 'bush'); P(6, 12, 'bush');
+P(3, 12, 'flowers'); P(0, 14, 'flowers'); P(10, 13, 'materials');
+// 캐릭터
+C(533, 545, { sp: 'bear', pose: 'hammer' });
+C(600, 576, { sp: 'visitor', pose: 'carry', role: 'general', phase: 1 });
+C(478, 404, { sp: 'penguin', pose: 'talk', flip: true });
+C(534, 428, { sp: 'rabbit', pose: 'talk', phase: 3 });
+C(184, 450, { sp: 'raccoon', pose: 'rest' });
+C(476, 292, { sp: 'visitor', pose: 'walk', role: 'explore', flip: true, phase: 2 });
+C(650, 276, { sp: 'visitor', pose: 'stand', role: 'plan', phase: 4 });
+ents.sort((a, b) => a.d - b.d);
+return { w: w, h: h, zoom: zoom, wx: (w - 1200 * zoom) / 2 + Number(p.dx ?? 0), wy: (h - 700 * zoom) / 2 + Number(p.dy ?? 0), ents: ents, labels: labels };
+}
+}
+</script>
+</body>
+</html>

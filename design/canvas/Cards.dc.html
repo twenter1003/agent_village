@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>카드 · 토스트 · 월드 UI</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.hd{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;color:#5a2e2e;margin:0}
+.meta{font-size:12px;color:#8a5a4a;line-height:16px}
+.ic{fill:none;stroke:#5a2e2e;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.f{stroke:#7a3e3e;stroke-width:5.5;stroke-linejoin:round;stroke-linecap:round}
+.s{stroke:#7a3e3e;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.d{stroke:#7a3e3e;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.mo{fill:none;stroke:#5a2e2e;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.chip{display:inline-flex;align-items:center;gap:5px;height:24px;box-sizing:border-box;border:2px solid #7a3e3e;border-radius:999px;background:#fff9ee;font-size:12px;color:#5a2e2e;padding:0 9px;white-space:nowrap}
+.dot{width:16px;height:16px;border-radius:50%;border:2px solid #7a3e3e;box-sizing:border-box;flex-shrink:0}
+.pip{width:10px;height:10px;border-radius:50%;border:2px solid #7a3e3e;box-sizing:border-box}
+.toast{width:100%;box-sizing:border-box;background:#fff9ee;border:3px solid #7a3e3e;border-radius:16px;box-shadow:0 6px 0 rgba(122,62,62,0.16);padding:12px 12px 14px 14px;display:flex;gap:12px;align-items:flex-start;position:relative;overflow:hidden}
+.tile{width:44px;height:44px;flex-shrink:0;border:2px solid #7a3e3e;border-radius:12px;box-sizing:border-box;display:flex;align-items:center;justify-content:center}
+.tt{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:17px;color:#5a2e2e;line-height:22px}
+.ts{font-size:13px;color:#8a5a4a;line-height:18px}
+.x{width:32px;height:32px;flex-shrink:0;border:0;border-radius:10px;background:transparent;display:flex;align-items:center;justify-content:center;margin-left:auto}
+.bar{position:absolute;left:0;bottom:0;height:4px;background:#f7cb52}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1120px; box-sizing: border-box; padding: 48px 56px; background: #f5ecd7; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #5a2e2e; display: flex; flex-direction: column; gap: 24px">
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 class="hd" style="font-size: 40px; line-height: 48px">카드 · 토스트 · 월드 UI</h1>
+<p style="margin: 0; font-size: 15px; color: #8a5a4a">팀원은 얼굴 타일 색(슬롯 tint)으로, 외부인은 시설 아이콘과 점선 테두리로 구분합니다.</p>
+</div>
+
+<div style="display: flex; gap: 20px; align-items: flex-start">
+
+<article style="width: 330px; flex-shrink: 0; box-sizing: border-box; background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; gap: 12px; align-items: center">
+<div style="width: 60px; height: 60px; flex-shrink: 0; box-sizing: border-box; border: 2px solid #7a3e3e; border-radius: 14px; background: #dde8f5; overflow: hidden; display: flex; align-items: flex-end; justify-content: center">
+<svg width="54" height="47" viewBox="-46 -84 92 80" aria-hidden="true"><circle class="f" fill="#c0804f" cx="-26" cy="-64" r="10"></circle><circle class="f" fill="#c0804f" cx="26" cy="-64" r="10"></circle><circle fill="#eeb08f" cx="-26" cy="-67" r="4.5"></circle><circle fill="#eeb08f" cx="26" cy="-67" r="4.5"></circle><path class="f" fill="#c0804f" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path><ellipse fill="#f6dfc3" cx="0" cy="-14" rx="21" ry="12"></ellipse><ellipse fill="#5a2e2e" cx="-15" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="15" cy="-38" rx="3.6" ry="4.4"></ellipse><circle fill="#fff9ee" fill-opacity="0.3" stroke="#7a3e3e" stroke-width="3.5" cx="-15" cy="-38" r="9"></circle><circle fill="#fff9ee" fill-opacity="0.3" stroke="#7a3e3e" stroke-width="3.5" cx="15" cy="-38" r="9"></circle><path class="mo" d="M-6 -38Q0 -41 6 -38"></path><ellipse fill="#5a2e2e" cx="0" cy="-29" rx="3.2" ry="2.3"></ellipse><path class="mo" d="M-6 -24Q-3 -20.5 0 -24Q3 -20.5 6 -24"></path><ellipse fill="#f7a194" cx="-28" cy="-25" rx="5.5" ry="3.2"></ellipse><ellipse fill="#f7a194" cx="28" cy="-25" rx="5.5" ry="3.2"></ellipse></svg>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<div style="display: flex; gap: 6px; align-items: center"><span style="font-family: 'Jua', sans-serif; font-size: 19px">곰</span><span class="chip" style="background: #dde8f5; color: #3f5f99; font-family: 'Jua', sans-serif; font-size: 13px">백엔드</span><span class="chip" style="font-family: 'Jua', sans-serif; font-size: 13px">ISTJ</span></div>
+<div style="display: flex; gap: 6px"><span class="chip" style="padding-left: 3px"><span class="dot" style="background: #f7cb52"></span>작업 중 · 공방</span></div>
+</div>
+</div>
+<div style="background: #f3e3c3; border-radius: 12px; padding: 10px 12px; display: flex; flex-direction: column; gap: 6px">
+<span class="meta">지금 하는 작업</span>
+<span style="font-size: 15px; line-height: 20px">결제 API 스키마 작성</span>
+<div style="display: flex; align-items: center; gap: 8px"><span style="display: flex; gap: 3px"><span class="pip" style="background: #f7cb52"></span><span class="pip" style="background: #f7cb52"></span><span class="pip" style="background: #fbe9c4"></span><span class="pip" style="background: #fff9ee"></span></span><span class="meta">결제 공방 · 2 / 4</span></div>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center">
+<span style="display: flex; align-items: center; gap: 6px"><span class="dot" style="background: #f7cb52; width: 18px; height: 18px"></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">1,240</span></span>
+<span style="font-family: 'Jua', sans-serif; font-size: 14px; color: #2f7d4f">오늘 +120</span>
+</div>
+</article>
+
+<div style="display: flex; flex-direction: column; gap: 12px; width: 330px; flex-shrink: 0">
+<span class="meta">팀원 행 (오른쪽 패널, 접힌 모양) · 선택됨은 겨자 테두리</span>
+<div style="display: flex; gap: 10px; align-items: center; background: #fff9ee; border: 3px solid #e2ae33; outline: 2px solid #7a3e3e; border-radius: 16px; padding: 8px 12px 8px 8px">
+<div style="width: 44px; height: 44px; flex-shrink: 0; box-sizing: border-box; border: 2px solid #7a3e3e; border-radius: 12px; background: #fadcd8; overflow: hidden; display: flex; align-items: flex-end; justify-content: center">
+<svg width="40" height="35" viewBox="-46 -84 92 80" aria-hidden="true"><ellipse class="f" fill="#fbf3e8" cx="-15" cy="-86" rx="9" ry="22" transform="rotate(-10 -15 -86)"></ellipse><ellipse class="f" fill="#fbf3e8" cx="15" cy="-86" rx="9" ry="22" transform="rotate(10 15 -86)"></ellipse><path class="f" fill="#fbf3e8" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path><path class="f" fill="#ec6f66" d="M-22 -70C-24 -80 -6 -85 12 -81C25 -78 25 -69 15 -67C2 -65 -15 -64 -22 -70Z"></path><ellipse fill="#5a2e2e" cx="-15" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="15" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#f5a3a8" cx="0" cy="-30" rx="3.2" ry="2.3"></ellipse><ellipse fill="#f7a194" cx="-27" cy="-26" rx="5.5" ry="3.2"></ellipse><ellipse fill="#f7a194" cx="27" cy="-26" rx="5.5" ry="3.2"></ellipse></svg>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1; min-width: 0"><span style="font-family: 'Jua', sans-serif; font-size: 16px">토끼 <span style="font-size: 13px; color: #a8433d">프론트엔드</span></span><span class="meta">광장에서 회의 중</span></div>
+<span class="dot" style="background: #96c6ea; width: 14px; height: 14px"></span>
+</div>
+<div style="display: flex; gap: 10px; align-items: center; background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 16px; padding: 8px 12px 8px 8px">
+<div style="width: 44px; height: 44px; flex-shrink: 0; box-sizing: border-box; border: 2px solid #7a3e3e; border-radius: 12px; background: #dcebd2; overflow: hidden; display: flex; align-items: flex-end; justify-content: center">
+<svg width="40" height="35" viewBox="-46 -84 92 80" aria-hidden="true"><path class="f" fill="#aaa2ad" d="M-38 -48Q-42 -76 -20 -68Q-14 -63 -16 -56Z"></path><path class="f" fill="#aaa2ad" d="M38 -48Q42 -76 20 -68Q14 -63 16 -56Z"></path><path class="f" fill="#aaa2ad" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path><path fill="#5f5566" d="M-31 -45Q-15 -51 -4 -43Q0 -41 4 -43Q15 -51 31 -45Q32 -33 18 -32Q8 -33 0 -34Q-8 -33 -18 -32Q-32 -33 -31 -45Z"></path><ellipse fill="#fff9ee" cx="0" cy="-22" rx="12" ry="8"></ellipse><circle fill="#fff9ee" cx="-15" cy="-39.5" r="4.8"></circle><circle fill="#fff9ee" cx="15" cy="-39.5" r="4.8"></circle><ellipse fill="#5a2e2e" cx="-15" cy="-39.5" rx="3" ry="3.6"></ellipse><ellipse fill="#5a2e2e" cx="15" cy="-39.5" rx="3" ry="3.6"></ellipse><ellipse fill="#5a2e2e" cx="0" cy="-27" rx="3.2" ry="2.3"></ellipse></svg>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1; min-width: 0"><span style="font-family: 'Jua', sans-serif; font-size: 16px">너구리 <span style="font-size: 13px; color: #2f7049">QA</span></span><span class="meta">집에서 쉬는 중 · 소파</span></div>
+<span class="dot" style="background: #bfdca8; width: 14px; height: 14px"></span>
+</div>
+<span class="meta" style="margin-top: 4px">외부 방문자 (집 없음)</span>
+<div style="display: flex; gap: 10px; align-items: center; background: #fff9ee; border: 2px dashed #7a3e3e; border-radius: 16px; padding: 8px 12px 8px 8px">
+<div style="width: 44px; height: 44px; flex-shrink: 0; box-sizing: border-box; border: 2px solid #7a3e3e; border-radius: 12px; background: #efe8df; display: flex; align-items: center; justify-content: center"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5C7 4 9.5 4 12 6C14.5 4 17 4 20 5.5V19C17 17.5 14.5 17.5 12 19.5C9.5 17.5 7 17.5 4 19Z"></path><path d="M12 6V19.5"></path></svg></div>
+<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1; min-width: 0"><span style="font-family: 'Jua', sans-serif; font-size: 16px">Explore <span style="font-size: 13px; color: #6a5b46">도서관</span></span><span class="meta">파일 23개 훑는 중 · 2분째</span></div>
+</div>
+<div style="display: flex; gap: 10px; align-items: center; background: #fff9ee; border: 2px dashed #7a3e3e; border-radius: 16px; padding: 8px 12px 8px 8px">
+<div style="width: 44px; height: 44px; flex-shrink: 0; box-sizing: border-box; border: 2px solid #7a3e3e; border-radius: 12px; background: #efe8df; display: flex; align-items: center; justify-content: center"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="1.8"></circle><path d="M11 6.8L6 20M13 6.8L18 20M8 15H16"></path></svg></div>
+<div style="display: flex; flex-direction: column; gap: 2px; flex-grow: 1; min-width: 0"><span style="font-family: 'Jua', sans-serif; font-size: 16px">Plan <span style="font-size: 13px; color: #6a5b46">설계사무소</span></span><span class="meta">방금 떠남 · 설계안 1건</span></div>
+</div>
+</div>
+
+<article style="width: 250px; flex-shrink: 0; box-sizing: border-box; background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column">
+<div style="height: 138px; background: #efe5c9; border-bottom: 3px solid #7a3e3e; display: flex; align-items: flex-end; justify-content: center">
+<svg width="200" height="130" viewBox="0 0 200 130" aria-hidden="true">
+<g transform="translate(0 -16)">
+<polygon class="s" fill="#b7bd7f" points="20,95 100,135 100,143 20,103"></polygon>
+<polygon class="s" fill="#a0a66b" points="100,135 180,95 180,103 100,143"></polygon>
+<polygon class="s" fill="#cfd59a" points="100,55 180,95 100,135 20,95"></polygon>
+<polygon class="s" fill="#cfa877" points="50,95 100,120 100,127 50,102"></polygon>
+<polygon class="s" fill="#b98f5f" points="100,120 150,95 150,102 100,127"></polygon>
+<polygon class="s" fill="#e2c091" points="100,70 150,95 100,120 50,95"></polygon>
+<path class="s" fill="none" d="M56 98L56 44M100 122L100 68M144 98L144 44M100 74L100 30"></path>
+<path class="d" fill="none" d="M56 70L100 92L144 70M56 50L100 72L144 50L100 28L56 50"></path>
+<polygon class="s" fill="#dca173" points="64,84 92,98 92,104 64,90"></polygon>
+<polygon class="s" fill="#c4845a" points="92,98 104,92 104,98 92,104"></polygon>
+<polygon class="s" fill="#f0b24a" points="160,30 168,28 168,48 160,50"></polygon>
+<path class="s" fill="none" d="M160 50L160 100"></path>
+</g>
+</svg>
+</div>
+<div style="padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; justify-content: space-between"><span style="font-family: 'Jua', sans-serif; font-size: 17px">결제 공방</span><span class="chip" style="background: #dde8f5; color: #3f5f99">백엔드</span></div>
+<div style="display: flex; align-items: center; gap: 8px"><span style="display: flex; gap: 3px"><span class="pip" style="background: #f7cb52"></span><span class="pip" style="background: #f7cb52"></span><span class="pip" style="background: #fbe9c4"></span><span class="pip" style="background: #fff9ee"></span></span><span class="meta">골조 · 비계 · 2 / 4</span></div>
+<div style="display: flex; align-items: center; justify-content: space-between">
+<span style="display: flex"><span style="width: 26px; height: 26px; border-radius: 50%; border: 2px solid #7a3e3e; background: #dde8f5; box-sizing: border-box"></span><span style="width: 26px; height: 26px; margin-left: -8px; border-radius: 50%; border: 2px solid #7a3e3e; background: #dcebd2; box-sizing: border-box"></span></span>
+<span class="meta">기여 곰 3 · 너구리 1</span>
+</div>
+</div>
+</article>
+
+<article style="width: 200px; flex-shrink: 0; box-sizing: border-box; background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column">
+<div style="height: 138px; background: #f3e3c3; border-bottom: 3px solid #7a3e3e; display: flex; align-items: center; justify-content: center">
+<svg width="140" height="120" viewBox="0 0 140 120" aria-hidden="true">
+<ellipse cx="74" cy="92" rx="46" ry="16" fill="#7a3e3e" fill-opacity="0.14"></ellipse>
+<g transform="translate(0 8)">
+<polygon class="s" fill="#d99a35" points="34,58 70,76 70,96 34,78"></polygon>
+<polygon class="s" fill="#bb8024" points="70,76 106,58 106,78 70,96"></polygon>
+<polygon class="s" fill="#f0b24a" points="70,40 106,58 70,76 34,58"></polygon>
+<polygon class="s" fill="#bb8024" points="42,62 78,44 78,32 42,50"></polygon>
+<polygon class="s" fill="#d99a35" points="34,58 42,62 42,50 34,46"></polygon>
+<polygon class="s" fill="#f0b24a" points="34,46 42,50 78,32 70,28"></polygon>
+<polygon class="s" fill="#d99a35" points="60,45 96,63 96,37 60,19"></polygon>
+<polygon class="s" fill="#bb8024" points="96,63 106,58 106,32 96,37"></polygon>
+<polygon class="s" fill="#f0b24a" points="60,19 96,37 106,32 70,14"></polygon>
+<polygon class="s" fill="#bb8024" points="70,76 106,58 106,46 70,64"></polygon>
+<polygon class="s" fill="#d99a35" points="62,72 70,76 70,64 62,60"></polygon>
+<polygon class="s" fill="#f0b24a" points="62,60 70,64 106,46 98,42"></polygon>
+</g>
+</svg>
+</div>
+<div style="padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px">
+<span style="font-family: 'Jua', sans-serif; font-size: 16px">폭신 안락의자</span>
+<span class="meta">1×1 · 휴식할 때 기분 +</span>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px">
+<span style="display: flex; flex-direction: column"><span style="display: flex; align-items: center; gap: 5px"><span class="dot" style="background: #f7cb52"></span><span style="font-family: 'Jua', sans-serif; font-size: 17px">320</span></span><span style="font-size: 11.5px; color: #b8433f">기준 300 ▲</span></span>
+<button type="button" style="height: 36px; padding: 0 14px; border: 2px solid #7a3e3e; border-radius: 12px; background: #f7cb52; box-shadow: 0 3px 0 #7a3e3e; font-family: 'Jua', sans-serif; font-size: 15px; color: #5a2e2e">사기</button>
+</div>
+</div>
+</article>
+
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 20px; flex-grow: 1">
+
+<section style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 20px 22px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">토스트</h2><span class="meta">마을 오른쪽 위, 최대 3개 쌓임 · 아래 막대가 줄어들면 사라짐 · 실패와 회의는 직접 닫을 때까지 남음</span></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+
+<div class="toast" role="status"><div class="tile" style="background: #fbe9c4"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5L14 10L20.5 12L14 14L12 20.5L10 14L3.5 12L10 10Z"></path></svg></div><div style="display: flex; flex-direction: column; gap: 2px"><span class="tt">토끼 카페 완공!</span><span class="ts">작업 4 / 4 · 토끼 +200 코인</span></div><button type="button" class="x" aria-label="닫기"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18"></path></svg></button><span class="bar" style="width: 70%"></span></div>
+
+<div class="toast" role="status"><div class="tile" style="background: #fbe9c4"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="4.5"></circle></svg></div><div style="display: flex; flex-direction: column; gap: 2px"><span class="tt">급여가 들어왔어요</span><span class="ts">팀원 4명 · 합계 1,120 코인</span></div><button type="button" class="x" aria-label="닫기"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18"></path></svg></button><span class="bar" style="width: 45%"></span></div>
+
+<div class="toast" role="status"><div class="tile" style="background: #fadcd8"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16.5L10 10.5L14 14.5L20 8.5"></path><path d="M15 8.5H20V13.5"></path></svg></div><div style="display: flex; flex-direction: column; gap: 2px"><span class="tt">물가 <span style="color: #b8433f">▲ 1.8%</span></span><span class="ts">중앙은행이 금리를 올릴지 고민 중</span></div><button type="button" class="x" aria-label="닫기"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18"></path></svg></button><span class="bar" style="width: 88%"></span></div>
+
+<div class="toast" role="status"><div class="tile" style="background: #d9ecf8"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.5H19A1.5 1.5 0 0 1 20.5 7V15A1.5 1.5 0 0 1 19 16.5H11L7 19.5V16.5H5A1.5 1.5 0 0 1 3.5 15V7A1.5 1.5 0 0 1 5 5.5Z"></path></svg></div><div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1"><div style="display: flex; flex-direction: column; gap: 2px"><span class="tt">광장 회의 시작</span><span class="ts">곰 · 토끼 · 펭귄 — 결제 API 스키마</span></div><div style="display: flex; gap: 8px"><button type="button" style="height: 32px; padding: 0 12px; border: 2px solid #7a3e3e; border-radius: 10px; background: #fff9ee; box-shadow: 0 3px 0 #7a3e3e; font-family: 'Jua', sans-serif; font-size: 14px; color: #5a2e2e">광장 보기</button></div></div><button type="button" class="x" aria-label="닫기"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18"></path></svg></button></div>
+
+<div class="toast" role="status"><div class="tile" style="background: #e8e1f6"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><path d="M9 10V10.5M15 10V10.5M9 14.5C10.6 16 13.4 16 15 14.5"></path></svg></div><div style="display: flex; flex-direction: column; gap: 2px"><span class="tt">너구리의 성격이 바뀌었어요</span><span class="ts">IS<span style="color: #6a55a3">T</span>P → IS<span style="color: #6a55a3">F</span>P · 리뷰 코멘트가 다정해짐</span></div><button type="button" class="x" aria-label="닫기"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18"></path></svg></button><span class="bar" style="width: 30%"></span></div>
+
+<div class="toast" role="alert" style="border-color: #7a3e3e; background: #fff4f1"><div class="tile" style="background: #ec6f66"><svg class="ic" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4L20.5 19H3.5Z"></path><path d="M12 10V14M12 16.8V17"></path></svg></div><div style="display: flex; flex-direction: column; gap: 6px; flex-grow: 1"><div style="display: flex; flex-direction: column; gap: 2px"><span class="tt">테스트가 실패했어요</span><span class="ts">너구리 · 로그인 E2E · 공사 멈춤</span></div><div style="display: flex; gap: 8px"><button type="button" style="height: 32px; padding: 0 12px; border: 2px solid #7a3e3e; border-radius: 10px; background: #fff9ee; box-shadow: 0 3px 0 #7a3e3e; font-family: 'Jua', sans-serif; font-size: 14px; color: #5a2e2e">기록 보기</button></div></div><button type="button" class="x" aria-label="닫기"><svg class="ic" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18"></path></svg></button></div>
+
+</div>
+</section>
+
+<section style="background: #fff9ee; border: 3px solid #7a3e3e; border-radius: 20px; padding: 20px 22px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">월드 UI</h2><span class="meta">마을 위에 뜨는 것</span></div>
+<div style="position: relative; flex-grow: 1; border: 2px solid #7a3e3e; border-radius: 16px; background: #cfd59a; overflow: hidden">
+<svg width="372" height="330" viewBox="0 0 372 330" role="img" aria-label="말풍선, 머리 위 상태, 이름표, 공사 진행 점 예시" style="display: block">
+<defs><radialGradient id="cards-sh" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#7a3e3e" stop-opacity="0.3"></stop><stop offset="0.6" stop-color="#7a3e3e" stop-opacity="0.2"></stop><stop offset="1" stop-color="#7a3e3e" stop-opacity="0"></stop></radialGradient></defs>
+<rect class="s" fill="#fff9ee" x="20" y="18" width="178" height="40" rx="14"></rect>
+<path class="s" fill="#fff9ee" d="M70 56L80 72L92 56"></path>
+<path fill="#fff9ee" d="M72 54L92 54L90 58L74 58Z"></path>
+<text x="36" y="43" style="font-family: 'Gowun Dodum', sans-serif; font-size: 13px; fill: #5a2e2e">스키마 이렇게 가요!</text>
+<rect class="s" fill="#fff9ee" x="226" y="30" width="58" height="32" rx="14"></rect>
+<path class="s" fill="#fff9ee" d="M246 60L252 72L262 60"></path>
+<path fill="#fff9ee" d="M248 58L262 58L260 62L250 62Z"></path>
+<circle fill="#8a5a4a" cx="243" cy="46" r="3"></circle><circle fill="#8a5a4a" cx="255" cy="46" r="3"></circle><circle fill="#8a5a4a" cx="267" cy="46" r="3"></circle>
+<ellipse cx="84" cy="146" rx="28" ry="10" fill="url(#cards-sh)"></ellipse>
+<g transform="translate(82 144) scale(0.55)">
+<ellipse class="f" fill="#a86c40" cx="-16" cy="1" rx="9" ry="5"></ellipse><ellipse class="f" fill="#a86c40" cx="16" cy="1" rx="9" ry="5"></ellipse>
+<circle class="f" fill="#c0804f" cx="-26" cy="-64" r="10"></circle><circle class="f" fill="#c0804f" cx="26" cy="-64" r="10"></circle>
+<path class="f" fill="#c0804f" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<ellipse fill="#f6dfc3" cx="0" cy="-14" rx="21" ry="12"></ellipse>
+<ellipse fill="#5a2e2e" cx="-15" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="15" cy="-38" rx="3.6" ry="4.4"></ellipse>
+<ellipse fill="#5a2e2e" cx="0" cy="-30" rx="3.2" ry="2.3"></ellipse>
+</g>
+<ellipse cx="256" cy="146" rx="28" ry="10" fill="url(#cards-sh)"></ellipse>
+<g transform="translate(254 144) scale(0.55)">
+<ellipse class="f" fill="#eadbc7" cx="-16" cy="1" rx="9" ry="5"></ellipse><ellipse class="f" fill="#eadbc7" cx="16" cy="1" rx="9" ry="5"></ellipse>
+<ellipse class="f" fill="#fbf3e8" cx="-15" cy="-86" rx="9" ry="22" transform="rotate(-10 -15 -86)"></ellipse><ellipse class="f" fill="#fbf3e8" cx="15" cy="-86" rx="9" ry="22" transform="rotate(10 15 -86)"></ellipse>
+<path class="f" fill="#fbf3e8" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<ellipse fill="#5a2e2e" cx="-15" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="15" cy="-38" rx="3.6" ry="4.4"></ellipse>
+<ellipse fill="#f5a3a8" cx="0" cy="-30" rx="3.2" ry="2.3"></ellipse>
+</g>
+<rect class="d" fill="#fff9ee" x="54" y="158" width="58" height="22" rx="11"></rect>
+<text x="83" y="174" text-anchor="middle" style="font-family: 'Jua', sans-serif; font-size: 13px; fill: #5a2e2e">곰</text>
+<rect class="d" fill="#fff9ee" x="226" y="158" width="58" height="22" rx="11"></rect>
+<text x="255" y="174" text-anchor="middle" style="font-family: 'Jua', sans-serif; font-size: 13px; fill: #5a2e2e">토끼</text>
+<circle class="s" fill="#f7cb52" cx="40" cy="232" r="16"></circle>
+<g transform="translate(30 222) scale(0.85)" class="ic" style="stroke-width: 2.6"><path d="M5 19.5L13 11.5"></path><path d="M10.5 6.5L14.5 3.5L20.5 9.5L17.5 13.5Z"></path></g>
+<path class="d" fill="#f7cb52" d="M34 246L40 254L46 246"></path>
+<circle class="s" fill="#bfdca8" cx="96" cy="232" r="16"></circle>
+<text x="96" y="238" text-anchor="middle" style="font-family: 'Jua', sans-serif; font-size: 15px; fill: #5a2e2e">z</text>
+<text x="103" y="229" text-anchor="middle" style="font-family: 'Jua', sans-serif; font-size: 10px; fill: #5a2e2e">z</text>
+<path class="d" fill="#bfdca8" d="M90 246L96 254L102 246"></path>
+<circle class="s" fill="#ec6f66" cx="152" cy="232" r="16"></circle>
+<path d="M152 223V234M152 240V240.5" fill="none" stroke="#5a2e2e" stroke-width="3" stroke-linecap="round"></path>
+<path class="d" fill="#ec6f66" d="M146 246L152 254L158 246"></path>
+<text x="96" y="282" text-anchor="middle" style="font-family: 'Gowun Dodum', sans-serif; font-size: 12px; fill: #5a2e2e">머리 위 상태 (작업 · 휴식 · 막힘)</text>
+<rect class="d" fill="#fff9ee" x="226" y="220" width="74" height="24" rx="12"></rect>
+<circle class="d" fill="#f7cb52" cx="243" cy="232" r="5"></circle>
+<circle class="d" fill="#f7cb52" cx="257" cy="232" r="5"></circle>
+<circle class="d" fill="#fbe9c4" cx="271" cy="232" r="5"></circle>
+<circle class="d" fill="#f5ecd7" cx="285" cy="232" r="5"></circle>
+<text x="264" y="266" text-anchor="middle" style="font-family: 'Gowun Dodum', sans-serif; font-size: 12px; fill: #5a2e2e">공사 현장 위 진행</text>
+<text x="186" y="316" text-anchor="middle" style="font-family: 'Gowun Dodum', sans-serif; font-size: 12px; fill: #5a2e2e">월드 UI 선은 에셋과 같은 3px · 확대와 무관하게 화면 크기 고정</text>
+</svg>
+</div>
+</section>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

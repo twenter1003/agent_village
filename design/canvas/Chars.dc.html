@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>캐릭터 시트</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.hd{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;color:#5a2e2e;margin:0}
+.meta{font-size:12px;color:#8a5a4a;line-height:17px}
+.s{stroke:#7a3e3e;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.d{stroke:#7a3e3e;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.m{fill:none;stroke:#5a2e2e;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.m3{fill:none;stroke:#5a2e2e;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.mw{fill:none;stroke:#fff9ee;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.aid{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:#8a5a4a}
+.cell{width:132px;flex-shrink:0;box-sizing:border-box;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;padding:6px 0 8px}
+.row{display:flex;gap:10px;align-items:stretch;background:#fff9ee;border:3px solid #7a3e3e;border-radius:20px;padding:14px 16px}
+.who{width:150px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:8px}
+.chip{display:inline-flex;align-items:center;height:26px;box-sizing:border-box;border:2px solid #7a3e3e;border-radius:999px;padding:0 10px;font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:14px}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1200px; box-sizing: border-box; padding: 44px 56px; background: #f5ecd7; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #5a2e2e; display: flex; flex-direction: column; gap: 16px">
+<svg width="0" height="0" style="position: absolute" aria-hidden="true"><defs><radialGradient id="chars-sh" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#7a3e3e" stop-opacity="0.3"></stop><stop offset="0.6" stop-color="#7a3e3e" stop-opacity="0.18"></stop><stop offset="1" stop-color="#7a3e3e" stop-opacity="0"></stop></radialGradient></defs></svg>
+
+<div style="display: flex; align-items: flex-end; justify-content: space-between">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 class="hd" style="font-size: 40px; line-height: 48px">캐릭터 시트</h1>
+<p style="margin: 0; font-size: 15px; color: #8a5a4a">4종 × 7포즈 + 프로필 얼굴. 모든 포즈는 같은 파츠를 이동·회전만 해서 만들었고, 표정과 손에 든 소품은 켜고 끄는 층입니다.</p>
+</div>
+<span class="meta" style="text-align: right">조정(Tweaks)에서 움직임을 끄면 첫 프레임만 보입니다<br>캐릭터 1명 = 인라인 SVG 1개 · data-asset-id = 종.포즈</span>
+</div>
+
+<div style="display: flex; gap: 10px; padding: 0 19px">
+<span style="width: 150px; flex-shrink: 0"></span>
+<div style="width: 132px; flex-shrink: 0; text-align: center"><div style="font-family: 'Jua', sans-serif; font-size: 17px">서기</div><div class="meta">2프레임 · 750ms</div></div>
+<div style="width: 132px; flex-shrink: 0; text-align: center"><div style="font-family: 'Jua', sans-serif; font-size: 17px">걷기</div><div class="meta">4프레임 · 300ms</div></div>
+<div style="width: 132px; flex-shrink: 0; text-align: center"><div style="font-family: 'Jua', sans-serif; font-size: 17px">망치질</div><div class="meta">2프레임 · 450ms</div></div>
+<div style="width: 132px; flex-shrink: 0; text-align: center"><div style="font-family: 'Jua', sans-serif; font-size: 17px">나르기</div><div class="meta">4프레임 · 300ms</div></div>
+<div style="width: 132px; flex-shrink: 0; text-align: center"><div style="font-family: 'Jua', sans-serif; font-size: 17px">환호</div><div class="meta">2프레임 · 450ms</div></div>
+<div style="width: 132px; flex-shrink: 0; text-align: center"><div style="font-family: 'Jua', sans-serif; font-size: 17px">말하기</div><div class="meta">2프레임 · 450ms</div></div>
+<div style="width: 132px; flex-shrink: 0; text-align: center"><div style="font-family: 'Jua', sans-serif; font-size: 17px">쉬기</div><div class="meta">2프레임 · 900ms</div></div>
+<div style="width: 132px; flex-shrink: 0; text-align: center"><div style="font-family: 'Jua', sans-serif; font-size: 17px">프로필</div><div class="meta">data-face-box 영역</div></div>
+</div>
+
+<div class="row">
+<div class="who">
+<span style="font-family: 'Jua', sans-serif; font-size: 26px">곰</span>
+<span class="chip" style="background: #dde8f5; color: #3f5f99">백엔드</span>
+<span class="meta">슬롯 1 · 소품 안경<br>안경은 face 안에 있어<br>시선을 따라 움직임</span>
+</div>
+<sc-for list="{{bear}}" as="c" hint-placeholder-count="8">
+<div class="cell" style="background: {{c.bg}}">
+<svg width="{{c.w}}" height="{{c.h}}" viewBox="{{c.vb}}" data-asset-id="{{c.id}}" data-anchor="0,0" data-face-box="-44,-86,88,88" role="img" aria-label="{{c.aria}}">
+<ellipse data-part="shadow" cx="2" cy="3" rx="38" ry="9" fill="url(#chars-sh)" display="{{c.shadow}}"></ellipse>
+<g id="foot-l" data-part="foot-l" data-pivot="-16,0" transform="{{c.t.footL}}"><ellipse class="s" fill="#a86c40" cx="-16" cy="1" rx="9" ry="5"></ellipse></g>
+<g id="foot-r" data-part="foot-r" data-pivot="16,0" transform="{{c.t.footR}}"><ellipse class="s" fill="#a86c40" cx="16" cy="1" rx="9" ry="5"></ellipse></g>
+<g id="body" data-part="body" data-pivot="0,0" transform="{{c.t.body}}">
+<g id="tail" data-part="tail" data-pivot="0,-10"></g>
+<g id="ear-l" data-part="ear-l" data-pivot="-22,-58" transform="{{c.t.earL}}"><circle class="s" fill="#c0804f" cx="-26" cy="-64" r="10"></circle><circle fill="#eeb08f" cx="-26" cy="-66" r="4.5"></circle></g>
+<g id="ear-r" data-part="ear-r" data-pivot="22,-58" transform="{{c.t.earR}}"><circle class="s" fill="#c0804f" cx="26" cy="-64" r="10"></circle><circle fill="#eeb08f" cx="26" cy="-66" r="4.5"></circle></g>
+<path class="s" fill="#c0804f" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<g id="face" data-part="face" data-pivot="0,-34" transform="{{c.t.face}}">
+<ellipse fill="#f6dfc3" cx="0" cy="-24" rx="18" ry="10.5"></ellipse>
+<ellipse fill="#f7a194" cx="-29" cy="-27" rx="5.5" ry="3.2"></ellipse><ellipse fill="#f7a194" cx="29" cy="-27" rx="5.5" ry="3.2"></ellipse>
+<ellipse fill="#5a2e2e" cx="0" cy="-29" rx="3.2" ry="2.3"></ellipse>
+<g data-expr="normal" display="{{c.eN}}"><ellipse fill="#5a2e2e" cx="-17" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="17" cy="-38" rx="3.6" ry="4.4"></ellipse><circle fill="#fff9ee" cx="-18" cy="-39.6" r="1.2"></circle><circle fill="#fff9ee" cx="16" cy="-39.6" r="1.2"></circle><path class="m" d="M0 -26.7L0 -24.8M-5.5 -24.8Q-2.75 -21.3 0 -24.8Q2.75 -21.3 5.5 -24.8"></path></g>
+<g data-expr="happy" display="{{c.eH}}"><path class="m3" d="M-21.5 -36.5Q-17 -42.5 -12.5 -36.5M12.5 -36.5Q17 -42.5 21.5 -36.5"></path><path fill="#7a3e3e" d="M-6 -25Q0 -23.5 6 -25Q5.5 -17.5 0 -17.5Q-5.5 -17.5 -6 -25Z"></path><ellipse fill="#f5a3a8" cx="0" cy="-19.8" rx="3" ry="1.6"></ellipse></g>
+<g data-expr="talk" display="{{c.eT}}"><ellipse fill="#5a2e2e" cx="-17" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="17" cy="-38" rx="3.6" ry="4.4"></ellipse><circle fill="#fff9ee" cx="-18" cy="-39.6" r="1.2"></circle><circle fill="#fff9ee" cx="16" cy="-39.6" r="1.2"></circle><ellipse fill="#7a3e3e" cx="0" cy="-22" rx="3.4" ry="3.6"></ellipse></g>
+<g data-expr="sleep" display="{{c.eS}}"><path class="m3" d="M-21.5 -38Q-17 -34 -12.5 -38M12.5 -38Q17 -34 21.5 -38"></path><path class="m" d="M-3 -23.5Q0 -21.5 3 -23.5"></path></g>
+<g id="accessory" data-part="accessory" data-pivot="0,-38"><circle class="s" fill="#fff9ee" fill-opacity="0.35" cx="-17" cy="-38" r="9"></circle><circle class="s" fill="#fff9ee" fill-opacity="0.35" cx="17" cy="-38" r="9"></circle><path class="s" fill="none" d="M-8 -39Q0 -42 8 -39"></path></g>
+</g>
+<g id="carry" data-part="carry" data-pivot="0,-9" display="{{c.pP}}"><rect class="s" fill="#dca173" x="-54" y="-17" width="108" height="8" rx="3"></rect><rect class="s" fill="#c4845a" x="-50" y="-9" width="100" height="8" rx="3"></rect></g>
+<g id="arm-l" data-part="arm-l" data-pivot="-34,-26" transform="{{c.t.armL}}"><ellipse class="s" fill="#c0804f" cx="-41" cy="-20" rx="7" ry="9.5" transform="rotate(25 -41 -20)"></ellipse></g>
+<g id="arm-r" data-part="arm-r" data-pivot="34,-26" transform="{{c.t.armR}}">
+<g id="hold-r" data-part="hold-r" data-pivot="41,-18" display="{{c.pH}}"><path d="M41 -18L56 -44" fill="none" stroke="#7a3e3e" stroke-width="9" stroke-linecap="round"></path><path d="M41 -18L56 -44" fill="none" stroke="#dca173" stroke-width="3" stroke-linecap="round"></path><rect class="s" fill="#cdc6d4" x="-11" y="-6" width="22" height="12" rx="3" transform="translate(56 -44) rotate(30)"></rect></g>
+<ellipse class="s" fill="#c0804f" cx="41" cy="-20" rx="7" ry="9.5" transform="rotate(-25 41 -20)"></ellipse>
+</g>
+</g>
+</svg>
+<span class="aid">{{c.id}}</span>
+</div>
+</sc-for>
+</div>
+
+<div class="row">
+<div class="who">
+<span style="font-family: 'Jua', sans-serif; font-size: 26px">토끼</span>
+<span class="chip" style="background: #fadcd8; color: #a8433d">프론트엔드</span>
+<span class="meta">슬롯 2 · 소품 베레모<br>귀 회전은 1.8배로<br>크게 움직임</span>
+</div>
+<sc-for list="{{rabbit}}" as="c" hint-placeholder-count="8">
+<div class="cell" style="background: {{c.bg}}">
+<svg width="{{c.w}}" height="{{c.h}}" viewBox="{{c.vb}}" data-asset-id="{{c.id}}" data-anchor="0,0" data-face-box="-44,-86,88,88" role="img" aria-label="{{c.aria}}">
+<ellipse data-part="shadow" cx="2" cy="3" rx="38" ry="9" fill="url(#chars-sh)" display="{{c.shadow}}"></ellipse>
+<g id="foot-l" data-part="foot-l" data-pivot="-16,0" transform="{{c.t.footL}}"><ellipse class="s" fill="#eadbc7" cx="-16" cy="1" rx="9" ry="5"></ellipse></g>
+<g id="foot-r" data-part="foot-r" data-pivot="16,0" transform="{{c.t.footR}}"><ellipse class="s" fill="#eadbc7" cx="16" cy="1" rx="9" ry="5"></ellipse></g>
+<g id="body" data-part="body" data-pivot="0,0" transform="{{c.t.body}}">
+<g id="tail" data-part="tail" data-pivot="0,-10"></g>
+<g id="ear-l" data-part="ear-l" data-pivot="-12,-66" transform="{{c.t.earL}}"><ellipse class="s" fill="#fbf3e8" cx="-15" cy="-86" rx="9" ry="22" transform="rotate(-10 -15 -86)"></ellipse><ellipse fill="#f5a3a8" cx="-15" cy="-86" rx="4" ry="15" transform="rotate(-10 -15 -86)"></ellipse></g>
+<g id="ear-r" data-part="ear-r" data-pivot="12,-66" transform="{{c.t.earR}}"><ellipse class="s" fill="#fbf3e8" cx="15" cy="-86" rx="9" ry="22" transform="rotate(10 15 -86)"></ellipse><ellipse fill="#f5a3a8" cx="15" cy="-86" rx="4" ry="15" transform="rotate(10 15 -86)"></ellipse></g>
+<path class="s" fill="#fbf3e8" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<g id="face" data-part="face" data-pivot="0,-34" transform="{{c.t.face}}">
+<ellipse fill="#f7a194" cx="-29" cy="-27" rx="5.5" ry="3.2"></ellipse><ellipse fill="#f7a194" cx="29" cy="-27" rx="5.5" ry="3.2"></ellipse>
+<ellipse fill="#f5a3a8" cx="0" cy="-29" rx="3.2" ry="2.3"></ellipse>
+<g data-expr="normal" display="{{c.eN}}"><ellipse fill="#5a2e2e" cx="-17" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="17" cy="-38" rx="3.6" ry="4.4"></ellipse><circle fill="#fff9ee" cx="-18" cy="-39.6" r="1.2"></circle><circle fill="#fff9ee" cx="16" cy="-39.6" r="1.2"></circle><path class="m" d="M0 -26.7L0 -24.8M-5.5 -24.8Q-2.75 -21.3 0 -24.8Q2.75 -21.3 5.5 -24.8"></path></g>
+<g data-expr="happy" display="{{c.eH}}"><path class="m3" d="M-21.5 -36.5Q-17 -42.5 -12.5 -36.5M12.5 -36.5Q17 -42.5 21.5 -36.5"></path><path fill="#7a3e3e" d="M-6 -25Q0 -23.5 6 -25Q5.5 -17.5 0 -17.5Q-5.5 -17.5 -6 -25Z"></path><ellipse fill="#f5a3a8" cx="0" cy="-19.8" rx="3" ry="1.6"></ellipse></g>
+<g data-expr="talk" display="{{c.eT}}"><ellipse fill="#5a2e2e" cx="-17" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="17" cy="-38" rx="3.6" ry="4.4"></ellipse><circle fill="#fff9ee" cx="-18" cy="-39.6" r="1.2"></circle><circle fill="#fff9ee" cx="16" cy="-39.6" r="1.2"></circle><ellipse fill="#7a3e3e" cx="0" cy="-22" rx="3.4" ry="3.6"></ellipse></g>
+<g data-expr="sleep" display="{{c.eS}}"><path class="m3" d="M-21.5 -38Q-17 -34 -12.5 -38M12.5 -38Q17 -34 21.5 -38"></path><path class="m" d="M-3 -23.5Q0 -21.5 3 -23.5"></path></g>
+</g>
+<g id="accessory" data-part="accessory" data-pivot="0,-70"><path class="s" fill="#ec6f66" d="M-24 -68C-26 -79 -6 -85 12 -81C26 -78 26 -68 15 -66C2 -64 -16 -63 -24 -68Z"></path><circle class="s" fill="#ec6f66" cx="2" cy="-84" r="2.6"></circle><path fill="none" stroke="#d45a53" stroke-width="2" stroke-linecap="round" d="M-18 -69Q0 -67 17 -70"></path></g>
+<g id="carry" data-part="carry" data-pivot="0,-9" display="{{c.pP}}"><rect class="s" fill="#dca173" x="-54" y="-17" width="108" height="8" rx="3"></rect><rect class="s" fill="#c4845a" x="-50" y="-9" width="100" height="8" rx="3"></rect></g>
+<g id="arm-l" data-part="arm-l" data-pivot="-34,-26" transform="{{c.t.armL}}"><ellipse class="s" fill="#fbf3e8" cx="-41" cy="-20" rx="7" ry="9.5" transform="rotate(25 -41 -20)"></ellipse></g>
+<g id="arm-r" data-part="arm-r" data-pivot="34,-26" transform="{{c.t.armR}}">
+<g id="hold-r" data-part="hold-r" data-pivot="41,-18" display="{{c.pH}}"><path d="M41 -18L56 -44" fill="none" stroke="#7a3e3e" stroke-width="9" stroke-linecap="round"></path><path d="M41 -18L56 -44" fill="none" stroke="#dca173" stroke-width="3" stroke-linecap="round"></path><rect class="s" fill="#cdc6d4" x="-11" y="-6" width="22" height="12" rx="3" transform="translate(56 -44) rotate(30)"></rect></g>
+<ellipse class="s" fill="#fbf3e8" cx="41" cy="-20" rx="7" ry="9.5" transform="rotate(-25 41 -20)"></ellipse>
+</g>
+</g>
+</svg>
+<span class="aid">{{c.id}}</span>
+</div>
+</sc-for>
+</div>
+
+<div class="row">
+<div class="who">
+<span style="font-family: 'Jua', sans-serif; font-size: 26px">너구리</span>
+<span class="chip" style="background: #dcebd2; color: #2f7049">QA</span>
+<span class="meta">슬롯 4 · 소품 돋보기<br>목에 걸어 두 손이 자유<br>꼬리(tail)가 있는 종</span>
+</div>
+<sc-for list="{{raccoon}}" as="c" hint-placeholder-count="8">
+<div class="cell" style="background: {{c.bg}}">
+<svg width="{{c.w}}" height="{{c.h}}" viewBox="{{c.vb}}" data-asset-id="{{c.id}}" data-anchor="0,0" data-face-box="-44,-86,88,88" role="img" aria-label="{{c.aria}}">
+<ellipse data-part="shadow" cx="2" cy="3" rx="38" ry="9" fill="url(#chars-sh)" display="{{c.shadow}}"></ellipse>
+<g id="foot-l" data-part="foot-l" data-pivot="-16,0" transform="{{c.t.footL}}"><ellipse class="s" fill="#938a97" cx="-16" cy="1" rx="9" ry="5"></ellipse></g>
+<g id="foot-r" data-part="foot-r" data-pivot="16,0" transform="{{c.t.footR}}"><ellipse class="s" fill="#938a97" cx="16" cy="1" rx="9" ry="5"></ellipse></g>
+<g id="body" data-part="body" data-pivot="0,0" transform="{{c.t.body}}">
+<g id="tail" data-part="tail" data-pivot="-32,-18" transform="{{c.t.tail}}"><path class="s" fill="#aaa2ad" d="M-30 -12C-52 -4 -66 -28 -58 -50C-53 -60 -42 -56 -45 -46C-49 -34 -42 -24 -32 -26Z"></path><path fill="#5f5566" d="M-56.5 -43C-58 -49 -56 -55 -52 -57C-48 -58 -44 -55 -44.5 -50C-47 -48 -52 -45 -56.5 -43Z"></path><path fill="none" stroke="#5f5566" stroke-width="4" stroke-linecap="round" d="M-58 -33Q-52 -33 -47 -37"></path></g>
+<g id="ear-l" data-part="ear-l" data-pivot="-27,-54" transform="{{c.t.earL}}"><path class="s" fill="#aaa2ad" d="M-38 -48Q-42 -76 -20 -68Q-14 -63 -16 -56Z"></path><path fill="#5f5566" d="M-33 -55Q-35 -68 -24 -65Q-20 -61 -21 -58Z"></path></g>
+<g id="ear-r" data-part="ear-r" data-pivot="27,-54" transform="{{c.t.earR}}"><path class="s" fill="#aaa2ad" d="M38 -48Q42 -76 20 -68Q14 -63 16 -56Z"></path><path fill="#5f5566" d="M33 -55Q35 -68 24 -65Q20 -61 21 -58Z"></path></g>
+<path class="s" fill="#aaa2ad" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<g id="face" data-part="face" data-pivot="0,-34" transform="{{c.t.face}}">
+<path fill="#5f5566" d="M-31 -45Q-15 -51 -4 -43Q0 -41 4 -43Q15 -51 31 -45Q32 -33 18 -32Q8 -33 0 -34Q-8 -33 -18 -32Q-32 -33 -31 -45Z"></path>
+<ellipse fill="#fff9ee" cx="-15" cy="-53" rx="6" ry="2.6"></ellipse><ellipse fill="#fff9ee" cx="15" cy="-53" rx="6" ry="2.6"></ellipse>
+<ellipse fill="#fff9ee" cx="0" cy="-23" rx="12" ry="8"></ellipse>
+<ellipse fill="#f7a194" cx="-29" cy="-24" rx="5.5" ry="3.2"></ellipse><ellipse fill="#f7a194" cx="29" cy="-24" rx="5.5" ry="3.2"></ellipse>
+<ellipse fill="#5a2e2e" cx="0" cy="-28" rx="3.2" ry="2.3"></ellipse>
+<g data-expr="normal" display="{{c.eN}}"><circle fill="#fff9ee" cx="-16" cy="-39.5" r="5"></circle><circle fill="#fff9ee" cx="16" cy="-39.5" r="5"></circle><ellipse fill="#5a2e2e" cx="-16" cy="-39.5" rx="3" ry="3.6"></ellipse><ellipse fill="#5a2e2e" cx="16" cy="-39.5" rx="3" ry="3.6"></ellipse><circle fill="#fff9ee" cx="-17" cy="-41" r="1.1"></circle><circle fill="#fff9ee" cx="15" cy="-41" r="1.1"></circle><path class="m" d="M0 -25.7L0 -24M-5 -24Q-2.5 -20.5 0 -24Q2.5 -20.5 5 -24"></path></g>
+<g data-expr="happy" display="{{c.eH}}"><path class="mw" d="M-20.5 -38Q-16 -44 -11.5 -38M11.5 -38Q16 -44 20.5 -38"></path><path fill="#7a3e3e" d="M-5.5 -24.5Q0 -23 5.5 -24.5Q5 -17.5 0 -17.5Q-5 -17.5 -5.5 -24.5Z"></path><ellipse fill="#f5a3a8" cx="0" cy="-19.5" rx="2.8" ry="1.5"></ellipse></g>
+<g data-expr="talk" display="{{c.eT}}"><circle fill="#fff9ee" cx="-16" cy="-39.5" r="5"></circle><circle fill="#fff9ee" cx="16" cy="-39.5" r="5"></circle><ellipse fill="#5a2e2e" cx="-16" cy="-39.5" rx="3" ry="3.6"></ellipse><ellipse fill="#5a2e2e" cx="16" cy="-39.5" rx="3" ry="3.6"></ellipse><circle fill="#fff9ee" cx="-17" cy="-41" r="1.1"></circle><circle fill="#fff9ee" cx="15" cy="-41" r="1.1"></circle><ellipse fill="#7a3e3e" cx="0" cy="-21.2" rx="3.2" ry="3.4"></ellipse></g>
+<g data-expr="sleep" display="{{c.eS}}"><path class="mw" d="M-20.5 -39Q-16 -35 -11.5 -39M11.5 -39Q16 -35 20.5 -39"></path><path class="m" d="M-3 -22.5Q0 -20.5 3 -22.5"></path></g>
+</g>
+<g id="accessory" data-part="accessory" data-pivot="13,-10"><path fill="none" stroke="#5f5566" stroke-width="2" stroke-linecap="round" d="M-13 -14Q-2 -6 8 -12"></path><path d="M17.5 -4.5L22 0.5" fill="none" stroke="#7a3e3e" stroke-width="9" stroke-linecap="round"></path><path d="M17.5 -4.5L22 0.5" fill="none" stroke="#dca173" stroke-width="3" stroke-linecap="round"></path><circle class="s" fill="#c2e8f2" cx="13" cy="-10" r="7"></circle><path fill="none" stroke="#effafc" stroke-width="2" stroke-linecap="round" d="M9.5 -12.5Q11 -14.5 13.5 -14.5"></path></g>
+<g id="carry" data-part="carry" data-pivot="0,-9" display="{{c.pP}}"><rect class="s" fill="#dca173" x="-54" y="-17" width="108" height="8" rx="3"></rect><rect class="s" fill="#c4845a" x="-50" y="-9" width="100" height="8" rx="3"></rect></g>
+<g id="arm-l" data-part="arm-l" data-pivot="-34,-26" transform="{{c.t.armL}}"><ellipse class="s" fill="#aaa2ad" cx="-41" cy="-20" rx="7" ry="9.5" transform="rotate(25 -41 -20)"></ellipse></g>
+<g id="arm-r" data-part="arm-r" data-pivot="34,-26" transform="{{c.t.armR}}">
+<g id="hold-r" data-part="hold-r" data-pivot="41,-18" display="{{c.pH}}"><path d="M41 -18L56 -44" fill="none" stroke="#7a3e3e" stroke-width="9" stroke-linecap="round"></path><path d="M41 -18L56 -44" fill="none" stroke="#dca173" stroke-width="3" stroke-linecap="round"></path><rect class="s" fill="#cdc6d4" x="-11" y="-6" width="22" height="12" rx="3" transform="translate(56 -44) rotate(30)"></rect></g>
+<ellipse class="s" fill="#aaa2ad" cx="41" cy="-20" rx="7" ry="9.5" transform="rotate(-25 41 -20)"></ellipse>
+</g>
+</g>
+</svg>
+<span class="aid">{{c.id}}</span>
+</div>
+</sc-for>
+</div>
+
+<div class="row">
+<div class="who">
+<span style="font-family: 'Jua', sans-serif; font-size: 26px">펭귄</span>
+<span class="chip" style="background: #fbe9c4; color: #845614">팀장</span>
+<span class="meta">슬롯 3 · 소품 나비넥타이<br>귀가 없어 ear-l/r는<br>빈 그룹으로 둠</span>
+</div>
+<sc-for list="{{penguin}}" as="c" hint-placeholder-count="8">
+<div class="cell" style="background: {{c.bg}}">
+<svg width="{{c.w}}" height="{{c.h}}" viewBox="{{c.vb}}" data-asset-id="{{c.id}}" data-anchor="0,0" data-face-box="-44,-86,88,88" role="img" aria-label="{{c.aria}}">
+<ellipse data-part="shadow" cx="2" cy="3" rx="38" ry="9" fill="url(#chars-sh)" display="{{c.shadow}}"></ellipse>
+<g id="foot-l" data-part="foot-l" data-pivot="-16,0" transform="{{c.t.footL}}"><ellipse class="s" fill="#f4a340" cx="-16" cy="1" rx="9.5" ry="4.5"></ellipse></g>
+<g id="foot-r" data-part="foot-r" data-pivot="16,0" transform="{{c.t.footR}}"><ellipse class="s" fill="#f4a340" cx="16" cy="1" rx="9.5" ry="4.5"></ellipse></g>
+<g id="body" data-part="body" data-pivot="0,0" transform="{{c.t.body}}">
+<g id="tail" data-part="tail" data-pivot="0,-10"></g>
+<g id="ear-l" data-part="ear-l" data-pivot="-20,-60" transform="{{c.t.earL}}"></g>
+<g id="ear-r" data-part="ear-r" data-pivot="20,-60" transform="{{c.t.earR}}"></g>
+<path class="s" fill="#4a5a7e" d="M-3 -70Q1 -82 9 -77Q4 -75 3 -70Z"></path>
+<path class="s" fill="#4a5a7e" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<path fill="#fff9ee" d="M0 -58C-10 -66 -30 -60 -30 -40C-32 -18 -22 -3 0 -3C22 -3 32 -18 30 -40C30 -60 10 -66 0 -58Z"></path>
+<g id="face" data-part="face" data-pivot="0,-34" transform="{{c.t.face}}">
+<ellipse fill="#f7a194" cx="-24" cy="-28" rx="5" ry="3"></ellipse><ellipse fill="#f7a194" cx="24" cy="-28" rx="5" ry="3"></ellipse>
+<g data-expr="normal" display="{{c.eN}}"><ellipse fill="#5a2e2e" cx="-16" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="16" cy="-38" rx="3.6" ry="4.4"></ellipse><circle fill="#fff9ee" cx="-17" cy="-39.6" r="1.2"></circle><circle fill="#fff9ee" cx="15" cy="-39.6" r="1.2"></circle><path class="d" fill="#f4a340" d="M-6.5 -30Q0 -35 6.5 -30Q0 -24.5 -6.5 -30Z"></path></g>
+<g data-expr="happy" display="{{c.eH}}"><path class="m3" d="M-20.5 -36.5Q-16 -42.5 -11.5 -36.5M11.5 -36.5Q16 -42.5 20.5 -36.5"></path><ellipse fill="#7a3e3e" cx="0" cy="-28.5" rx="4.5" ry="3"></ellipse><path class="d" fill="#f4a340" d="M-7 -31Q0 -36 7 -31Q0 -29.5 -7 -31Z"></path><path class="d" fill="#f4a340" d="M-5 -27.5Q0 -28.5 5 -27.5Q0 -22 -5 -27.5Z"></path></g>
+<g data-expr="talk" display="{{c.eT}}"><ellipse fill="#5a2e2e" cx="-16" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="16" cy="-38" rx="3.6" ry="4.4"></ellipse><circle fill="#fff9ee" cx="-17" cy="-39.6" r="1.2"></circle><circle fill="#fff9ee" cx="15" cy="-39.6" r="1.2"></circle><ellipse fill="#7a3e3e" cx="0" cy="-28.5" rx="4.5" ry="3"></ellipse><path class="d" fill="#f4a340" d="M-7 -31Q0 -36 7 -31Q0 -29.5 -7 -31Z"></path><path class="d" fill="#f4a340" d="M-5 -27.5Q0 -28.5 5 -27.5Q0 -22 -5 -27.5Z"></path></g>
+<g data-expr="sleep" display="{{c.eS}}"><path class="m3" d="M-20.5 -38Q-16 -34 -11.5 -38M11.5 -38Q16 -34 20.5 -38"></path><path class="d" fill="#f4a340" d="M-6.5 -30Q0 -35 6.5 -30Q0 -24.5 -6.5 -30Z"></path></g>
+</g>
+<g id="accessory" data-part="accessory" data-pivot="0,-12"><path class="s" fill="#f0b24a" d="M0 -12L-11 -17.5L-11 -6.5Z"></path><path class="s" fill="#f0b24a" d="M0 -12L11 -17.5L11 -6.5Z"></path><circle class="s" fill="#d99a35" cx="0" cy="-12" r="3.2"></circle></g>
+<g id="carry" data-part="carry" data-pivot="0,-9" display="{{c.pP}}"><rect class="s" fill="#dca173" x="-54" y="-17" width="108" height="8" rx="3"></rect><rect class="s" fill="#c4845a" x="-50" y="-9" width="100" height="8" rx="3"></rect></g>
+<g id="arm-l" data-part="arm-l" data-pivot="-34,-26" transform="{{c.t.armL}}"><ellipse class="s" fill="#4a5a7e" cx="-41" cy="-20" rx="7" ry="11" transform="rotate(25 -41 -20)"></ellipse></g>
+<g id="arm-r" data-part="arm-r" data-pivot="34,-26" transform="{{c.t.armR}}">
+<g id="hold-r" data-part="hold-r" data-pivot="41,-18" display="{{c.pH}}"><path d="M41 -18L56 -44" fill="none" stroke="#7a3e3e" stroke-width="9" stroke-linecap="round"></path><path d="M41 -18L56 -44" fill="none" stroke="#dca173" stroke-width="3" stroke-linecap="round"></path><rect class="s" fill="#cdc6d4" x="-11" y="-6" width="22" height="12" rx="3" transform="translate(56 -44) rotate(30)"></rect></g>
+<ellipse class="s" fill="#4a5a7e" cx="41" cy="-20" rx="7" ry="11" transform="rotate(-25 41 -20)"></ellipse>
+</g>
+</g>
+</svg>
+<span class="aid">{{c.id}}</span>
+</div>
+</sc-for>
+</div>
+
+<div style="display: flex; gap: 24px; font-size: 13px; color: #8a5a4a; padding: 0 4px">
+<span>기준점 data-anchor = 두 발 사이 바닥 (0,0) · 월드에선 약 0.45배 (몸 폭 80 → 36)</span>
+<span>오른쪽으로 걸을 땐 캐릭터 전체를 좌우 반전</span>
+<span>그림자는 에셋 밖 월드가 그림 (data-part="shadow"는 시트 확인용)</span>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animate":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":1200}}'>
+class Component extends DCLogic {
+componentDidMount() {
+this.timer = setInterval(() => {
+if (this.props.animate ?? true) {
+this.setState({ tick: ((this.state && this.state.tick) || 0) + 1 });
+}
+}, 150);
+}
+componentWillUnmount() {
+clearInterval(this.timer);
+}
+renderVals() {
+const animate = this.props.animate ?? true;
+const tick = (this.state && this.state.tick) || 0;
+const Z = [0, 0, 0];
+const armsCarry = { armL: [-4, 6, -25], armR: [4, 6, 25] };
+const POSES = [
+{ key: 'stand', label: '서기', rate: 5, frames: [
+{},
+{ body: [0, -1.5, 0], armL: [0, 0, 6], armR: [0, 0, -6], earL: [0, 0, -3], earR: [0, 0, 3] }
+] },
+{ key: 'walk', label: '걷기', rate: 2, frames: [
+{ footL: [0, -5, -12], body: [0, -2, -3], armL: [0, 0, 18], armR: [0, 0, 8], earL: [0, 0, -6], earR: [0, 0, -6], face: [-3, 0, 0], tail: [0, 0, 10] },
+{ face: [-3, 0, 0], armL: [0, 0, 4], armR: [0, 0, -4] },
+{ footR: [0, -5, 12], body: [0, -2, 3], armL: [0, 0, -8], armR: [0, 0, -18], earL: [0, 0, 6], earR: [0, 0, 6], face: [-3, 0, 0], tail: [0, 0, -10] },
+{ face: [-3, 0, 0], armL: [0, 0, 4], armR: [0, 0, -4] }
+] },
+{ key: 'hammer', label: '망치질', rate: 3, prop: 'hammer', frames: [
+{ body: [0, -1, -3], armR: [0, 0, -40], armL: [0, 0, 10], face: [3, 0, 0], earL: [0, 0, -4], earR: [0, 0, -4] },
+{ body: [1, 0, 4], armR: [0, 0, 70], armL: [0, 0, -4], face: [4, 1, 0], earL: [0, 0, 4], earR: [0, 0, 4], expr: 'h' }
+] },
+{ key: 'carry', label: '나르기', rate: 2, prop: 'plank', frames: [
+Object.assign({ footL: [0, -4, -10], body: [0, -1.5, -2] }, armsCarry),
+Object.assign({}, armsCarry),
+Object.assign({ footR: [0, -4, 10], body: [0, -1.5, 2] }, armsCarry),
+Object.assign({}, armsCarry)
+] },
+{ key: 'cheer', label: '환호', rate: 3, frames: [
+{ body: [0, -9, 0], footL: [0, -7, -10], footR: [0, -7, 10], armL: [0, -8, 120], armR: [0, -8, -120], earL: [0, 0, -14], earR: [0, 0, 14], tail: [0, 0, 15], expr: 'h' },
+{ body: [0, -2, 0], armL: [0, -6, 105], armR: [0, -6, -105], earL: [0, 0, -6], earR: [0, 0, 6], expr: 'h' }
+] },
+{ key: 'talk', label: '말하기', rate: 3, frames: [
+{ body: [0, 0, 2], armR: [0, -2, -35], face: [2, 0, 0], earR: [0, 0, 5], expr: 't' },
+{ armR: [0, 0, -20], face: [2, 0, 0] }
+] },
+{ key: 'rest', label: '쉬기', rate: 6, frames: [
+{ body: [0, 1, -5], footL: [-2, 0, 0], footR: [2, 0, 0], armL: [2, 0, -10], armR: [-2, 0, 10], earL: [0, 0, -12], earR: [0, 0, 12], face: [-1, 2, 0], tail: [0, 0, -6], expr: 's' },
+{ body: [0, 2, -5], footL: [-2, 0, 0], footR: [2, 0, 0], armL: [2, 1, -10], armR: [-2, 1, 10], earL: [0, 0, -14], earR: [0, 0, 14], face: [-1, 2, 0], tail: [0, 0, -6], expr: 's' }
+] }
+];
+const SPECIES = {
+bear: { name: '곰', tint: '#dde8f5', earL: [-22, -58], earR: [22, -58], tail: [0, -10], earGain: 1 },
+rabbit: { name: '토끼', tint: '#fadcd8', earL: [-12, -66], earR: [12, -66], tail: [0, -10], earGain: 1.8 },
+raccoon: { name: '너구리', tint: '#dcebd2', earL: [-27, -54], earR: [27, -54], tail: [-32, -18], earGain: 1 },
+penguin: { name: '펭귄', tint: '#fbe9c4', earL: [-20, -60], earR: [20, -60], tail: [0, -10], earGain: 1 }
+};
+const tf = (v, p) => 'translate(' + v[0] + ' ' + v[1] + ') rotate(' + v[2] + ' ' + p[0] + ' ' + p[1] + ')';
+const vis = (on) => (on ? 'inline' : 'none');
+const cellFor = (key, sp, frame, meta) => {
+const g = (k) => frame[k] || Z;
+const ear = (k) => { const v = g(k); return [v[0], v[1], v[2] * sp.earGain]; };
+const ex = frame.expr || 'n';
+return {
+id: meta.id, aria: sp.name + ' ' + meta.label, bg: meta.bg, vb: meta.vb, w: meta.w, h: meta.h, shadow: vis(meta.shadow),
+t: {
+footL: tf(g('footL'), [-16, 0]), footR: tf(g('footR'), [16, 0]), body: tf(g('body'), [0, 0]),
+earL: tf(ear('earL'), sp.earL), earR: tf(ear('earR'), sp.earR), face: tf(g('face'), [0, -34]),
+armL: tf(g('armL'), [-34, -26]), armR: tf(g('armR'), [34, -26]), tail: tf(g('tail'), sp.tail)
+},
+eN: vis(ex === 'n'), eH: vis(ex === 'h'), eT: vis(ex === 't'), eS: vis(ex === 's'),
+pH: vis(meta.prop === 'hammer'), pP: vis(meta.prop === 'plank')
+};
+};
+const build = (key) => {
+const sp = SPECIES[key];
+const cells = POSES.map((pose) => {
+const fi = animate ? Math.floor(tick / pose.rate) % pose.frames.length : 0;
+return cellFor(key, sp, pose.frames[fi], { id: key + '.' + pose.key, label: pose.label, bg: '#f5ecd7', vb: '-64 -126 128 138', w: 128, h: 138, shadow: true, prop: pose.prop });
+});
+cells.push(cellFor(key, sp, {}, { id: key + '.face', label: '프로필', bg: sp.tint, vb: '-44 -86 88 88', w: 112, h: 112, shadow: false }));
+return cells;
+};
+return { bear: build('bear'), rabbit: build('rabbit'), raccoon: build('raccoon'), penguin: build('penguin') };
+}
+}
+</script>
+</body>
+</html>

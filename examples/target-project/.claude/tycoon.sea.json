@@ -1,0 +1,14 @@
+{
+  "$comment": "바다 테마 예시. 쓰려면 이 파일 이름을 tycoon.json으로 바꾼다 (한 프로젝트에 tycoon.json은 하나). theme만 추가하면 나머지는 잔디용 설정 그대로 두어도 된다: species·accessory에 잔디 id를 쓰면 theme-map.sea.json이 바꿔 그리고, 바다 id(seal 등)를 쓰면 설정을 읽을 때 정본 id로 되돌려 저장한다 (docs/05-바다-테마.md 3장).",
+  "projectName": "my-shop-app",
+  "theme": "sea",
+  "members": {
+    "backend-dev":  { "species": "seal",    "job": "backend",  "accessory": "headlamp" },
+    "frontend-dev": { "species": "otter",   "job": "frontend", "accessory": "starfishPin" },
+    "qa-reviewer":  { "species": "hamster", "job": "qa" }
+  },
+  "leader": { "species": "turtle", "job": "lead", "accessory": "captainHat", "label": "팀장" },
+  "overrides": {
+    "time": { "gameDayMs": 3600000 }
+  }
+}

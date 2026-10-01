@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>바다 마을 격자 뷰</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.card{display:flex;flex-direction:column;border:3px solid #2e4b66;border-radius:18px;background:#f9fdfc;overflow:hidden;text-decoration:none;color:#1f3850}
+.card:focus-visible{outline:3px solid #b0357c;outline-offset:3px}
+.illo{height:170px;background:#bfe2e8;border-bottom:3px solid #2e4b66;overflow:hidden;display:flex;justify-content:center}
+.bd{padding:10px 12px 12px;display:flex;flex-direction:column;gap:7px}
+.nm{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-size:17px}
+.meta{font-size:12px;color:#4f6883}
+.face{width:30px;height:30px;box-sizing:border-box;border:2px solid #2e4b66;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pip{width:10px;height:10px;border-radius:50%;border:2px solid #2e4b66;box-sizing:border-box;background:#f9fdfc}
+.on{background:#f7cb52}.cur{background:#fbe9c4}
+.chipj{padding:0 8px;height:20px;display:inline-flex;align-items:center;border:2px solid #2e4b66;border-radius:999px;font-family:'Jua',sans-serif;font-size:12px}
+.h2{margin:0;font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;font-size:20px}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; display: flex; flex-direction: column; background: #e6f3f1; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #1f3850; overflow: hidden">
+<dc-import name="SeaTopBar" active="village" hint-size="1440px,68px"></dc-import>
+<div style="display: flex; height: 832px">
+<main style="width: 1080px; box-sizing: border-box; padding: 16px; display: flex; flex-direction: column; gap: 14px; background: #d3e9e6">
+<div style="display: flex; align-items: center; gap: 12px">
+<div role="group" aria-label="보기 방식" style="display: flex; padding: 4px; gap: 4px; background: #f9fdfc; border: 2.5px solid #2e4b66; border-radius: 14px">
+<a href="SeaScreenMain.dc.html" style="display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px; box-sizing: border-box; border: 2px solid transparent; border-radius: 10px; font-family: 'Jua', sans-serif; font-size: 15px; color: #1f3850; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4L20.5 8.5L12 13L3.5 8.5ZM3.5 12.5L12 17L20.5 12.5" fill="none" stroke="#1f3850" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>마을</a>
+<span aria-current="page" style="display: flex; align-items: center; gap: 6px; height: 36px; padding: 0 14px; box-sizing: border-box; border: 2px solid #2e4b66; border-radius: 10px; background: #f7cb52; font-family: 'Jua', sans-serif; font-size: 15px"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#1f3850" stroke-width="2"><rect x="4" y="4" width="7" height="7" rx="1.5"></rect><rect x="13" y="4" width="7" height="7" rx="1.5"></rect><rect x="4" y="13" width="7" height="7" rx="1.5"></rect><rect x="13" y="13" width="7" height="7" rx="1.5"></rect></g></svg>격자</span>
+</div>
+<span style="font-size: 13px; color: #4f6883">건물이 적을 때나 한눈에 비교할 때 쓰는 보기. 카드를 누르면 상세로 들어갑니다.</span>
+</div>
+
+<div style="display: flex; align-items: baseline; gap: 10px"><h2 class="h2">팀원 집</h2><span class="meta">4채 · 급여(진주)로 가구를 사서 꾸미는 개인 공간</span></div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+<a class="card" href="SeaScreenHouse.dc.html" style="border-color: #e2ae33; outline: 2px solid #2e4b66">
+<div class="illo"><div style="margin-top: -84px"><dc-import name="SeaBuilding" body="shell-1f" roof="dome" sign="home" slot="1" hint-size="160px,256px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; align-items: center; gap: 8px"><span class="face" style="background: #dde8f5"><dc-import name="SeaCritter" species="seal" mode="face" scale="0.3" animate="false" hint-size="26px,26px"></dc-import></span><span class="nm">물범의 집</span><span style="flex-grow: 1"></span><span style="display: flex; align-items: center; gap: 4px; font-size: 12px"><span style="width: 9px; height: 9px; border-radius: 50%; border: 2px solid #2e4b66; background: #bfdca8"></span>앞 바위에서 쉬는 중</span></div>
+<div style="display: flex; justify-content: space-between" class="meta"><span>가구 9개 · 방 꾸밈 78%</span><span style="font-family: 'Jua', sans-serif; font-size: 14px; color: #1f3850">1,240</span></div></div>
+</a>
+<a class="card" href="SeaScreenHouse.dc.html">
+<div class="illo"><div style="margin-top: -84px"><dc-import name="SeaBuilding" body="coral-1f" roof="scallop" sign="home" slot="2" hint-size="160px,256px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; align-items: center; gap: 8px"><span class="face" style="background: #fadcd8"><dc-import name="SeaCritter" species="otter" mode="face" scale="0.3" animate="false" hint-size="26px,26px"></dc-import></span><span class="nm">수달의 집</span><span style="flex-grow: 1"></span><span style="display: flex; align-items: center; gap: 4px; font-size: 12px"><span style="width: 9px; height: 9px; border-radius: 50%; border: 2px solid #2e4b66; background: #f7cb52"></span>비어 있음</span></div>
+<div style="display: flex; justify-content: space-between" class="meta"><span>가구 4개 · 방 꾸밈 35%</span><span style="font-family: 'Jua', sans-serif; font-size: 14px; color: #1f3850">860</span></div></div>
+</a>
+<a class="card" href="SeaScreenHouse.dc.html">
+<div class="illo"><div style="margin-top: -84px"><dc-import name="SeaBuilding" body="shell-1f" roof="scallop" sign="home" slot="3" hint-size="160px,256px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; align-items: center; gap: 8px"><span class="face" style="background: #fbe9c4"><dc-import name="SeaCritter" species="hamster" mode="face" scale="0.3" animate="false" hint-size="26px,26px"></dc-import></span><span class="nm">햄스터의 집</span><span style="flex-grow: 1"></span><span style="display: flex; align-items: center; gap: 4px; font-size: 12px"><span style="width: 9px; height: 9px; border-radius: 50%; border: 2px solid #2e4b66; background: #96c6ea"></span>비어 있음</span></div>
+<div style="display: flex; justify-content: space-between" class="meta"><span>가구 7개 · 방 꾸밈 62%</span><span style="font-family: 'Jua', sans-serif; font-size: 14px; color: #1f3850">1,020</span></div></div>
+</a>
+<a class="card" href="SeaScreenHouse.dc.html">
+<div class="illo"><div style="margin-top: -84px"><dc-import name="SeaBuilding" body="coral-1f" roof="dome" sign="home" slot="4" hint-size="160px,256px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; align-items: center; gap: 8px"><span class="face" style="background: #dcebd2"><dc-import name="SeaCritter" species="turtle" mode="face" scale="0.3" animate="false" hint-size="26px,26px"></dc-import></span><span class="nm">바다거북의 집</span><span style="flex-grow: 1"></span><span style="display: flex; align-items: center; gap: 4px; font-size: 12px"><span style="width: 9px; height: 9px; border-radius: 50%; border: 2px solid #2e4b66; background: #96c6ea"></span>비어 있음</span></div>
+<div style="display: flex; justify-content: space-between" class="meta"><span>가구 11개 · 방 꾸밈 90%</span><span style="font-family: 'Jua', sans-serif; font-size: 14px; color: #1f3850">1,480</span></div></div>
+</a>
+</div>
+
+<div style="display: flex; align-items: baseline; gap: 10px; margin-top: 4px"><h2 class="h2">작업 건물</h2><span class="meta">7채 · 완공 3 · 공사 중 1 · 기초 1 · 예정 부지 2</span></div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+<a class="card" href="SeaScreenBuilding.dc.html">
+<div class="illo"><div style="margin-top: -72px"><dc-import name="SeaBuilding" body="basalt-2f" roof="dome" sign="guard" slot="3" stage="frame" progress="0.5" hint-size="160px,256px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; align-items: center; gap: 8px"><span class="nm">로그인 개선</span><span style="flex-grow: 1"></span><span class="meta">공사 중</span></div>
+<div style="display: flex; align-items: center; gap: 8px"><span style="display: flex; gap: 3px"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip cur"></span><span class="pip"></span><span class="pip"></span></span><span class="meta">3 / 6</span><span style="flex-grow: 1"></span><span style="display: flex"><span class="face" style="width: 24px; height: 24px; background: #fbe9c4"></span><span class="face" style="width: 24px; height: 24px; margin-left: -7px; background: #fadcd8"></span></span></div></div>
+</a>
+<a class="card" href="SeaScreenBuilding.dc.html">
+<div class="illo"><div style="margin-top: -84px"><dc-import name="SeaBuilding" body="shell-1f" roof="conch" sign="cafe" slot="2" hint-size="160px,256px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; align-items: center; gap: 8px"><span class="nm">장바구니</span><span class="chipj" style="background: #fadcd8; color: #a8433d">해초 카페</span><span style="flex-grow: 1"></span><span class="meta">오늘 완공</span></div>
+<div style="display: flex; align-items: center; gap: 8px"><span style="display: flex; gap: 3px"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></span><span class="meta">4 / 4</span><span style="flex-grow: 1"></span><span style="display: flex"><span class="face" style="width: 24px; height: 24px; background: #fadcd8"></span><span class="face" style="width: 24px; height: 24px; margin-left: -7px; background: #dde8f5"></span></span></div></div>
+</a>
+<a class="card" href="SeaScreenBuilding.dc.html">
+<div class="illo"><div style="margin-top: -84px"><dc-import name="SeaBuilding" body="coral-1f" roof="scallop" sign="workshop" slot="1" hint-size="160px,256px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; align-items: center; gap: 8px"><span class="nm">결제 모듈</span><span class="chipj" style="background: #dde8f5; color: #3f5f99">공방</span><span style="flex-grow: 1"></span><span class="meta">2일 전</span></div>
+<div style="display: flex; align-items: center; gap: 8px"><span style="display: flex; gap: 3px"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></span><span class="meta">3 / 3</span><span style="flex-grow: 1"></span><span style="display: flex"><span class="face" style="width: 24px; height: 24px; background: #dde8f5"></span></span></div></div>
+</a>
+<a class="card" href="SeaScreenBuilding.dc.html">
+<div class="illo"><div style="margin-top: -72px"><dc-import name="SeaBuilding" body="wreck-2f" roof="scallop" sign="hall" slot="4" hint-size="160px,256px"></dc-import></div></div>
+<div class="bd"><div style="display: flex; align-items: center; gap: 8px"><span class="nm">릴리스 준비</span><span class="chipj" style="background: #dcebd2; color: #2f7049">회관</span><span style="flex-grow: 1"></span><span class="meta">어제</span></div>
+<div style="display: flex; align-items: center; gap: 8px"><span style="display: flex; gap: 3px"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></span><span class="meta">5 / 5</span><span style="flex-grow: 1"></span><span style="display: flex"><span class="face" style="width: 24px; height: 24px; background: #dcebd2"></span><span class="face" style="width: 24px; height: 24px; margin-left: -7px; background: #fbe9c4"></span><span class="face" style="width: 24px; height: 24px; margin-left: -7px; background: #fadcd8"></span></span></div></div>
+</a>
+</div>
+<div style="display: flex; gap: 10px; align-items: center">
+<span style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 2px dashed #2e4b66; border-radius: 14px; background: #f9fdfc; font-size: 13px">기초 · 알림 설정 <span class="meta">1 / 4</span></span>
+<span style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 2px dashed #2e4b66; border-radius: 14px; background: #f9fdfc; font-size: 13px">예정 부지 · 검색 필터 <span class="meta">0 / 3</span></span>
+<span style="display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 2px dashed #2e4b66; border-radius: 14px; background: #f9fdfc; font-size: 13px">예정 부지 · 다크 모드 <span class="meta">0 / 5</span></span>
+</div>
+</main>
+<dc-import name="SeaTeamPanel" selected="seal" hint-size="360px,832px"></dc-import>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

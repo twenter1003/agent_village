@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>캐릭터 컴포넌트</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="position: relative; width: {{rw}}px; height: {{rh}}px">
+<svg width="{{rw}}" height="{{rh}}" viewBox="{{vb}}" data-asset-id="{{assetId}}" data-anchor="0,0" data-face-box="-44,-86,88,88" role="img" aria-label="{{aria}}" style="display: block; overflow: visible">
+<defs><radialGradient id="{{shId}}" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#7a3e3e" stop-opacity="0.3"></stop><stop offset="0.6" stop-color="#7a3e3e" stop-opacity="0.18"></stop><stop offset="1" stop-color="#7a3e3e" stop-opacity="0"></stop></radialGradient></defs>
+<ellipse data-part="shadow" cx="2" cy="3" rx="38" ry="9" fill="url(#{{shId}})" display="{{shadow}}"></ellipse>
+<g transform="{{flipT}}">
+<g id="foot-l" data-part="foot-l" data-pivot="-16,0" transform="{{t.footL}}"><ellipse stroke="#7a3e3e" stroke-width="{{w3}}" fill="{{c.foot}}" cx="-16" cy="1" rx="9" ry="5"></ellipse></g>
+<g id="foot-r" data-part="foot-r" data-pivot="16,0" transform="{{t.footR}}"><ellipse stroke="#7a3e3e" stroke-width="{{w3}}" fill="{{c.foot}}" cx="16" cy="1" rx="9" ry="5"></ellipse></g>
+<g id="body" data-part="body" data-pivot="0,0" transform="{{t.body}}">
+<g id="tail" data-part="tail" data-pivot="{{c.tailPv}}" transform="{{t.tail}}" display="{{sp.raccoon}}"><path stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" fill="#aaa2ad" d="M-30 -12C-52 -4 -66 -28 -58 -50C-53 -60 -42 -56 -45 -46C-49 -34 -42 -24 -32 -26Z"></path><path fill="#5f5566" d="M-56.5 -43C-58 -49 -56 -55 -52 -57C-48 -58 -44 -55 -44.5 -50C-47 -48 -52 -45 -56.5 -43Z"></path></g>
+<g id="ear-l" data-part="ear-l" data-pivot="{{c.earLPv}}" transform="{{t.earL}}">
+<g display="{{sp.bear}}"><circle stroke="#7a3e3e" stroke-width="{{w3}}" fill="#c0804f" cx="-26" cy="-64" r="10"></circle><circle fill="#eeb08f" cx="-26" cy="-66" r="4.5"></circle></g>
+<g display="{{sp.rabbit}}"><ellipse stroke="#7a3e3e" stroke-width="{{w3}}" fill="#fbf3e8" cx="-15" cy="-86" rx="9" ry="22" transform="rotate(-10 -15 -86)"></ellipse><ellipse fill="#f5a3a8" cx="-15" cy="-86" rx="4" ry="15" transform="rotate(-10 -15 -86)"></ellipse></g>
+<g display="{{sp.raccoon}}"><path stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" fill="#aaa2ad" d="M-38 -48Q-42 -76 -20 -68Q-14 -63 -16 -56Z"></path><path fill="#5f5566" d="M-33 -55Q-35 -68 -24 -65Q-20 -61 -21 -58Z"></path></g>
+<g display="{{sp.visitor}}"><circle stroke="#7a3e3e" stroke-width="{{w3}}" fill="#d9ccb8" cx="-25" cy="-62" r="7.5"></circle></g>
+</g>
+<g id="ear-r" data-part="ear-r" data-pivot="{{c.earRPv}}" transform="{{t.earR}}">
+<g display="{{sp.bear}}"><circle stroke="#7a3e3e" stroke-width="{{w3}}" fill="#c0804f" cx="26" cy="-64" r="10"></circle><circle fill="#eeb08f" cx="26" cy="-66" r="4.5"></circle></g>
+<g display="{{sp.rabbit}}"><ellipse stroke="#7a3e3e" stroke-width="{{w3}}" fill="#fbf3e8" cx="15" cy="-86" rx="9" ry="22" transform="rotate(10 15 -86)"></ellipse><ellipse fill="#f5a3a8" cx="15" cy="-86" rx="4" ry="15" transform="rotate(10 15 -86)"></ellipse></g>
+<g display="{{sp.raccoon}}"><path stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" fill="#aaa2ad" d="M38 -48Q42 -76 20 -68Q14 -63 16 -56Z"></path><path fill="#5f5566" d="M33 -55Q35 -68 24 -65Q20 -61 21 -58Z"></path></g>
+<g display="{{sp.visitor}}"><circle stroke="#7a3e3e" stroke-width="{{w3}}" fill="#d9ccb8" cx="25" cy="-62" r="7.5"></circle></g>
+</g>
+<path display="{{sp.penguin}}" stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" fill="#4a5a7e" d="M-3 -70Q1 -82 9 -77Q4 -75 3 -70Z"></path>
+<path stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" fill="{{c.fur}}" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<path display="{{sp.penguin}}" fill="#fff9ee" d="M0 -58C-10 -66 -30 -60 -30 -40C-32 -18 -22 -3 0 -3C22 -3 32 -18 30 -40C30 -60 10 -66 0 -58Z"></path>
+<g id="face" data-part="face" data-pivot="0,-34" transform="{{t.face}}">
+<ellipse display="{{sp.bear}}" fill="#f6dfc3" cx="0" cy="-24" rx="18" ry="10.5"></ellipse>
+<g display="{{sp.raccoon}}"><path fill="#5f5566" d="M-31 -45Q-15 -51 -4 -43Q0 -41 4 -43Q15 -51 31 -45Q32 -33 18 -32Q8 -33 0 -34Q-8 -33 -18 -32Q-32 -33 -31 -45Z"></path><ellipse fill="#fff9ee" cx="-15" cy="-53" rx="6" ry="2.6"></ellipse><ellipse fill="#fff9ee" cx="15" cy="-53" rx="6" ry="2.6"></ellipse><ellipse fill="#fff9ee" cx="0" cy="-23" rx="12" ry="8"></ellipse></g>
+<ellipse fill="#f7a194" cx="-28" cy="-26" rx="5.5" ry="3.2"></ellipse><ellipse fill="#f7a194" cx="28" cy="-26" rx="5.5" ry="3.2"></ellipse>
+<ellipse display="{{c.noseDisp}}" fill="{{c.nose}}" cx="0" cy="-29" rx="3.2" ry="2.3"></ellipse>
+<g data-expr="normal" display="{{e.n}}">
+<g display="{{c.plainEyes}}"><ellipse fill="#5a2e2e" cx="-17" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="17" cy="-38" rx="3.6" ry="4.4"></ellipse><circle fill="#fff9ee" cx="-18" cy="-39.6" r="1.2"></circle><circle fill="#fff9ee" cx="16" cy="-39.6" r="1.2"></circle></g>
+<g display="{{sp.raccoon}}"><circle fill="#fff9ee" cx="-16" cy="-39.5" r="5"></circle><circle fill="#fff9ee" cx="16" cy="-39.5" r="5"></circle><ellipse fill="#5a2e2e" cx="-16" cy="-39.5" rx="3" ry="3.6"></ellipse><ellipse fill="#5a2e2e" cx="16" cy="-39.5" rx="3" ry="3.6"></ellipse></g>
+<path display="{{c.mouthDisp}}" fill="none" stroke="#5a2e2e" stroke-width="{{w2}}" stroke-linecap="round" stroke-linejoin="round" d="M0 -26.7L0 -24.8M-5.5 -24.8Q-2.75 -21.3 0 -24.8Q2.75 -21.3 5.5 -24.8"></path>
+<path display="{{sp.penguin}}" stroke="#7a3e3e" stroke-width="{{w2}}" stroke-linejoin="round" fill="#f4a340" d="M-6.5 -30Q0 -35 6.5 -30Q0 -24.5 -6.5 -30Z"></path>
+</g>
+<g data-expr="happy" display="{{e.h}}">
+<path fill="none" stroke="{{c.lid}}" stroke-width="{{w26}}" stroke-linecap="round" d="M-21.5 -36.5Q-17 -42.5 -12.5 -36.5M12.5 -36.5Q17 -42.5 21.5 -36.5"></path>
+<g display="{{c.mouthDisp}}"><path fill="#7a3e3e" d="M-6 -25Q0 -23.5 6 -25Q5.5 -17.5 0 -17.5Q-5.5 -17.5 -6 -25Z"></path><ellipse fill="#f5a3a8" cx="0" cy="-19.8" rx="3" ry="1.6"></ellipse></g>
+<g display="{{sp.penguin}}"><ellipse fill="#7a3e3e" cx="0" cy="-28.5" rx="4.5" ry="3"></ellipse><path stroke="#7a3e3e" stroke-width="{{w2}}" stroke-linejoin="round" fill="#f4a340" d="M-7 -31Q0 -36 7 -31Q0 -29.5 -7 -31Z"></path><path stroke="#7a3e3e" stroke-width="{{w2}}" stroke-linejoin="round" fill="#f4a340" d="M-5 -27.5Q0 -28.5 5 -27.5Q0 -22 -5 -27.5Z"></path></g>
+</g>
+<g data-expr="talk" display="{{e.t}}">
+<g display="{{c.plainEyes}}"><ellipse fill="#5a2e2e" cx="-17" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="17" cy="-38" rx="3.6" ry="4.4"></ellipse><circle fill="#fff9ee" cx="-18" cy="-39.6" r="1.2"></circle><circle fill="#fff9ee" cx="16" cy="-39.6" r="1.2"></circle></g>
+<g display="{{sp.raccoon}}"><circle fill="#fff9ee" cx="-16" cy="-39.5" r="5"></circle><circle fill="#fff9ee" cx="16" cy="-39.5" r="5"></circle><ellipse fill="#5a2e2e" cx="-16" cy="-39.5" rx="3" ry="3.6"></ellipse><ellipse fill="#5a2e2e" cx="16" cy="-39.5" rx="3" ry="3.6"></ellipse></g>
+<ellipse display="{{c.mouthDisp}}" fill="#7a3e3e" cx="0" cy="-22" rx="3.4" ry="3.6"></ellipse>
+<g display="{{sp.penguin}}"><ellipse fill="#7a3e3e" cx="0" cy="-28.5" rx="4.5" ry="3"></ellipse><path stroke="#7a3e3e" stroke-width="{{w2}}" stroke-linejoin="round" fill="#f4a340" d="M-7 -31Q0 -36 7 -31Q0 -29.5 -7 -31Z"></path><path stroke="#7a3e3e" stroke-width="{{w2}}" stroke-linejoin="round" fill="#f4a340" d="M-5 -27.5Q0 -28.5 5 -27.5Q0 -22 -5 -27.5Z"></path></g>
+</g>
+<g data-expr="sleep" display="{{e.s}}">
+<path fill="none" stroke="{{c.lid}}" stroke-width="{{w26}}" stroke-linecap="round" d="M-21.5 -38Q-17 -34 -12.5 -38M12.5 -38Q17 -34 21.5 -38"></path>
+<path display="{{c.mouthDisp}}" fill="none" stroke="#5a2e2e" stroke-width="{{w2}}" stroke-linecap="round" d="M-3 -23.5Q0 -21.5 3 -23.5"></path>
+<path display="{{sp.penguin}}" stroke="#7a3e3e" stroke-width="{{w2}}" stroke-linejoin="round" fill="#f4a340" d="M-6.5 -30Q0 -35 6.5 -30Q0 -24.5 -6.5 -30Z"></path>
+</g>
+<g id="accessory-face" data-part="accessory" data-pivot="0,-38" display="{{sp.bear}}"><circle stroke="#7a3e3e" stroke-width="{{w3}}" fill="#fff9ee" fill-opacity="0.35" cx="-17" cy="-38" r="9"></circle><circle stroke="#7a3e3e" stroke-width="{{w3}}" fill="#fff9ee" fill-opacity="0.35" cx="17" cy="-38" r="9"></circle><path stroke="#7a3e3e" stroke-width="{{w3}}" fill="none" stroke-linecap="round" d="M-8 -39Q0 -42 8 -39"></path></g>
+</g>
+<g id="accessory" data-part="accessory" data-pivot="0,-40">
+<g display="{{sp.rabbit}}"><path stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" fill="#ec6f66" d="M-24 -68C-26 -79 -6 -85 12 -81C26 -78 26 -68 15 -66C2 -64 -16 -63 -24 -68Z"></path><circle stroke="#7a3e3e" stroke-width="{{w3}}" fill="#ec6f66" cx="2" cy="-84" r="2.6"></circle></g>
+<g display="{{sp.raccoon}}"><path fill="none" stroke="#5f5566" stroke-width="{{w2}}" stroke-linecap="round" d="M-13 -14Q-2 -6 8 -12"></path><path d="M17.5 -4.5L22 0.5" fill="none" stroke="#7a3e3e" stroke-width="{{w9}}" stroke-linecap="round"></path><path d="M17.5 -4.5L22 0.5" fill="none" stroke="#dca173" stroke-width="{{w3}}" stroke-linecap="round"></path><circle stroke="#7a3e3e" stroke-width="{{w3}}" fill="#c2e8f2" cx="13" cy="-10" r="7"></circle></g>
+<g display="{{sp.visitor}}"><path stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" fill="{{c.cap}}" d="M-26 -62C-26 -76 -12 -80 0 -80C14 -80 26 -76 26 -62C14 -66 -14 -66 -26 -62Z"></path><path stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" fill="{{c.cap}}" d="M8 -64Q24 -66 34 -60Q24 -58 10 -60Z"></path></g>
+<g display="{{sp.penguin}}"><path stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" fill="#f0b24a" d="M0 -12L-11 -17.5L-11 -6.5Z"></path><path stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round" fill="#f0b24a" d="M0 -12L11 -17.5L11 -6.5Z"></path><circle stroke="#7a3e3e" stroke-width="{{w3}}" fill="#d99a35" cx="0" cy="-12" r="3.2"></circle></g>
+</g>
+<g id="carry" data-part="carry" data-pivot="0,-9" display="{{pP}}"><g stroke="#7a3e3e" stroke-width="{{w3}}" stroke-linejoin="round"><rect fill="#dca173" x="-54" y="-17" width="108" height="8" rx="3"></rect><rect fill="#c4845a" x="-50" y="-9" width="100" height="8" rx="3"></rect></g></g>
+<g id="arm-l" data-part="arm-l" data-pivot="-34,-26" transform="{{t.armL}}"><ellipse stroke="#7a3e3e" stroke-width="{{w3}}" fill="{{c.fur}}" cx="-41" cy="-20" rx="7" ry="{{c.armRy}}" transform="rotate(25 -41 -20)"></ellipse></g>
+<g id="arm-r" data-part="arm-r" data-pivot="34,-26" transform="{{t.armR}}">
+<g id="hold-r" data-part="hold-r" data-pivot="41,-18" display="{{pH}}"><path d="M41 -18L56 -44" fill="none" stroke="#7a3e3e" stroke-width="{{w9}}" stroke-linecap="round"></path><path d="M41 -18L56 -44" fill="none" stroke="#dca173" stroke-width="{{w3}}" stroke-linecap="round"></path><rect stroke="#7a3e3e" stroke-width="{{w3}}" fill="#cdc6d4" x="-11" y="-6" width="22" height="12" rx="3" transform="translate(56 -44) rotate(30)"></rect></g>
+<ellipse stroke="#7a3e3e" stroke-width="{{w3}}" fill="{{c.fur}}" cx="41" cy="-20" rx="7" ry="{{c.armRy}}" transform="rotate(-25 41 -20)"></ellipse>
+</g>
+</g>
+</g>
+</svg>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"species":{"editor":"enum","options":["bear","rabbit","raccoon","penguin","visitor"],"default":"bear"},"role":{"editor":"enum","options":["explore","plan","general"],"default":"general"},"pose":{"editor":"enum","options":["stand","walk","hammer","carry","cheer","talk","rest"],"default":"stand"},"mode":{"editor":"enum","options":["full","face"],"default":"full"},"scale":{"editor":"float","min":0.3,"max":3,"step":0.05,"default":1},"animate":{"editor":"boolean","default":true},"flip":{"editor":"boolean","default":false},"phase":{"editor":"int","min":0,"max":20,"default":0},"shadow":{"editor":"boolean","default":true},"$preview":{"width":128,"height":138}}'>
+class Component extends DCLogic {
+componentDidMount() {
+this.timer = setInterval(() => {
+const a = this.props.animate;
+if (!(a === false || a === 'false')) this.setState({ tick: ((this.state && this.state.tick) || 0) + 1 });
+}, 150);
+}
+componentWillUnmount() {
+clearInterval(this.timer);
+}
+renderVals() {
+if (!this.uid) this.uid = 'c' + Math.random().toString(36).slice(2, 9);
+const p = this.props;
+const truthy = (v, d) => (v === undefined || v === null ? d : (v === true || v === 'true'));
+const species = p.species ?? 'bear';
+const pose = p.pose ?? 'stand';
+const face = (p.mode ?? 'full') === 'face';
+const s = Math.max(0.2, Number(p.scale ?? 1));
+const animate = truthy(p.animate, true);
+const tick = ((this.state && this.state.tick) || 0) + Number(p.phase ?? 0);
+const Z = [0, 0, 0];
+const AC = { armL: [-4, 6, -25], armR: [4, 6, 25] };
+const POSES = {
+stand: { rate: 5, frames: [{}, { body: [0, -1.5, 0], armL: [0, 0, 6], armR: [0, 0, -6], earL: [0, 0, -3], earR: [0, 0, 3] }] },
+walk: { rate: 2, frames: [
+{ footL: [0, -5, -12], body: [0, -2, -3], armL: [0, 0, 18], armR: [0, 0, 8], earL: [0, 0, -6], earR: [0, 0, -6], face: [-3, 0, 0], tail: [0, 0, 10] },
+{ face: [-3, 0, 0], armL: [0, 0, 4], armR: [0, 0, -4] },
+{ footR: [0, -5, 12], body: [0, -2, 3], armL: [0, 0, -8], armR: [0, 0, -18], earL: [0, 0, 6], earR: [0, 0, 6], face: [-3, 0, 0], tail: [0, 0, -10] },
+{ face: [-3, 0, 0], armL: [0, 0, 4], armR: [0, 0, -4] }] },
+hammer: { rate: 3, prop: 'hammer', frames: [
+{ body: [0, -1, -3], armR: [0, 0, -40], armL: [0, 0, 10], face: [3, 0, 0], earL: [0, 0, -4], earR: [0, 0, -4] },
+{ body: [1, 0, 4], armR: [0, 0, 70], armL: [0, 0, -4], face: [4, 1, 0], earL: [0, 0, 4], earR: [0, 0, 4], expr: 'h' }] },
+carry: { rate: 2, prop: 'plank', frames: [
+Object.assign({ footL: [0, -4, -10], body: [0, -1.5, -2] }, AC), Object.assign({}, AC),
+Object.assign({ footR: [0, -4, 10], body: [0, -1.5, 2] }, AC), Object.assign({}, AC)] },
+cheer: { rate: 3, frames: [
+{ body: [0, -9, 0], footL: [0, -7, -10], footR: [0, -7, 10], armL: [0, -8, 120], armR: [0, -8, -120], earL: [0, 0, -14], earR: [0, 0, 14], tail: [0, 0, 15], expr: 'h' },
+{ body: [0, -2, 0], armL: [0, -6, 105], armR: [0, -6, -105], earL: [0, 0, -6], earR: [0, 0, 6], expr: 'h' }] },
+talk: { rate: 3, frames: [
+{ body: [0, 0, 2], armR: [0, -2, -35], face: [2, 0, 0], earR: [0, 0, 5], expr: 't' },
+{ armR: [0, 0, -20], face: [2, 0, 0] }] },
+rest: { rate: 6, frames: [
+{ body: [0, 1, -5], footL: [-2, 0, 0], footR: [2, 0, 0], armL: [2, 0, -10], armR: [-2, 0, 10], earL: [0, 0, -12], earR: [0, 0, 12], face: [-1, 2, 0], tail: [0, 0, -6], expr: 's' },
+{ body: [0, 2, -5], footL: [-2, 0, 0], footR: [2, 0, 0], armL: [2, 1, -10], armR: [-2, 1, 10], earL: [0, 0, -14], earR: [0, 0, 14], face: [-1, 2, 0], tail: [0, 0, -6], expr: 's' }] }
+};
+const SP = {
+bear: { name: '곰', fur: '#c0804f', foot: '#a86c40', nose: '#5a2e2e', earL: [-22, -58], earR: [22, -58], tail: [0, -10], gain: 1, lid: '#5a2e2e' },
+rabbit: { name: '토끼', fur: '#fbf3e8', foot: '#eadbc7', nose: '#f5a3a8', earL: [-12, -66], earR: [12, -66], tail: [0, -10], gain: 1.8, lid: '#5a2e2e' },
+raccoon: { name: '너구리', fur: '#aaa2ad', foot: '#938a97', nose: '#5a2e2e', earL: [-27, -54], earR: [27, -54], tail: [-32, -18], gain: 1, lid: '#fff9ee' },
+penguin: { name: '펭귄', fur: '#4a5a7e', foot: '#f4a340', nose: '#5a2e2e', earL: [-20, -60], earR: [20, -60], tail: [0, -10], gain: 1, lid: '#5a2e2e' },
+visitor: { name: '외부인', fur: '#d9ccb8', foot: '#bcae9c', nose: '#5a2e2e', earL: [-22, -58], earR: [22, -58], tail: [0, -10], gain: 1, lid: '#5a2e2e' }
+};
+const CAPS = { explore: '#5aa77a', plan: '#6f97d8', general: '#f0b24a' };
+const sp = SP[species] || SP.bear;
+const P = POSES[pose] || POSES.stand;
+const frame = face ? {} : P.frames[animate ? Math.floor(tick / P.rate) % P.frames.length : 0];
+const g = (k) => frame[k] || Z;
+const ear = (k) => { const v = g(k); return [v[0], v[1], v[2] * sp.gain]; };
+const tf = (v, pv) => 'translate(' + v[0] + ' ' + v[1] + ') rotate(' + v[2] + ' ' + pv[0] + ' ' + pv[1] + ')';
+const vis = (on) => (on ? 'inline' : 'none');
+const ex = frame.expr || 'n';
+const isP = species === 'penguin';
+const isR = species === 'raccoon';
+return {
+shId: this.uid + '-sh',
+rw: (face ? 88 : 128) * s, rh: (face ? 88 : 138) * s,
+vb: face ? '-44 -86 88 88' : '-64 -126 128 138',
+assetId: species + '.' + (face ? 'face' : pose), aria: sp.name + (face ? ' 얼굴' : ''),
+shadow: vis(!face && truthy(p.shadow, true)),
+flipT: truthy(p.flip, false) ? 'scale(-1 1)' : 'scale(1 1)',
+w3: 3 / s, w2: 2 / s, w26: 2.6 / s, w9: 9 / s,
+sp: { bear: vis(species === 'bear'), rabbit: vis(species === 'rabbit'), raccoon: vis(isR), penguin: vis(isP), visitor: vis(species === 'visitor') },
+c: {
+cap: CAPS[p.role] || CAPS.general,
+fur: sp.fur, foot: sp.foot, nose: sp.nose, lid: sp.lid, armRy: isP ? 11 : 9.5,
+noseDisp: vis(!isP), mouthDisp: vis(!isP), plainEyes: vis(!isR),
+earLPv: sp.earL.join(','), earRPv: sp.earR.join(','), tailPv: sp.tail.join(',')
+},
+t: {
+footL: tf(g('footL'), [-16, 0]), footR: tf(g('footR'), [16, 0]), body: tf(g('body'), [0, 0]),
+earL: tf(ear('earL'), sp.earL), earR: tf(ear('earR'), sp.earR), face: tf(g('face'), [0, -34]),
+armL: tf(g('armL'), [-34, -26]), armR: tf(g('armR'), [34, -26]), tail: tf(g('tail'), sp.tail)
+},
+e: { n: vis(ex === 'n'), h: vis(ex === 'h'), t: vis(ex === 't'), s: vis(ex === 's') },
+pH: vis(!face && P.prop === 'hammer'), pP: vis(!face && P.prop === 'plank')
+};
+}
+}
+</script>
+</body>
+</html>

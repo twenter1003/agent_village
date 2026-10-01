@@ -1,0 +1,91 @@
+/*
+ * 바다 테마 토큰 (부록) — 자세한 설명은 docs/05-바다-테마.md 4장
+ * 원본: design/canvas/SeaTokens.dc.html (바다 01), SeaUI.dc.html (바다 03), SeaCritter.dc.html (캐릭터 색)
+ *
+ * 쓰는 법: tokens.css 다음에 불러온다. <html data-theme="sea">일 때만 적용된다.
+ * 규칙
+ *   1. 이름이 같은 토큰은 덮어쓴다. UI 컴포넌트는 테마를 몰라도 되고 var(--ink) 등을 그대로 쓴다.
+ *   2. 바다에만 있는 재질·생물·캐릭터 색은 새 이름으로 둔다. 바다 에셋은 잔디 재질 토큰(--grass-* 등)을 쓰지 않는다.
+ *   3. 슬롯 색, 상태 색, 차트 색, 글꼴, 간격, 모서리, 선 굵기는 잔디와 같아서 여기 없다.
+ *   4. --coin은 UI 강조색(주 버튼, 선택 표시, 진행 채움)이라 바다에서도 그대로다. 화폐 아이콘만 --currency(진주)로 바뀐다.
+ */
+:root[data-theme="sea"] {
+  /* ── 기본: 선, 글자, 바탕 (덮어쓰기) ─────────────── */
+  --ink: #2e4b66;          /* 모든 외곽선 */
+  --text: #1f3850;         /* 글자, 캐릭터 눈·코 */
+  --text-2: #4f6883;       /* 보조 글자 */
+  --paper: #f9fdfc;        /* 카드, 패널 */
+  --cream: #e6f3f1;        /* 앱 바탕 (물거품) */
+  --sunk: #d3e9e6;         /* 움푹한 면, 표 머리 */
+  --field: #bfe2e8;        /* 마을 뷰 바탕 단색 (그라데이션은 --water-bg-*) */
+  --rule: #b9d6d4;         /* 구분선 */
+  --focus: #b0357c;        /* 파랑 포커스 링은 물 배경에 묻혀서 자홍으로 */
+  --shadow-ink: rgba(46, 75, 102, 0.3);
+  --cap-edge: #e0c1ad;     /* 방 벽 두께 면 */
+  --lift-float: 0 6px 0 rgba(46, 75, 102, 0.16);
+  --glass: #d4f1f4;
+  --metal-top: #e4e8ec;   --metal-l: #c9d0d7;   --metal-r: #aeb6c0;
+
+  /* 화폐 = 진주 (tokens.css의 --currency 기본값은 코인) */
+  --currency: #fbf3f8;     --currency-d: #e7d3e6;
+
+  /* 비활성 버튼 (03 문서 5장) */
+  --disabled-bg: #dcecea;  --disabled-border: #a9c6c8;  --disabled-text: #6f8aa0;
+  --paper-hi: #ecf6f4;     /* 보조 버튼 올림 (--paper → --sunk 35%) */
+
+  /* ── 바다 재질 램프: top 윗면 / l 왼쪽 아래 면 / r 오른쪽 아래 면 ── */
+  --sand-top: #f3e4c3;    --sand-l: #e6d1a6;    --sand-r: #d3b98a;      /* 바닥, 다진 모래 */
+  --gravel-top: #f6cdb4;  --gravel-l: #e9b597;  --gravel-r: #d79d7e;    /* 조개 자갈 길 */
+  --basalt-top: #bac3cd;  --basalt-l: #a1acb9;  --basalt-r: #8894a3;  --basalt-grain: #7d8998;  /* 현무암: 결·틈 */
+  --coral-top: #f6aa98;   --coral-l: #e8907d;   --coral-r: #d27766;   --coral-grain: #bf6555;   /* 산호석: 물결 결 */
+  --nacre-top: #fff5ee;   --nacre-l: #f7e3d6;   --nacre-r: #eacbb9;     /* 자개 */
+  --wreck-top: #cda67e;   --wreck-l: #b58c65;   --wreck-r: #98714f;     /* 난파선 목재 */
+  --weed-top: #8fbf73;    --weed-l: #76a55e;    --weed-r: #5f8a4a;    --weed-hi: #b8dc9a;  /* 켈프, 잘피 */
+  --brass-top: #f2c462;   --brass-l: #dcaa48;   --brass-r: #bd8c31;     /* 헬멧, 둥근 창 테 */
+  --nacre-sheen-1: #e3d6f0; --nacre-sheen-2: #d7f0ea;                   /* 자개 광택 줄 */
+  --pearl: #fbf3f8;       --pearl-sheen: #e7d3e6;
+
+  /* ── 물속 ─────────────────────────────────────── */
+  --water-bg-1: #d3eff2;  --water-bg-2: #bfe2e8;  --water-bg-3: #a9d9e2;  /* 위 → 아래 (55% 지점이 2) */
+  --light-ray: rgba(255, 255, 255, 0.22);   /* 빛줄기 */
+  --sheen: #ffffff;       /* 흰 반사: 물결 빛 무늬, 빛줄기(불투명도는 따로), 거품·진주 반사점 (보드의 #ffffff) */
+  --bubble: #f3fcfd;      /* 채움 60% + --ink 1.6px 테 + 흰 반사점 */
+  --fish-school: #8fc3cf; --fish-school-eye: #6fa9b8;
+
+  /* ── 생물 포인트 (소품의 작은 면에만. 넓은 면과 UI에는 쓰지 않음) ── */
+  --starfish: #f59b62;    --starfish-hi: #fbd3b0;   /* 불가사리, 부표, 흰동가리 */
+  --jelly: #f7d9ee;       --jelly-d: #d7a6cf;       --jelly-glow: #fff6cc;
+  --anemone: #d98fb4;     --anemone-l: #f3b8d4;     --anemone-hi: #fbe0ee;
+  --braincoral: #e8cf8f;  --braincoral-l: #d9b977;  --braincoral-r: #c9ad6c;
+  --clam-mantle: #6f97d8; --clam-mantle-hi: #b5d0f0;   /* 슬롯 1 재사용 */
+
+  /* ── 캐릭터 (바다 종) ─────────────────────────── */
+  --seal-fur: #cdd4dc;    --seal-arm: #bcc5cf;    --seal-foot: #a9b3be;   --seal-spot: #b3bdc8;  --seal-muzzle: #eef1f4;
+  --otter-fur: #a8744d;   --otter-shade: #8f5f3e; --otter-face: #f3dfc4;
+  --hamster-fur: #e9a35b; --hamster-cream: #fbf0dc; --hamster-pink: #f0a3a6;  /* 볼·배·팔 = cream, 코·발 = pink */
+  --turtle-skin: #b3cf8f; --turtle-arm: #a4c27e;  --turtle-foot: #93b16c;
+  --turtle-shell: #7d9e57; --turtle-shell-line: #5f7f3e; --turtle-plastron: #f4e7bb;
+  /* 동물 도감 (01 문서 D15, 05 문서 6.5): 부품 색 = face(주둥이·얼굴 무늬·배) · shade(귀 안쪽·꼬리 끝·귀 날개) · beak */
+  --gentoo-fur: #34435c;  --gentoo-arm: #2c3a51;  --gentoo-foot: #f29a4a;  --gentoo-face: #f7f8f6;  --gentoo-beak: #f29a4a;
+  --polarbear-fur: #f1f4f6; --polarbear-arm: #e1e7eb; --polarbear-foot: #d3dbe1; --polarbear-face: #f6eedb; --polarbear-shade: #c4cdd5;
+  --walrus-fur: #b98b6e;  --walrus-arm: #a67a5d;  --walrus-foot: #a67a5d;  --walrus-face: #e6c7a8;  --walrus-tusk: #f9f4e8;
+  --sealion-fur: #6f5a4b; --sealion-arm: #614e41; --sealion-foot: #56453a; --sealion-face: #b39a82; --sealion-shade: #56453a;
+  /* 2차 도감 (D16) */
+  --seaotter-fur: #5b4435; --seaotter-arm: #4e3a2d; --seaotter-foot: #4e3a2d; --seaotter-face: #e9dfd0; --seaotter-shade: #4e3a2d;
+  --clownfish-fur: #f28c38; --clownfish-arm: #e27a28; --clownfish-foot: #e27a28; --clownfish-face: #fbfaf6; --clownfish-shade: #e27a28;
+  --puffin-fur: #2b2f38; --puffin-arm: #23262e; --puffin-foot: #f28a3c; --puffin-face: #f2f3f0; --puffin-shade: #9aa3ad; --puffin-beak: #f07a3a;
+  --dugong-fur: #8ea0aa; --dugong-arm: #7b8d97; --dugong-foot: #7b8d97; --dugong-face: #b9c6cc; --dugong-shade: #7b8d97;
+  --flamingo-fur: #f2a3b8; --flamingo-arm: #e98aa5; --flamingo-foot: #e98aa5; --flamingo-shade: #2b2f38; --flamingo-beak: #f8e3e6;
+  --harpseal-fur: #f7f4ea; --harpseal-arm: #e8e3d3; --harpseal-foot: #dcd6c3;
+  --loggerhead-fur: #d9a066; --loggerhead-arm: #c98f56; --loggerhead-foot: #c98f56; --loggerhead-face: #f3e1b6; --loggerhead-shade: #9a4f2e;
+  --pelican-fur: #8f8577; --pelican-arm: #7c7266; --pelican-foot: #3f3a36; --pelican-face: #f6f3ea; --pelican-shade: #d9a38a; --pelican-beak: #f0c35a;
+  --elephantseal-fur: #9a8674; --elephantseal-arm: #86735f; --elephantseal-foot: #86735f; --elephantseal-shade: #7a6654;
+  --emperorchick-fur: #aeb6be; --emperorchick-arm: #9aa3ab; --emperorchick-foot: #6f7882; --emperorchick-face: #f7f8f6; --emperorchick-shade: #2b2f38;
+  --iguana-fur: #6a7480; --iguana-arm: #5a636e; --iguana-foot: #5a636e; --iguana-shade: #e0775a;
+  /* 자동 변형 염색 (D16, 05 문서 6.5): 털 · -d = 팔·무늬 */
+  --dye-white: #f4f5f2; --dye-white-d: #c9ced3; --dye-cream: #f3e3c3; --dye-cream-d: #d9c29a; --dye-ink: #5a5f6a; --dye-ink-d: #3f434b; --dye-rust: #c0714f; --dye-rust-d: #9a5638;
+  --dye-sand: #d9c29a; --dye-sand-d: #b89f74; --dye-slate: #7f93a8; --dye-slate-d: #62758a; --dye-rose: #e6a3b0; --dye-rose-d: #c9828f; --dye-mint: #a8d5c2; --dye-mint-d: #82b8a2;
+  --gull-fur: #f5f6f3;    --gull-arm: #b7c1cb;    --gull-foot: #f1b54b;    --gull-beak: #f3c64a;    --gull-shade: #b7c1cb;  --gull-spot: #c2413d;
+  --puffer-body: #e6dcc8; --puffer-fin: #d5c6aa;  --puffer-belly: #fbf6ec; --puffer-line: #b9a88c;
+  --hose: #56708a;        /* 헬멧 공기 호스, 헤드랜턴 끈 */
+}

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>바다 건물 상세</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.meta{font-size:12px;color:#4f6883;line-height:17px}
+.h2{margin:0;font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;font-size:18px}
+.card{box-sizing:border-box;background:#f9fdfc;border:3px solid #2e4b66;border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.task{display:grid;grid-template-columns:26px minmax(0,1fr) 120px 70px;align-items:center;gap:10px;padding:7px 0;border-top:2px solid #d3e9e6;font-size:14px}
+.st{width:24px;height:24px;border-radius:50%;border:2px solid #2e4b66;box-sizing:border-box;display:flex;align-items:center;justify-content:center}
+.who{display:flex;align-items:center;gap:6px;font-size:13px}
+.face{width:24px;height:24px;box-sizing:border-box;border:2px solid #2e4b66;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pip{width:14px;height:14px;border-radius:50%;border:2.5px solid #2e4b66;box-sizing:border-box;background:#f9fdfc}
+.on{background:#f7cb52}.cur{background:#fbe9c4}
+.bar{display:grid;grid-template-columns:90px minmax(0,1fr) 92px;align-items:center;gap:10px;font-size:13px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:44px;padding:0 18px;border:2px solid #2e4b66;border-radius:12px;box-shadow:0 3px 0 #2e4b66;font-family:'Jua',sans-serif;font-size:16px;color:#1f3850;text-decoration:none}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; display: flex; flex-direction: column; background: #e6f3f1; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #1f3850; overflow: hidden">
+<dc-import name="SeaTopBar" active="village" hint-size="1440px,68px"></dc-import>
+<div style="display: flex; height: 832px">
+<main style="position: relative; width: 820px; height: 832px; background: linear-gradient(#d3eff2, #bfe2e8 60%, #a9d9e2); overflow: hidden">
+<svg width="820" height="832" viewBox="0 0 820 832" aria-hidden="true" style="position: absolute; left: 0; top: 0"><g fill="#ffffff"><path d="M120 -10L200 -10L80 842L-10 842Z" fill-opacity="0.18"></path><path d="M560 -10L610 -10L500 842L440 842Z" fill-opacity="0.14"></path></g></svg>
+<nav aria-label="위치" style="position: absolute; left: 20px; top: 18px; display: flex; align-items: center; gap: 8px; font-size: 14px; z-index: 2"><a href="SeaScreenMain.dc.html" style="color: #1f3850; text-underline-offset: 3px">마을</a><span style="color: #4f6883">›</span><span style="font-family: 'Jua', sans-serif; font-size: 18px">로그인 개선</span></nav>
+
+<div style="position: absolute; left: 274px; top: 166px; width: 284px; height: 290px; transform: scale(1.7); transform-origin: 0 0">
+<svg width="300" height="170" viewBox="-60 130 300 170" aria-hidden="true" style="position: absolute; left: -60px; top: 130px">
+<defs><radialGradient id="sbd-sh" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#2e4b66" stop-opacity="0.26"></stop><stop offset="0.6" stop-color="#2e4b66" stop-opacity="0.15"></stop><stop offset="1" stop-color="#2e4b66" stop-opacity="0"></stop></radialGradient></defs>
+<g stroke="#2e4b66" stroke-width="3" stroke-linejoin="round">
+<polygon fill="#a1acb9" points="-48,208 80,272 80,284 -48,220"></polygon>
+<polygon fill="#8894a3" points="80,272 208,208 208,220 80,284"></polygon>
+<polygon fill="#f3e4c3" points="80,144 208,208 80,272 -48,208"></polygon>
+</g>
+<path d="M0 204Q5 201 10 204M140 236Q145 233 150 236M150 190Q155 187 160 190" fill="none" stroke="#e6d1a6" stroke-width="1.8" stroke-linecap="round"></path>
+<ellipse cx="88" cy="214" rx="60" ry="26" fill="url(#sbd-sh)"></ellipse>
+</svg>
+<div style="position: absolute; left: -64px; top: 80px"><dc-import name="SeaProp" kind="materials" hint-size="96px,160px"></dc-import></div>
+<div style="position: absolute; left: 0; top: 0"><dc-import name="SeaBuilding" body="basalt-2f" roof="dome" sign="guard" slot="3" stage="frame" progress="0.5" ground="false" hint-size="160px,256px"></dc-import></div>
+<div style="position: absolute; left: -16px; top: 162px"><dc-import name="SeaCritter" species="otter" pose="hammer" scale="0.45" hint-size="58px,62px"></dc-import></div>
+<div style="position: absolute; left: 51px; top: 193px"><dc-import name="SeaCritter" species="fish" role="general" pose="carry" scale="0.45" phase="1" hint-size="58px,62px"></dc-import></div>
+</div>
+
+<div style="position: absolute; left: 20px; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; padding: 14px 16px; background: #f9fdfc; border: 3px solid #2e4b66; border-radius: 18px">
+<div style="display: flex; align-items: center">
+<div style="display: flex; align-items: center; flex-grow: 1">
+<span style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 84px"><span style="width: 28px; height: 28px; box-sizing: border-box; border: 2px solid #2e4b66; border-radius: 50%; background: #f7cb52; display: flex; align-items: center; justify-content: center; font-family: 'Jua', sans-serif; font-size: 13px">1</span><span style="font-size: 12px">예정 부지</span></span>
+<span style="flex-grow: 1; height: 4px; margin: 0 -22px 20px; border-radius: 2px; background: #2e4b66"></span>
+<span style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 84px"><span style="width: 28px; height: 28px; box-sizing: border-box; border: 2px solid #2e4b66; border-radius: 50%; background: #f7cb52; display: flex; align-items: center; justify-content: center; font-family: 'Jua', sans-serif; font-size: 13px">2</span><span style="font-size: 12px">기초</span></span>
+<span style="flex-grow: 1; height: 4px; margin: 0 -22px 20px; border-radius: 2px; background: #2e4b66"></span>
+<span style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 84px"><span style="width: 28px; height: 28px; box-sizing: border-box; border: 3px solid #2e4b66; border-radius: 50%; background: #fad879; display: flex; align-items: center; justify-content: center; font-family: 'Jua', sans-serif; font-size: 13px">3</span><span style="font-family: 'Jua', sans-serif; font-size: 13px">프레임 · 비계</span></span>
+<span style="flex-grow: 1; height: 4px; margin: 0 -22px 20px; border-radius: 2px; background: #b9d6d4"></span>
+<span style="display: flex; flex-direction: column; align-items: center; gap: 4px; width: 84px"><span style="width: 28px; height: 28px; box-sizing: border-box; border: 2px solid #2e4b66; border-radius: 50%; background: #e6f3f1; display: flex; align-items: center; justify-content: center; font-family: 'Jua', sans-serif; font-size: 13px">4</span><span style="font-size: 12px">완공</span></span>
+</div>
+</div>
+<p style="margin: 0; font-size: 13px; line-height: 20px; color: #4f6883">공사 중에는 누구 건물이 될지 보이지 않게 무채색 금속 프레임으로 둡니다. 마지막 작업이 끝나면 리프트 백이 수면으로 떠오르고, 가장 많이 기여한 팀원의 직업으로 종류가 정해집니다.</p>
+</div>
+</main>
+
+<aside aria-label="건물 정보" style="width: 620px; box-sizing: border-box; padding: 16px; display: flex; flex-direction: column; gap: 12px; background: #f9fdfc; border-left: 3px solid #2e4b66; overflow: hidden">
+<section class="card">
+<div style="display: flex; align-items: center; gap: 10px"><span style="font-family: 'Jua', sans-serif; font-size: 26px">로그인 개선</span><span style="padding: 0 10px; height: 26px; display: inline-flex; align-items: center; border: 2px solid #2e4b66; border-radius: 999px; background: #fbe9c4; font-family: 'Jua', sans-serif; font-size: 13px">공사 중</span><span style="flex-grow: 1"></span><span class="meta">착공 오늘 13:20 · 남쪽 부지 (11, 11)</span></div>
+<div style="display: flex; align-items: center; gap: 12px"><span style="display: flex; gap: 5px"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span><span class="pip cur"></span><span class="pip"></span><span class="pip"></span></span><span style="font-family: 'Jua', sans-serif; font-size: 18px">3 / 6</span><span class="meta">작업 6개 = 2층 건물 · 프레임 50%</span></div>
+</section>
+
+<section class="card" style="gap: 4px">
+<div style="display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 6px"><h2 class="h2">묶인 작업 6</h2><span class="meta">작업 1개 끝날 때마다 공사 한 단계</span></div>
+<div class="task"><span class="st" style="background: #5aa77a"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5L9.5 17L19 7.5" fill="none" stroke="#f9fdfc" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span>로그인 E2E 시나리오 작성</span><span class="who"><span class="face" style="background: #fbe9c4"><dc-import name="SeaCritter" species="hamster" mode="face" scale="0.24" animate="false" hint-size="21px,21px"></dc-import></span>햄스터</span><span style="font-family: 'Jua', sans-serif; color: #2f7d4f; text-align: right">+120</span></div>
+<div class="task"><span class="st" style="background: #5aa77a"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5L9.5 17L19 7.5" fill="none" stroke="#f9fdfc" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span>세션 만료 테스트</span><span class="who"><span class="face" style="background: #fbe9c4"><dc-import name="SeaCritter" species="hamster" mode="face" scale="0.24" animate="false" hint-size="21px,21px"></dc-import></span>햄스터</span><span style="font-family: 'Jua', sans-serif; color: #2f7d4f; text-align: right">+100</span></div>
+<div class="task"><span class="st" style="background: #5aa77a"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5L9.5 17L19 7.5" fill="none" stroke="#f9fdfc" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span>비밀번호 재설정 API</span><span class="who"><span class="face" style="background: #dde8f5"><dc-import name="SeaCritter" species="seal" mode="face" scale="0.24" animate="false" hint-size="21px,21px"></dc-import></span>물범</span><span style="font-family: 'Jua', sans-serif; color: #2f7d4f; text-align: right">+150</span></div>
+<div class="task" style="background: #fbe9c4; border-radius: 10px; border-top-color: transparent; padding: 7px 6px; margin: 0 -6px"><span class="st" style="background: #f7cb52"><svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19.5L13 11.5M10.5 6.5L14.5 3.5L20.5 9.5L17.5 13.5Z" fill="none" stroke="#1f3850" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><span style="font-family: 'Jua', sans-serif; font-size: 15px">로그인 폼 검증</span><span class="who"><span class="face" style="background: #fadcd8"><dc-import name="SeaCritter" species="otter" mode="face" scale="0.24" animate="false" hint-size="21px,21px"></dc-import></span>수달</span><span class="meta" style="text-align: right">12분째</span></div>
+<div class="task"><span class="st" style="background: #f9fdfc"></span><span style="color: #4f6883">토큰 갱신 API</span><span class="meta">배정 전</span><span></span></div>
+<div class="task"><span class="st" style="background: #f9fdfc"></span><span style="color: #4f6883">에러 문구 다듬기</span><span class="meta">배정 전</span><span></span></div>
+</section>
+
+<section class="card">
+<div style="display: flex; align-items: baseline; justify-content: space-between"><h2 class="h2">기여한 팀원</h2><span class="meta">끝난 작업 수 기준 · 외부인 도움은 종류 결정에서 빠짐</span></div>
+<div class="bar"><span class="who"><span class="face" style="background: #fbe9c4"><dc-import name="SeaCritter" species="hamster" mode="face" scale="0.24" animate="false" hint-size="21px,21px"></dc-import></span>햄스터</span><div style="height: 16px; border-radius: 0 4px 4px 0; background: #d3e9e6"><div style="width: 67%; height: 100%; background: #4769a6; border-radius: 0 4px 4px 0"></div></div><span style="text-align: right">2개 · 67%</span></div>
+<div class="bar"><span class="who"><span class="face" style="background: #dde8f5"><dc-import name="SeaCritter" species="seal" mode="face" scale="0.24" animate="false" hint-size="21px,21px"></dc-import></span>물범</span><div style="height: 16px; border-radius: 0 4px 4px 0; background: #d3e9e6"><div style="width: 33%; height: 100%; background: #4769a6; border-radius: 0 4px 4px 0"></div></div><span style="text-align: right">1개 · 33%</span></div>
+<div style="display: flex; align-items: center; gap: 12px; padding: 10px 12px; background: #e6f3f1; border-radius: 12px">
+<div style="width: 88px; height: 88px; flex-shrink: 0; border-radius: 12px; background: #bfe2e8; overflow: hidden; position: relative"><div style="position: absolute; left: 4px; top: -37px; transform: scale(0.5); transform-origin: 0 0"><dc-import name="SeaBuilding" body="basalt-2f" roof="dome" sign="guard" slot="3" hint-size="160px,256px"></dc-import></div></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Jua', sans-serif; font-size: 16px">지금 이대로 끝나면 → 초소</span><span style="font-size: 13px; line-height: 19px">1위 햄스터(QA)의 프리셋: 현무암 2층 + 성게 돔 + 돋보기 간판, 겨자 지붕. 남은 작업 3개 결과에 따라 바뀔 수 있어요.</span></div>
+</div>
+</section>
+<div style="display: flex; gap: 10px">
+<a href="SeaScreenMain.dc.html" class="btn" style="background: #f9fdfc">마을로</a>
+<button type="button" class="btn" style="background: #f9fdfc">Claude Code에서 작업 보기</button>
+</div>
+</aside>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

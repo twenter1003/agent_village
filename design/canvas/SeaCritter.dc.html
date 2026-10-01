@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>바다 캐릭터 컴포넌트</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="position: relative; width: {{rw}}px; height: {{rh}}px">
+<svg width="{{rw}}" height="{{rh}}" viewBox="{{vb}}" data-asset-id="{{assetId}}" data-anchor="0,0" data-face-box="-44,-86,88,88" role="img" aria-label="{{aria}}" style="display: block; overflow: visible">
+<defs><radialGradient id="{{shId}}" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#2e4b66" stop-opacity="0.3"></stop><stop offset="0.6" stop-color="#2e4b66" stop-opacity="0.16"></stop><stop offset="1" stop-color="#2e4b66" stop-opacity="0"></stop></radialGradient></defs>
+<ellipse data-part="shadow" cx="2" cy="3" rx="{{shRx}}" ry="{{shRy}}" fill="url(#{{shId}})" display="{{shadow}}"></ellipse>
+<g transform="{{flipT}}">
+<g id="foot-l" data-part="foot-l" data-pivot="-16,0" transform="{{t.footL}}"><ellipse stroke="#2e4b66" stroke-width="{{w3}}" fill="{{c.foot}}" cx="-16" cy="1" rx="{{c.footRx}}" ry="{{c.footRy}}"></ellipse></g>
+<g id="foot-r" data-part="foot-r" data-pivot="16,0" transform="{{t.footR}}"><ellipse stroke="#2e4b66" stroke-width="{{w3}}" fill="{{c.foot}}" cx="16" cy="1" rx="{{c.footRx}}" ry="{{c.footRy}}"></ellipse></g>
+<g id="body" data-part="body" data-pivot="0,0" transform="{{t.body}}">
+
+<g id="tail" data-part="tail" data-pivot="{{c.tailPv}}" transform="{{t.tail}}">
+<path display="{{sp.otter}}" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" fill="{{c.fur}}" d="M-28 -4C-44 -2 -58 -10 -64 -26C-58 -25 -46 -21 -28 -19Z"></path>
+<g display="{{sp.fish}}"><path stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" fill="#d5c6aa" d="M-33 -22C-44 -30 -54 -36 -59 -32C-56 -24 -56 -16 -59 -8C-54 -4 -44 -6 -33 -12Z"></path><path fill="none" stroke="#b9a88c" stroke-width="{{w16}}" stroke-linecap="round" d="M-38 -19L-53 -28M-38 -17L-54 -18M-38 -15L-53 -9"></path></g>
+<!-- 부품 라이브러리 (05 문서 6.5): 종의 parts에 있으면 켜진다. 색은 c.fur / c.face / c.shade / c.beak -->
+<circle display="{{pt.tailRound}}" stroke="#2e4b66" stroke-width="{{w3}}" fill="{{c.fur}}" cx="-40" cy="-14" r="7.5"></circle>
+<path display="{{pt.tailFluke}}" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" fill="{{c.fur}}" d="M-33 -18C-42 -20 -50 -30 -58 -30C-56 -24 -56 -14 -58 -8C-50 -8 -42 -16 -33 -14Z"></path>
+<path display="{{pt.tailFin}}" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" fill="{{c.shade}}" d="M-33 -22C-44 -30 -54 -36 -59 -32C-56 -24 -56 -16 -59 -8C-54 -4 -44 -6 -33 -12Z"></path>
+<path display="{{pt.tailLong}}" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" fill="{{c.fur}}" d="M-28 -4C-46 -2 -62 -8 -70 -20C-62 -20 -48 -18 -28 -19Z"></path>
+<g display="{{pt.tailFeather}}"><path fill="{{c.fur}}" d="M-32 -20L-52 -27C-56 -21 -56 -13 -52 -7L-32 -10Z"></path><path fill="{{c.shade}}" d="M-46 -24.9L-52 -27C-56 -21 -56 -13 -52 -7L-46 -8.1C-48.5 -13 -48.5 -20 -46 -24.9Z"></path><path fill="none" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" d="M-32 -20L-52 -27C-56 -21 -56 -13 -52 -7L-32 -10"></path></g>
+</g>
+
+<g display="{{sp.turtle}}"><path stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" fill="#7d9e57" d="M-47 -12C-53 -48 -34 -86 0 -86C34 -86 53 -48 47 -12C36 -6 -36 -6 -47 -12Z"></path><path fill="none" stroke="#5f7f3e" stroke-width="{{w24}}" stroke-linecap="round" d="M-49.5 -32L-42.5 -32M-45 -58L-38.5 -53.5M-27 -79L-23 -72M27 -79L23 -72M45 -58L38.5 -53.5M49.5 -32L42.5 -32"></path></g>
+<g display="{{pt.shell}}"><path stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" fill="{{c.shade}}" d="M-47 -12C-53 -48 -34 -86 0 -86C34 -86 53 -48 47 -12C36 -6 -36 -6 -47 -12Z"></path><path fill="none" stroke="#2e4b66" stroke-opacity="0.45" stroke-width="{{w24}}" stroke-linecap="round" d="M-49.5 -32L-42.5 -32M-45 -58L-38.5 -53.5M-27 -79L-23 -72M27 -79L23 -72M45 -58L38.5 -53.5M49.5 -32L42.5 -32"></path></g>
+<path display="{{sp.fish}}" fill="none" stroke="#2e4b66" stroke-width="{{w24}}" stroke-linecap="round" d="M-37 -30L-46 -31M-35 -46L-43 -50M-34 -15L-42 -13M37 -30L46 -31M35 -46L43 -50M34 -15L42 -13"></path>
+
+<g id="ear-l" data-part="ear-l" data-pivot="{{c.earLPv}}" transform="{{t.earL}}">
+<circle display="{{pt.earSmall}}" stroke="#2e4b66" stroke-width="{{w26}}" fill="{{c.fur}}" cx="-31" cy="-55" r="4.6"></circle>
+<g display="{{pt.earRound}}"><circle stroke="#2e4b66" stroke-width="{{w3}}" fill="{{c.fur}}" cx="-26" cy="-62" r="9"></circle><circle fill="{{c.shade}}" cx="-26" cy="-62.5" r="4.6"></circle></g>
+<path display="{{pt.earFlap}}" stroke="#2e4b66" stroke-width="{{w26}}" stroke-linejoin="round" fill="{{c.shade}}" d="M-31 -55C-42 -59 -48 -53 -45 -47C-43 -44 -38 -45 -32 -48Z"></path>
+<g display="{{sp.otter}}"><circle stroke="#2e4b66" stroke-width="{{w3}}" fill="{{c.fur}}" cx="-29" cy="-58" r="6.5"></circle><circle fill="{{c.arm}}" cx="-29" cy="-59" r="2.8"></circle></g>
+</g>
+<g id="ear-r" data-part="ear-r" data-pivot="{{c.earRPv}}" transform="{{t.earR}}">
+<circle display="{{pt.earSmall}}" stroke="#2e4b66" stroke-width="{{w26}}" fill="{{c.fur}}" cx="31" cy="-55" r="4.6"></circle>
+<g display="{{pt.earRound}}"><circle stroke="#2e4b66" stroke-width="{{w3}}" fill="{{c.fur}}" cx="26" cy="-62" r="9"></circle><circle fill="{{c.shade}}" cx="26" cy="-62.5" r="4.6"></circle></g>
+<path display="{{pt.earFlap}}" stroke="#2e4b66" stroke-width="{{w26}}" stroke-linejoin="round" fill="{{c.shade}}" d="M31 -55C42 -59 48 -53 45 -47C43 -44 38 -45 32 -48Z"></path>
+<g display="{{sp.otter}}"><circle stroke="#2e4b66" stroke-width="{{w3}}" fill="{{c.fur}}" cx="29" cy="-58" r="6.5"></circle><circle fill="{{c.arm}}" cx="29" cy="-59" r="2.8"></circle></g>
+</g>
+
+<path display="{{pt.spikes}}" stroke="#2e4b66" stroke-width="{{w26}}" stroke-linejoin="round" fill="{{c.shade}}" d="M-22 -64L-18 -78L-13 -67ZM-12 -69L-6 -84L-1 -71ZM1 -71L6 -84L12 -69ZM13 -67L18 -78L22 -64Z"></path>
+<path stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" fill="{{c.fur}}" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+
+<g display="{{sp.seal}}" fill="#b3bdc8"><ellipse cx="-15" cy="-66" rx="3.4" ry="2.4" transform="rotate(-10 -15 -66)"></ellipse><ellipse cx="-33" cy="-36" rx="3.4" ry="2.6" transform="rotate(15 -33 -36)"></ellipse><ellipse cx="31" cy="-44" rx="3.8" ry="2.8" transform="rotate(30 31 -44)"></ellipse></g>
+<path display="{{sp.hamster}}" fill="#fbf0dc" d="M0 -30C-17 -30 -30 -21 -31 -10C-29 -2 -15 0 0 0C15 0 29 -2 31 -10C30 -21 17 -30 0 -30Z"></path>
+<g display="{{sp.turtle}}"><path fill="#f4e7bb" d="M0 -21C-15 -21 -27 -14 -28 -6C-25 1 -12 1.5 0 1.5C12 1.5 25 1 28 -6C27 -14 15 -21 0 -21Z"></path><path fill="none" stroke="#d9c68e" stroke-width="{{w16}}" stroke-linecap="round" d="M-24 -10Q0 -6 24 -10M0 -20L0 0"></path></g>
+<path display="{{sp.fish}}" fill="#fbf6ec" d="M-39 -18C-31 -5 -17 1 0 1C17 1 31 -5 39 -18C25 -23 -25 -23 -39 -18Z"></path>
+<path display="{{pt.headPale}}" fill="{{c.face}}" d="M-36 -32C-38 -56 -24 -69.5 0 -69.5C24 -69.5 38 -56 36 -32C33 -19 19 -13 0 -13C-19 -13 -33 -19 -36 -32Z"></path>
+<path display="{{pt.hood}}" fill="{{c.shade}}" d="M-34.5 -46C-37 -60 -24 -69.5 0 -69.5C24 -69.5 37 -60 34.5 -46C24 -52 12 -54 0 -54C-12 -54 -24 -52 -34.5 -46Z"></path>
+<g display="{{pt.plastron}}"><path fill="{{c.face}}" d="M0 -21C-15 -21 -27 -14 -28 -6C-25 1 -12 1.5 0 1.5C12 1.5 25 1 28 -6C27 -14 15 -21 0 -21Z"></path><path fill="none" stroke="#2e4b66" stroke-opacity="0.25" stroke-width="{{w16}}" stroke-linecap="round" d="M-24 -10Q0 -6 24 -10M0 -20L0 0"></path></g>
+<g display="{{pt.bands}}" fill="{{c.face}}" stroke="#2e4b66" stroke-width="{{w2}}" stroke-linejoin="round"><path d="M-37 -22C-40 -48 -26 -66 0 -66C26 -66 40 -48 37 -22L30 -22C32 -44 21 -58 0 -58C-21 -58 -32 -44 -30 -22Z"></path><path d="M-39 -15C-20 -10 20 -10 39 -15L38 -7C20 -2 -20 -2 -38 -7Z"></path></g>
+<path display="{{pt.stripes}}" fill="none" stroke="{{c.pattern}}" stroke-width="{{w45}}" stroke-linecap="round" d="M-20 -62Q-14 -56 -8 -60M-4 -67Q0 -59 4 -67M8 -60Q14 -56 20 -62"></path>
+<path display="{{pt.belly}}" fill="{{c.face}}" d="M0 -44C-20 -44 -32 -28 -33 -11C-30 -1 -16 1 0 1C16 1 30 -1 33 -11C32 -28 20 -44 0 -44Z"></path>
+
+<g id="face" data-part="face" data-pivot="0,-34" transform="{{t.face}}">
+<g display="{{sp.seal}}"><ellipse fill="#eef1f4" cx="-6" cy="-24.5" rx="7.6" ry="5.8"></ellipse><ellipse fill="#eef1f4" cx="6" cy="-24.5" rx="7.6" ry="5.8"></ellipse></g>
+<path display="{{sp.otter}}" fill="#f3dfc4" d="M-31 -33C-31 -17 -18 -6 0 -6C18 -6 31 -17 31 -33C24 -29.5 13 -31 0 -33C-13 -31 -24 -29.5 -31 -33Z"></path>
+<path display="{{sp.hamster}}" fill="#fbf0dc" d="M-33 -21C-34 -30 -27 -35 -18 -35C-10 -35 -5 -32 0 -32C5 -32 10 -35 18 -35C27 -35 34 -30 33 -21C32 -11 20 -7 0 -7C-20 -7 -32 -11 -33 -21Z"></path>
+<path display="{{pt.maskHeart}}" fill="{{c.face}}" d="M0 -47C-6 -57 -29 -58 -31 -41C-32 -27 -17 -17 0 -13C17 -17 32 -27 31 -41C29 -58 6 -57 0 -47Z"></path>
+<ellipse display="{{pt.muzzle}}" fill="{{c.face}}" cx="0" cy="-26.5" rx="13" ry="9.5"></ellipse>
+<g display="{{pt.whiskerPads}}" fill="{{c.face}}" stroke="#2e4b66" stroke-width="{{w16}}"><ellipse cx="-8.5" cy="-24" rx="9.5" ry="7.6"></ellipse><ellipse cx="8.5" cy="-24" rx="9.5" ry="7.6"></ellipse></g>
+<ellipse display="{{pt.muzzleWide}}" fill="{{c.face}}" stroke="#2e4b66" stroke-width="{{w16}}" cx="0" cy="-25" rx="17" ry="10"></ellipse>
+<ellipse display="{{pt.patch}}" fill="{{c.pattern}}" cx="15" cy="-43" rx="10" ry="9.5"></ellipse>
+<ellipse fill="#f7a194" cx="{{c.bxL}}" cy="{{c.by}}" rx="{{c.brx}}" ry="{{c.bry}}"></ellipse><ellipse fill="#f7a194" cx="{{c.bxR}}" cy="{{c.by}}" rx="{{c.brx}}" ry="{{c.bry}}"></ellipse>
+<ellipse display="{{sp.seal}}" fill="#1f3850" cx="0" cy="-30.2" rx="4.2" ry="2.9"></ellipse>
+<path display="{{sp.otter}}" fill="#1f3850" d="M-5.4 -33.5Q0 -36 5.4 -33.5Q4.6 -28.8 0 -28.2Q-4.6 -28.8 -5.4 -33.5Z"></path>
+<path display="{{sp.hamster}}" fill="#f0a3a6" stroke="#2e4b66" stroke-width="{{w14}}" stroke-linejoin="round" d="M-3.6 -32Q0 -33.6 3.6 -32Q3 -28.4 0 -27.8Q-3 -28.4 -3.6 -32Z"></path>
+<g display="{{sp.turtle}}" fill="#1f3850"><circle cx="-2.4" cy="-31" r="1.1"></circle><circle cx="2.4" cy="-31" r="1.1"></circle></g>
+<path display="{{pt.noseBig}}" fill="#1f3850" d="M-6.2 -33Q0 -36 6.2 -33Q5.2 -27.2 0 -26.6Q-5.2 -27.2 -6.2 -33Z"></path>
+<ellipse display="{{pt.noseSmall}}" fill="#1f3850" cx="0" cy="-31" rx="3.8" ry="2.6"></ellipse>
+<g display="{{pt.nostrils}}" fill="#1f3850"><ellipse cx="-4" cy="-31" rx="1.5" ry="1.1"></ellipse><ellipse cx="4" cy="-31" rx="1.5" ry="1.1"></ellipse></g>
+<g data-expr="normal" display="{{e.n}}">
+<ellipse fill="#1f3850" cx="{{c.exL}}" cy="{{c.ey}}" rx="{{c.erx}}" ry="{{c.ery}}"></ellipse><ellipse fill="#1f3850" cx="{{c.exR}}" cy="{{c.ey}}" rx="{{c.erx}}" ry="{{c.ery}}"></ellipse>
+<circle fill="#f9fdfc" cx="{{c.hxL}}" cy="{{c.hy}}" r="{{c.hr}}"></circle><circle fill="#f9fdfc" cx="{{c.hxR}}" cy="{{c.hy}}" r="{{c.hr}}"></circle>
+<path fill="none" stroke="#1f3850" stroke-width="{{w2}}" stroke-linecap="round" stroke-linejoin="round" d="M0 -26.7L0 -24.8M-5.5 -24.8Q-2.75 -21.3 0 -24.8Q2.75 -21.3 5.5 -24.8"></path>
+</g>
+<g data-expr="happy" display="{{e.h}}">
+<path fill="none" stroke="#1f3850" stroke-width="{{w26}}" stroke-linecap="round" d="{{c.happy}}"></path>
+<path fill="#2e4b66" d="M-6 -25Q0 -23.5 6 -25Q5.5 -17.5 0 -17.5Q-5.5 -17.5 -6 -25Z"></path><ellipse fill="#f5a3a8" cx="0" cy="-19.8" rx="3" ry="1.6"></ellipse>
+</g>
+<g data-expr="talk" display="{{e.t}}">
+<ellipse fill="#1f3850" cx="{{c.exL}}" cy="{{c.ey}}" rx="{{c.erx}}" ry="{{c.ery}}"></ellipse><ellipse fill="#1f3850" cx="{{c.exR}}" cy="{{c.ey}}" rx="{{c.erx}}" ry="{{c.ery}}"></ellipse>
+<circle fill="#f9fdfc" cx="{{c.hxL}}" cy="{{c.hy}}" r="{{c.hr}}"></circle><circle fill="#f9fdfc" cx="{{c.hxR}}" cy="{{c.hy}}" r="{{c.hr}}"></circle>
+<ellipse fill="#2e4b66" cx="0" cy="-22" rx="3.4" ry="3.6"></ellipse>
+</g>
+<g data-expr="sleep" display="{{e.s}}">
+<path fill="none" stroke="#1f3850" stroke-width="{{w26}}" stroke-linecap="round" d="{{c.sleep}}"></path>
+<path fill="none" stroke="#1f3850" stroke-width="{{w2}}" stroke-linecap="round" d="M-3 -23.5Q0 -21.5 3 -23.5"></path>
+</g>
+<path display="{{sp.seal}}" fill="none" stroke="#2e4b66" stroke-width="{{w14}}" stroke-opacity="0.6" stroke-linecap="round" d="M-13 -26L-22 -28M-13 -22.5L-22 -21.5M13 -26L22 -28M13 -22.5L22 -21.5"></path>
+<path display="{{pt.whiskers}}" fill="none" stroke="#2e4b66" stroke-width="{{w14}}" stroke-opacity="0.6" stroke-linecap="round" d="M-13 -26L-22 -28M-13 -22.5L-22 -21.5M13 -26L22 -28M13 -22.5L22 -21.5"></path>
+<g display="{{pt.tusks}}" stroke="#2e4b66" stroke-width="{{w2}}" stroke-linejoin="round" fill="#f9f4e8"><path d="M-7.5 -18.5L-6.3 -6Q-5.2 -3.4 -4 -6L-3.3 -18.5Z"></path><path d="M7.5 -18.5L6.3 -6Q5.2 -3.4 4 -6L3.3 -18.5Z"></path></g>
+<g display="{{pt.beak}}"><path stroke="#2e4b66" stroke-width="{{w2}}" stroke-linejoin="round" fill="{{c.beak}}" d="M-9.5 -31.5Q0 -35.5 9.5 -31.5Q7 -23 0 -19Q-7 -23 -9.5 -31.5Z"></path><path fill="none" stroke="#2e4b66" stroke-width="{{w14}}" stroke-linecap="round" d="M-6.5 -27Q0 -25.5 6.5 -27"></path></g>
+<g display="{{pt.trunkNose}}"><path stroke="#2e4b66" stroke-width="{{w2}}" stroke-linejoin="round" fill="{{c.shade}}" d="M-6 -36C-8 -30 -11 -24 -9 -19C-7 -15 7 -15 9 -19C11 -24 8 -30 6 -36Z"></path><g fill="#1f3850"><ellipse cx="-3.5" cy="-18.6" rx="1.6" ry="1.2"></ellipse><ellipse cx="3.5" cy="-18.6" rx="1.6" ry="1.2"></ellipse></g></g>
+<g display="{{pt.beakTri}}"><path stroke="#2e4b66" stroke-width="{{w2}}" stroke-linejoin="round" fill="{{c.beak}}" d="M-9 -33Q0 -37 9 -33L1.8 -16Q0 -14.5 -1.8 -16Z"></path><path fill="{{c.shade}}" d="M-8 -32.5Q0 -36 8 -32.5L6.4 -29Q0 -31.4 -6.4 -29Z"></path><path fill="none" stroke="#2e4b66" stroke-width="{{w14}}" stroke-linecap="round" d="M-5.2 -24.5Q0 -23 5.2 -24.5"></path></g>
+<g display="{{pt.beakBent}}"><path stroke="#2e4b66" stroke-width="{{w2}}" stroke-linejoin="round" fill="{{c.beak}}" d="M-8 -32Q0 -35 8 -32Q6 -24 3 -18Q0 -15 -3 -18Q-6 -24 -8 -32Z"></path><path fill="{{c.shade}}" d="M-4.3 -21.5Q0 -22.8 4.3 -21.5L3 -18Q0 -15 -3 -18Z"></path></g>
+<g display="{{pt.beakLong}}"><path fill="{{c.shade}}" stroke="#2e4b66" stroke-width="{{w2}}" d="M-5 -20Q-10 -7 0 -2Q10 -7 5 -20Z"></path><path stroke="#2e4b66" stroke-width="{{w2}}" stroke-linejoin="round" fill="{{c.beak}}" d="M-6 -34Q0 -37 6 -34L5 -9Q0 -4 -5 -9Z"></path><path fill="none" stroke="#2e4b66" stroke-width="{{w14}}" stroke-linecap="round" d="M0 -33.5L0 -8"></path></g>
+<circle display="{{pt.beakSpot}}" fill="#c2413d" cx="2.8" cy="-23.4" r="1.9"></circle>
+</g>
+
+<g id="accessory" data-part="accessory" data-pivot="0,-40">
+<g display="{{sp.seal}}"><path fill="none" stroke="#2e4b66" stroke-width="{{w75}}" stroke-linecap="round" d="M-39 -47C-26 -62 26 -62 39 -47"></path><path fill="none" stroke="#56708a" stroke-width="{{w35}}" stroke-linecap="round" d="M-39 -47C-26 -62 26 -62 39 -47"></path><rect stroke="#2e4b66" stroke-width="{{w3}}" fill="#f2c462" x="-8.5" y="-70" width="17" height="11.5" rx="4"></rect><circle stroke="#2e4b66" stroke-width="{{w2}}" fill="#fff6cc" cx="0" cy="-64.2" r="3.4"></circle></g>
+<g display="{{sp.otter}}" transform="translate(19 -64) rotate(18) scale(0.9)"><path stroke="#2e4b66" stroke-width="{{w26}}" stroke-linejoin="round" fill="#f59b62" d="M0 -10L2.6 -3.6L9.5 -3.1L4.2 1.4L5.9 8.1L0 4.4L-5.9 8.1L-4.2 1.4L-9.5 -3.1L-2.6 -3.6Z"></path><circle fill="#fbd3b0" cx="0" cy="0" r="1.6"></circle></g>
+<g display="{{sp.hamster}}">
+<path stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" fill="#dcaa48" d="M-47 -22C-30 -14 30 -14 47 -22L48 -11C30 -3 -30 -3 -48 -11Z"></path>
+<path fill="#f2c462" fill-rule="evenodd" d="M-44 -19C-50 -52 -34 -98 0 -98C34 -98 50 -52 44 -19C30 -13 -30 -13 -44 -19ZM-14 -64H14C25 -64 31 -58 31 -47V-39C31 -28 25 -22 14 -22H-14C-25 -22 -31 -28 -31 -39V-47C-31 -58 -25 -64 -14 -64Z"></path>
+<path fill="#dcaa48" d="M30 -86C42 -75 47 -50 44 -20L37 -18C39 -44 37 -66 27 -80Z"></path>
+<path fill="#d4f1f4" fill-opacity="0.28" d="M-14 -64H14C25 -64 31 -58 31 -47V-39C31 -28 25 -22 14 -22H-14C-25 -22 -31 -28 -31 -39V-47C-31 -58 -25 -64 -14 -64Z"></path>
+<path fill="none" stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" d="M-44 -19C-50 -52 -34 -98 0 -98C34 -98 50 -52 44 -19C30 -13 -30 -13 -44 -19ZM-14 -64H14C25 -64 31 -58 31 -47V-39C31 -28 25 -22 14 -22H-14C-25 -22 -31 -28 -31 -39V-47C-31 -58 -25 -64 -14 -64Z"></path>
+<path fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="{{w32}}" stroke-linecap="round" d="M-24 -50C-23 -56 -19 -59 -13 -60"></path><circle fill="#ffffff" fill-opacity="0.85" cx="-25" cy="-44" r="1.7"></circle>
+<g fill="#bd8c31"><circle cx="-38" cy="-40" r="2.1"></circle><circle cx="-35" cy="-62" r="2.1"></circle><circle cx="-21" cy="-80" r="2.1"></circle><circle cx="21" cy="-80" r="2.1"></circle><circle cx="35" cy="-62" r="2.1"></circle><circle cx="38" cy="-40" r="2.1"></circle></g>
+<path fill="none" stroke="#2e4b66" stroke-width="{{w85}}" stroke-linecap="round" d="M3 -104C10 -114 22 -112 30 -121"></path><path fill="none" stroke="#56708a" stroke-width="{{w45}}" stroke-linecap="round" d="M3 -104C10 -114 22 -112 30 -121"></path>
+<rect stroke="#2e4b66" stroke-width="{{w25}}" fill="#c9d0d7" x="-6.5" y="-106" width="13" height="9.5" rx="3"></rect>
+<circle stroke="#2e4b66" stroke-width="{{w2}}" fill="#c9d0d7" cx="31" cy="-122" r="3.6"></circle>
+</g>
+<g display="{{sp.turtle}}" transform="rotate(-7 0 -74)"><path stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" fill="#f9fdfc" d="M-21 -68L-25 -84C-15 -92 15 -92 25 -84L21 -68Z"></path><path fill="#2e4b66" d="M-21.5 -68.5L-23 -75L23 -75L21.5 -68.5Z"></path><path stroke="#2e4b66" stroke-width="{{w2}}" stroke-linejoin="round" fill="#2e4b66" d="M-21 -69C-12 -60 12 -60 21 -69C11 -65 -11 -65 -21 -69Z"></path><circle stroke="#2e4b66" stroke-width="{{w18}}" fill="#f2c462" cx="0" cy="-81.5" r="3.4"></circle></g>
+<g display="{{sp.fish}}"><path stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" fill="{{c.cap}}" d="M-26 -62C-26 -76 -12 -80 0 -80C14 -80 26 -76 26 -62C14 -66 -14 -66 -26 -62Z"></path><path stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round" fill="{{c.cap}}" d="M8 -64Q24 -66 34 -60Q24 -58 10 -60Z"></path></g>
+</g>
+
+<g id="carry" data-part="carry" data-pivot="0,-9" display="{{pP}}"><g stroke="#2e4b66" stroke-width="{{w3}}" stroke-linejoin="round"><rect fill="#f6aa98" x="-27" y="-29" width="54" height="12" rx="4"></rect><rect fill="#e8907d" x="-31" y="-17" width="62" height="12" rx="4"></rect></g><path fill="none" stroke="#d27766" stroke-width="{{w16}}" stroke-linecap="round" d="M-20 -23Q-15 -25.5 -10 -23T0 -23T10 -23T20 -23"></path><path fill="none" stroke="#bf6555" stroke-width="{{w16}}" stroke-linecap="round" d="M-25 -11Q-20 -13.5 -15 -11T-5 -11T5 -11T15 -11T25 -11"></path></g>
+
+<g id="arm-l" data-part="arm-l" data-pivot="-34,-26" transform="{{t.armL}}"><ellipse stroke="#2e4b66" stroke-width="{{w3}}" fill="{{c.arm}}" cx="-41" cy="-20" rx="{{c.armRx}}" ry="{{c.armRy}}" transform="rotate(25 -41 -20)"></ellipse></g>
+<g id="arm-r" data-part="arm-r" data-pivot="34,-26" transform="{{t.armR}}">
+<g id="hold-r" data-part="hold-r" data-pivot="41,-18" display="{{pH}}">
+<g display="{{c.hamD}}"><path d="M41 -18L56 -44" fill="none" stroke="#2e4b66" stroke-width="{{w9}}" stroke-linecap="round"></path><path d="M41 -18L56 -44" fill="none" stroke="#cda67e" stroke-width="{{w3}}" stroke-linecap="round"></path><rect stroke="#2e4b66" stroke-width="{{w3}}" fill="#c9d0d7" x="-11" y="-6" width="22" height="12" rx="3" transform="translate(56 -44) rotate(30)"></rect></g>
+<g display="{{c.stoneD}}"><ellipse stroke="#2e4b66" stroke-width="{{w3}}" fill="#a1acb9" cx="48" cy="-27" rx="9" ry="7.2" transform="rotate(-25 48 -27)"></ellipse><ellipse fill="#bac3cd" cx="45" cy="-30" rx="3.4" ry="1.8" transform="rotate(-25 45 -30)"></ellipse></g>
+</g>
+<ellipse stroke="#2e4b66" stroke-width="{{w3}}" fill="{{c.arm}}" cx="41" cy="-20" rx="{{c.armRx}}" ry="{{c.armRy}}" transform="rotate(-25 41 -20)"></ellipse>
+</g>
+</g>
+
+<g data-fx="bubbles" display="{{bub.on}}">
+<circle cx="{{bub.a.x}}" cy="{{bub.a.y}}" r="{{bub.a.r}}" opacity="{{bub.a.o}}" fill="#f3fcfd" fill-opacity="0.6" stroke="#2e4b66" stroke-width="{{w16}}"></circle><circle cx="{{bub.a.hx}}" cy="{{bub.a.hy}}" r="{{bub.a.hr}}" opacity="{{bub.a.o}}" fill="#ffffff"></circle>
+<circle cx="{{bub.b.x}}" cy="{{bub.b.y}}" r="{{bub.b.r}}" opacity="{{bub.b.o}}" fill="#f3fcfd" fill-opacity="0.6" stroke="#2e4b66" stroke-width="{{w16}}"></circle><circle cx="{{bub.b.hx}}" cy="{{bub.b.hy}}" r="{{bub.b.hr}}" opacity="{{bub.b.o}}" fill="#ffffff"></circle>
+<circle cx="{{bub.c.x}}" cy="{{bub.c.y}}" r="{{bub.c.r}}" opacity="{{bub.c.o}}" fill="#f3fcfd" fill-opacity="0.6" stroke="#2e4b66" stroke-width="{{w16}}"></circle><circle cx="{{bub.c.hx}}" cy="{{bub.c.hy}}" r="{{bub.c.hr}}" opacity="{{bub.c.o}}" fill="#ffffff"></circle>
+</g>
+</g>
+</svg>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"species":{"editor":"enum","options":["seal","otter","hamster","turtle","gentoo","polarbear","walrus","sealion","gull","seaotter","clownfish","puffin","dugong","flamingo","harpseal","loggerhead","pelican","elephantseal","emperorchick","iguana","fish"],"default":"seal"},"role":{"editor":"enum","options":["explore","plan","general"],"default":"general"},"pose":{"editor":"enum","options":["stand","walk","swim","hammer","carry","cheer","talk","rest"],"default":"stand"},"mode":{"editor":"enum","options":["full","face"],"default":"full"},"scale":{"editor":"float","min":0.3,"max":3,"step":0.05,"default":1},"animate":{"editor":"boolean","default":true},"flip":{"editor":"boolean","default":false},"phase":{"editor":"int","min":0,"max":20,"default":0},"shadow":{"editor":"boolean","default":true},"bubbles":{"editor":"boolean","default":false},"frame":{"editor":"int","min":-1,"max":3,"default":-1},"$preview":{"width":128,"height":138}}'>
+class Component extends DCLogic {
+componentDidMount() {
+this.t = 0;
+this.timer = setInterval(() => {
+const a = this.props.animate;
+if (a === false || a === 'false') return;
+this.t += 1;
+const pi = this.pi || { rate: 1, n: 1, bub: false };
+const fk = Math.floor((this.t + Number(this.props.phase ?? 0)) / pi.rate) % pi.n;
+if (pi.bub || fk !== this.fk) {
+this.fk = fk;
+this.setState({ tick: this.t });
+}
+}, 150);
+}
+componentWillUnmount() {
+clearInterval(this.timer);
+}
+renderVals() {
+if (!this.uid) this.uid = 'sc' + Math.random().toString(36).slice(2, 9);
+const p = this.props;
+const truthy = (v, d) => (v === undefined || v === null ? d : (v === true || v === 'true'));
+const species = p.species ?? 'seal';
+const face = (p.mode ?? 'full') === 'face';
+const s = Math.max(0.2, Number(p.scale ?? 1));
+const animate = truthy(p.animate, true);
+const tick = ((this.state && this.state.tick) || 0) + Number(p.phase ?? 0);
+const Z = [0, 0, 0];
+const AC = { armL: [-4, 6, -25], armR: [4, 6, 25] };
+const POSES = {
+stand: { rate: 5, frames: [{}, { body: [0, -1.5, 0], armL: [0, 0, 6], armR: [0, 0, -6], earL: [0, 0, -3], earR: [0, 0, 3], tail: [0, 0, 4] }] },
+walk: { rate: 3, frames: [
+{ footL: [0, -4, -10], body: [0, -1.5, -4], armL: [0, 0, 14], armR: [0, 0, 6], face: [-3, 0, 0], tail: [0, 0, 8] },
+{ body: [0, 0, -1], face: [-3, 0, 0], armL: [0, 0, 4], armR: [0, 0, -4] },
+{ footR: [0, -4, 10], body: [0, -1.5, 4], armL: [0, 0, -6], armR: [0, 0, -14], face: [-3, 0, 0], tail: [0, 0, -8] },
+{ body: [0, 0, 1], face: [-3, 0, 0], armL: [0, 0, 4], armR: [0, 0, -4] }] },
+swim: { rate: 2, frames: [
+{ body: [0, -12, -10], footL: [0, -9, -22], footR: [0, -15, 14], armL: [0, 0, 45], armR: [0, 0, -15], face: [-3, 0, 0], earL: [0, 0, -6], earR: [0, 0, -6], tail: [0, 0, 14] },
+{ body: [0, -14, -9], footL: [0, -11, -8], footR: [0, -17, 4], armL: [0, 0, 15], armR: [0, 0, 5], face: [-3, 0, 0], tail: [0, 0, 4] },
+{ body: [0, -12, -10], footL: [0, -9, 12], footR: [0, -15, -22], armL: [0, 0, -15], armR: [0, 0, 40], face: [-3, 0, 0], earL: [0, 0, 6], earR: [0, 0, 6], tail: [0, 0, -12] },
+{ body: [0, -10, -11], footL: [0, -7, 4], footR: [0, -13, -8], armL: [0, 0, 10], armR: [0, 0, 15], face: [-3, 0, 0], tail: [0, 0, -4] }] },
+hammer: { rate: 3, prop: 'hammer', frames: [
+{ body: [0, -1, -3], armR: [0, 0, -40], armL: [0, 0, 10], face: [3, 0, 0], earL: [0, 0, -4], earR: [0, 0, -4] },
+{ body: [1, 0, 4], armR: [0, 0, 70], armL: [0, 0, -4], face: [4, 1, 0], earL: [0, 0, 4], earR: [0, 0, 4], expr: 'h' }] },
+carry: { rate: 2, prop: 'blocks', frames: [
+Object.assign({ footL: [0, -4, -10], body: [0, -1.5, -2] }, AC), Object.assign({}, AC),
+Object.assign({ footR: [0, -4, 10], body: [0, -1.5, 2] }, AC), Object.assign({}, AC)] },
+cheer: { rate: 3, frames: [
+{ body: [0, -9, 0], footL: [0, -7, -10], footR: [0, -7, 10], armL: [0, -8, 120], armR: [0, -8, -120], earL: [0, 0, -14], earR: [0, 0, 14], tail: [0, 0, 15], expr: 'h' },
+{ body: [0, -2, 0], armL: [0, -6, 105], armR: [0, -6, -105], earL: [0, 0, -6], earR: [0, 0, 6], expr: 'h' }] },
+talk: { rate: 3, frames: [
+{ body: [0, 0, 2], armR: [0, -2, -35], face: [2, 0, 0], earR: [0, 0, 5], expr: 't' },
+{ armR: [0, 0, -20], face: [2, 0, 0] }] },
+rest: { rate: 6, frames: [
+{ body: [0, 1, -5], footL: [-2, 0, 0], footR: [2, 0, 0], armL: [2, 0, -10], armR: [-2, 0, 10], earL: [0, 0, -12], earR: [0, 0, 12], face: [-1, 2, 0], tail: [0, 0, -6], expr: 's' },
+{ body: [0, 2, -5], footL: [-2, 0, 0], footR: [2, 0, 0], armL: [2, 1, -10], armR: [-2, 1, 10], earL: [0, 0, -14], earR: [0, 0, 14], face: [-1, 2, 0], tail: [0, 0, -6], expr: 's' }] }
+};
+const SP = {
+seal: { name: '점박이물범', fur: '#cdd4dc', arm: '#bcc5cf', foot: '#a9b3be', footR: [10, 5], armR: [7, 10.5], earL: [-22, -58], earR: [22, -58], tail: [0, -10], move: 'swim', eye: [16, -39, 4.6, 5.4, 1.6], blush: [27, -24, 5, 3], faceOff: [0, 0] },
+otter: { name: '수달', fur: '#a8744d', arm: '#8f5f3e', foot: '#8f5f3e', footR: [9, 5], armR: [7, 9.5], earL: [-27, -55], earR: [27, -55], tail: [-30, -12], move: 'swim', eye: [16, -40, 3.4, 4.1, 1.1], blush: [28, -25, 5.5, 3.2], faceOff: [0, 0] },
+hamster: { name: '씨워크 헬멧 골든햄스터', fur: '#e9a35b', arm: '#fbf0dc', foot: '#f0a3a6', footR: [8.5, 4.6], armR: [6.5, 9], earL: [-22, -58], earR: [22, -58], tail: [0, -10], move: 'walk', eye: [15, -42, 4.2, 4.8, 1.5], blush: [19, -29, 5, 3], faceOff: [0, -4] },
+turtle: { name: '바다거북', fur: '#b3cf8f', arm: '#a4c27e', foot: '#93b16c', footR: [9.5, 5], armR: [7, 12.5], earL: [-22, -58], earR: [22, -58], tail: [0, -10], move: 'swim', eye: [16, -40, 3.8, 4.6, 1.3], blush: [28, -26, 5.5, 3.2], faceOff: [0, 0] },
+gentoo: { name: '펭귄', fur: '#34435c', arm: '#2c3a51', foot: '#f29a4a', footR: [10, 4.5], armR: [6.5, 12], earL: [-22, -58], earR: [22, -58], tail: [0, -10], move: 'swim', eye: [15, -41, 3.8, 4.4, 1.3], blush: [22, -29, 4.2, 2.6], faceOff: [0, 0], parts: ['belly', 'maskHeart', 'beak'], face: '#f7f8f6', beak: '#f29a4a' },
+polarbear: { name: '북극곰', fur: '#f1f4f6', arm: '#e1e7eb', foot: '#d3dbe1', footR: [10, 5.5], armR: [7.5, 10], earL: [-26, -62], earR: [26, -62], tail: [-38, -14], move: 'walk', eye: [15, -42, 3.6, 4.2, 1.2], blush: [26, -27, 5, 3], faceOff: [0, 0], parts: ['earRound', 'tailRound', 'muzzle', 'noseBig'], face: '#f6eedb', shade: '#c4cdd5' },
+walrus: { name: '바다코끼리', fur: '#b98b6e', arm: '#a67a5d', foot: '#a67a5d', footR: [10, 4.5], armR: [7, 11], earL: [-22, -58], earR: [22, -58], tail: [0, -10], move: 'swim', eye: [15, -43, 3.2, 3.8, 1.1], blush: [27, -33, 4.5, 2.8], faceOff: [0, 0], parts: ['whiskerPads', 'noseSmall', 'whiskers', 'tusks'], face: '#e6c7a8' },
+sealion: { name: '바다사자', fur: '#6f5a4b', arm: '#614e41', foot: '#56453a', footR: [10, 4.5], armR: [6.5, 12], earL: [-40, -50], earR: [40, -50], tail: [0, -10], move: 'swim', eye: [16, -41, 4.2, 5, 1.5], blush: [27, -26, 5, 3], faceOff: [0, 0], parts: ['earFlap', 'muzzle', 'noseSmall', 'whiskers'], face: '#b39a82', shade: '#56453a' },
+gull: { name: '갈매기', fur: '#f5f6f3', arm: '#b7c1cb', foot: '#f1b54b', footR: [8.5, 4], armR: [6.5, 12], earL: [-22, -58], earR: [22, -58], tail: [-34, -14], move: 'walk', eye: [15, -42, 3.6, 4.2, 1.2], blush: [24, -29, 4.5, 2.8], faceOff: [0, 0], parts: ['beak', 'beakSpot', 'tailFeather'], beak: '#f3c64a', shade: '#b7c1cb' },
+seaotter: { name: '해달', fur: '#5b4435', arm: '#4e3a2d', foot: '#4e3a2d', footR: [9.5, 5], armR: [7, 10.5], earL: [-31, -55], earR: [31, -55], tail: [0, -10], faceOff: [0, 0], move: 'swim', eye: [15, -42, 3.6, 4.2, 1.2], blush: [25, -28, 4.8, 2.9], parts: ['headPale', 'earSmall', 'noseBig', 'whiskers'], face: '#e9dfd0', shade: '#4e3a2d' },
+clownfish: { name: '흰동가리', fur: '#f28c38', arm: '#e27a28', foot: '#e27a28', footR: [8, 4], armR: [6, 9.5], earL: [-22, -58], earR: [22, -58], tail: [-34, -16], faceOff: [0, 0], move: 'swim', eye: [16, -41, 4.6, 5.2, 1.6], blush: [24, -30, 4.2, 2.6], parts: ['bands', 'tailFin'], face: '#fbfaf6', shade: '#e27a28' },
+puffin: { name: '퍼핀', fur: '#2b2f38', arm: '#23262e', foot: '#f28a3c', footR: [9, 4.5], armR: [6.5, 11.5], earL: [-22, -58], earR: [22, -58], tail: [0, -10], faceOff: [0, 0], move: 'walk', eye: [15, -43, 3.4, 4, 1.2], blush: [23, -31, 4, 2.5], parts: ['belly', 'maskHeart', 'beakTri'], face: '#f2f3f0', beak: '#f07a3a', shade: '#9aa3ad' },
+dugong: { name: '듀공', fur: '#8ea0aa', arm: '#7b8d97', foot: '#7b8d97', footR: [9, 4.5], armR: [6.5, 11.5], earL: [-22, -58], earR: [22, -58], tail: [-34, -16], faceOff: [0, 0], move: 'swim', eye: [16, -44, 3, 3.6, 1], blush: [28, -36, 4.5, 2.8], parts: ['muzzleWide', 'nostrils', 'whiskers', 'tailFluke'], face: '#b9c6cc', shade: '#7b8d97' },
+flamingo: { name: '플라밍고', fur: '#f2a3b8', arm: '#e98aa5', foot: '#e98aa5', footR: [8.5, 4], armR: [6.5, 12], earL: [-22, -58], earR: [22, -58], tail: [-34, -14], faceOff: [0, 0], move: 'walk', eye: [15, -43, 3.4, 4, 1.2], blush: [24, -30, 4.5, 2.8], parts: ['beakBent', 'tailFeather'], beak: '#f8e3e6', shade: '#2b2f38' },
+harpseal: { name: '하프물범', fur: '#f7f4ea', arm: '#e8e3d3', foot: '#dcd6c3', footR: [10, 5], armR: [7, 10.5], earL: [-22, -58], earR: [22, -58], tail: [0, -10], faceOff: [0, 0], move: 'swim', eye: [16, -40, 5.4, 6.2, 2], blush: [27, -26, 5, 3], parts: ['noseSmall', 'whiskers'] },
+loggerhead: { name: '붉은바다거북', fur: '#d9a066', arm: '#c98f56', foot: '#c98f56', footR: [9.5, 5], armR: [7, 12.5], earL: [-22, -58], earR: [22, -58], tail: [0, -10], faceOff: [0, 0], move: 'swim', eye: [16, -40, 3.8, 4.6, 1.3], blush: [28, -26, 5.5, 3.2], parts: ['shell', 'plastron', 'nostrils'], face: '#f3e1b6', shade: '#9a4f2e' },
+pelican: { name: '갈색펠리컨', fur: '#8f8577', arm: '#7c7266', foot: '#3f3a36', footR: [9, 4.5], armR: [6.5, 12], earL: [-22, -58], earR: [22, -58], tail: [-34, -14], faceOff: [0, 0], move: 'walk', eye: [14, -45, 3.2, 3.8, 1.1], blush: [24, -36, 4.2, 2.6], parts: ['headPale', 'beakLong', 'tailFeather'], face: '#f6f3ea', beak: '#f0c35a', shade: '#d9a38a' },
+elephantseal: { name: '코끼리물범', fur: '#9a8674', arm: '#86735f', foot: '#86735f', footR: [10, 5], armR: [7, 11], earL: [-22, -58], earR: [22, -58], tail: [0, -10], faceOff: [0, 0], move: 'swim', eye: [15, -43, 3.6, 4.2, 1.2], blush: [26, -34, 4.5, 2.8], parts: ['trunkNose', 'whiskers'], shade: '#7a6654' },
+emperorchick: { name: '황제펭귄 아기', fur: '#aeb6be', arm: '#9aa3ab', foot: '#6f7882', footR: [9, 4.5], armR: [6.5, 11], earL: [-22, -58], earR: [22, -58], tail: [0, -10], faceOff: [0, 0], move: 'walk', eye: [15, -41, 3.8, 4.4, 1.3], blush: [22, -29, 4.2, 2.6], parts: ['hood', 'maskHeart'], face: '#f7f8f6', shade: '#2b2f38' },
+iguana: { name: '바다이구아나', fur: '#6a7480', arm: '#5a636e', foot: '#5a636e', footR: [9, 4.5], armR: [6.5, 10.5], earL: [-22, -58], earR: [22, -58], tail: [-30, -12], faceOff: [0, 0], move: 'walk', eye: [16, -42, 4, 4.6, 1.4], blush: [26, -28, 5, 3], parts: ['spikes', 'tailLong'], shade: '#e0775a' },
+fish: { name: '복어 외부인', fur: '#e6dcc8', arm: '#d5c6aa', foot: '#d5c6aa', footR: [7, 3.8], armR: [5.5, 8.5], earL: [-22, -58], earR: [22, -58], tail: [-34, -16], move: 'swim', eye: [17, -40, 4.8, 5.4, 1.7], blush: [28, -26, 5.5, 3.2], faceOff: [0, 0] }
+};
+const CAPS = { explore: '#5aa77a', plan: '#6f97d8', general: '#f0b24a' };
+const sp = SP[species] || SP.seal;
+const want = p.pose ?? 'stand';
+const poseKey = (want === 'walk' || want === 'swim') ? sp.move : want;
+const P = POSES[poseKey] || POSES.stand;
+const fixed = p.frame !== undefined && p.frame !== null && p.frame !== '' && Number(p.frame) >= 0;
+const fi = fixed ? Number(p.frame) % P.frames.length : (animate ? Math.floor(tick / P.rate) % P.frames.length : 0);
+const frame = face ? {} : P.frames[fi];
+const bubOn = !face && truthy(p.bubbles, false);
+this.pi = { rate: P.rate, n: fixed ? 1 : P.frames.length, bub: bubOn && animate && !fixed };
+const g = (k) => frame[k] || Z;
+const tf = (v, pv) => 'translate(' + v[0] + ' ' + v[1] + ') rotate(' + v[2] + ' ' + pv[0] + ' ' + pv[1] + ')';
+const vis = (on) => (on ? 'inline' : 'none');
+const r1 = (v) => Math.round(v * 10) / 10;
+const ex = frame.expr || 'n';
+const e = sp.eye;
+const hw = e[2] + 1;
+const eyeArc = (x, y, dy) => 'M' + r1(x - hw) + ' ' + r1(y) + 'Q' + r1(x) + ' ' + r1(y + dy) + ' ' + r1(x + hw) + ' ' + r1(y);
+const fv = g('face');
+const faceV = [fv[0] + sp.faceOff[0], fv[1] + sp.faceOff[1], fv[2]];
+const lift = g('body')[1];
+const mkBub = (i) => {
+const life = 26;
+const t = (tick + i * 9) % life;
+let x;
+let y;
+if (species === 'hamster') {
+const side = i % 2 === 0 ? -1 : 1;
+x = side * (47 + Math.min(t, 6) * 0.5) + Math.sin(t / 2.5 + i) * 2;
+y = -18 + lift - t * 4;
+} else {
+x = 24 + Math.sin(t / 2.5 + i * 2) * 2.5;
+y = -62 + lift - t * 3.2;
+}
+const r = 2.2 + (i % 3) * 0.9 + t * 0.05;
+const o = t < 3 ? t / 3 : (t > life - 6 ? (life - t) / 6 : 1);
+return { x: r1(x), y: r1(y), r: r1(r), o: r1(o * 0.95), hx: r1(x - r * 0.35), hy: r1(y - r * 0.35), hr: r1(r * 0.3) };
+};
+const isOtter = species === 'otter';
+return {
+shId: this.uid + '-sh',
+rw: (face ? 88 : 128) * s, rh: (face ? 88 : 138) * s,
+vb: face ? '-44 -86 88 88' : '-64 -126 128 138',
+assetId: species + '.' + (face ? 'face' : poseKey),
+aria: sp.name + (face ? ' 얼굴' : ''),
+shadow: vis(!face && truthy(p.shadow, true)),
+shRx: r1(38 + lift * 0.45), shRy: r1(9 + lift * 0.12),
+flipT: truthy(p.flip, false) ? 'scale(-1 1)' : 'scale(1 1)',
+w3: 3 / s, w2: 2 / s, w26: 2.6 / s, w9: 9 / s, w16: 1.6 / s, w14: 1.4 / s, w24: 2.4 / s, w75: 7.5 / s, w35: 3.5 / s, w4: 4 / s, w32: 3.2 / s, w85: 8.5 / s, w45: 4.5 / s, w18: 1.8 / s, w25: 2.5 / s,
+pt: Object.fromEntries(['earRound', 'earFlap', 'tailRound', 'tailFeather', 'belly', 'maskHeart', 'muzzle', 'whiskerPads', 'noseBig', 'noseSmall', 'whiskers', 'beak', 'beakSpot', 'tusks', 'hood', 'headPale', 'earSmall', 'muzzleWide', 'nostrils', 'tailFluke', 'trunkNose', 'beakTri', 'beakBent', 'beakLong', 'bands', 'tailFin', 'shell', 'plastron', 'spikes', 'tailLong', 'stripes', 'patch'].map((k) => [k, vis((sp.parts || []).includes(k))])),
+sp: { seal: vis(species === 'seal'), otter: vis(isOtter), hamster: vis(species === 'hamster'), turtle: vis(species === 'turtle'), fish: vis(species === 'fish') },
+c: {
+cap: CAPS[p.role] || CAPS.general,
+fur: sp.fur, arm: sp.arm, foot: sp.foot, face: sp.face || sp.fur, shade: sp.shade || sp.arm, beak: sp.beak || sp.foot, pattern: sp.arm,
+footRx: sp.footR[0], footRy: sp.footR[1], armRx: sp.armR[0], armRy: sp.armR[1],
+earLPv: sp.earL.join(','), earRPv: sp.earR.join(','), tailPv: sp.tail.join(','),
+exL: -e[0], exR: e[0], ey: e[1], erx: e[2], ery: e[3],
+hxL: r1(-e[0] - e[2] * 0.3), hxR: r1(e[0] - e[2] * 0.3), hy: r1(e[1] - e[3] * 0.38), hr: e[4],
+happy: eyeArc(-e[0], e[1] + 1.5, -6) + eyeArc(e[0], e[1] + 1.5, -6),
+sleep: eyeArc(-e[0], e[1], 4) + eyeArc(e[0], e[1], 4),
+bxL: -sp.blush[0], bxR: sp.blush[0], by: sp.blush[1], brx: sp.blush[2], bry: sp.blush[3],
+hamD: vis(!isOtter), stoneD: vis(isOtter)
+},
+t: {
+footL: tf(g('footL'), [-16, 0]), footR: tf(g('footR'), [16, 0]), body: tf(g('body'), [0, 0]),
+earL: tf(g('earL'), sp.earL), earR: tf(g('earR'), sp.earR), face: tf(faceV, [0, -34]),
+armL: tf(g('armL'), [-34, -26]), armR: tf(g('armR'), [34, -26]), tail: tf(g('tail'), sp.tail)
+},
+e: { n: vis(ex === 'n'), h: vis(ex === 'h'), t: vis(ex === 't'), s: vis(ex === 's') },
+pH: vis(!face && P.prop === 'hammer'), pP: vis(!face && P.prop === 'blocks'),
+bub: { on: vis(bubOn), a: mkBub(0), b: mkBub(1), c: mkBub(2) }
+};
+}
+}
+</script>
+</body>
+</html>

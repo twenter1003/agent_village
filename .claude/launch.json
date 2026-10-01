@@ -1,0 +1,41 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dev",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "dev"
+      ],
+      "port": 5173
+    },
+    {
+      "name": "qa",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "exec",
+        "concurrently",
+        "-k",
+        "-n",
+        "server,web",
+        "TYCOON_PORT=4799 TYCOON_DB=$TMPDIR/tycoon-qa.db TYCOON_CLOCK_MS=1000 pnpm exec tsx packages/server/src/index.ts",
+        "TYCOON_COLLECTOR=http://127.0.0.1:4799 pnpm --filter @tycoon/web exec vite --port 5175 --strictPort"
+      ],
+      "port": 5175
+    },
+    {
+      "name": "web",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--filter",
+        "@tycoon/web",
+        "exec",
+        "vite",
+        "--port",
+        "5173",
+        "--strictPort"
+      ],
+      "port": 5173
+    }
+  ]
+}

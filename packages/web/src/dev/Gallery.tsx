@@ -1,0 +1,149 @@
+// /dev/gallery — 캔버스 바다 06 건물 키트 · 07 공사 단계 · 08 가구·소품 보드와 같은 배열 (dc-import 목록 그대로)
+import { Building } from '../assets/sea/Building';
+import { Prop, type Slot } from '../assets/sea/Asset';
+
+const bodies = ['shell-1f', 'coral-1f', 'wreck-2f', 'basalt-2f'];
+const signs: [string, string, Slot][] = [
+  ['coral-1f', 'workshop', 1],
+  ['shell-1f', 'cafe', 2],
+  ['basalt-2f', 'guard', 3],
+  ['wreck-2f', 'hall', 4],
+  ['coral-1f', 'work', 5],
+  ['shell-1f', 'home', 6],
+  ['basalt-2f', 'library', 'x'],
+  ['wreck-2f', 'plan', 'x'],
+  ['coral-1f', 'agency', 'x'],
+];
+const furniture: [string, Slot?][] = [
+  ['clamchair', 2],
+  ['desk'],
+  ['shelf'],
+  ['coralpot'],
+  ['jellylamp'],
+  ['clambed', 1],
+  ['rug', 5],
+];
+const props = [
+  'kelp',
+  'coral',
+  'braincoral',
+  'seagrass',
+  'rock',
+  'jellypost',
+  'bench',
+  'anemone',
+  'board',
+  'buoyfence',
+  'materials',
+  'chest',
+  'starfish',
+  'urchin',
+  'clamfountain',
+];
+const tiles = ['sand', 'gravel', 'plaza', 'rock'];
+
+const Row = ({ title, children }: { title: string; children: React.ReactNode }) => (
+  <section>
+    <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 400 }}>{title}</h2>
+    <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'flex-end' }}>{children}</div>
+  </section>
+);
+const Cell = ({ id, children }: { id: string; children: React.ReactNode }) => (
+  <figure style={{ margin: 0, textAlign: 'center' }}>
+    <div style={{ background: 'var(--paper)', borderRadius: 14 }}>{children}</div>
+    <figcaption style={{ font: '11px var(--font-mono)', color: 'var(--text-2)' }}>{id}</figcaption>
+  </figure>
+);
+
+export function Gallery() {
+  return (
+    <main style={{ padding: '32px 48px' }}>
+      <Row title="06 · 몸체">
+        {bodies.map((b) => (
+          <Cell key={b} id={`body.${b}`}>
+            <Building body={b} />
+          </Cell>
+        ))}
+      </Row>
+      <Row title="06 · 지붕 (몸체 흐리게)">
+        {(['dome', 'scallop', 'conch'] as const).map((r, i) => (
+          <Cell key={r} id={`roof.${r}`}>
+            <Building body="shell-1f" roof={r} slot={(i + 1) as Slot} ghost />
+          </Cell>
+        ))}
+      </Row>
+      <Row title="06 · 간판">
+        {signs.map(([b, s, slot]) => (
+          <Cell key={s} id={`sign.${s}`}>
+            <Building body={b} sign={s} slot={slot} />
+          </Cell>
+        ))}
+      </Row>
+      <Row title="06 · 조립">
+        <Cell id="coral+scallop+workshop">
+          <Building body="coral-1f" roof="scallop" sign="workshop" slot={1} />
+        </Cell>
+        <Cell id="shell+conch+cafe">
+          <Building body="shell-1f" roof="conch" sign="cafe" slot={2} />
+        </Cell>
+        <Cell id="basalt+dome+guard">
+          <Building body="basalt-2f" roof="dome" sign="guard" slot={3} />
+        </Cell>
+        <Cell id="wreck+scallop+hall">
+          <Building body="wreck-2f" roof="scallop" sign="hall" slot={4} />
+        </Cell>
+      </Row>
+      <Row title="07 · 공사 단계 (1층, N=4)">
+        <Cell id="planned">
+          <Building body="coral-1f" roof="scallop" sign="workshop" stage="planned" />
+        </Cell>
+        <Cell id="foundation">
+          <Building body="coral-1f" roof="scallop" sign="workshop" stage="foundation" />
+        </Cell>
+        <Cell id="frame 0.5">
+          <Building body="coral-1f" roof="scallop" sign="workshop" stage="frame" progress={0.5} />
+        </Cell>
+        <Cell id="frame 0.75">
+          <Building body="coral-1f" roof="scallop" sign="workshop" stage="frame" progress={0.75} />
+        </Cell>
+        <Cell id="done + fx">
+          <Building body="coral-1f" roof="scallop" sign="workshop" stage="done" fx />
+        </Cell>
+      </Row>
+      <Row title="07 · 공사 단계 (2층, N=6)">
+        {[0.33, 0.5, 0.67, 0.83].map((p) => (
+          <Cell key={p} id={`frame ${p}`}>
+            <Building body="basalt-2f" roof="dome" sign="guard" slot={3} stage="frame" progress={p} />
+          </Cell>
+        ))}
+        <Cell id="done">
+          <Building body="basalt-2f" roof="dome" sign="guard" slot={3} />
+        </Cell>
+        <Cell id="done + scaffold">
+          <Building body="basalt-2f" roof="dome" sign="guard" slot={3} scaffold />
+        </Cell>
+      </Row>
+      <Row title="08 · 가구">
+        {furniture.map(([f, fab]) => (
+          <Cell key={f} id={`furniture.${f}`}>
+            <Prop kind={`furniture.${f}`} scale={1.25} fab={fab} />
+          </Cell>
+        ))}
+      </Row>
+      <Row title="08 · 소품">
+        {props.map((p) => (
+          <Cell key={p} id={`prop.${p}`}>
+            <Prop kind={`prop.${p}`} scale={1.25} />
+          </Cell>
+        ))}
+      </Row>
+      <Row title="08 · 바닥">
+        {tiles.map((t) => (
+          <Cell key={t} id={`tile.${t}`}>
+            <Prop kind={`tile.${t}`} scale={1.25} />
+          </Cell>
+        ))}
+      </Row>
+    </main>
+  );
+}

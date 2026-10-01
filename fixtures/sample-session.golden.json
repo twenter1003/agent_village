@@ -1,0 +1,563 @@
+{
+  "project": "-work-my-shop-app",
+  "clock": {
+    "now": 1790688420000,
+    "day": 0,
+    "activeMs": 415000,
+    "dayStartMs": 0,
+    "dayMs": 3600000,
+    "lastEventAt": 1790688420000,
+    "mainTurn": false
+  },
+  "members": {
+    "@leader": {
+      "id": "@leader",
+      "slot": 1,
+      "name": "팀장",
+      "description": "",
+      "fromMd": false,
+      "movedInAt": 1790688005000,
+      "job": "lead",
+      "species": "penguin",
+      "variant": 0,
+      "accessory": "bowtie",
+      "isLeader": true,
+      "departed": false,
+      "status": "resting",
+      "blocked": null,
+      "currentRunId": null,
+      "currentTaskId": null,
+      "cheerUntil": null,
+      "balance": 0,
+      "furniture": [],
+      "hardship": false,
+      "boughtToday": 0,
+      "tokens": 0,
+      "tokenCostToday": 0,
+      "materialsToday": 0,
+      "eff": {
+        "recent": []
+      },
+      "receipt": {
+        "parts": {},
+        "runs": 0,
+        "calls": 0,
+        "models": {}
+      },
+      "personality": {
+        "EI": 25,
+        "SN": 75,
+        "TF": 25,
+        "JP": 25,
+        "letters": "ENTJ",
+        "drifting": null,
+        "reason": "",
+        "driftToday": {
+          "EI": 0,
+          "SN": 0,
+          "TF": 0,
+          "JP": 0
+        },
+        "samples": [],
+        "lastMeetingAt": 1790688005000
+      }
+    },
+    "backend-dev": {
+      "id": "backend-dev",
+      "slot": 2,
+      "name": "backend-dev",
+      "description": "API, 데이터베이스, 서버 로직 작업에 사용. 스키마 변경, 엔드포인트 추가, 성능 문제.",
+      "fromMd": true,
+      "movedInAt": 1790688281000,
+      "job": "backend",
+      "species": "bear",
+      "variant": 0,
+      "accessory": "glasses",
+      "isLeader": false,
+      "departed": false,
+      "status": "blocked",
+      "blocked": "permission",
+      "currentRunId": "a3",
+      "currentTaskId": "t4",
+      "cheerUntil": null,
+      "balance": 0,
+      "furniture": [],
+      "hardship": false,
+      "boughtToday": 0,
+      "tokens": 0,
+      "tokenCostToday": 0,
+      "materialsToday": 0,
+      "eff": {
+        "recent": []
+      },
+      "receipt": {
+        "parts": {},
+        "runs": 0,
+        "calls": 0,
+        "models": {}
+      },
+      "personality": {
+        "EI": 75,
+        "SN": 25,
+        "TF": 25,
+        "JP": 25,
+        "letters": "ISTJ",
+        "drifting": null,
+        "reason": "",
+        "driftToday": {
+          "EI": 0,
+          "SN": 0,
+          "TF": 0,
+          "JP": 0
+        },
+        "samples": [],
+        "lastMeetingAt": null
+      }
+    },
+    "frontend-dev": {
+      "id": "frontend-dev",
+      "slot": 3,
+      "name": "frontend-dev",
+      "description": "화면, 컴포넌트, 스타일, 사용자 흐름 작업에 사용.",
+      "fromMd": true,
+      "movedInAt": null,
+      "job": "frontend",
+      "species": "rabbit",
+      "variant": 0,
+      "accessory": "beret",
+      "isLeader": false,
+      "departed": false,
+      "status": "resting",
+      "blocked": null,
+      "currentRunId": null,
+      "currentTaskId": null,
+      "cheerUntil": null,
+      "balance": 0,
+      "furniture": [],
+      "hardship": false,
+      "boughtToday": 0,
+      "tokens": 0,
+      "tokenCostToday": 0,
+      "materialsToday": 0,
+      "eff": {
+        "recent": []
+      },
+      "receipt": {
+        "parts": {},
+        "runs": 0,
+        "calls": 0,
+        "models": {}
+      },
+      "personality": {
+        "EI": 25,
+        "SN": 75,
+        "TF": 75,
+        "JP": 75,
+        "letters": "ENFP",
+        "drifting": null,
+        "reason": "",
+        "driftToday": {
+          "EI": 0,
+          "SN": 0,
+          "TF": 0,
+          "JP": 0
+        },
+        "samples": [],
+        "lastMeetingAt": null
+      }
+    },
+    "qa-reviewer": {
+      "id": "qa-reviewer",
+      "slot": 4,
+      "name": "qa-reviewer",
+      "description": "변경 사항 검토, 테스트 작성과 실행, 회귀 확인에 사용.",
+      "fromMd": true,
+      "movedInAt": 1790688062000,
+      "job": "qa",
+      "species": "raccoon",
+      "variant": 0,
+      "accessory": "magnifier",
+      "isLeader": false,
+      "departed": false,
+      "status": "resting",
+      "blocked": null,
+      "currentRunId": null,
+      "currentTaskId": null,
+      "cheerUntil": null,
+      "balance": 75,
+      "furniture": [],
+      "hardship": false,
+      "boughtToday": 0,
+      "tokens": 0,
+      "tokenCostToday": 0,
+      "materialsToday": 0,
+      "eff": {
+        "recent": [
+          {
+            "runId": "a1",
+            "tokens": 0,
+            "credit": 3.5999999999999996
+          }
+        ]
+      },
+      "receipt": {
+        "parts": {},
+        "runs": 0,
+        "calls": 0,
+        "models": {}
+      },
+      "personality": {
+        "EI": 77,
+        "SN": 23,
+        "TF": 27,
+        "JP": 73,
+        "letters": "ISTP",
+        "drifting": {
+          "axis": "TF",
+          "toward": "F",
+          "percent": 7
+        },
+        "reason": "보고에 칭찬·고마움 말이 늘어서",
+        "driftToday": {
+          "EI": 2,
+          "SN": 2,
+          "TF": 2,
+          "JP": 2
+        },
+        "samples": [
+          {
+            "taskId": "t1",
+            "at": 1790688221000,
+            "EI": 100,
+            "SN": 0,
+            "TF": 100,
+            "JP": 33.33333333333333
+          }
+        ],
+        "lastMeetingAt": null
+      }
+    }
+  },
+  "visitors": {},
+  "runs": {
+    "a1": {
+      "runId": "a1",
+      "agentType": "qa-reviewer",
+      "memberId": "qa-reviewer",
+      "visitorKind": null,
+      "startedAt": 1790688062000,
+      "endedAt": 1790688220000,
+      "lastAt": 1790688220000,
+      "ok": true,
+      "toolCalls": 3,
+      "failStreak": 0,
+      "testsPassed": 1,
+      "testsFailed": 0,
+      "openPre": {
+        "Read": 1,
+        "Edit": 1
+      },
+      "habits": {
+        "kinds": {
+          "read": 1,
+          "edit": 1,
+          "test": 1
+        },
+        "retries": 0,
+        "switches": 2,
+        "last": "Bash",
+        "failed": null
+      },
+      "lastMessage": "입력 검증을 추가했고 테스트 12개가 모두 통과했습니다. 꼼꼼히 봐 주셔서 고마워요.",
+      "wage": 94
+    },
+    "a2": {
+      "runId": "a2",
+      "agentType": "Explore",
+      "memberId": null,
+      "visitorKind": "Explore",
+      "startedAt": 1790688231000,
+      "endedAt": 1790688270000,
+      "lastAt": 1790688270000,
+      "ok": true,
+      "toolCalls": 0,
+      "failStreak": 0,
+      "testsPassed": 0,
+      "testsFailed": 0,
+      "openPre": {}
+    },
+    "a3": {
+      "runId": "a3",
+      "agentType": "backend-dev",
+      "memberId": "backend-dev",
+      "visitorKind": null,
+      "startedAt": 1790688281000,
+      "endedAt": null,
+      "lastAt": 1790688370000,
+      "ok": null,
+      "toolCalls": 1,
+      "failStreak": 1,
+      "testsPassed": 0,
+      "testsFailed": 1,
+      "openPre": {
+        "Bash": 0
+      },
+      "habits": {
+        "kinds": {
+          "test": 1
+        },
+        "retries": 0,
+        "switches": 0,
+        "last": "Bash",
+        "failed": "Bash"
+      }
+    }
+  },
+  "tasks": {
+    "t1": {
+      "id": "t1",
+      "subject": "로그인 폼 입력 검증",
+      "status": "completed",
+      "createdAt": 1790688020000,
+      "contributions": {
+        "qa-reviewer": 158000
+      },
+      "quality": "testsPassed",
+      "toolCalls": 3,
+      "salaryPaid": 0,
+      "startedAt": 1790688060000,
+      "completedAt": 1790688221000
+    },
+    "t2": {
+      "id": "t2",
+      "subject": "세션 만료 테스트",
+      "status": "pending",
+      "createdAt": 1790688021000,
+      "contributions": {},
+      "quality": "noTests",
+      "toolCalls": 0,
+      "salaryPaid": 0
+    },
+    "t3": {
+      "id": "t3",
+      "subject": "비밀번호 재설정 API",
+      "status": "pending",
+      "createdAt": 1790688022000,
+      "contributions": {},
+      "quality": "noTests",
+      "toolCalls": 0,
+      "salaryPaid": 0
+    },
+    "t4": {
+      "id": "t4",
+      "subject": "토큰 갱신 API",
+      "status": "in_progress",
+      "createdAt": 1790688023000,
+      "contributions": {},
+      "quality": "noTests",
+      "toolCalls": 0,
+      "salaryPaid": 0,
+      "startedAt": 1790688280000
+    },
+    "t5": {
+      "id": "t5",
+      "subject": "로그인 E2E 테스트",
+      "status": "pending",
+      "createdAt": 1790688024000,
+      "contributions": {},
+      "quality": "noTests",
+      "toolCalls": 0,
+      "salaryPaid": 0
+    },
+    "t6": {
+      "id": "t6",
+      "subject": "에러 문구 다듬기",
+      "status": "pending",
+      "createdAt": 1790688025000,
+      "contributions": {},
+      "quality": "noTests",
+      "toolCalls": 0,
+      "salaryPaid": 0
+    }
+  },
+  "buildings": {
+    "w1:qa-reviewer": {
+      "id": "w1:qa-reviewer",
+      "memberId": "qa-reviewer",
+      "n": 1,
+      "name": "",
+      "lot": {
+        "x": 10,
+        "y": 10,
+        "size": 3
+      },
+      "floor": 1,
+      "points": 3.6,
+      "paid": 0,
+      "waiting": null,
+      "startedAt": 1790688062000,
+      "floorAt": 1790688220000
+    },
+    "w1:backend-dev": {
+      "id": "w1:backend-dev",
+      "memberId": "backend-dev",
+      "n": 1,
+      "name": "",
+      "lot": {
+        "x": 10,
+        "y": 3,
+        "size": 3
+      },
+      "floor": 0,
+      "points": 0,
+      "paid": 0,
+      "waiting": null,
+      "startedAt": 1790688281000,
+      "floorAt": null
+    }
+  },
+  "houses": {
+    "@leader": {
+      "memberId": "@leader",
+      "lot": {
+        "x": 4,
+        "y": 10
+      }
+    },
+    "qa-reviewer": {
+      "memberId": "qa-reviewer",
+      "lot": {
+        "x": 1,
+        "y": 10
+      }
+    },
+    "backend-dev": {
+      "memberId": "backend-dev",
+      "lot": {
+        "x": 4,
+        "y": 13
+      }
+    }
+  },
+  "facilities": {
+    "library": {
+      "x": 4,
+      "y": 0
+    }
+  },
+  "taskTool": true,
+  "agentCalls": [],
+  "mainTokens": {},
+  "mainUsage": {},
+  "mainCtx": null,
+  "ring": 0,
+  "level": 1,
+  "hall": {
+    "x": 3,
+    "y": 3,
+    "size": 3
+  },
+  "publicWorks": [],
+  "foundedAt": 1790688005000,
+  "conf": {
+    "members": {
+      "backend-dev": {
+        "species": "bear",
+        "job": "backend",
+        "accessory": "glasses"
+      },
+      "frontend-dev": {
+        "species": "rabbit",
+        "job": "frontend",
+        "accessory": "beret"
+      },
+      "qa-reviewer": {
+        "species": "raccoon",
+        "job": "qa"
+      }
+    },
+    "leader": {
+      "species": "penguin",
+      "job": "lead",
+      "accessory": "bowtie",
+      "label": "팀장"
+    }
+  },
+  "meeting": null,
+  "feed": [
+    {
+      "at": 1790688005000,
+      "kind": "task",
+      "text": "마을을 세웠어요 · 광장과 시청이 생겼어요"
+    },
+    {
+      "at": 1790688005000,
+      "kind": "task",
+      "text": "팀장 입주 · 집을 지었어요",
+      "ref": "@leader"
+    },
+    {
+      "at": 1790688005000,
+      "kind": "meeting",
+      "text": "광장 회의 시작 · 로그인 개선 작업 진행해줘"
+    },
+    {
+      "at": 1790688062000,
+      "kind": "task",
+      "text": "qa-reviewer 입주 · 집을 지었어요",
+      "ref": "qa-reviewer"
+    },
+    {
+      "at": 1790688220000,
+      "kind": "task",
+      "text": "qa-reviewer 일터 1층 완공",
+      "ref": "w1:qa-reviewer"
+    },
+    {
+      "at": 1790688281000,
+      "kind": "task",
+      "text": "backend-dev 입주 · 집을 지었어요",
+      "ref": "backend-dev"
+    },
+    {
+      "at": 1790688300000,
+      "kind": "task",
+      "text": "backend-dev 막힘 · 권한 요청을 기다려요",
+      "ref": "backend-dev"
+    }
+  ],
+  "toasts": [
+    {
+      "id": "toast1",
+      "at": 1790688005000,
+      "kind": "meeting",
+      "text": "광장 회의 시작 · 로그인 개선 작업 진행해줘",
+      "sticky": true
+    },
+    {
+      "id": "toast2",
+      "at": 1790688300000,
+      "kind": "failure",
+      "text": "backend-dev 막힘 · 권한 요청을 기다려요",
+      "sticky": true,
+      "ref": "backend-dev"
+    }
+  ],
+  "seq": 2,
+  "economy": {
+    "fund": 19,
+    "deficit": false,
+    "today": {
+      "wages": 94,
+      "tax": 19,
+      "purchases": 0,
+      "tokens": 0,
+      "leaderTokens": 0,
+      "leaderUnpaid": 0,
+      "leaderPurchases": 0,
+      "materials": 0,
+      "works": 0
+    },
+    "history": []
+  }
+}

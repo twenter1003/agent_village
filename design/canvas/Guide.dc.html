@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>동물 추가 가이드</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&amp;family=Gowun+Dodum&amp;display=swap">
+<style>
+body{margin:0}
+.hd{font-family:'Jua','Apple SD Gothic Neo',sans-serif;font-weight:400;color:#5a2e2e;margin:0}
+.meta{font-size:12px;color:#8a5a4a;line-height:17px}
+.s{stroke:#7a3e3e;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.m{fill:none;stroke:#5a2e2e;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.m3{fill:none;stroke:#5a2e2e;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.aid{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:#8a5a4a}
+.cell{width:132px;flex-shrink:0;box-sizing:border-box;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;padding:6px 0 8px}
+.card{box-sizing:border-box;background:#fff9ee;border:3px solid #7a3e3e;border-radius:20px;padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.rule{margin:0;padding-left:18px;font-size:14px;line-height:23px;color:#5a2e2e}
+.steps{margin:0;padding-left:22px;font-size:14px;line-height:23px;color:#5a2e2e}
+.code{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;background:#f3e3c3;border-radius:6px;padding:1px 6px}
+.pre{margin:0;font-family:ui-monospace,Menlo,monospace;font-size:12px;line-height:19px;color:#5a2e2e;white-space:pre;background:#f5ecd7;border-radius:12px;padding:14px 16px;overflow:hidden}
+.num{display:inline-flex;width:22px;height:22px;border-radius:50%;border:2px solid #7a3e3e;background:#f7cb52;align-items:center;justify-content:center;font-family:'Jua',sans-serif;font-size:12px;flex-shrink:0;box-sizing:border-box}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1460px; box-sizing: border-box; padding: 44px 56px; background: #f5ecd7; font-family: 'Gowun Dodum', 'Apple SD Gothic Neo', sans-serif; color: #5a2e2e; display: flex; flex-direction: column; gap: 20px">
+<svg width="0" height="0" style="position: absolute" aria-hidden="true"><defs><radialGradient id="guide-sh" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#7a3e3e" stop-opacity="0.3"></stop><stop offset="0.6" stop-color="#7a3e3e" stop-opacity="0.18"></stop><stop offset="1" stop-color="#7a3e3e" stop-opacity="0"></stop></radialGradient></defs></svg>
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h1 class="hd" style="font-size: 40px; line-height: 48px">동물 추가 가이드</h1>
+<p style="margin: 0; font-size: 15px; color: #8a5a4a">Claude Code에게 맡기는 작업 설명서입니다. 새 동물 = 곰 리그를 복사해서 모양과 색만 바꾸는 일. 회전 중심, 파츠 이름, 포즈 표는 건드리지 않습니다.</p>
+</div>
+
+<section class="card" style="flex-direction: row; gap: 10px; align-items: stretch; padding: 14px 16px">
+<div style="width: 170px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: center; gap: 8px">
+<span style="font-family: 'Jua', sans-serif; font-size: 24px">예시 · 여우</span>
+<span class="meta">곰에서 바꾼 곳은 귀, 얼굴 무늬, 꼬리, 색뿐. 포즈 표는 곰과 같은 것을 그대로 씁니다. 시트에는 아직 넣지 않은 예시입니다.</span>
+</div>
+<sc-for list="{{fox}}" as="c" hint-placeholder-count="7">
+<div class="cell" style="background: {{c.bg}}">
+<svg width="{{c.w}}" height="{{c.h}}" viewBox="{{c.vb}}" data-asset-id="{{c.id}}" data-anchor="0,0" data-face-box="-44,-86,88,88" role="img" aria-label="{{c.aria}}">
+<ellipse data-part="shadow" cx="2" cy="3" rx="38" ry="9" fill="url(#guide-sh)" display="{{c.shadow}}"></ellipse>
+<g id="foot-l" data-part="foot-l" data-pivot="-16,0" transform="{{c.t.footL}}"><ellipse class="s" fill="#c9733f" cx="-16" cy="1" rx="9" ry="5"></ellipse></g>
+<g id="foot-r" data-part="foot-r" data-pivot="16,0" transform="{{c.t.footR}}"><ellipse class="s" fill="#c9733f" cx="16" cy="1" rx="9" ry="5"></ellipse></g>
+<g id="body" data-part="body" data-pivot="0,0" transform="{{c.t.body}}">
+<g id="tail" data-part="tail" data-pivot="32,-18" transform="{{c.t.tail}}"><path class="s" fill="#e8905a" d="M30 -12C54 -6 68 -30 60 -52C56 -62 44 -60 46 -48C50 -34 42 -24 32 -26Z"></path><path fill="#fff4e6" d="M59.5 -46C61 -52 59 -58 55 -59.5C51 -60.5 46.5 -58 46.5 -52.5C50 -50.5 55 -48 59.5 -46Z"></path></g>
+<g id="ear-l" data-part="ear-l" data-pivot="-24,-60" transform="{{c.t.earL}}"><path class="s" fill="#e8905a" d="M-37 -52Q-36 -76 -29 -88Q-18 -76 -12 -64Z"></path><path fill="#fff4e6" d="M-31 -61Q-30 -73 -28.5 -80Q-23 -72 -19.5 -65Z"></path></g>
+<g id="ear-r" data-part="ear-r" data-pivot="24,-60" transform="{{c.t.earR}}"><path class="s" fill="#e8905a" d="M37 -52Q36 -76 29 -88Q18 -76 12 -64Z"></path><path fill="#fff4e6" d="M31 -61Q30 -73 28.5 -80Q23 -72 19.5 -65Z"></path></g>
+<path class="s" fill="#e8905a" d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40 40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"></path>
+<g id="face" data-part="face" data-pivot="0,-34" transform="{{c.t.face}}">
+<path fill="#fff4e6" d="M-36 -22Q-18 -34 0 -30Q18 -34 36 -22Q30 -6 0 -6Q-30 -6 -36 -22Z"></path>
+<ellipse fill="#f7a194" cx="-29" cy="-26" rx="5.5" ry="3.2"></ellipse><ellipse fill="#f7a194" cx="29" cy="-26" rx="5.5" ry="3.2"></ellipse>
+<ellipse fill="#5a2e2e" cx="0" cy="-29" rx="3.2" ry="2.3"></ellipse>
+<g data-expr="normal" display="{{c.eN}}"><ellipse fill="#5a2e2e" cx="-17" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="17" cy="-38" rx="3.6" ry="4.4"></ellipse><circle fill="#fff9ee" cx="-18" cy="-39.6" r="1.2"></circle><circle fill="#fff9ee" cx="16" cy="-39.6" r="1.2"></circle><path class="m" d="M0 -26.7L0 -24.8M-5.5 -24.8Q-2.75 -21.3 0 -24.8Q2.75 -21.3 5.5 -24.8"></path></g>
+<g data-expr="happy" display="{{c.eH}}"><path class="m3" d="M-21.5 -36.5Q-17 -42.5 -12.5 -36.5M12.5 -36.5Q17 -42.5 21.5 -36.5"></path><path fill="#7a3e3e" d="M-6 -25Q0 -23.5 6 -25Q5.5 -17.5 0 -17.5Q-5.5 -17.5 -6 -25Z"></path><ellipse fill="#f5a3a8" cx="0" cy="-19.8" rx="3" ry="1.6"></ellipse></g>
+<g data-expr="talk" display="{{c.eT}}"><ellipse fill="#5a2e2e" cx="-17" cy="-38" rx="3.6" ry="4.4"></ellipse><ellipse fill="#5a2e2e" cx="17" cy="-38" rx="3.6" ry="4.4"></ellipse><circle fill="#fff9ee" cx="-18" cy="-39.6" r="1.2"></circle><circle fill="#fff9ee" cx="16" cy="-39.6" r="1.2"></circle><ellipse fill="#7a3e3e" cx="0" cy="-22" rx="3.4" ry="3.6"></ellipse></g>
+<g data-expr="sleep" display="{{c.eS}}"><path class="m3" d="M-21.5 -38Q-17 -34 -12.5 -38M12.5 -38Q17 -34 21.5 -38"></path><path class="m" d="M-3 -23.5Q0 -21.5 3 -23.5"></path></g>
+</g>
+<g id="accessory" data-part="accessory" data-pivot="0,-12"></g>
+<g id="carry" data-part="carry" data-pivot="0,-9" display="{{c.pP}}"><rect class="s" fill="#dca173" x="-54" y="-17" width="108" height="8" rx="3"></rect><rect class="s" fill="#c4845a" x="-50" y="-9" width="100" height="8" rx="3"></rect></g>
+<g id="arm-l" data-part="arm-l" data-pivot="-34,-26" transform="{{c.t.armL}}"><ellipse class="s" fill="#e8905a" cx="-41" cy="-20" rx="7" ry="9.5" transform="rotate(25 -41 -20)"></ellipse></g>
+<g id="arm-r" data-part="arm-r" data-pivot="34,-26" transform="{{c.t.armR}}">
+<g id="hold-r" data-part="hold-r" data-pivot="41,-18" display="{{c.pH}}"><path d="M41 -18L56 -44" fill="none" stroke="#7a3e3e" stroke-width="9" stroke-linecap="round"></path><path d="M41 -18L56 -44" fill="none" stroke="#dca173" stroke-width="3" stroke-linecap="round"></path><rect class="s" fill="#cdc6d4" x="-11" y="-6" width="22" height="12" rx="3" transform="translate(56 -44) rotate(30)"></rect></g>
+<ellipse class="s" fill="#e8905a" cx="41" cy="-20" rx="7" ry="9.5" transform="rotate(-25 41 -20)"></ellipse>
+</g>
+</g>
+</svg>
+<span class="aid">{{c.id}}</span>
+</div>
+</sc-for>
+</section>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px">
+<section class="card">
+<h2 class="hd" style="font-size: 22px">바꾸지 않는 것</h2>
+<ul class="rule">
+<li>몸통 모양 path, 크기, 위치 (폭 80, 바닥 y = 2)</li>
+<li>파츠 id 9개와 소품 칸 2개(hold-r, carry), 그리는 순서</li>
+<li>회전 중심: body 0,0 · face 0,−34 · arm ±34,−26 · foot ±16,0</li>
+<li>팔 위치와 크기: 손이 망치·널빤지 쥐는 점과 맞물림</li>
+<li>눈 ±17,−38 · 코 0,−29 · 입 0,−25: 표정 층과 소품 자리가 여기에 맞춰짐</li>
+<li>viewBox −64 −126 128 138 · data-anchor 0,0 · data-face-box −44,−86,88,88</li>
+<li>포즈 표 POSES. 동물마다 따로 만들지 않습니다.</li>
+</ul>
+</section>
+<section class="card">
+<h2 class="hd" style="font-size: 22px">바꾸는 것</h2>
+<ul class="rule">
+<li>색 토큰 3~4개: 털 · 속(귀 안, 주둥이) · -shade(발) · 무늬</li>
+<li>ear-l / ear-r 안의 그림과 귀 회전 중심 (귀가 머리에 붙는 점)</li>
+<li>face 맨 앞의 무늬 (주둥이, 가면 등)</li>
+<li>꼬리: 몸 옆으로 보이면 tail에 그리고 회전 중심 지정, 안 보이면 빈 그룹</li>
+<li>earGain: 귀가 짧으면 1, 길면 1.5 ~ 2 (토끼 1.8)</li>
+<li>눈 주변 무늬가 어두우면 웃음·잠 눈 선을 --paper 색으로 (너구리)</li>
+</ul>
+</section>
+<section class="card">
+<h2 class="hd" style="font-size: 22px">고르는 기준</h2>
+<ul class="rule">
+<li>실루엣은 귀로 구분합니다. 둥근 귀 곰 · 긴 귀 토끼 · 세모 귀와 가면 너구리 · 귀 없는 펭귄 · 뾰족 귀와 큰 꼬리 여우</li>
+<li>털색은 기존 종과 명도가 달라야 합니다 (0.45배로 줄어도 구분)</li>
+<li>잘 맞는 후보: 코알라, 양, 햄스터, 고양이(여우와 귀가 비슷하니 무늬로 구분)</li>
+<li>안 맞는 후보: 기린, 뱀, 긴 부리 새, 개구리처럼 몸통이나 눈 자리가 다른 동물. 공통 리그를 못 쓰고 따로 만들어야 합니다.</li>
+</ul>
+</section>
+</div>
+
+<div style="display: grid; grid-template-columns: 560px minmax(0, 1fr); gap: 20px; flex-grow: 1">
+<section class="card">
+<div style="display: flex; align-items: baseline; gap: 12px"><h2 class="hd" style="font-size: 22px">템플릿</h2><span class="meta">★ 표시만 새로 그리고 나머지는 곰에서 복사</span></div>
+<pre class="pre">&lt;svg viewBox="-64 -126 128 138" data-asset-id="fox.stand"
+     data-anchor="0,0" data-face-box="-44,-86,88,88"&gt;
+  &lt;g id="foot-l" data-pivot="-16,0"&gt; ★ 발 색 &lt;/g&gt;
+  &lt;g id="foot-r" data-pivot="16,0"&gt;  ★ 발 색 &lt;/g&gt;
+  &lt;g id="body" data-pivot="0,0"&gt;
+    &lt;g id="tail"  data-pivot="★ 꼬리 붙는 점"&gt; 없으면 비움 &lt;/g&gt;
+    &lt;g id="ear-l" data-pivot="★ 귀 붙는 점"&gt;  ★ 귀 &lt;/g&gt;
+    &lt;g id="ear-r" data-pivot="★ x 부호 반전"&gt; ★ 귀 반전 &lt;/g&gt;
+    &lt;path d="M-40 -8C-44 -40 -30 -72 0 -72C30 -72 44 -40
+             40 -8C38 0 20 2 0 2C-20 2 -38 0 -40 -8Z"/&gt; ★ 색
+    &lt;g id="face" data-pivot="0,-34"&gt;
+      ★ 무늬 · 볼터치 ±29,-27 · 코 0,-29
+      &lt;g data-expr="normal | happy | talk | sleep"&gt; 곰에서 복사
+    &lt;/g&gt;
+    &lt;g id="accessory" data-pivot="부착점"&gt; 직업 소품 &lt;/g&gt;
+    &lt;g id="carry" data-pivot="0,-9"&gt;&lt;/g&gt;
+    &lt;g id="arm-l" data-pivot="-34,-26"&gt; ★ 팔 색 &lt;/g&gt;
+    &lt;g id="arm-r" data-pivot="34,-26"&gt;
+      &lt;g id="hold-r" data-pivot="41,-18"&gt;&lt;/g&gt; ★ 팔 색
+    &lt;/g&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;
+
+// 종 표에 한 줄 추가
+fox: { name: '여우', tint: '#e8e1f6',
+       earL: [-24, -60], earR: [24, -60],
+       tail: [32, -18], earGain: 1.2 }</pre>
+</section>
+
+<div style="display: flex; flex-direction: column; gap: 20px">
+<section class="card">
+<h2 class="hd" style="font-size: 22px">작업 순서</h2>
+<ol class="steps">
+<li>동물과 털색을 정하고 01 색상 토큰에 추가 (예: <span class="code">--fox-fur #e8905a</span>, <span class="code">--fox-in #fff4e6</span>, <span class="code">--fox-shade #c9733f</span>)</li>
+<li>곰 SVG를 복사하고 data-asset-id 앞부분을 새 종 이름으로 (<span class="code">fox.stand</span> …)</li>
+<li>귀, 얼굴 무늬, 꼬리를 새로 그리고 색을 바꿈. 귀·꼬리의 data-pivot은 몸에 붙는 점</li>
+<li>종 표(SPECIES)에 한 줄 추가. 슬롯 색은 팀원 순서가 정하므로 tint는 미리보기용</li>
+<li>7포즈 전부 돌려 보고 아래 확인 목록을 통과시킴</li>
+</ol>
+</section>
+<section class="card">
+<h2 class="hd" style="font-size: 22px">확인 목록</h2>
+<ul class="rule">
+<li>모든 포즈·프레임에서 귀와 꼬리가 viewBox 위쪽 −126 안에 있음 (환호 점프 −9 포함)</li>
+<li>망치 손잡이와 널빤지 끝이 손에 맞음 (팔 좌표를 안 바꿨다면 자동으로 맞음)</li>
+<li>프로필 영역 안에 눈·코·입이 다 들어옴</li>
+<li>0.45배(몸 폭 36)에서도 실루엣만으로 기존 종과 구분됨</li>
+<li>id, data-part, 회전 중심 이름이 곰과 한 글자도 다르지 않음</li>
+</ul>
+</section>
+<section class="card" style="background: #fbe9c4">
+<h2 class="hd" style="font-size: 20px">Claude Code에게 이렇게 요청</h2>
+<p style="margin: 0; font-size: 14px; line-height: 22px">“디자인 캔버스의 ‘08 · 동물 추가 가이드’대로 수달을 추가해 줘. 털색은 기존 종과 명도가 겹치지 않게 먼저 제안하고, 7포즈를 모두 돌려 본 뒤 확인 목록 결과를 알려 줘.”</p>
+</section>
+</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"animate":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":1460}}'>
+class Component extends DCLogic {
+componentDidMount() {
+this.timer = setInterval(() => {
+if (this.props.animate ?? true) {
+this.setState({ tick: ((this.state && this.state.tick) || 0) + 1 });
+}
+}, 150);
+}
+componentWillUnmount() {
+clearInterval(this.timer);
+}
+renderVals() {
+const animate = this.props.animate ?? true;
+const tick = (this.state && this.state.tick) || 0;
+const Z = [0, 0, 0];
+const armsCarry = { armL: [-4, 6, -25], armR: [4, 6, 25] };
+// 06 캐릭터 시트의 POSES와 같은 값 (원본은 Chars.dc.html)
+const POSES = [
+{ key: 'stand', label: '서기', rate: 5, frames: [
+{},
+{ body: [0, -1.5, 0], armL: [0, 0, 6], armR: [0, 0, -6], earL: [0, 0, -3], earR: [0, 0, 3] }
+] },
+{ key: 'walk', label: '걷기', rate: 2, frames: [
+{ footL: [0, -5, -12], body: [0, -2, -3], armL: [0, 0, 18], armR: [0, 0, 8], earL: [0, 0, -6], earR: [0, 0, -6], face: [-3, 0, 0], tail: [0, 0, 10] },
+{ face: [-3, 0, 0], armL: [0, 0, 4], armR: [0, 0, -4] },
+{ footR: [0, -5, 12], body: [0, -2, 3], armL: [0, 0, -8], armR: [0, 0, -18], earL: [0, 0, 6], earR: [0, 0, 6], face: [-3, 0, 0], tail: [0, 0, -10] },
+{ face: [-3, 0, 0], armL: [0, 0, 4], armR: [0, 0, -4] }
+] },
+{ key: 'hammer', label: '망치질', rate: 3, prop: 'hammer', frames: [
+{ body: [0, -1, -3], armR: [0, 0, -40], armL: [0, 0, 10], face: [3, 0, 0], earL: [0, 0, -4], earR: [0, 0, -4] },
+{ body: [1, 0, 4], armR: [0, 0, 70], armL: [0, 0, -4], face: [4, 1, 0], earL: [0, 0, 4], earR: [0, 0, 4], expr: 'h' }
+] },
+{ key: 'carry', label: '나르기', rate: 2, prop: 'plank', frames: [
+Object.assign({ footL: [0, -4, -10], body: [0, -1.5, -2] }, armsCarry),
+Object.assign({}, armsCarry),
+Object.assign({ footR: [0, -4, 10], body: [0, -1.5, 2] }, armsCarry),
+Object.assign({}, armsCarry)
+] },
+{ key: 'cheer', label: '환호', rate: 3, frames: [
+{ body: [0, -9, 0], footL: [0, -7, -10], footR: [0, -7, 10], armL: [0, -8, 120], armR: [0, -8, -120], earL: [0, 0, -14], earR: [0, 0, 14], tail: [0, 0, 15], expr: 'h' },
+{ body: [0, -2, 0], armL: [0, -6, 105], armR: [0, -6, -105], earL: [0, 0, -6], earR: [0, 0, 6], expr: 'h' }
+] },
+{ key: 'rest', label: '쉬기', rate: 6, frames: [
+{ body: [0, 1, -5], footL: [-2, 0, 0], footR: [2, 0, 0], armL: [2, 0, -10], armR: [-2, 0, 10], earL: [0, 0, -12], earR: [0, 0, 12], face: [-1, 2, 0], tail: [0, 0, -6], expr: 's' },
+{ body: [0, 2, -5], footL: [-2, 0, 0], footR: [2, 0, 0], armL: [2, 1, -10], armR: [-2, 1, 10], earL: [0, 0, -14], earR: [0, 0, 14], face: [-1, 2, 0], tail: [0, 0, -6], expr: 's' }
+] }
+];
+const sp = { name: '여우', tint: '#e8e1f6', earL: [-24, -60], earR: [24, -60], tail: [32, -18], earGain: 1.2 };
+const tf = (v, p) => 'translate(' + v[0] + ' ' + v[1] + ') rotate(' + v[2] + ' ' + p[0] + ' ' + p[1] + ')';
+const vis = (on) => (on ? 'inline' : 'none');
+const cellFor = (frame, meta) => {
+const g = (k) => frame[k] || Z;
+const ear = (k) => { const v = g(k); return [v[0], v[1], v[2] * sp.earGain]; };
+const ex = frame.expr || 'n';
+return {
+id: meta.id, aria: sp.name + ' ' + meta.label, bg: meta.bg, vb: meta.vb, w: meta.w, h: meta.h, shadow: vis(meta.shadow),
+t: {
+footL: tf(g('footL'), [-16, 0]), footR: tf(g('footR'), [16, 0]), body: tf(g('body'), [0, 0]),
+earL: tf(ear('earL'), sp.earL), earR: tf(ear('earR'), sp.earR), face: tf(g('face'), [0, -34]),
+armL: tf(g('armL'), [-34, -26]), armR: tf(g('armR'), [34, -26]), tail: tf(g('tail'), sp.tail)
+},
+eN: vis(ex === 'n'), eH: vis(ex === 'h'), eT: vis(ex === 't'), eS: vis(ex === 's'),
+pH: vis(meta.prop === 'hammer'), pP: vis(meta.prop === 'plank')
+};
+};
+const fox = POSES.map((pose) => {
+const fi = animate ? Math.floor(tick / pose.rate) % pose.frames.length : 0;
+return cellFor(pose.frames[fi], { id: 'fox.' + pose.key, label: pose.label, bg: '#f5ecd7', vb: '-64 -126 128 138', w: 128, h: 138, shadow: true, prop: pose.prop });
+});
+fox.push(cellFor({}, { id: 'fox.face', label: '프로필', bg: sp.tint, vb: '-44 -86 88 88', w: 112, h: 112, shadow: false }));
+return { fox: fox };
+}
+}
+</script>
+</body>
+</html>
