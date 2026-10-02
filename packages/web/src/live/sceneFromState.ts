@@ -1,10 +1,10 @@
 // VillageState → 그릴 장면 (순수). 상태는 정본(잔디) id, 그림은 바다 id — theme-map.sea.json으로 옮긴다 (05 문서 3.1).
 import {
   currentWorkplace,
-  hallFloor,
   isPlaza,
   isRoad,
   LEADER_ID,
+  levelOf,
   lotTiles,
   MAP,
   mapOffset,
@@ -36,8 +36,8 @@ export interface LiveScene {
   map: number;
   /** 상태 좌표 → 그리기 좌표로 더하는 양 (4·ring). 상태의 부지·시설·집 좌표를 쓸 때 더한다 */
   off: number;
-  /** 장면 건물. 일터(`work:<일터 id>`)는 floor(0~4)·badge(임시 층 배지 글자)·foot 3(큰 건물: x·y = 3×3 가운데 − 1) */
-  buildings: (SceneBuilding & { id: string; floor?: number; badge?: string; foot?: 3 })[];
+  /** 장면 건물. 일터(`work:<일터 id>`)는 floor(0~4). foot 3 = 3×3 그림(큰 건물·시청·랜드마크: x·y = 3×3 가운데 − 1) */
+  buildings: (SceneBuilding & { id: string; floor?: number; foot?: 3 })[];
   props: SceneProp[];
   /** MAP×MAP, 1 = 지나갈 수 없음 (부지, 광장 가구) */
   blocked: Uint8Array;
@@ -73,23 +73,8 @@ const PLAZA: SceneProp[] = [
   { x: 9, y: 10, kind: 'jellypost' },
   { x: 9, y: 13, kind: 'jellypost' },
 ];
-// 공원 임시 그림 (06 문서 14장·6.4, M15 전): 3×3에 놓는 그림 전용 소품 — 바다 id 그대로(DECOR처럼, 상태엔 종류 `park`만).
-// 앞 가운데 (1, 2)는 들어가는 길로 비운다
-const PARK: readonly [number, number, string][] = [
-  [0, 0, 'kelp'],
-  [1, 0, 'seagrass'],
-  [2, 0, 'kelp'],
-  [0, 1, 'anemone'],
-  [1, 1, 'bench'],
-  [2, 1, 'anemone'],
-  [0, 2, 'seagrass'],
-  [2, 2, 'braincoral'],
-];
-// 랜드마크 임시 그림 (6.4): 2층 몸통 + 지붕을 3×3 가운데 + 이름 배지. 정본 몸통·지붕 id — 그릴 때 seaId로 바다 그림
-const LANDMARK = {
-  landmark: { body: 'stone-2f', roof: 'flat' }, // 현무암 + 소라 = 등대
-  landmark2: { body: 'brick-2f', roof: 'hip' }, // 난파선 목재 + 성게 돔 = 소라 탑
-} as const;
+// 공원 (06 문서 14.1): 3×3 한 장(prop.park). 앞 가운데 (1, 2)는 들어가는 길이라 지나간다
+const PARK_PATH = [1, 2] as const;
 // 바닥 장식 (02 문서 8.1 + 바다 extras). 같은 종류를 여러 번 = 가중치
 const DECOR = [
   'kelp',
@@ -163,7 +148,21 @@ export function workplaceName(s: VillageState, cfg: GameConfig, b: Workplace): s
 export const siteStage = (s: VillageState, b: Workplace): Stage =>
   (s.runs[s.members[b.memberId]?.currentRunId ?? '']?.toolCalls ?? 0) > 0 ? 'foundation' : 'planned';
 
-/** 일터 모양 (06 문서 5.3·14장): 2층부터 2층 몸통, 3층·큰 건물은 임시 배지, 주인이 일하면 비계, 1층부터 얼굴 간판·이름표 */
+type JobPreset = Pick<GameConfig['fallbackPreset'], 'body1f' | 'body2f' | 'roof' | 'sign'>;
+/** 직업·층 → 그림 (06 문서 14.1): 3층 = 2층 재질의 3층 몸통, 큰 건물 = big-<재질> + big-<지붕> + 장식 big-<간판 종류>. 갤러리도 쓴다 */
+export function jobLook(preset: JobPreset, floor: number, big: boolean) {
+  const two = seaId('body', preset.body2f); // wreck-2f | basalt-2f
+  const roof = seaId('roof', preset.roof);
+  if (big)
+    return { body: `big-${two.replace(/-2f$/, '')}`, roof: `big-${roof}`, deco: `big-${preset.sign}`, sign: 'none' };
+  const body = floor >= 3 ? two.replace(/2f$/, '3f') : floor >= 2 ? two : seaId('body', preset.body1f);
+  return { body, roof, deco: undefined, sign: preset.sign };
+}
+
+/**
+ * 일터 모양 (06 문서 5.3·14.1): 1층·2층 = 직업 몸통, 3층 = 2층 재질의 3층 몸통, 큰 건물 = 3×3 몸통 + 큰 지붕 + 직업 장식.
+ * 주인이 일하면 비계, 1층부터 얼굴 간판·이름표
+ */
 function workLook(b: Workplace, s: VillageState, cfg: GameConfig) {
   const m = s.members[b.memberId];
   const preset = cfg.jobPresets.find((p) => p.id === m?.job) ?? cfg.fallbackPreset;
@@ -171,15 +170,12 @@ function workLook(b: Workplace, s: VillageState, cfg: GameConfig) {
   const big = b.floor >= cfg.workplace.levels.length;
   const stage: Stage = b.floor > 0 ? 'done' : siteStage(s, b);
   return {
-    body: seaId('body', b.floor >= 2 ? preset.body2f : preset.body1f),
-    roof: seaId('roof', preset.roof),
-    sign: preset.sign,
+    ...jobLook(preset, b.floor, big),
     slot: m ? slotTone(m.slot) : ('x' as const),
     stage,
     scaffold: working && b.floor > 0 && !big ? true : undefined,
     departed: m?.departed ? true : undefined,
     owner: m && b.floor > 0 ? ownerOf(m, m.name) : undefined,
-    badge: b.floor >= 3 ? t(`workplace.floor.${Math.min(b.floor, 4)}`) : undefined,
   };
 }
 
@@ -230,26 +226,23 @@ export function sceneFromState(s: VillageState, cfg: GameConfig): LiveScene {
         }),
       });
   }
-  // 시청 (06 문서 6.3, 14장 임시 그림 = 회관): 1·2층은 부지 왼쪽 위 2×2, 3층은 2층 + 배지, 해저 궁전은 3×3 가운데 + 배지
+  // 시청 (06 문서 6.3·14.1): 레벨의 시대 그림을 3×3 가운데에. 깃발은 팀장 색, 간판은 팀장 얼굴
   if (s.hall) {
-    const lead = cfg.jobPresets.find((p) => p.id === 'lead') ?? cfg.fallbackPreset;
-    const f = hallFloor(s, cfg);
     const p = sh(s.hall);
     const leader = s.members[LEADER_ID];
     buildings.push({
       id: 'hall',
-      ...(f >= 4 ? { x: p.x + 0.5, y: p.y + 0.5, foot: 3 as const } : p),
-      floor: f,
-      body: seaId('body', f >= 2 ? lead.body2f : lead.body1f),
-      roof: seaId('roof', lead.roof),
-      sign: lead.sign,
+      x: p.x + 0.5,
+      y: p.y + 0.5,
+      foot: 3,
+      body: `hall-${levelOf(s, cfg).era}`,
+      sign: 'none',
       slot: leader ? slotTone(leader.slot) : 'x',
       stage: 'done',
       owner: leader ? ownerOf(leader, t('owner.hall')) : undefined,
-      badge: f >= 4 ? t('works.palace') : f === 3 ? t('workplace.floor.3') : undefined,
     });
   }
-  // 랜드마크 (6.2): 3×3 가운데 임시 그림 + 이름 배지
+  // 랜드마크 (6.2·14.1): 3×3 가운데 한 장 (등대 body.landmark, 소라 탑 body.landmark2)
   for (const w of s.publicWorks)
     if (w.lot && (w.kind === 'landmark' || w.kind === 'landmark2')) {
       const p = sh(w.lot);
@@ -258,12 +251,9 @@ export function sceneFromState(s: VillageState, cfg: GameConfig): LiveScene {
         x: p.x + 0.5,
         y: p.y + 0.5,
         foot: 3,
-        body: seaId('body', LANDMARK[w.kind].body),
-        roof: seaId('roof', LANDMARK[w.kind].roof),
-        sign: 'none',
+        body: w.kind,
         slot: 'x',
         stage: 'done',
-        badge: t(`works.${w.kind}`),
       });
     }
 
@@ -302,7 +292,7 @@ export function sceneFromState(s: VillageState, cfg: GameConfig): LiveScene {
     !blocked[y * M + x] &&
     !taken[y * M + x] &&
     !(founded && (isRoad(x - off, y - off) || isPlaza(x - off, y - off))); // 빈 섬이면 길 자리에도 장식 (길이 생기면 치운다)
-  // 공공시설 (06 문서 6.2·6.4): 소품은 규칙이 정한 칸, 공원은 3×3에 임시 소품. 소품 칸은 못 지나간다 (공원 앞 가운데는 지나감)
+  // 공공시설 (06 문서 6.2·14.1): 소품은 규칙이 정한 칸, 공원은 3×3 한 장. 소품 칸은 못 지나간다 (공원 앞 가운데는 지나감)
   for (const w of s.publicWorks) {
     if (w.spot) {
       const x = w.spot.x + off;
@@ -311,12 +301,9 @@ export function sceneFromState(s: VillageState, cfg: GameConfig): LiveScene {
       mark(blocked, x, y);
     } else if (w.kind === 'park' && w.lot) {
       const p = sh(w.lot);
-      for (const [dx, dy, kind] of PARK) {
-        const x = p.x + dx;
-        const y = p.y + dy;
-        props.push(SWAY.has(kind) ? { x, y, kind, phase: (x + y) % 2 } : { x, y, kind });
-        mark(blocked, x, y);
-      }
+      props.push({ ...p, kind: 'park' });
+      for (const [x, y] of lotTiles({ ...p, size: 3 }))
+        if (x !== p.x + PARK_PATH[0] || y !== p.y + PARK_PATH[1]) mark(blocked, x, y);
     }
   }
   // 주인이 일하는 일터 앞마당의 자재 더미 (캔버스 바다 09): 3×3 부지 오른쪽 줄 뒤 칸 (x + 2, y) — 자기 부지라 늘 비어 있고,

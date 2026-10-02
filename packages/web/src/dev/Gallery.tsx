@@ -1,6 +1,12 @@
 // /dev/gallery — 캔버스 바다 06 건물 키트 · 07 공사 단계 · 08 가구·소품 보드와 같은 배열 (dc-import 목록 그대로)
+import { defaultConfig } from '@tycoon/core';
 import { Building } from '../assets/sea/Building';
 import { Prop, type Slot } from '../assets/sea/Asset';
+import { jobLook } from '../live/sceneFromState';
+
+// M15 새 그림 (06 문서 14.1): 직업 5종 성장 1층 → 2층 → 3층 → 큰 건물, 시청 시대 4, 랜드마크 2, 공원
+const JOBS = [...defaultConfig.jobPresets, defaultConfig.fallbackPreset];
+const ERAS = ['village', 'town', 'city', 'capital'];
 
 const bodies = ['shell-1f', 'coral-1f', 'wreck-2f', 'basalt-2f'];
 const signs: [string, string, Slot][] = [
@@ -121,6 +127,33 @@ export function Gallery() {
         </Cell>
         <Cell id="done + scaffold">
           <Building body="basalt-2f" roof="dome" sign="guard" slot={3} scaffold />
+        </Cell>
+      </Row>
+      {JOBS.map((p, i) => (
+        <Row key={p.id} title={`M15 · 일터 성장 — ${p.label}`}>
+          {[1, 2, 3, 4].map((f) => {
+            const look = jobLook(p, f, f >= 4);
+            return (
+              <Cell key={f} id={`${f >= 4 ? '큰 건물' : `${f}층`} · ${look.body}`}>
+                <Building {...look} slot={((i % 6) + 1) as Slot} />
+              </Cell>
+            );
+          })}
+        </Row>
+      ))}
+      <Row title="M15 · 시청 (시대) · 랜드마크 · 공원">
+        {ERAS.map((e) => (
+          <Cell key={e} id={`body.hall-${e}`}>
+            <Building body={`hall-${e}`} slot={4} />
+          </Cell>
+        ))}
+        {['landmark', 'landmark2'].map((b) => (
+          <Cell key={b} id={`body.${b}`}>
+            <Building body={b} slot="x" />
+          </Cell>
+        ))}
+        <Cell id="prop.park">
+          <Prop kind="prop.park" />
         </Cell>
       </Row>
       <Row title="08 · 가구">

@@ -67,12 +67,8 @@
   border-bottom: var(--ui-line) solid var(--ink);
   background: var(--field);
 }
-.gs-card__illo > svg {
+.gs-card__illo > div {
   flex-shrink: 0;
-  margin-top: -84px;
-}
-.gs-card__illo--2f > svg {
-  margin-top: -72px;
 }
 .gs-card__body {
   display: flex;

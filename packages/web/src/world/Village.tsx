@@ -1,6 +1,6 @@
 // 정적 마을 장면: 바닥 → 깊이 정렬된 건물·소품·캐릭터 → 물 효과 → 월드 UI (02 문서 7.2, 05 문서 3.4)
 import { memo, useMemo, type ReactNode } from 'react';
-import { Building, type BuildingProps } from '../assets/sea/Building';
+import { bodyBox, Building, type BuildingProps } from '../assets/sea/Building';
 import { asset, Prop } from '../assets/sea/Asset';
 import { Critter, type CritterProps } from '../render/Critter';
 import { byDepth, iso, world } from '../render/iso';
@@ -63,10 +63,11 @@ export const DEPARTED_OPACITY = 0.55;
 // data-building = 장면 건물 id: LiveVillage가 골조 clip을 DOM으로 올린다 (M6)
 const BuildingAt = memo(function BuildingAt({ x, y, map, id, departed, ...b }: SceneBuilding & { map: number }) {
   const c = iso(x + 1, y + 1, map);
+  const { ax, ay } = bodyBox(b.body); // 2×2 (80, 208) · 3×3 (112, 256)
   return (
     <g
       data-building={id}
-      transform={`translate(${c.sx - 80} ${c.sy - 208})`}
+      transform={`translate(${c.sx - ax} ${c.sy - ay})`}
       opacity={departed ? DEPARTED_OPACITY : undefined}
     >
       <Building {...b} />
@@ -74,8 +75,8 @@ const BuildingAt = memo(function BuildingAt({ x, y, map, id, departed, ...b }: S
   );
 });
 
-/** 얼굴 간판 자리 = 부지 가운데 기준 sign.* 판 가운데 (1층 왼쪽 벽, matrix(1 0.5 0 1 54 221)의 (12, −25) → (66, 202) − (80, 208)) */
-export const SIGN_AT = { dx: -14, dy: -6, size: 34 };
+/** 얼굴 간판 지름. 자리는 몸통 에셋마다 (bodyBox().sign: 2×2 = 1층 왼쪽 벽 −14,−6, 3×3 = `data-sign`) */
+export const SIGN_SIZE = 34;
 
 /**
  * 건물 그림 + 주인 얼굴 간판 (06 문서 7장, D25): 일터 상세·격자 카드도 마을(SignAt)과 같은 자리에 얼굴, 그림 간판은 빼고.
@@ -83,11 +84,12 @@ export const SIGN_AT = { dx: -14, dy: -6, size: 34 };
  */
 export function OwnedBuilding({ owner, scale = 1, ...b }: BuildingProps & { owner?: Owner }) {
   if (!owner) return <Building {...b} scale={scale} />;
+  const { w, h, ax, ay, sign } = bodyBox(b.body);
   return (
-    <svg width={160 * scale} height={256 * scale} aria-hidden="true">
+    <svg width={w * scale} height={h * scale} aria-hidden="true">
       <Building {...b} sign="none" scale={scale} />
-      <g transform={`translate(${(80 + SIGN_AT.dx) * scale} ${(208 + SIGN_AT.dy) * scale})`}>
-        <OwnerSign owner={owner} size={SIGN_AT.size * scale} />
+      <g transform={`translate(${(ax + sign.dx) * scale} ${(ay + sign.dy) * scale})`}>
+        <OwnerSign owner={owner} size={SIGN_SIZE * scale} />
       </g>
     </svg>
   );
@@ -98,16 +100,15 @@ const SignAt = memo(function SignAt({
   x,
   y,
   map,
+  body,
   departed,
   ...owner
-}: Owner & { x: number; y: number; map: number; departed?: boolean }) {
+}: Owner & { x: number; y: number; map: number; body: string; departed?: boolean }) {
   const c = iso(x + 1, y + 1, map);
+  const { sign } = bodyBox(body);
   return (
-    <g
-      transform={`translate(${c.sx + SIGN_AT.dx} ${c.sy + SIGN_AT.dy})`}
-      opacity={departed ? DEPARTED_OPACITY : undefined}
-    >
-      <OwnerSign owner={owner} size={SIGN_AT.size} />
+    <g transform={`translate(${c.sx + sign.dx} ${c.sy + sign.dy})`} opacity={departed ? DEPARTED_OPACITY : undefined}>
+      <OwnerSign owner={owner} size={SIGN_SIZE} />
     </g>
   );
 });
@@ -143,7 +144,7 @@ export function staticEnts(buildings: SceneBuilding[], props: SceneProp[], M: nu
     const el = owner ? (
       <>
         <BuildingAt {...b} sign="none" map={M} />
-        <SignAt {...owner} x={b.x} y={b.y} map={M} departed={b.departed} />
+        <SignAt {...owner} x={b.x} y={b.y} map={M} body={b.body} departed={b.departed} />
       </>
     ) : (
       <BuildingAt {...b} map={M} />

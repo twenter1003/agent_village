@@ -114,6 +114,26 @@ export const Ground = memo(function Ground({
             style={{ fill: paved ? 'var(--metal-top)' : 'var(--gravel-top)' }}
             points={pts(M, [mid - 1, 0], [mid + 1, 0], [mid + 1, M], [mid - 1, M])}
           />
+          {/* 길 포장 이음줄 (06 문서 14.1): 가운데 줄 + 두 줄 돌을 반 칸씩 엇갈려. 광장이 그 위를 덮는다 */}
+          {paved && (
+            <path
+              d={[
+                `M${pts(M, [0, mid], [M, mid])}M${pts(M, [mid, 0], [mid, M])}`,
+                ...Array.from(
+                  { length: M },
+                  (_, u) =>
+                    `M${pts(M, [u, mid - 1], [u, mid])}M${pts(M, [u + 0.5, mid], [u + 0.5, mid + 1])}` +
+                    `M${pts(M, [mid - 1, u], [mid, u])}M${pts(M, [mid, u + 0.5], [mid + 1, u + 0.5])}`,
+                ),
+              ]
+                .join('')
+                .replace(/ /g, 'L')}
+              fill="none"
+              style={{ stroke: 'var(--metal-l)' }}
+              strokeWidth={1.5}
+              strokeLinecap="round"
+            />
+          )}
           <polygon
             style={{ fill: 'var(--metal-top)' }}
             points={pts(M, [mid - 2, mid - 2], [mid + 2, mid - 2], [mid + 2, mid + 2], [mid - 2, mid + 2])}

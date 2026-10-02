@@ -100,7 +100,7 @@ test.afterAll(async () => {
   if (pid) await post({ hook_event_name: 'SessionEnd' });
 });
 
-test('레벨: 시청 → Lv.1 소품 → 레벨 칸 → 정산에서 Lv.4(알림·섬·같은 정산 3층·시청 2층) → 공원·길 포장 → Lv.10 해저 궁전·랜드마크 둘 → 경제 패널', async ({
+test('레벨: 시청 → Lv.1 소품 → 레벨 칸 → 정산에서 Lv.4(알림·섬·같은 정산 3층·시청 산호 읍) → 공원·길 포장 → Lv.10 해저 궁전·랜드마크 둘 → 경제 패널', async ({
   page,
 }) => {
   test.setTimeout(150_000);
@@ -112,7 +112,7 @@ test('레벨: 시청 → Lv.1 소품 → 레벨 칸 → 정산에서 Lv.4(알림
 
   // 1) 첫 일(도구 1번 = 1점, Lv.2 기준 2점 아래) = 마을을 세움 → 시청(회관 1층) + 팀장 얼굴 간판 "시청"
   await work('backend-dev', 1);
-  await expect.poll(hallBody).toMatch(/-1f$/);
+  await expect.poll(hallBody).toBe('body.hall-village'); // 시대 그림 (06 문서 14.1)
   await expect(page.locator('[data-name-tag="@leader"]').filter({ hasText: '시청' })).toHaveCount(1);
   await expect(level.locator('.tb__prog-title')).toHaveText('Lv.1 모래섬 마을');
 
@@ -152,7 +152,7 @@ test('레벨: 시청 → Lv.1 소품 → 레벨 칸 → 정산에서 Lv.4(알림
   expect(s1.ring).toBeGreaterThanOrEqual(ring0 + 3);
   expect(s1.buildings['w1:backend-dev']).toMatchObject({ floor: 3, waiting: null }); // 큰 건물 30점까지 게이지가 덜 참
   await expect(level.locator('.tb__prog-title')).toHaveText('Lv.4 산호 읍');
-  await expect.poll(hallBody).toMatch(/-2f$/);
+  await expect.poll(hallBody).toBe('body.hall-town');
   await expect(page.locator('svg[data-paved]')).toHaveCount(1);
   await page.getByRole('button', { name: /^알림 \d+개$/ }).click();
   const notes = page.locator('.tb__notif-list');
@@ -163,7 +163,7 @@ test('레벨: 시청 → Lv.1 소품 → 레벨 칸 → 정산에서 Lv.4(알림
   await shot(page, 'm14-town.png');
   await zoomShot(page, 6, 'm14-town-zoom.png');
 
-  // 6) 일 12번 더 → 점수 18 → Lv.10: 시청 해저 궁전(3×3 가운데 + 배지), 두 번째 랜드마크(공사비에 포함), 등대(Lv.7에 열림)
+  // 6) 일 12번 더 → 점수 18 → Lv.10: 시청 해저 궁전, 두 번째 랜드마크(공사비에 포함), 등대(Lv.7에 열림)
   await work('backend-dev', 12);
   await withClock(`${SESSION}-clock-3`, async () => {
     await expect.poll(async () => (await state()).level, { timeout: DAY_MS * 4 }).toBe(10);
@@ -175,12 +175,28 @@ test('레벨: 시청 → Lv.1 소품 → 레벨 칸 → 정산에서 Lv.4(알림
   await expect(level.locator('.tb__sub')).toHaveText('최고 레벨');
   await expect(page.locator('[data-building="public:landmark"]')).toBeAttached();
   await expect(page.locator('[data-building="public:landmark2"]')).toBeAttached();
-  await expect(page.getByText('해저 궁전', { exact: true })).toBeVisible();
+  await expect.poll(hallBody).toBe('body.hall-capital');
   if (SHOTS) {
     // 토스트(5초)가 걷힌 뒤: 섬이 넓어질 때 다시 맞춘 전체 보기(02 문서 7.5)라 공원·길 포장·등대·소라 탑·해저 궁전이 한 장에
     await expect(page.locator('.ts .ui-toast')).toHaveCount(0, { timeout: 8000 });
     await shot(page, 'm14-capital.png');
     await zoomShot(page, 11, 'm14-capital-zoom.png');
+  }
+
+  // 6-2) 일 12번 더 → 점수 30: 일터 큰 건물 = 3×3 몸통 + 큰 지붕 + 공방 장식 (06 문서 14.1), 격자 카드·일터 상세도 같은 그림
+  await work('backend-dev', 12);
+  await expect.poll(async () => (await state()).buildings['w1:backend-dev']?.floor).toBe(4);
+  const bigWork = page.locator('[data-building="work:w1:backend-dev"]');
+  for (const id of ['body.big-wreck', 'roof.big-scallop', 'deco.big-workshop'])
+    await expect(bigWork.locator(`[data-asset-id="${id}"]`)).toBeAttached();
+  if (SHOTS) {
+    await page.goto(`/?project=${pid}&grid`);
+    await expect(page.locator('.gs-card__illo [data-asset-id="body.big-wreck"]')).toBeVisible();
+    await shot(page, 'm15-grid.png');
+    await page.goto(`/?project=${pid}&building=${encodeURIComponent('w1:backend-dev')}`);
+    await expect(page.locator('.bd-site [data-asset-id="body.big-wreck"]')).toBeVisible();
+    await shot(page, 'm15-detail-big.png');
+    await page.goto(`/?project=${pid}`);
   }
 
   // 7) 레벨 칸 → 경제 패널: 기금 흐름 "레벨업·공공시설"(나감), 지금 기금 = 상태. 시청 누르기도 경제 패널

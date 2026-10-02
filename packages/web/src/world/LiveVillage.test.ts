@@ -172,13 +172,16 @@ test('층이 오르면 거품이 잠깐, 새 일터 부지도 (처음 그린 장
   act(() => root.unmount());
 });
 
-test('임시 층 배지는 labels와 상관없이, 떠난 주인이면 건물처럼 흐리게', () => {
+test('3층 일터 = 3층 몸통 + 지붕 (배지 없음, 06 문서 14.1), 떠난 주인이면 건물처럼 흐리게', () => {
   const s = golden();
   Object.assign(s.buildings['w1:qa-reviewer'] ?? {}, { floor: 3 });
   Object.assign(s.members['qa-reviewer'] ?? {}, { departed: true });
   const { div, root } = mount(s, { labels: false });
-  const badge = div.querySelector<HTMLElement>('[data-floor-badge]');
-  expect([badge?.textContent, badge?.style.opacity]).toEqual(['3층', '0.55']);
+  const b = div.querySelector<SVGGElement>('[data-building="work:w1:qa-reviewer"]');
+  expect(b?.querySelector('[data-asset-id$="-3f"]')).not.toBeNull();
+  expect(b?.querySelector('[data-asset-id^="roof."]')).not.toBeNull();
+  expect(b?.getAttribute('opacity')).toBe('0.55');
+  expect(div.querySelector('[data-floor-badge]')).toBeNull();
   act(() => root.unmount());
 });
 
@@ -226,11 +229,13 @@ test('캐릭터 누르기: 1.2초 버둥(flail)·말풍선, 외부인도 / 끌�
   run(1);
   expect(ui('backend-dev')?.hasAttribute('data-poked')).toBe(true);
   expect(pose('backend-dev')).toBe('seal.flail');
+  expect(div.querySelector('[data-walker="backend-dev"] [data-sweat]')).not.toBeNull(); // 땀방울 (06 문서 14.1)
   expect(ui('backend-dev')?.querySelector('[data-poke-say]')?.textContent).toBe('막힘 · 권한 기다림'); // 골든 backend-dev: 권한 요청으로 막힘
   expect(ui('backend-dev')?.querySelector('[aria-label="막힘"]')).toBeNull(); // '!'는 말풍선이 대신
   run(12); // 1.2초 뒤
   expect(ui('backend-dev')?.hasAttribute('data-poked')).toBe(false);
   expect(pose('backend-dev')).not.toBe('seal.flail');
+  expect(div.querySelector('[data-walker="backend-dev"] [data-sweat]')).toBeNull();
 
   act(() => hitOf('v1')?.click()); // 외부인
   expect(onSelect).toHaveBeenCalledTimes(1);

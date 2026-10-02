@@ -218,7 +218,8 @@
   font: inherit;
   cursor: pointer;
 }
-.tb__level .tb__prog-title {
+.tb__level .tb__prog-title,
+.tb__level [data-icon] {
   flex-shrink: 0;
 }
 .tb__level .tb__sub {

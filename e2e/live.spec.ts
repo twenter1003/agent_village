@@ -176,8 +176,8 @@ test('dev 화면 스냅샷 (SHOTS 있을 때만)', async ({ page }) => {
     await page.goto(`/dev/${p}`);
     await page.screenshot({ path: join(SHOTS ?? '', `dev-${p}.png`), fullPage: true });
   }
-  // 일터 임시 그림 (06 문서 14장): 마을 레벨 7, m1~m8 일터가 층 1·2·3·4·0·1·2·3 — 3층·큰 건물 배지, 일하는 주인의 비계·게이지
+  // 일터 층 (06 문서 14.1): 마을 레벨 7, m1~m8 일터가 층 1·2·3·4·0·1·2·3 — 3층 몸통·큰 건물 3×3, 일하는 주인의 비계·게이지
   await page.goto('/dev/village?live=stress');
-  await expect(page.locator('[data-floor-badge]').first()).toBeVisible();
+  await expect(page.locator('[data-asset-id^="body.big-"]').first()).toBeAttached();
   await page.screenshot({ path: join(SHOTS ?? '', 'dev-floors.png') });
 });

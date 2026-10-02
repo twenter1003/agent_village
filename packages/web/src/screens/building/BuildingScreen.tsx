@@ -11,14 +11,15 @@ import {
   type VillageState,
 } from '@tycoon/core';
 import { useEffect, useId, useRef, useState, type FormEvent, type ReactNode } from 'react';
-import sea from '../../../../../design/theme-map.sea.json';
 import { Prop } from '../../assets/sea/Asset';
+import { bodyBox } from '../../assets/sea/Building';
 import { t } from '../../i18n';
 import { Icon } from '../../icons/Icon';
 import { poseFor, workSite } from '../../live/movement';
 import {
   activeSite,
   actorsFromState,
+  jobLook,
   ownerOf,
   siteStage,
   toAccessory,
@@ -46,16 +47,14 @@ const SPOTS = [
 /** 캔버스 좌표 → 장면 가운데(.bd-site) 기준 px. 건물 가운데(80)가 장면 가운데 */
 const at = (x: number, y: number) => ({ left: (x - 80) * S, top: y * S });
 
-const seaOf = (g: 'body' | 'roof', id: string) => (sea[g] as Record<string, string>)[id] ?? id;
 // 점수·잔고는 내림: 문턱과 견주는 값이라 74.8을 "75 / 75"로 보이면 ✗와 어긋난다 (06 문서 5.4)
 const fmt = (n: number) => Math.floor(n).toLocaleString('ko-KR');
 const FLOORS = [1, 2, 3, 4] as const;
 
-/** 프리셋 → 바다 건물 모양 + 종류 이름. 마을(sceneFromState workLook)과 같은 규칙: 2층부터 2층 몸통 */
+/** 프리셋 → 바다 건물 모양 + 종류 이름. 마을(sceneFromState workLook)과 같은 규칙 jobLook (06 문서 14.1) */
 export function look(cfg: GameConfig, presetId: string | undefined, floor: number) {
   const p = cfg.jobPresets.find((x) => x.id === presetId) ?? cfg.fallbackPreset;
-  const body = floor >= 2 ? p.body2f : p.body1f;
-  return { body: seaOf('body', body), roof: seaOf('roof', p.roof), sign: p.sign, type: t(`buildings.${p.building}`) };
+  return { ...jobLook(p, floor, floor >= cfg.workplace.levels.length), type: t(`buildings.${p.building}`) };
 }
 
 function dur(ms: number) {
@@ -311,6 +310,7 @@ export function BuildingScreen({ state: s, cfg, projectId, buildingId, onBack }:
   const m = s.members[b.memberId];
   const name = workplaceName(s, cfg, b);
   const shape = look(cfg, m?.job, b.floor);
+  const box = bodyBox(shape.body);
   const working = !!m?.currentRunId;
   const big = b.floor >= cfg.workplace.levels.length;
   // 마을(sceneFromState workLook)과 같은 그림: 0층은 도구 전 예정 부지 → 기초, 1층부터 완공 + 주인이 일하면 비계·자재 더미
@@ -391,7 +391,8 @@ export function BuildingScreen({ state: s, cfg, projectId, buildingId, onBack }:
               <Prop kind="prop.materials" scale={S} />
             </div>
           )}
-          <div style={at(0, 0)} data-floor={b.floor}>
+          {/* 3×3(큰 건물)은 기준점(112, 256)을 2×2 기준점(80, 208)에 맞춘다 — 바닥 판이 4×4라 들어간다 */}
+          <div style={at(80 - box.ax, 208 - box.ay)} data-floor={b.floor}>
             <OwnedBuilding
               {...shape}
               slot={m ? slotTone(m.slot) : 'x'}

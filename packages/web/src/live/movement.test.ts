@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { isPlaza, isRoad, makeConfig, MAP, type VillageState } from '@tycoon/core';
 import { expect, test } from 'vitest';
 import { advance, findPath, memberViews, poseFor, retarget, ROCK_LIFT, step, targets } from './movement';
-import { actorsFromState, sceneFromState } from './sceneFromState';
+import { actorsFromState, frontTiles, sceneFromState } from './sceneFromState';
 import { fullVillage } from '../test/village';
 
 /** 다 자란 마을 (시설 3채·슬롯 순 집·모두 입주): 그리기·이동 논리만 본다 — 자라는 순서는 core growth.test */
@@ -202,7 +202,7 @@ test('포즈: 상태 → 포즈 (01 문서 4장)', () => {
   expect(poseFor({ ...a, visitor: { kind: 'general-purpose', facility: 'agency' } }, false, 0)).toBe('carry');
 });
 
-test('일하는 팀장은 시청 앞마당 (06 문서 5.9·6.3), 카드 곳 "시청". 시청이 없으면 지금처럼', () => {
+test('일하는 팀장은 시청 앞 (06 문서 5.9·6.3·14.1), 카드 곳 "시청". 시청이 없으면 지금처럼', () => {
   const s = golden();
   s.facilities = {};
   s.hall = { x: 3, y: 3, size: 3 };
@@ -213,7 +213,9 @@ test('일하는 팀장은 시청 앞마당 (06 문서 5.9·6.3), 카드 곳 "시
   const t = targets(s, sc, actorsFromState(s, cfg, 0)).get('@leader');
   if (!t) throw new Error('목적지');
   const [x, y] = tileOf(t);
-  expect([x - sc.off, y - sc.off].every((v) => v >= 3 && v <= 5)).toBe(true); // 3×3 앞마당
+  // 시청 그림이 3×3을 다 차지한다 (06 문서 14.1) → 3×3 부지 바로 앞 칸
+  const front = frontTiles({ x: 3 + sc.off, y: 3 + sc.off }, sc.map, 3).map(([fx, fy]) => `${fx},${fy}`);
+  expect(front).toContain(`${x},${y}`);
   expect(memberViews(s, cfg, 0).get('@leader')?.place).toBe('hall');
   s.hall = null;
   expect(memberViews(s, cfg, 0).get('@leader')?.place).not.toBe('hall');

@@ -148,7 +148,7 @@ test('일터 종류 = 주인의 지금 직업 (바다 id), 떠난 팀원은 집�
   expect(actorsFromState(s, cfg, s.clock.now).map((a) => a.id)).not.toContain('qa-reviewer');
 });
 
-test('층 모양: 2층부터 2층 몸통, 3층·큰 건물은 임시 배지, 큰 건물은 3×3 가운데·3×3 막힘, 주인이 일하면 비계·게이지·자재 더미', () => {
+test('층 모양 (06 문서 14.1): 2층 몸통 → 같은 재질 3층 몸통 → 큰 건물 3×3(큰 지붕 + 직업 장식, 가운데·3×3 막힘), 주인이 일하면 비계·게이지·자재 더미', () => {
   const s = golden();
   const qa = s.buildings['w1:qa-reviewer'];
   if (!qa) throw new Error('w1:qa-reviewer');
@@ -157,10 +157,20 @@ test('층 모양: 2층부터 2층 몸통, 3층·큰 건물은 임시 배지, 큰
     return sceneFromState(s, cfg).buildings.find((b) => b.id === 'work:w1:qa-reviewer');
   };
   expect(look(1)?.body.endsWith('1f')).toBe(true);
-  expect(look(2)?.body.endsWith('2f')).toBe(true);
-  expect(look(2)?.badge).toBeUndefined();
-  expect(look(3)).toMatchObject({ badge: '3층', x: 10, y: 10 });
-  expect(look(4)).toMatchObject({ badge: '큰 건물', x: 10.5, y: 10.5, foot: 3 });
+  const f2 = look(2);
+  expect(f2?.body).toMatch(/^(wreck|basalt)-2f$/);
+  const material = f2?.body.replace('-2f', '');
+  expect(look(3)).toMatchObject({ body: `${material}-3f`, roof: f2?.roof, x: 10, y: 10 });
+  expect(look(3)?.foot).toBeUndefined();
+  expect(look(4)).toMatchObject({
+    body: `big-${material}`,
+    roof: `big-${f2?.roof}`,
+    deco: `big-${f2?.sign}`,
+    sign: 'none',
+    x: 10.5,
+    y: 10.5,
+    foot: 3,
+  });
   const big = sceneFromState(s, cfg);
   for (let y = 10; y < 13; y++) for (let x = 10; x < 13; x++) expect(big.blocked[y * big.map + x], `${x},${y}`).toBe(1);
 
@@ -220,7 +230,7 @@ test('회의가 끝났는데 다음 이벤트가 없으면 화면 시계로 상�
   expect(actorsFromState(s, cfg, 1000)[0]?.status).toBe('resting');
 });
 
-test('시청 (06 문서 6.3·14장 임시 그림): 회관 그림 — Lv.1~3 1층, 4~6 2층, 7~9 2층 + "3층" 배지, 10 해저 궁전(3×3 가운데 + 배지), 팀장 얼굴 간판 "시청", 3×3과 둘레 한 칸엔 장식 없음', () => {
+test('시청 (06 문서 6.3·14.1): 시대 그림을 3×3 가운데에 — Lv.1~3 모래섬 마을, 4~6 산호 읍, 7~9 해저 도시, 10 해저 궁전, 팀장 얼굴 간판 "시청", 3×3과 둘레 한 칸엔 장식 없음', () => {
   const s = golden();
   s.facilities = {}; // fullVillage 시설이 시청 자리와 겹치지 않게
   s.hall = { x: 3, y: 3, size: 3 };
@@ -231,26 +241,23 @@ test('시청 (06 문서 6.3·14장 임시 그림): 회관 그림 — Lv.1~3 1층
   };
   const { sc, b } = hallAt(1);
   const o = sc.off;
-  expect(b).toMatchObject({
-    x: 3 + o,
-    y: 3 + o,
-    floor: 1,
-    body: 'coral-1f',
-    roof: 'scallop',
-    stage: 'done',
-    badge: undefined,
-  });
+  expect(b).toMatchObject({ x: 3.5 + o, y: 3.5 + o, foot: 3, body: 'hall-village', sign: 'none', stage: 'done' });
   expect(b?.owner).toMatchObject({ memberId: '@leader', tag: '시청' });
-  expect(hallAt(4).b).toMatchObject({ floor: 2, body: 'wreck-2f', badge: undefined });
-  expect(hallAt(7).b).toMatchObject({ floor: 3, body: 'wreck-2f', badge: '3층' });
-  expect(hallAt(10).b).toMatchObject({ x: 3.5 + o, y: 3.5 + o, foot: 3, floor: 4, badge: '해저 궁전' });
+  expect([3, 4, 6, 7, 9, 10].map((n) => hallAt(n).b?.body)).toEqual([
+    'hall-village',
+    'hall-town',
+    'hall-town',
+    'hall-city',
+    'hall-city',
+    'hall-capital',
+  ]);
   for (let dy = 0; dy < 3; dy++)
     for (let dx = 0; dx < 3; dx++)
       expect(sc.props.some((p) => p.x === 3 + o + dx && p.y === 3 + o + dy && DECOR_KINDS.has(p.kind))).toBe(false);
   expect(decorRing(sc, 3 + o, 3 + o)).toEqual([]);
 });
 
-test('공공시설 (06 문서 6.2·14장): 소품은 상태 칸에 바다 그림(못 지나감), 공원 = 3×3 임시 소품(앞 가운데는 지나감), 랜드마크 = 3×3 가운데 + 이름 배지, 길 포장 = paved', () => {
+test('공공시설 (06 문서 6.2·14.1): 소품은 상태 칸에 바다 그림(못 지나감), 공원 = 3×3 한 장(앞 가운데는 지나감), 랜드마크 = 3×3 가운데 한 장, 길 포장 = paved', () => {
   const s = golden();
   s.ring = Math.max(s.ring, 2);
   const free = () => {
@@ -281,28 +288,18 @@ test('공공시설 (06 문서 6.2·14장): 소품은 상태 칸에 바다 그림
   if (!park) throw new Error('공원');
   const px = park.x + o;
   const py = park.y + o;
-  for (const [dx, dy, kind] of [
-    [0, 0, 'kelp'],
-    [1, 0, 'seagrass'],
-    [2, 0, 'kelp'],
-    [0, 1, 'anemone'],
-    [1, 1, 'bench'],
-    [2, 1, 'anemone'],
-    [0, 2, 'seagrass'],
-    [2, 2, 'braincoral'],
-  ] as const)
-    expect(has(px + dx, py + dy, kind), `${dx},${dy}`).toBe(true);
-  expect(sc.blocked[(py + 2) * M + px + 1]).toBe(0); // 앞 가운데 = 들어가는 길
+  expect(has(px, py, 'park')).toBe(true);
+  for (let dy = 0; dy < 3; dy++)
+    for (let dx = 0; dx < 3; dx++)
+      expect(sc.blocked[(py + dy) * M + px + dx], `${dx},${dy}`).toBe(dx === 1 && dy === 2 ? 0 : 1); // 앞 가운데 = 들어가는 길
   const mark = s.publicWorks[4]?.lot;
   if (!mark) throw new Error('등대');
   expect(sc.buildings.find((b) => b.id === 'public:landmark')).toMatchObject({
     x: mark.x + o + 0.5,
     y: mark.y + o + 0.5,
     foot: 3,
-    body: 'basalt-2f',
-    roof: 'conch',
+    body: 'landmark',
     slot: 'x',
-    badge: '등대',
   });
   expect(decorRing(sc, px, py)).toEqual([]); // 공원·랜드마크 둘레 한 칸도 장식 없음
   expect(decorRing(sc, mark.x + o, mark.y + o)).toEqual([]);

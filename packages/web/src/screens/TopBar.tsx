@@ -9,6 +9,8 @@ import { t } from '../i18n';
 import './screens.css';
 
 const fmt = (n: number) => n.toLocaleString('ko-KR');
+/** 레벨 배지 = 시대 아이콘 (06 문서 14.1) */
+const ERA_ICON = { village: 'eraVillage', town: 'eraTown', city: 'eraCity', capital: 'eraCapital' } as const;
 /** 마을 이름 = cwd 마지막 폴더 */
 const projectName = (p: ProjectInfo) => p.cwd.split(/[\\/]/).filter(Boolean).pop() ?? p.id;
 
@@ -178,6 +180,7 @@ export function TopBar({
         title={`${vars ? t('level.next', vars) : t('level.max')} · ${t('topbar.economy')}`}
         onClick={onEconomy}
       >
+        <Icon name={ERA_ICON[lv.era]} size={22} />
         <span className="tb__prog-title">{chip}</span>
         <VillageProgress done={done} total={span} label={t('level.progress')} />
         <span className="tb__sub">{sub}</span>

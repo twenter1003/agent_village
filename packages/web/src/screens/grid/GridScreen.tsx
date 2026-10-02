@@ -29,11 +29,19 @@ export interface GridScreenProps {
 
 const fmt = (n: number) => n.toLocaleString('ko-KR');
 
-/** 그림 칸 170: 건물 배율 1, 1층 -84 · 2층 -72 (캔버스). 주인이 있으면 마을처럼 얼굴 간판 (06 문서 7장) */
+/**
+ * 그림 칸 170: 1층 -84 · 2층 -72 (캔버스, 배율 1). 3층·3×3(큰 건물·시청)은 키가 커서 줄여 다 보이게 (06 문서 14.1).
+ * 주인이 있으면 마을처럼 얼굴 간판 (06 문서 7장)
+ */
+const illoFit = (body: string): [number, number] =>
+  body.endsWith('1f') ? [1, -84] : body.endsWith('2f') ? [1, -72] : body.endsWith('3f') ? [0.75, -15] : [0.55, -2];
 function Illo({ b }: { b: SceneBuilding }) {
+  const [scale, top] = illoFit(b.body);
   return (
-    <div className={`gs-card__illo${b.body.endsWith('2f') ? ' gs-card__illo--2f' : ''}`}>
-      <OwnedBuilding {...b} />
+    <div className="gs-card__illo">
+      <div style={{ marginTop: top }}>
+        <OwnedBuilding {...b} scale={scale} />
+      </div>
     </div>
   );
 }

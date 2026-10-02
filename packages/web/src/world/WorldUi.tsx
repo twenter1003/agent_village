@@ -226,32 +226,6 @@ export function Gauge({ x, y, pct, label, dim }: { x: number; y: number; pct: nu
   );
 }
 
-/** 임시 층 배지 (06 문서 14장): 3층·큰 건물. 2층 지붕 꼭대기(가운데 −135) 오른쪽. M15 새 그림이 나오면 뺀다 */
-export function FloorBadge({ x, y, text, dim }: { x: number; y: number; text: string; dim?: number }) {
-  return (
-    <span
-      data-floor-badge=""
-      style={{
-        ...box,
-        left: x + 30,
-        top: y - 140,
-        padding: '0 var(--sp-2)',
-        borderWidth: 2,
-        borderRadius: 'var(--r-pill)',
-        background: 'var(--coin)',
-        color: 'var(--text)',
-        fontFamily: 'var(--font-display)',
-        fontSize: 'var(--fs-min)',
-        lineHeight: 'var(--lh-min)',
-        pointerEvents: 'none',
-        opacity: dim,
-      }}
-    >
-      {text}
-    </span>
-  );
-}
-
 export function VisitorTag({ x, y, text }: { x: number; y: number; text: string }) {
   return (
     <span

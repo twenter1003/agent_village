@@ -3,6 +3,7 @@
 // 공사 연출: 단계·층 거품도 같은 rAF에서 DOM으로, 층이 오른 반짝임은 창이 열리고 닫힐 때만 다시 그린다 (06 문서 5.4).
 import { makeConfig, mapSize, type GameConfig, type VillageState } from '@tycoon/core';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { AssetLayer } from '../assets/sea/Asset';
 import type { Stage } from '../assets/sea/Building';
 import { t } from '../i18n';
 import { advance, findPath, poseFor, retarget, SPEED, targets, type Mover } from '../live/movement';
@@ -24,7 +25,7 @@ import { Ground } from './Ground';
 import { NameTag } from './OwnerSign';
 import { bubbleSources, critterOrigin, DEPARTED_OPACITY, S, staticEnts, type Ent } from './Village';
 import { WaterFx } from './WaterFx';
-import { Alert, FloorBadge, Gauge, Say, Sleep, Speech, VisitorTag } from './WorldUi';
+import { Alert, Gauge, Say, Sleep, Speech, VisitorTag } from './WorldUi';
 
 interface Walker extends Mover {
   flip: boolean;
@@ -452,9 +453,16 @@ export function LiveVillage({
             flip={w.flip}
             phase={w.phase}
             scale={S}
-            // 버둥이면 땀방울 거품 (동작 줄이기면 없음)
-            bubbles={(w.pose === 'flail' || w.pose === 'held') && !calm ? true : undefined}
           />
+          {/* 버둥이면 머리 옆 땀방울 (06 문서 14.1, 동작 줄이기·거품 끔이면 없음). 들린 몸(held)은 24 위 (rig held) */}
+          {(w.pose === 'flail' || w.pose === 'held') && !calm && (
+            <AssetLayer
+              id="fx.sweat"
+              params={{ k: 1 / S }}
+              data-sweat=""
+              transform={`translate(${64 * S} ${(126 - (w.pose === 'held' ? 24 : 0)) * S}) scale(${S})`}
+            />
+          )}
         </g>
       ),
     })),
@@ -476,7 +484,6 @@ export function LiveVillage({
         {fx && <WaterFx worldW={W.w} sources={sources} bubbles={prefs.bubbles} />}
       </svg>
       {labels && <Gauges scene={scene} M={M} />}
-      <Badges scene={scene} M={M} />
       {labels && <NameTags scene={scene} M={M} />}
       {onBuildingClick && <BuildingHits scene={scene} state={state} cfg={cfg} M={M} onClick={onBuildingClick} />}
       {actors.map((a) => {
@@ -584,20 +591,27 @@ function BuildingHits({
     ));
 }
 
-/** 건물 이름표 (06 문서 7장): 부지 앞 모서리(가운데 +32)에 걸쳐 가운데 정렬. 주인이 있는 건물만 */
+/** 건물 이름표 (06 문서 7장): 부지 앞 모서리(2×2 가운데 +32, 3×3 +48)에 걸쳐 가운데 정렬. 주인이 있는 건물만 */
 const TAG_DY = 26;
+const TAG_DY_3X3 = 42;
 function NameTags({ scene, M }: { scene: LiveScene; M: number }) {
   return scene.buildings.map((b) => {
     if (!b.owner) return null;
     const c = iso(b.x + 1, b.y + 1, M);
     return (
-      <NameTag key={b.id} x={c.sx} y={c.sy + TAG_DY} owner={b.owner} dim={b.departed ? DEPARTED_OPACITY : undefined} />
+      <NameTag
+        key={b.id}
+        x={c.sx}
+        y={c.sy + (b.foot ? TAG_DY_3X3 : TAG_DY)}
+        owner={b.owner}
+        dim={b.departed ? DEPARTED_OPACITY : undefined}
+      />
     );
   });
 }
 
-/** 게이지를 지붕 꼭대기 위로 (06 문서 5.9 "머리 위"): 꼭대기 = 가운데 − 102(1층 몸통)·−142(2층), 막대 아래가 그보다 24 위 */
-const GAUGE_LIFT = { '1f': 70, '2f': 110 };
+/** 게이지를 지붕 꼭대기 위로 (06 문서 5.9 "머리 위"): 꼭대기 = 가운데 − 102(1층 몸통)·−142(2층)·−182(3층), 막대 아래가 그보다 24 위 */
+const GAUGE_LIFT = { '1f': 70, '2f': 110, '3f': 150 };
 
 /** 일터 게이지 (06 문서 5.2): 주인이 일하는 동안. 떠난 주인이면 건물처럼 흐리게 */
 function Gauges({ scene, M }: { scene: LiveScene; M: number }) {
@@ -605,17 +619,8 @@ function Gauges({ scene, M }: { scene: LiveScene; M: number }) {
     const b = scene.buildings[g.building];
     if (!b) return null;
     const p = iso(b.x + 1, b.y + 1, M);
-    const lift = GAUGE_LIFT[b.body.endsWith('2f') ? '2f' : '1f'];
+    const lift = GAUGE_LIFT[b.body.endsWith('3f') ? '3f' : b.body.endsWith('2f') ? '2f' : '1f'];
     const dim = b.departed ? DEPARTED_OPACITY : undefined;
     return <Gauge key={b.id} x={p.sx} y={p.sy - lift} pct={g.pct} label={g.label} dim={dim} />;
-  });
-}
-
-/** 임시 층 배지 (06 문서 14장) — 그림 몫이라 labels와 상관없이 늘 */
-function Badges({ scene, M }: { scene: LiveScene; M: number }) {
-  return scene.buildings.map((b) => {
-    if (!b.badge) return null;
-    const p = iso(b.x + 1, b.y + 1, M);
-    return <FloorBadge key={b.id} x={p.sx} y={p.sy} text={b.badge} dim={b.departed ? DEPARTED_OPACITY : undefined} />;
   });
 }

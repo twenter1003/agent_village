@@ -18,12 +18,14 @@ test('빠진 색은 에러', () => {
 
 test('05 문서 5.1 에셋 id 전부, data-anchor 유지', () => {
   const ids = Object.keys(assets);
-  expect(ids.filter((i) => /^(body|roof|sign|fx)\./.test(i))).toHaveLength(17);
+  // + M15 (06 문서 14.1): 3층 2 · 큰 몸통 2 · 시청 4 · 랜드마크 2 · 큰 지붕 3 · 땀방울 1, 직업 장식 5, 공원 1
+  expect(ids.filter((i) => /^(body|roof|sign|fx)\./.test(i))).toHaveLength(31);
+  expect(ids.filter((i) => i.startsWith('deco.'))).toHaveLength(5);
   expect(ids.filter((i) => i.startsWith('site.'))).toHaveLength(6);
   expect(ids.filter((i) => i.startsWith('furniture.'))).toHaveLength(7);
-  expect(ids.filter((i) => i.startsWith('prop.'))).toHaveLength(15);
+  expect(ids.filter((i) => i.startsWith('prop.'))).toHaveLength(16);
   expect(ids.filter((i) => i.startsWith('tile.'))).toHaveLength(4);
-  for (const a of Object.values(assets)) expect(a.data.anchor).toMatch(/^\d+,\d+$/);
+  for (const a of Object.values(assets)) expect(a.data.anchor).toMatch(/^-?\d+,-?\d+$/); // 땀방울 = 캐릭터 좌표 0,0
 });
 
 test('흔들림 구멍: 캔버스 SeaProp 두 장면 — sw 밑동 ±3°, swA 촉수 뿌리 ±4°, 값이 없으면 곧게 (03 문서 3.2)', () => {

@@ -1,4 +1,4 @@
-// design/canvas/Sea{Building,Prop}.dc.html → packages/web/src/assets/sea/data.ts (03 문서 4장, 바다만)
+// design/canvas/Sea{Building,Prop,Work,City,Bits}.dc.html → packages/web/src/assets/sea/data.ts (03 문서 4장, 바다만)
 // 구멍({{…}})은 그대로 두고 런타임 fillAsset()이 채운다.
 import { readFileSync, writeFileSync } from 'node:fs';
 
@@ -45,7 +45,7 @@ export function extractCritter(html: string): string {
 }
 
 if (process.argv[1]?.endsWith('extract-assets.ts')) {
-  const files = ['SeaBuilding', 'SeaProp'];
+  const files = ['SeaBuilding', 'SeaProp', 'SeaWork', 'SeaCity', 'SeaBits']; // M15 새 그림 (06 문서 14.1)
   const all = new Map<string, RawAsset>();
   for (const f of files) {
     for (const a of extractSvgs(readFileSync(new URL(`../design/canvas/${f}.dc.html`, import.meta.url), 'utf8'))) {
