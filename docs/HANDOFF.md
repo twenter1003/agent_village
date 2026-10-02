@@ -157,6 +157,7 @@
 - **이 프로젝트에는 훅이 설치돼 있다** (`.claude/settings.json`, 2026-09-30 사용자 결정): 여기서 Claude Code를 열면 4777 수집기로 이 프로젝트의 마을이 쌓인다. 수집기가 꺼져 있어도 훅은 1초 안에 조용히 넘어간다. 그만 보려면 이 파일을 지운다.
   - 팀장 토큰 청구는 훅 설치 뒤 첫 `Stop`에서 처음 된다 — 다음 세션에서 `mainTokens`가 채워졌는지 확인.
 - **5173·4777 포트 = 사용자가 보는 화면(보는 용 복사본).** `tools/stable.sh sync|start|stop|restart|status`로만 다룬다 (복사본 `~/.subagent-tycoon/app`). 저장소에서 `pnpm dev`를 켜지 않는다. e2e는 5174(웹)와 4798(수집기, 임시 DB)을 따로 쓴다. 실제 마을 상태는 `pnpm replay <cwd>`로 본다 — 이때 실제 DB를 그대로 열지 말고 `~/.subagent-tycoon/tycoon.db*`를 임시 폴더에 복사해 `TYCOON_DB=<복사본>`으로 돌린다.
+- **`tools/stable.sh restart`는 끝나는 Bash 호출에서 돌린다** (2026-10-03): 백그라운드 셸에서 돌리고 그 셸을 멈추면 nohup으로 띄운 서버까지 같이 꺼진다. 웹(vite)은 `[::1]:5173`만 들어서 확인은 `127.0.0.1`이 아니라 `localhost`로, 수집기는 시작 때 DB 재생으로 15초쯤 뒤에 응답한다.
 - **4777 수집기**는 보는 용 복사본이 돌린다 (`~/.subagent-tycoon/app`, 기본 DB `~/.subagent-tycoon/tycoon.db`). 저장소 코드를 고쳐도 복사본은 그대로이고, `tools/stable.sh sync` + `restart` 뒤에야 바뀐다. 새 규칙은 재생으로 모든 마을 상태에 반영된다 (raw 이벤트는 그대로).
 - **옛 DB 재생**: 벽시계 시절의 `clock` 줄은 시간만 보내는 `Tick`으로 재생된다. 옛 마을은 재시작 뒤 게임 날짜가 크게 줄어 보일 수 있다 (의도됨).
 - Node 내장 `localStorage`(파일 없음)가 happy-dom 것을 가린다 → 테스트에서 저장소가 필요하면 `vi.stubGlobal('localStorage', …)` (`live/prefs.test.ts`). 앱 코드는 try/catch로 기본값.
