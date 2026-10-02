@@ -1,0 +1,119 @@
+/*
+ * 설명서 (M17, 06 문서 11장). 틀·머리·카드는 설정 화면(st-*), 표는 경제 패널(ec-table), 명령 칸은 훅 안내(hg__code).
+ * 여기는 왼쪽 목차와 본문·그림 줄만. 토큰만 쓴다.
+ */
+.gd-cols {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: var(--sp-4);
+  align-items: start;
+}
+.gd-toc {
+  position: sticky;
+  top: 0;
+  padding: var(--sp-2);
+}
+.gd-toc ol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.gd-toc button {
+  width: 100%;
+  padding: var(--sp-2) var(--sp-3);
+  border: 0;
+  border-radius: var(--r-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: var(--fs-sub);
+  text-align: left;
+  cursor: pointer;
+}
+.gd-toc button:hover {
+  background: var(--sunk);
+}
+.gd-toc button[aria-current='true'] {
+  background: var(--slot1-tint);
+  font-family: var(--font-display);
+}
+.gd-toc button:focus-visible {
+  outline: var(--ui-line) solid var(--focus);
+  outline-offset: 2px;
+}
+
+.gd-body {
+  max-width: 820px;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.gd-body p,
+.gd-body ul {
+  margin: 0;
+}
+.gd-body ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  padding-left: var(--sp-5);
+}
+.gd-body h3 {
+  margin: var(--sp-3) 0 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-card);
+  line-height: var(--lh-card);
+  font-weight: 400;
+}
+
+/* 그림·표 자리 (본문 "@이름") */
+.gd-art {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+/* 그림 줄: 실제 에셋·캐릭터를 작게, 바닥을 맞춰 나란히 */
+.gd-figs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--sp-3) var(--sp-5);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-sm);
+  background: var(--sunk);
+}
+.gd-figs--row {
+  align-items: center;
+}
+.gd-fig {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-1);
+  margin: 0;
+}
+.gd-fig figcaption,
+.gd-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-size: var(--fs-min);
+  line-height: var(--lh-min);
+  white-space: nowrap;
+}
+.gd-chip {
+  font-size: var(--fs-sub);
+}
+
+@media (max-width: 900px) {
+  .gd-cols {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .gd-toc {
+    position: static;
+  }
+}

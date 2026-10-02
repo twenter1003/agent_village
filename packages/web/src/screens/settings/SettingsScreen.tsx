@@ -30,6 +30,8 @@ export interface SettingsScreenProps {
   cwd: string;
   /** 수집기 연결 (훅 설치 안내) */
   connected: boolean;
+  /** 설명서 링크 (06 문서 11장, M17이 화면에 붙인다) */
+  onGuide?: () => void;
 }
 
 type Conf = Required<MemberConf>;
@@ -42,7 +44,7 @@ const ACCESSORIES = ACCESSORY_IDS.filter(
 );
 const DAY_MAX_MIN = 1440;
 
-export function SettingsScreen({ state: s, cfg, projectId, onBack, cwd, connected }: SettingsScreenProps) {
+export function SettingsScreen({ state: s, cfg, projectId, onBack, cwd, connected, onGuide }: SettingsScreenProps) {
   const prefs = usePrefs();
   const [edits, setEdits] = useState<Record<string, Partial<Conf>>>({});
   const [day, setDay] = useState<string | null>(null); // 손대기 전엔 설정값
@@ -99,6 +101,12 @@ export function SettingsScreen({ state: s, cfg, projectId, onBack, cwd, connecte
           {t('settings.village')}
         </button>
         <h1 className="st-title">{t('settings.title')}</h1>
+        {onGuide && (
+          <button type="button" className="st-back st-guide" onClick={onGuide}>
+            <Icon name="help" size={18} />
+            {t('guide.open')}
+          </button>
+        )}
       </div>
       <div className="st-cols">
         {/* 브라우저 기본 검사는 끈다: 하루 길이가 분 단위가 아니면(e2e 2초) 손대지 않은 칸이 저장을 막았다. 검사는 dayOk (01 문서 10장) */}

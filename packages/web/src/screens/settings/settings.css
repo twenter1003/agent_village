@@ -33,6 +33,13 @@
   text-underline-offset: 3px;
   cursor: pointer;
 }
+/* 설명서 링크 (M17, 06 문서 11장): 머리 줄 오른쪽 끝 */
+.st-guide {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  margin-left: auto;
+}
 .st-title {
   margin: 0;
   font-family: var(--font-display);
