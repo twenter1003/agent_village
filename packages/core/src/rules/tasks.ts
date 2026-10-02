@@ -1,13 +1,15 @@
 // 작업·기여 (01 문서 5장, 06 문서 5.8). 작업은 급여 기록·효율·회의·활동 기록·신문의 단위이고 건물을 만들지 않는다 —
 // 건물은 팀원 일터 (rules/workplace.ts). 순수: 시각은 e.at
+import { defaultConfig, type GameConfig } from '../config/config';
 import type { DomainEvent, TaskStatus } from '../events/normalize';
 import { LEADER_ID, type AgentRun, type Task, type VillageState } from '../projector/types';
 
-export function applyTasks(s: VillageState, e: DomainEvent): void {
+export function applyTasks(s: VillageState, e: DomainEvent, cfg: GameConfig = defaultConfig): void {
   if (e.t === 'TaskCreated') s.taskTool = true; // 이제 Agent 호출은 작업이 아니다 (5.1-5)
   if (e.t === 'TaskCreated' && !s.tasks[e.taskId]) create(s, e.taskId, e.subject, e.at);
   if (e.t === 'TaskStatusChanged') changeStatus(s, e.taskId, e.status, e.at);
   agentTasks(s, e);
+  summaries(s, e, cfg);
   if (e.t === 'BuildingRenamed') {
     // 없는 일터·규칙에 안 맞는 이름은 버린다 (서버가 400으로 먼저 막는다). own 키만 (constructor 같은 이름으로 프로토타입을 집지 않게)
     const b = Object.hasOwn(s.buildings, e.buildingId) ? s.buildings[e.buildingId] : undefined;
@@ -36,6 +38,63 @@ export function completedBy(s: VillageState, e: DomainEvent): string[] {
           ? Object.values(s.runs).map((r) => (r.endedAt === e.at ? (r.taskId ?? '') : ''))
           : [];
   return [...new Set(ids)].filter((id) => s.tasks[id]?.status === 'completed' && s.tasks[id]?.completedAt === e.at);
+}
+
+/** 06 문서 9장 한 줄 요약: 이번에 끝난 작업, 그리고 방금 끝난 실행이 열려 있던 동안 먼저 완료된 작업
+ *  (TaskUpdate completed가 SubagentStop보다 먼저 온 순서 — 그때는 보고가 아직 없었다) */
+function summaries(s: VillageState, e: DomainEvent, cfg: GameConfig) {
+  if (!cfg.collector.keepLastMessage) return;
+  const ids = completedBy(s, e);
+  const r = e.t === 'AgentRunEnded' ? s.runs[e.runId] : undefined;
+  if (r)
+    for (const t of Object.values(s.tasks))
+      if (
+        t.status === 'completed' &&
+        t.summary === undefined &&
+        (t.completedAt ?? -Infinity) >= r.startedAt &&
+        finisher(s, t)?.runId === r.runId // 이 실행이 끝낸 작업만 — 다른 실행의 보고로 채우지 않게
+      )
+        ids.push(t.id);
+  for (const id of ids) {
+    const t = s.tasks[id];
+    if (!t || t.summary !== undefined) continue;
+    const line = firstSentence(finisher(s, t)?.lastMessage ?? '');
+    if (line) t.summary = line;
+  }
+}
+
+/** 작업을 끝낸 실행: 짝지어진 실행(r.taskId), 없으면 작업과 겹친 실행 중 가장 늦게 끝난 것 (아직 도는 실행이 가장 늦다) */
+function finisher(s: VillageState, t: Task): AgentRun | undefined {
+  const own = Object.values(s.runs).find((r) => r.taskId === t.id);
+  if (own) return own;
+  const end = (r: AgentRun) => r.endedAt ?? Infinity;
+  let best: AgentRun | undefined;
+  for (const { run } of shares(s, t, t.completedAt ?? t.createdAt))
+    if (run && (!best || end(run) > end(best) || (end(run) === end(best) && run.runId > best.runId))) best = run;
+  return best;
+}
+
+export const SUMMARY_MAX = 80;
+
+/** 보고의 첫 문장: 코드 블록을 건너뛰고, 마크다운 머리 기호(# > - * + 1.)·굵게(**)·코드(`) 표시를 빼고 빈 줄(글자·숫자 없는 줄)을 건너뛴 첫 줄에서 . ! ? 。까지, 80자(코드 포인트).
+ *  . ! ?는 뒤가 공백이거나 줄 끝일 때만 — 파일 이름(index.ts)·버전(1.2)에서 끊지 않게 */
+export function firstSentence(msg: string): string {
+  let fence = false; // 코드 블록(```) 안의 줄은 문장이 아니다 — 펜스 줄의 "ts"·"json"도
+  for (const raw of msg.split(/\r?\n/)) {
+    if (/^\s*```/.test(raw)) {
+      fence = !fence;
+      continue;
+    }
+    if (fence) continue;
+    const line = raw
+      .replace(/^(?:[\s#>*+-]|\d+[.)]\s)+/, '')
+      .replace(/\*\*|`/g, '') // 굵게·코드 표시
+      .trim();
+    if (!/[\p{L}\p{N}]/u.test(line)) continue;
+    const first = /^.*?(?:[.!?](?=\s|$)|。)/u.exec(line)?.[0] ?? line;
+    return [...first].slice(0, SUMMARY_MAX).join('').trim();
+  }
+  return '';
 }
 
 /** 5.1-5 대체: Task 도구를 못 본 마을에서 메인 세션의 Agent 호출 = 작업 하나. 같은 종류의 다음 실행과 짝짓고, 끝나면 완료 */
@@ -113,6 +172,7 @@ function changeStatus(s: VillageState, id: string, status: TaskStatus, at: numbe
   if (status === 'in_progress') t.startedAt ??= at;
   if (status !== 'completed') return;
   t.completedAt = at;
+  delete t.summary; // 다시 연 작업은 다시 끝낸 실행의 보고로 (9장)
   const sh = shares(s, t, at);
   t.contributions = {};
   for (const x of sh) t.contributions[x.key] = (t.contributions[x.key] ?? 0) + x.ms;

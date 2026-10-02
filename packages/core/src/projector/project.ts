@@ -123,7 +123,7 @@ function step(s: VillageState, e: DomainEvent, cfg: GameConfig) {
   applyWorkplaces(s, e, cfg);
   applyRuns(s, e, cfg);
   applyMeeting(s, e, cfg);
-  applyTasks(s, e);
+  applyTasks(s, e, cfg);
   applyEconomy(s, e, cfg);
   applyFurniture(s, e, cfg);
   applyPersonality(s, e, cfg);

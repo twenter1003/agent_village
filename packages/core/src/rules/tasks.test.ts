@@ -1,9 +1,10 @@
 import { seedPersonality } from './personality';
 import { expect, test } from 'vitest';
 import type { DomainEvent, TaskStatus } from '../events/normalize';
-import { initialState } from '../projector/project';
+import { defaultConfig, makeConfig } from '../config/config';
+import { initialState, replay } from '../projector/project';
 import { LEADER_ID, type AgentRun, type Member, type VillageState } from '../projector/types';
-import { applyTasks } from './tasks';
+import { applyTasks, firstSentence } from './tasks';
 
 const T0 = Date.parse('2026-09-29T13:20:00.000Z');
 const at = (sec: number) => T0 + sec * 1000;
@@ -116,4 +117,57 @@ test('지운 작업은 끝: 늦은 갱신이 되살리지 않는다 (5.4 M7), �
   play([status('a', 'in_progress', 60), status('a', 'completed', 61), status('b', 'pending', 62)], s);
   expect([s.tasks.a?.status, s.tasks.b?.status]).toEqual(['deleted', 'deleted']);
   expect(s.buildings).toEqual({});
+});
+
+test('한 줄 요약: 머리 기호·빈 줄을 건너뛴 첫 줄의 첫 문장, 80자 (06 문서 9장)', () => {
+  expect(firstSentence('\n\n## 요약\n본문')).toBe('요약');
+  expect(firstSentence('---\n\n- **입력 검증을 추가했다.** 테스트도 통과!')).toBe('입력 검증을 추가했다.');
+  expect(firstSentence('```ts\nconst x = 1;\n```\n로그인 버그를 고쳤다. 테스트 통과')).toBe('로그인 버그를 고쳤다.'); // 코드 블록은 건너뜀
+  expect(firstSentence('1. `index.ts` v1.2를 고쳤어요! 다음')).toBe('index.ts v1.2를 고쳤어요!');
+  expect(firstSentence('끝났다。다음')).toBe('끝났다。');
+  expect(firstSentence('마침표 없는 줄\n둘째 줄.')).toBe('마침표 없는 줄');
+  expect(firstSentence('가'.repeat(100))).toBe('가'.repeat(80));
+  expect(firstSentence('```\n')).toBe('');
+});
+
+const ev = (e: Record<string, unknown> & { t: DomainEvent['t'] }, sec: number) =>
+  ({ ...e, at: at(sec) }) as DomainEvent;
+const task = (order: 'runFirst' | 'taskFirst', lastMessage?: string, cfg = defaultConfig) => {
+  const start = [
+    ev({ t: 'AgentRunStarted', runId: 'a1', agentType: 'Explore' }, 1),
+    ev({ t: 'TaskCreated', taskId: 't1', subject: '검색' }, 0),
+    ev({ t: 'TaskStatusChanged', taskId: 't1', status: 'in_progress' }, 1),
+  ];
+  const end = ev({ t: 'AgentRunEnded', runId: 'a1', ok: true, ...(lastMessage ? { lastMessage } : {}) }, 5);
+  const done = ev({ t: 'TaskStatusChanged', taskId: 't1', status: 'completed' }, order === 'runFirst' ? 6 : 4);
+  return replay('p', [...start, ...(order === 'runFirst' ? [end, done] : [done, end])], cfg).tasks.t1;
+};
+
+test('요약 = 끝낸 실행의 보고: 실행 끝이 먼저든 작업 완료가 먼저든 같다, 보고가 없거나 저장을 끄면 없음', () => {
+  expect(task('runFirst', '찾았다. 세 곳이다.')?.summary).toBe('찾았다.');
+  expect(task('taskFirst', '찾았다. 세 곳이다.')).toMatchObject({ status: 'completed', summary: '찾았다.' });
+  expect(task('runFirst')?.summary).toBeUndefined();
+  const off = makeConfig({ overrides: { collector: { keepLastMessage: false } } });
+  expect(task('runFirst', '찾았다.', off)?.summary).toBeUndefined();
+  expect(task('taskFirst', '찾았다.', off)?.summary).toBeUndefined();
+});
+
+test('요약: Agent 호출 작업은 짝지어진 실행, 아니면 겹친 실행 중 가장 늦게 끝난 것', () => {
+  const s = replay(
+    'p',
+    [
+      ev({ t: 'AgentCalled', callId: 'c1', subagentType: 'Explore', subject: '찾기' }, 0),
+      ev({ t: 'AgentRunStarted', runId: 'a1', agentType: 'Explore' }, 1),
+      ev({ t: 'AgentRunStarted', runId: 'a2', agentType: 'Plan' }, 2),
+      ev({ t: 'AgentRunEnded', runId: 'a2', ok: true, lastMessage: '늦게 끝남.' }, 9),
+      ev({ t: 'AgentRunEnded', runId: 'a1', ok: true, lastMessage: '짝 실행.' }, 5),
+    ],
+    defaultConfig,
+  );
+  expect(s.tasks['agent:c1']?.summary).toBe('짝 실행.');
+  const t = initialState('p');
+  t.runs.r1 = { ...run('r1', { memberId: null, visitorKind: 'Explore' }, 1, 8), lastMessage: '나중.' };
+  t.runs.r2 = { ...run('r2', { memberId: null, visitorKind: 'Explore' }, 1, 4), lastMessage: '먼저.' };
+  play([created('x', 0), status('x', 'in_progress', 1), status('x', 'completed', 9)], t);
+  expect(t.tasks.x?.summary).toBe('나중.');
 });

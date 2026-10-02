@@ -176,6 +176,7 @@ export interface Task {
   quality: 'testsPassed' | 'noTests' | 'failed';
   toolCalls: number;
   salaryPaid: number; // 짝지어진 실행(r.taskId)이 받은 급여(세전) 합. 보여 주기용 기록 — 급여는 실행마다 (D20)
+  summary?: string; // 한 줄 요약 (신문, 06 문서 9장): 끝낸 서브에이전트 마지막 보고의 첫 문장 80자. 보고 저장을 껐거나 보고가 없으면 없음
 }
 
 /** 팀원 일터 (06 문서 5장, D18·D19). 절대 삭제 안 함. 층·점수·낸 자재비는 내려가지 않는다 */

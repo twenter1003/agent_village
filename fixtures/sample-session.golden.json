@@ -326,7 +326,8 @@
       "toolCalls": 3,
       "salaryPaid": 0,
       "startedAt": 1790688060000,
-      "completedAt": 1790688221000
+      "completedAt": 1790688221000,
+      "summary": "입력 검증을 추가했고 테스트 12개가 모두 통과했습니다."
     },
     "t2": {
       "id": "t2",

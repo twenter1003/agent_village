@@ -317,11 +317,14 @@ describe('7장 지표 (축마다 표본 값)', () => {
 });
 
 describe('개인 정보 (02 문서 2.3)', () => {
-  test('메시지 원문은 실행의 lastMessage(요약본)에만, 성격·기록·토스트엔 숫자와 고정 문장뿐', () => {
+  test('메시지 원문은 실행의 lastMessage(요약본)에만, 작업엔 첫 문장(summary, 06 문서 9장), 성격·기록·토스트엔 숫자와 고정 문장뿐', () => {
     const secret = 'SECRET-만세-4242';
-    const s = play([roster, ...solo(0, 't1', 'backend-dev', `${secret} thanks`)]);
-    const { runs, ...rest } = s;
+    const s = play([roster, ...solo(0, 't1', 'backend-dev', `${secret} thanks. 둘째 문장 SECRET-2`)]);
+    const { runs, tasks, ...rest } = s;
     expect(JSON.stringify(rest)).not.toContain(secret);
+    expect(Object.values(tasks).map((t) => t.summary)).toEqual([`${secret} thanks.`]);
+    expect(JSON.stringify(Object.values(tasks).map(({ summary: _s, ...t }) => t))).not.toContain(secret);
+    expect(JSON.stringify(tasks)).not.toContain('SECRET-2'); // 둘째 문장부터는 작업에 안 남는다
     expect(Object.values(runs).filter((r) => r.lastMessage?.includes(secret))).toHaveLength(1);
     expect(sampleOf(s, 'backend-dev', 't1')?.TF).toBe(100);
   });

@@ -1,0 +1,167 @@
+/*
+ * 마을 신문 (06 문서 9장). 틀·머리·카드는 경제 패널(.ec, economy.css) 그대로, 여기는 3열(달력 · 신문 · 옆 칸)과 달력·기사 모양만.
+ * 토큰만 쓴다. 달력 점 진하기는 --coin-d 위 opacity (일의 양)
+ */
+.nw-body {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr) 300px;
+  align-items: start;
+  gap: var(--sp-4);
+}
+
+/* ── 달력 ── */
+.nw-calhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+}
+.nw-week,
+.nw-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: var(--sp-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+.nw-week {
+  color: var(--text-2);
+  font-size: var(--fs-min);
+}
+.nw-day {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 36px;
+  padding: 0 0 var(--sp-2);
+  border: var(--ui-line-sm) solid transparent;
+  border-radius: var(--r-sm);
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-family: var(--font-display);
+  font-size: var(--fs-sub);
+  cursor: pointer;
+}
+.nw-day:hover {
+  background: var(--sunk);
+}
+.nw-day:focus-visible {
+  outline: var(--ui-line-sm) solid var(--focus);
+  outline-offset: 1px;
+}
+.nw-day--today {
+  border-color: var(--rule);
+}
+.nw-day[aria-pressed='true'] {
+  border-color: var(--ink);
+  background: var(--coin);
+}
+.nw-dot {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--coin-d);
+  transform: translateX(-50%);
+}
+.nw-day[aria-pressed='true'] .nw-dot {
+  background: var(--ink);
+}
+
+/* ── 기사 ── */
+.nw-kicker {
+  align-self: flex-start;
+  padding: 0 var(--sp-2);
+  border-radius: var(--r-pill);
+  background: var(--coin);
+  font-size: var(--fs-min);
+}
+.nw-headline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-screen);
+  font-weight: 400;
+  line-height: var(--lh-screen);
+  word-break: keep-all;
+}
+.nw-subhead {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-card);
+  font-weight: 400;
+  line-height: var(--lh-card);
+}
+.nw-summary {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+.nw-who {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-sub);
+}
+.nw-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.nw-sub {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  padding-top: var(--sp-2);
+  border-top: 1px solid var(--rule);
+}
+.nw-sub:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+.nw-briefs {
+  gap: var(--sp-1);
+  font-size: var(--fs-sub);
+}
+
+/* ── 옆 칸 ── */
+.nw-facts {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--sp-2) var(--sp-3);
+  margin: 0;
+  font-size: var(--fs-sub);
+}
+.nw-facts dt {
+  color: var(--text-2);
+}
+.nw-facts dd {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-1);
+  margin: 0;
+  font-family: var(--font-display);
+}
+.nw-facts .nw-weather {
+  flex-direction: row;
+  align-items: center;
+}
+
+/* 좁으면 달력·옆 칸이 위, 신문이 아래로 (경제 패널과 같은 1100) */
+@media (max-width: 1100px) {
+  .nw-body {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .nw-body > .ec-col {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
