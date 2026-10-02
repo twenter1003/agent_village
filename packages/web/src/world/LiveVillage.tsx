@@ -1,7 +1,7 @@
 // 실시간 마을 (M5): VillageState → 장면 + 걸어 다니는 캐릭터.
 // 위치는 rAF에서 setAttribute로만 바꾸고, React는 포즈·방향·앞뒤 순서·상태가 바뀔 때만 다시 그린다 (02 문서 7.4, 8.4).
 // 공사 연출: 단계·층 거품도 같은 rAF에서 DOM으로, 층이 오른 반짝임은 창이 열리고 닫힐 때만 다시 그린다 (06 문서 5.4).
-import { makeConfig, mapSize, type GameConfig, type VillageState } from '@tycoon/core';
+import { makeConfig, mapSize, weatherOf, type GameConfig, type VillageState } from '@tycoon/core';
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { AssetLayer } from '../assets/sea/Asset';
 import type { Stage } from '../assets/sea/Building';
@@ -25,6 +25,7 @@ import { Ground } from './Ground';
 import { NameTag } from './OwnerSign';
 import { bubbleSources, critterOrigin, DEPARTED_OPACITY, S, staticEnts, type Ent } from './Village';
 import { WaterFx } from './WaterFx';
+import { CameraWeather } from './Weather';
 import { Alert, Gauge, Say, Sleep, Speech, VisitorTag } from './WorldUi';
 
 interface Walker extends Mover {
@@ -104,9 +105,10 @@ export function LiveVillage({
   const statics = useMemo(() => {
     const on = new Set(fxKey.split('|'));
     const bs = scene.buildings.map((b) => (on.has(b.id) ? { ...b, fx: true } : b));
-    return staticEnts(bs, scene.props, M).sort(byDepth);
-  }, [scene, fxKey, M]);
+    return [...staticEnts(bs, scene.props, M), ...(labels ? tagEnts(bs, M) : [])].sort(byDepth);
+  }, [scene, fxKey, M, labels]);
   const sources = useMemo(() => bubbleSources(scene.props, M), [scene, M]);
+  const weather = useMemo(() => weatherOf(state, cfg).kind, [state, cfg]); // 날씨 겹 (06 문서 10장)
   const [actors, setActors] = useState<Actor[]>([]);
   const [, setRev] = useState(0);
 
@@ -483,8 +485,9 @@ export function LiveVillage({
         {fx && prefs.bubbles && <g ref={popLayer} data-layer="fx-site" pointerEvents="none" />}
         {fx && <WaterFx worldW={W.w} sources={sources} bubbles={prefs.bubbles} />}
       </svg>
+      {/* 날씨: 화면 고정 겹이라 카메라 칸에 붙는다. 동작 줄이기·거품 끔이면 물빛만 */}
+      {fx && <CameraWeather anchor={rootRef} kind={weather} still={calm} />}
       {labels && <Gauges scene={scene} M={M} />}
-      {labels && <NameTags scene={scene} M={M} />}
       {onBuildingClick && <BuildingHits scene={scene} state={state} cfg={cfg} M={M} onClick={onBuildingClick} />}
       {actors.map((a) => {
         const w = walkers.current.get(a.id);
@@ -591,22 +594,36 @@ function BuildingHits({
     ));
 }
 
-/** 건물 이름표 (06 문서 7장): 부지 앞 모서리(2×2 가운데 +32, 3×3 +48)에 걸쳐 가운데 정렬. 주인이 있는 건물만 */
+/** 건물 이름표 (06 문서 7장): 부지 앞 모서리(2×2 가운데 +26, 3×3 +42)에 걸쳐 가운데 정렬. 주인이 있는 건물만.
+ *  깊이 순서 안(그 건물 바로 뒤)에 그린다 — 맨 위 HTML이면 뒤 일터 이름표가 앞 건물 위에 겹쳤다 (M20) */
 const TAG_DY = 26;
 const TAG_DY_3X3 = 42;
-function NameTags({ scene, M }: { scene: LiveScene; M: number }) {
-  return scene.buildings.map((b) => {
-    if (!b.owner) return null;
+const TAG_BOX = { w: 240, h: 28 }; // 이름표가 들어갈 foreignObject (이름표는 가운데 정렬, 넘쳐도 보인다)
+function tagEnts(bs: LiveScene['buildings'], M: number): Ent[] {
+  return bs.flatMap((b) => {
+    if (!b.owner) return [];
     const c = iso(b.x + 1, b.y + 1, M);
-    return (
-      <NameTag
-        key={b.id}
-        x={c.sx}
-        y={c.sy + (b.foot ? TAG_DY_3X3 : TAG_DY)}
-        owner={b.owner}
-        dim={b.departed ? DEPARTED_OPACITY : undefined}
-      />
-    );
+    return [
+      {
+        d: c.sy + 0.25,
+        sx: c.sx,
+        key: `tag:${b.id}`,
+        el: (
+          <foreignObject
+            x={c.sx - TAG_BOX.w / 2}
+            y={c.sy + (b.foot ? TAG_DY_3X3 : TAG_DY)}
+            width={TAG_BOX.w}
+            height={TAG_BOX.h}
+            overflow="visible"
+            pointerEvents="none"
+          >
+            <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+              <NameTag x={TAG_BOX.w / 2} y={0} owner={b.owner} dim={b.departed ? DEPARTED_OPACITY : undefined} />
+            </div>
+          </foreignObject>
+        ),
+      },
+    ];
   });
 }
 

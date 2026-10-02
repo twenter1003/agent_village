@@ -48,7 +48,8 @@
     "furniture": { "armchair": "폭신 조개 의자", "desk": "유목 책상 · 노트북", "bookcase": "유리병 선반", "plant": "산호 화분", "lamp": "해파리 램프", "bed": "대합 침대", "rug": "물결 러그", "flowers": "말미잘 화단" },
     "accessory": { "headlamp": "헤드랜턴", "starfishPin": "불가사리 핀", "seaWalkHelmet": "씨워크 헬멧", "captainHat": "선장 모자", "cap": "모자" },
     "eras": { "village": "모래섬 마을", "town": "산호 읍", "city": "해저 도시", "capital": "해저 수도" },
-    "works": { "streetlamp": "해파리 가로등", "bench": "벤치", "flowers": "말미잘 꽃밭", "park": "공원", "paving": "길 포장", "landmark": "등대", "landmark2": "소라 탑", "palace": "해저 궁전" }
+    "works": { "streetlamp": "해파리 가로등", "bench": "벤치", "flowers": "말미잘 꽃밭", "park": "공원", "paving": "길 포장", "landmark": "등대", "landmark2": "소라 탑", "palace": "해저 궁전" },
+    "weather": { "storm": "폭풍", "cloudy": "흐림", "rainbow": "무지개", "sunny": "맑음", "calm": "잔잔" }
   },
 
   "rules": {

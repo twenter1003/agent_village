@@ -175,8 +175,13 @@ describe('collector', () => {
     srv.store.tick(last + 60_000);
     expect(clocks()).toBe(1);
     expect(srv.store.villages.get(ID)?.state.clock).toMatchObject({ activeMs: before + 60_000, day: 0 });
-    srv.store.tick(last + 600_000); // 상한 끝(열린 a3의 마지막 이벤트 13:26:10 + 10분) — 넣어도 시간이 안 늘어 멈춘다
-    expect(clocks()).toBe(1);
+    // 상한 끝(열린 a3의 마지막 이벤트 13:26:10 + 10분)을 넘긴 첫 줄은 하나 넣는다 — 끝을 잃은 실행이 '일하는 중'으로 남지 않게.
+    // 시간은 상한까지만 늘고, 그 뒤로는 넣지 않는다
+    srv.store.tick(last + 600_000);
+    expect(clocks()).toBe(2);
+    expect(srv.store.villages.get(ID)?.state.clock.activeMs).toBe(before + 550_000);
+    srv.store.tick(last + 700_000);
+    expect(clocks()).toBe(2);
     // 쉬는 마을(SessionStart만: 열린 실행·메인 턴 없음)엔 넣지 않는다
     srv.store.tick(Date.parse('2026-09-29T14:00:04.000Z'));
     expect(clocks(projectId(join(tmp, 'proj')))).toBe(0);

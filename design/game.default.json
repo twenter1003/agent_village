@@ -89,6 +89,8 @@
       "enabled": true,
       "maxPerDay": 1,
       "keepReserveRatio": 0.5,
+      "saveFromGauge": 0.6,
+      "$saveFromGauge": "다음 층 게이지가 이만큼 찼을 때만 그 층 자재비를 남기고 산다 (D33, 06 문서 6.4). 덜 찼으면 잔고 × keepReserveRatio까지",
       "seed": 42
     },
     "tokens": {
@@ -159,6 +161,16 @@
   "status": {
     "blockedOnPermissionPrompt": true,
     "blockedOnToolFailureStreak": 3
+  },
+
+  "weather": {
+    "recent": 10,
+    "rainbowWindow": 5,
+    "rainbowPassed": 3,
+    "stormBlocked": 2,
+    "stormFailRatio": 0.5,
+    "cloudyFailRatio": 0.2,
+    "$weather": "날씨 = 팀 상태 (06 문서 10장, D28), 위에서부터 먼저: 일하는 중이 아니면 잔잔 → 막힌 팀원 stormBlocked명 이상 또는 최근 recent개 끝난 실행(팀원·외부인)의 실패 비율 stormFailRatio 이상이면 폭풍 → 막힌 팀원 1명 또는 실패 비율 cloudyFailRatio 이상이면 흐림 → 최근 rainbowWindow개 중 테스트 통과 실행 rainbowPassed개 이상이고 실패 0이면 무지개 → 맑음"
   },
 
   "collector": {

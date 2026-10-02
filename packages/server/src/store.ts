@@ -134,11 +134,14 @@ export function createStore(dbPath: string, onChange: (v: Village) => void) {
     },
 
     /** 게임 시계: 일하는 마을에만 'clock' 줄(→ Tick, 시간만 흐름)을 기록하고 투영 → 도구 호출 없는 긴 실행 중에도 날이 제때
-     *  넘어간다. 날은 프로젝터가 활동 시간으로 정한다 (01 문서 6.2). activeUntil이 지난 마을은 더 넣어도 시간이 안 늘어 멈춘다 */
+     *  넘어간다. 날은 프로젝터가 활동 시간으로 정한다 (01 문서 6.2). activeUntil이 지난 마을은 더 넣어도 시간이 안 늘어 멈춘다 —
+     *  상한을 넘긴 첫 줄 하나는 넣는다: 끝을 잃은 실행이 다음 이벤트까지 '일하는 중'(날씨·팀장 상태)으로 남지 않게 */
     tick(now = Date.now()) {
-      for (const v of villages.values())
-        if (now < activeUntil(v.state, v.cfg))
+      for (const v of villages.values()) {
+        const until = activeUntil(v.state, v.cfg);
+        if (now < until || v.state.clock.now < until)
           record(v.id, { _t: new Date(now).toISOString(), hook_event_name: 'clock', cwd: v.cwd }, false);
+      }
     },
 
     /** 설정 화면이 tycoon.json을 쓴 뒤 (01 문서 10장): 팀원 목록을 다시 읽어 roster 줄 → 재생해도 같다 */

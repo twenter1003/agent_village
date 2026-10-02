@@ -135,6 +135,14 @@ function saneVillage(c: GameConfig): GameConfig {
   } as GameConfig;
 }
 
+/** 날씨 기준값도 (06 문서 10장): 음수가 아닌 숫자가 아니면 그 키만 기본값 — 문자열이면 비교가 늘 거짓이라 폭풍이 영영 안 온다 */
+function saneWeather(c: GameConfig): GameConfig {
+  const w: Record<string, unknown> = typeof c.weather === 'object' && c.weather !== null ? c.weather : {};
+  const ok = (v: unknown): v is number => typeof v === 'number' && Number.isFinite(v) && v >= 0;
+  const weather = Object.fromEntries(Object.entries(defaults.weather).map(([k, d]) => [k, ok(w[k]) ? w[k] : d]));
+  return { ...c, weather } as GameConfig;
+}
+
 export const makeConfig = (t?: TycoonConfig): GameConfig =>
-  saneVillage(saneWorkplace(saneTime(deepMerge(defaults, t?.overrides ?? {}))));
+  saneWeather(saneVillage(saneWorkplace(saneTime(deepMerge(defaults, t?.overrides ?? {})))));
 export { defaults as defaultConfig };

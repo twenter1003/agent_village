@@ -1,8 +1,9 @@
 // /dev/gallery — 캔버스 바다 06 건물 키트 · 07 공사 단계 · 08 가구·소품 보드와 같은 배열 (dc-import 목록 그대로)
-import { defaultConfig } from '@tycoon/core';
+import { defaultConfig, type WeatherKind } from '@tycoon/core';
 import { Building } from '../assets/sea/Building';
 import { Prop, type Slot } from '../assets/sea/Asset';
 import { jobLook } from '../live/sceneFromState';
+import { Weather } from '../world/Weather';
 
 // M15 새 그림 (06 문서 14.1): 직업 5종 성장 1층 → 2층 → 3층 → 큰 건물, 시청 시대 4, 랜드마크 2, 공원
 const JOBS = [...defaultConfig.jobPresets, defaultConfig.fallbackPreset];
@@ -47,6 +48,26 @@ const props = [
   'clamfountain',
 ];
 const tiles = ['sand', 'gravel', 'plaza', 'rock'];
+// M19 날씨 겹 (06 문서 10장): 물빛(Camera 바탕과 같은 그라데이션) 위 일터 하나. 마지막 칸 = 동작 줄이기
+const WEATHERS: [WeatherKind, boolean][] = [
+  ['storm', false],
+  ['cloudy', false],
+  ['rainbow', false],
+  ['sunny', false],
+  ['calm', false],
+  ['storm', true],
+];
+const sea = {
+  position: 'relative',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'flex-end',
+  width: 240,
+  height: 200,
+  overflow: 'hidden',
+  borderRadius: 14,
+  background: 'linear-gradient(var(--water-bg-1), var(--water-bg-2) 55%, var(--water-bg-3))',
+} as const;
 
 const Row = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <section>
@@ -155,6 +176,16 @@ export function Gallery() {
         <Cell id="prop.park">
           <Prop kind="prop.park" />
         </Cell>
+      </Row>
+      <Row title="M19 · 날씨 (폭풍 · 흐림 · 무지개 · 맑음 · 잔잔 · 폭풍 동작 줄이기)">
+        {WEATHERS.map(([k, still]) => (
+          <Cell key={`${k}${still}`} id={`weather.${k}${still ? ' · still' : ''}`}>
+            <div style={sea}>
+              <Building body="coral-1f" roof="scallop" sign="workshop" slot={1} scale={0.75} />
+              <Weather kind={k} still={still} />
+            </div>
+          </Cell>
+        ))}
       </Row>
       <Row title="08 · 가구">
         {furniture.map(([f, fab]) => (

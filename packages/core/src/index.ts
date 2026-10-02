@@ -9,6 +9,7 @@ export * from './rules/workplace';
 export { cleanBuildingName, NAME_MAX } from './rules/tasks';
 export * from './rules/economy';
 export * from './rules/village';
+export * from './rules/weather';
 export * from './rules/furniture';
 export * from './rules/personality';
 export { moveInAll, occupiedLots } from './rules/growth';

@@ -51,6 +51,9 @@
   --sheen: #ffffff;       /* 흰 반사: 물결 빛 무늬, 빛줄기(불투명도는 따로), 거품·진주 반사점 (보드의 #ffffff) */
   --bubble: #f3fcfd;      /* 채움 60% + --ink 1.6px 테 + 흰 반사점 */
   --fish-school: #8fc3cf; --fish-school-eye: #6fa9b8;
+  /* 날씨 (M19, 06 문서 10장). 폭풍 어둠은 --shadow-ink, 빛줄기는 --light-ray, 해류 줄무늬는 --sheen을 그대로 쓴다 */
+  --water-murk: #8fa596;  /* 흐림·폭풍: 탁한 물빛 덮개 (회녹색 흙탕) */
+  --caustic-1: #ff9db5; --caustic-2: #ffd56a; --caustic-3: #8fdca6; --caustic-4: #8ccbf5; --caustic-5: #b9a2f2;  /* 무지개 물결 무늬, 빨강 → 보라 */
 
   /* ── 생물 포인트 (소품의 작은 면에만. 넓은 면과 UI에는 쓰지 않음) ── */
   --starfish: #f59b62;    --starfish-hi: #fbd3b0;   /* 불가사리, 부표, 흰동가리 */
