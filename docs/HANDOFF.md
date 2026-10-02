@@ -97,6 +97,7 @@
 ## 3. 다음 할 일
 
 - 계획한 마일스톤은 없다. **보는 용 복사본은 M20 마감 뒤 sync → restart 했다** (사용자가 보는 화면 = 이 상태).
+- **사용 설명서 PDF** (`docs/guide.pdf`, 2026-10-03 판 198쪽): 원본 = `docs/guide/src/<장>.html`(장마다 한 조각) + `guide.css` + `img/`, `pnpm guide`로 만든다(`pnpm guide 03` = 3장만 `docs/guide/.preview-03.pdf`). 그림은 e2e 스냅샷(`SHOTS=<폴더> pnpm e2e`)을 jpg로 바꿔 쓴다(`sips -s format jpeg -s formatOptions 82`). 규칙이 바뀌면 앱 안 설명서(`i18n.ts` `guide`)와 이 PDF 원본을 같이 고친다.
 - **남은 것 (사용자가 고르면)**:
   - 날씨 겹이 Camera 구조에 포털로 붙는다, Camera 앞 빛줄기는 잔잔에도 남는다 (03 문서 8장).
   - 신문의 층 올림 줄은 core 활동 기록 글자("완공")와 500줄 한도에 기댄다 — 오래된 날은 빠질 수 있다 (06 9.1). 기금 흑자/적자는 게임 하루 정산 기록 기준이라 정산이 없던 날은 "기록 없음".

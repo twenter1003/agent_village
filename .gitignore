@@ -11,3 +11,5 @@ packages/web/src/assets/sea/critter.ts
 ds-bundle
 .design-sync
 .DS_Store
+docs/guide/.guide*.html
+docs/guide/.preview-*.pdf

@@ -10,7 +10,8 @@
     "lint": "tsc -b && eslint . && prettier --check .",
     "assets": "tsx tools/extract-assets.ts",
     "replay": "tsx tools/replay.ts",
-    "connect": "tsx tools/connect.ts"
+    "connect": "tsx tools/connect.ts",
+    "guide": "tsx tools/guide-pdf.ts"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
