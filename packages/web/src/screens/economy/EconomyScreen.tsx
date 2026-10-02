@@ -432,7 +432,7 @@ export function EconomyScreen({ projectId, state: s, cfg, onBack }: EconomyScree
   const workCard = table ? (
     <Table
       title={t('economy.works')}
-      head={[t('economy.member'), t('workplace.floors'), t('workplace.gaugeLabel'), t('economy.state')]}
+      head={[t('economy.member'), t('workplace.floors'), t('workplace.gaugeLabel'), t('economy.worksWait')]}
       rows={works.map((w) => [
         workplaceName(s, cfg, w.b),
         t(`workplace.floor.${Math.min(w.b.floor, 4)}`),
