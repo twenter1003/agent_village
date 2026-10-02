@@ -2,6 +2,7 @@
 // 카드 누르기 ↔ 캐릭터 강조는 같은 selectedId 하나 (01 문서 8.2).
 // 상세 = 같은 페이지 `?project=<id>` + `&building=`(M6) · `&house=` · `&shop=` · `&economy`(M7) · `&settings`(M9) 하나 — 라우터 없이, 새로고침·링크로 바로 열림 (01 문서 8.2 화면 메모).
 // 격자 보기 = `&grid` (M9, 01 문서 8.3). 상세를 열어도 남는다
+// 신문 = `&news[=YYYY-MM-DD]` (M18, 06 문서 9장), 설명서 = `&guide[=<장 id>]` (M17, 06 문서 11장)
 import { useEffect, useMemo, useState } from 'react';
 import { fetchProjects, RETRY_MS, useVillage, type ProjectInfo } from '../live/api';
 import { memberViews } from '../live/movement';
@@ -11,13 +12,15 @@ import { liveWorld, LiveVillage } from '../world/LiveVillage';
 import { BuildingScreen } from './building/BuildingScreen';
 import { EconomyScreen } from './economy/EconomyScreen';
 import { GridScreen } from './grid/GridScreen';
+import { GuideScreen } from './guide/GuideScreen';
 import { HouseScreen } from './house/HouseScreen';
 import { MainScreen } from './MainScreen';
+import { NewsScreen } from './news/NewsScreen';
 import { HookGuide } from './settings/HookGuide';
 import { SettingsScreen } from './settings/SettingsScreen';
 import { ShopScreen } from './shop/ShopScreen';
 
-const SCREENS = ['building', 'house', 'shop', 'economy', 'settings'] as const;
+const SCREENS = ['building', 'house', 'shop', 'economy', 'settings', 'news', 'guide'] as const;
 type View = { screen: (typeof SCREENS)[number]; id: string } | null;
 
 const sameList = (a: ProjectInfo[] | null, b: ProjectInfo[]) => JSON.stringify(a) === JSON.stringify(b);
@@ -126,6 +129,10 @@ export function LiveApp() {
   const navigate = (to: { screen: 'shop' | 'house'; memberId: string }) => go({ screen: to.screen, id: to.memberId });
   const economy = () => go({ screen: 'economy', id: '' });
   const settings = () => go({ screen: 'settings', id: '' });
+  /** 신문: 날짜 없으면 신문 화면이 오늘(이 컴퓨터 날짜)을 고른다. 날짜를 바꾸면 신문 화면이 onDate로 */
+  const news = (date = '') => go({ screen: 'news', id: date });
+  /** 설명서: 장 id 없으면 목차 맨 위 */
+  const guide = (section = '') => go({ screen: 'guide', id: section });
   /** 마을/격자: 기록을 쌓지 않는다 (앞뒤 기록의 from은 그대로) */
   const setMode = (m: 'village' | 'grid') => {
     if (projectId === null) return;
@@ -147,7 +154,11 @@ export function LiveApp() {
       // 사는 팀원은 상점 안에서 바뀐다 → 주소의 팀원이 바뀌면 새로
       <ShopScreen key={view.id} {...common} memberId={view.id} onNavigate={navigate} />
     ) : view.screen === 'settings' ? (
-      <SettingsScreen {...common} cwd={project?.cwd ?? ''} connected={connected && !down} />
+      <SettingsScreen {...common} cwd={project?.cwd ?? ''} connected={connected && !down} onGuide={() => guide()} />
+    ) : view.screen === 'news' ? (
+      <NewsScreen {...common} date={view.id} onDate={(d) => news(d)} />
+    ) : view.screen === 'guide' ? (
+      <GuideScreen {...common} section={view.id} onSection={(id) => guide(id)} />
     ) : (
       <EconomyScreen {...common} />
     ));
@@ -161,6 +172,8 @@ export function LiveApp() {
       onSelect={openMember}
       onEconomy={economy}
       onSettings={projectId === null ? undefined : settings}
+      onNews={projectId === null ? undefined : () => news()}
+      onGuide={projectId === null ? undefined : () => guide()}
       views={views}
       cfg={cfg}
       detail={detail}

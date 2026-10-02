@@ -19,6 +19,9 @@ export const clampZoom = (z: number, fit: number) => Math.min(MAX_ZOOM, Math.max
 const DRAG_PX = 5;
 /** 이보다 줄여 보면 건물 이름표(.lv-tag)를 숨기고 얼굴 간판만 둔다 (06 문서 7장). 12px 이름표가 9px 밑으로 작아지는 곳 */
 export const TAG_MIN_ZOOM = 0.75;
+/** 처음 맞춤 배율 (M20): 전체 보기, 다만 이름표가 숨는 배율보다 작아지면 그 배율로 가운데(광장)를 — 수도(80×80)에서
+ *  전체 보기는 그림이 너무 작았다. 섬 전체는 "마을 전체 보기" 버튼 */
+export const homeZoom = (all: number) => Math.max(all, TAG_MIN_ZOOM);
 
 export function Camera({ worldW, worldH, children }: { worldW: number; worldH: number; children: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -28,14 +31,14 @@ export function Camera({ worldW, worldH, children }: { worldW: number; worldH: n
   const touched = useRef(false); // 사람이 끌거나 확대했나. 안 했으면 칸 크기가 바뀔 때 다시 맞춘다
   const floor = useRef(MIN_ZOOM); // 손으로 줄이는 바닥 (휠 처리기는 처음 함수를 계속 써서 ref로)
 
-  /** 가운데 맞춤. z 없으면 전체 보기 배율. 섬이 커지면(worldW·H가 바뀌면) 다시 불린다 */
+  /** 가운데 맞춤. z = 배율, 'home' = 처음 맞춤(homeZoom), 없으면 전체 보기 배율. 섬이 커지면(worldW·H가 바뀌면) 다시 불린다 */
   const fit = useCallback(
-    (zoom?: number) => {
+    (zoom?: number | 'home') => {
       const el = ref.current;
       if (!el) return;
       const all = fitZoom(el.clientWidth, el.clientHeight, worldW, worldH);
       floor.current = Math.min(MIN_ZOOM, all);
-      const z = zoom ?? all;
+      const z = zoom === 'home' ? homeZoom(all) : (zoom ?? all);
       setCam({ z, tx: (el.clientWidth - worldW * z) / 2, ty: (el.clientHeight - worldH * z) / 2 });
     },
     [worldW, worldH],
@@ -44,7 +47,7 @@ export function Camera({ worldW, worldH, children }: { worldW: number; worldH: n
   const { zoom } = usePrefs();
   const home = useCallback(() => {
     touched.current = false;
-    fit(zoom === 'fit' ? undefined : zoom);
+    fit(zoom === 'fit' ? 'home' : zoom);
   }, [fit, zoom]);
   useEffect(home, [home]);
 

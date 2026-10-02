@@ -3,7 +3,7 @@ import { act, createElement as h } from 'react';
 import { createRoot } from 'react-dom/client';
 import { expect, test, vi } from 'vitest';
 import { iso, world } from '../render/iso';
-import { Camera, clampZoom, fitZoom } from './Camera';
+import { Camera, clampZoom, fitZoom, homeZoom, TAG_MIN_ZOOM } from './Camera';
 
 (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
 
@@ -110,4 +110,7 @@ test('전체 보기 (02 문서 7.5, 2026-10-01): 섬 전체가 늘 보인다 —
   expect(clampZoom(0.1, 0.25)).toBe(0.25); // 큰 섬: 전체 보기까지
   expect(clampZoom(0.1, 0.98)).toBe(0.6); // 작은 섬: 예전 바닥 0.6
   expect(clampZoom(3, 0.98)).toBe(1.6);
+  // 처음 맞춤 (M20): 작은 섬은 전체 보기 그대로, 큰 섬은 이름표가 보이는 배율로 가운데
+  expect(homeZoom(fitZoom(cw, ch, world(16).w, world(16).h))).toBeCloseTo(0.98, 2);
+  expect(homeZoom(fitZoom(cw, ch, world(80).w, world(80).h))).toBe(TAG_MIN_ZOOM);
 });

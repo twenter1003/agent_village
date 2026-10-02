@@ -6,8 +6,8 @@ import { ICON_NAMES, Icon, type IconName } from './Icon';
 
 const html = (name: IconName, title?: string) => renderToStaticMarkup(createElement(Icon, { name, title }));
 
-test('바다 아이콘 31종 = Type 17 + SeaUI 8 + chevronDown + move(SeaScreenHouse) + 시대 4 (M15)', () => {
-  expect(ICON_NAMES).toHaveLength(31);
+test('바다 아이콘 38종 = Type 17 + SeaUI 8 + chevronDown + move(SeaScreenHouse) + 시대 4 (M15) + 설명서·신문 + 날씨 5 (M17~M19)', () => {
+  expect(ICON_NAMES).toHaveLength(38);
 });
 
 test.each(ICON_NAMES)('%s: <svg> 한 장, 색은 토큰만', (name) => {

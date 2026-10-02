@@ -6,7 +6,7 @@ import { nextId } from '../projector/project';
 import { LEADER_ID, type AgentRun, type Member, type Task, type VillageState } from '../projector/types';
 import { findSpot } from './furniture';
 import { buildPublicWork, levelUp } from './village';
-import { accrue, nextFloorCost, raiseAll, waitingMaterials } from './workplace';
+import { accrue, materialsReserve, raiseAll, waitingMaterials } from './workplace';
 
 /** 6.4 가구 가격 = basePrice (고정, D20 규칙 2 — 물가 없음). 모르는 가구는 null */
 export function furniturePrice(kind: string, cfg: GameConfig): number | null {
@@ -247,8 +247,12 @@ function chargeLeader(s: VillageState, leader: Member, weight: number, at: numbe
   ec.today.leaderUnpaid += cost - paid;
   leader.tokenCostToday += paid;
   if (paid < cost) {
-    if (!ec.deficit)
-      s.feed.push({ at, kind: 'economy', text: '시청 적자 · 마을 기금이 팀장 토큰값을 다 못 냈어요', ref: LEADER_ID });
+    // 들어갈 때 한 번: 활동 기록 + 알림 (06 문서 13장)
+    if (!ec.deficit) {
+      const text = '시청 적자 · 마을 기금이 팀장 토큰값을 다 못 냈어요';
+      s.feed.push({ at, kind: 'economy', text, ref: LEADER_ID });
+      s.toasts.push({ id: nextId(s, 'toast'), at, kind: 'tokens', text, sticky: false, ref: LEADER_ID });
+    }
     ec.deficit = true;
   }
 }
@@ -455,11 +459,11 @@ function preferredTag(m: Member, day: number, cfg: GameConfig) {
   return tags[Math.floor(rand(cfg.economy.autoBuy.seed + day, m.slot) * tags.length)];
 }
 
-/** 6.4 자동 구매: 하루 maxPerDay개, 오늘 가격 ≤ 예산 = 잔고 − max(잔고 × keepReserveRatio, 다음 층 자재비). 태그 안에서 덜 가진 것, 같으면 설정 순서 */
+/** 6.4 자동 구매: 하루 maxPerDay개, 오늘 가격 ≤ 예산 = 잔고 − max(잔고 × keepReserveRatio, 남길 자재비 — 게이지가 찼을 때만, D33). 태그 안에서 덜 가진 것, 같으면 설정 순서 */
 function autoBuy(s: VillageState, m: Member, day: number, at: number, cfg: GameConfig) {
   const { maxPerDay, keepReserveRatio } = cfg.economy.autoBuy;
   const owned = (kind: string) => m.furniture.filter((x) => x.kind === kind).length;
-  const keep = nextFloorCost(s, m.id, cfg); // 다음 층 자재비는 남긴다 (06 문서 6.4)
+  const keep = materialsReserve(s, m.id, cfg); // 다음 층 게이지가 찼으면 자재비는 남긴다 (D33)
   while (m.boughtToday < maxPerDay) {
     const tag = preferredTag(m, day, cfg);
     const budget = m.balance - Math.max(m.balance * keepReserveRatio, keep);

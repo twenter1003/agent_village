@@ -42,6 +42,10 @@ export interface MainScreenProps {
   grid?: ReactNode;
   /** 상단 바 설정 버튼 → 설정 화면 (01 문서 10장) */
   onSettings?: () => void;
+  /** 상단 바 신문 버튼 → 신문 달력 (06 문서 9장) */
+  onNews?: () => void;
+  /** 상단 바 "?" 버튼 → 설명서 (06 문서 11장) */
+  onGuide?: () => void;
   /** 수집기 끊김 칩 (마을 칸 위 가운데). 마을·격자 어느 보기에서도 보이게 마을 밖에 둔다 */
   offline?: boolean;
 }
@@ -63,6 +67,8 @@ export function MainScreen({
   onModeChange,
   grid,
   onSettings,
+  onNews,
+  onGuide,
   offline,
 }: MainScreenProps) {
   // 상세를 열면 포커스를 상세로, 닫으면 처음 연 버튼으로 돌려준다 (가려진 버튼에 포커스가 남지 않게).
@@ -102,6 +108,8 @@ export function MainScreen({
         onReadAll={readAll}
         onEconomy={onEconomy}
         onSettings={onSettings}
+        onNews={onNews}
+        onGuide={onGuide}
         cfg={cfg}
       />
       <main className="ms__village">{village}</main>

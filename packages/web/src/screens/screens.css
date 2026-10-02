@@ -247,6 +247,28 @@
     display: none;
   }
 }
+.tb__tools {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+/* 아이콘 버튼이 다섯이 된 뒤 (M20): 1440에서 레벨 보조 글자가 다 줄어 있었다 → 로고 글자를 먼저 숨긴다(로고는 aria-label).
+   1200 이하는 간격을 줄이고 레벨 막대·시대 아이콘도 숨겨 "Lv.N 시대" 글자가 남게 (진행은 title에) */
+@media (max-width: 1440px) {
+  .tb__name {
+    display: none;
+  }
+}
+@media (max-width: 1200px) {
+  .tb {
+    gap: var(--sp-2);
+    padding: 0 var(--sp-4);
+  }
+  .tb__level .ui-vprog,
+  .tb__level [data-icon] {
+    display: none;
+  }
+}
 /* 금고·기금 칩 (40, 테두리 2) → 경제 패널. 누르는 것 = --lift-press, 올림·눌림은 ui-btn과 같음 (캔버스 SeaTopBar) */
 .tb__chip {
   display: flex;
@@ -600,4 +622,37 @@
 .ts > .ui-toast {
   width: 100%;
   pointer-events: auto;
+}
+
+/* ── 상단 바 날씨 (M19, 06 문서 10장): 이유 칸은 알림 목록 칸과 같은 자리 ── */
+.tb__weather {
+  position: relative;
+}
+.tb__weather-box {
+  position: absolute;
+  top: calc(100% + var(--sp-2));
+  right: 0;
+  z-index: 10;
+  width: 260px;
+}
+.tb__weather-title {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+  margin: 0 0 var(--sp-2);
+  font-family: var(--font-display);
+  font-size: var(--fs-body);
+  font-weight: 400;
+}
+.tb__weather-why,
+.tb__weather-basis {
+  margin: 0;
+  font-size: var(--fs-sub);
+  line-height: var(--lh-sub);
+  word-break: keep-all;
+}
+.tb__weather-basis {
+  margin-top: var(--sp-1);
+  color: var(--text-2);
+  font-size: var(--fs-min);
 }

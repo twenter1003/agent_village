@@ -246,6 +246,13 @@ test('상단 바: 큰 숫자(Lv.9·6자리 보물상자·긴 보조 글자)에�
     await expect(settings).toBeInViewport({ ratio: 1 });
     expect((await settings.boundingBox())?.width, `${width} 설정 버튼이 눌려 줄지 않음`).toBe(44);
     if (width <= 1200) await expect(level.locator('.tb__sub')).toBeHidden();
+    // 아이콘 버튼 다섯(M17~M19) 뒤에도 레벨 글자와 맨 끝 설명서 버튼이 다 보인다 (M20)
+    await expect(level.locator('.tb__prog-title')).toBeInViewport({ ratio: 1 });
+    expect(
+      await level.locator('.tb__prog-title').evaluate((e) => e.getBoundingClientRect().right),
+      `${width} 레벨 글자`,
+    ).toBeLessThanOrEqual(await level.evaluate((e) => e.getBoundingClientRect().right));
+    await expect(page.getByRole('button', { name: '설명서', exact: true })).toBeInViewport({ ratio: 1 });
     if (!SHOTS) continue;
     await page.waitForTimeout(400); // 막대 채움 transition (300ms)
     if (width === 1440) {

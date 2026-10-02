@@ -185,7 +185,7 @@ test('토스트: 최대 3개 새 것이 위, 자동은 5초 뒤 사라지고 회
   click(fund);
   expect(onEconomy).toHaveBeenCalledTimes(3);
   const shown = () => texts(r.div, '.ts .ui-toast__title');
-  const bell = () => r.div.querySelector('.tb__iconbtn')?.getAttribute('aria-label');
+  const bell = () => r.div.querySelector('.tb__notif .tb__iconbtn')?.getAttribute('aria-label');
   expect(shown()).toEqual(['c 완공', 'b 완공', 'a 완공']);
   expect(bell()).toBe('알림 5개');
 

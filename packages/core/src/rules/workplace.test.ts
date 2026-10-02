@@ -7,7 +7,6 @@ import { initialState, project, replay } from '../projector/project';
 import type { VillageState } from '../projector/types';
 import { occupiedLots } from './growth';
 import { cleanBuildingName } from './tasks';
-import { nextFloorCost } from './workplace';
 
 const T0 = Date.parse('2026-10-01T00:00:00.000Z');
 const at = (sec: number) => T0 + sec * 1000;
@@ -321,44 +320,20 @@ describe('층 올리기 (5.3·5.4)', () => {
     expect(s2.members['frontend-dev']?.furniture).toEqual([]);
   });
 
-  test('다음 층 자재비 (6.4 ×10 뒤 보정): 지금 일터의 다음 층 값, 큰 건물이면 다음 일터 2층 값, 일터가 없으면 0', () => {
-    const c = makeConfig({
-      overrides: {
-        workplace: {
-          levels: [
-            { points: 0, cost: 0, level: 1 },
-            { points: 10, cost: 100, level: 1 },
-            { points: 20, cost: 200, level: 1 },
-            { points: 30, cost: 300, level: 1 },
-          ],
-        },
-      },
-    });
-    const s = play([roster, ...work('a1', 'backend-dev', 1, 5)], c);
-    const be = s.members['backend-dev'];
-    if (be) be.balance = 10_000;
-    const costs = [nextFloorCost(s, 'frontend-dev', c), nextFloorCost(s, 'backend-dev', c)];
-    const big = play(work('a2', 'backend-dev', 10, 30), c, s); // 35점, 잔고로 2·3층·큰 건물
-    expect(wp(big)?.floor).toBe(4);
-    expect([...costs, nextFloorCost(big, 'backend-dev', c)]).toEqual([0, 100, 100]);
-    const two = structuredClone(big);
-    if (two.buildings['w1:backend-dev']) two.buildings['w1:backend-dev'].floor = 2;
-    expect(nextFloorCost(two, 'backend-dev', c)).toBe(200); // 2층 → 3층 값
-  });
-
-  test('가구 자동 구매는 다음 층 자재비를 남긴다 (6.4): 예산 = 잔고 − max(예비 비율 몫, 다음 층 자재비)', () => {
-    const s1 = play([roster, ...work('a1', 'frontend-dev', 1, 5)], quick); // 1층, 게이지 5/10 → 대기 아님, 다음 층 300
-    const at1 = (balance: number) => {
-      const s = structuredClone(s1);
+  test('가구 자동 구매는 게이지가 찼을 때만 다음 층 자재비를 남긴다 (D33): 예산 = 잔고 − max(예비 비율 몫, 남길 자재비)', () => {
+    const at1 = (calls: number, balance: number) => {
+      const s = play([roster, ...work('a1', 'frontend-dev', 1, calls)], quick); // 1층, 게이지 calls/10, 다음 층 300
       const m = s.members['frontend-dev'];
       if (!m) throw new Error('frontend-dev');
       m.balance = balance;
       return play([tick(1, 100)], quick, s).members['frontend-dev'];
     };
-    // ENFP(꾸미기) 화분 80: 379 − max(189.5, 300) = 79 → 안 산다 (예비 비율만이면 189.5로 샀다)
-    expect(at1(379)).toMatchObject({ balance: 379, furniture: [] });
-    expect(at1(380)?.furniture.map((f) => f.kind)).toEqual(['plant']); // 380 − 300 = 80
-    expect(at1(380)?.balance).toBe(300);
+    // 게이지 5/10 < 0.6 → 남기지 않음: ENFP(꾸미기) 화분 80, 379 − 189.5 ≥ 80 → 산다
+    expect(at1(5, 379)?.furniture.map((f) => f.kind)).toEqual(['plant']);
+    // 게이지 8/10 ≥ 0.6 → 300 남김: 379 − max(189.5, 300) = 79 → 안 산다, 380이면 산다
+    expect(at1(8, 379)).toMatchObject({ balance: 379, furniture: [] });
+    expect(at1(8, 380)?.furniture.map((f) => f.kind)).toEqual(['plant']);
+    expect(at1(8, 380)?.balance).toBe(300);
   });
 
   test('기본보다 긴 층 표: 층 이름은 "N층", 마지막 줄만 큰 건물 (기본 표의 글자는 그대로)', () => {

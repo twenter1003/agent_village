@@ -454,3 +454,33 @@ test('효율 순위 (D23, 06 문서 3.6): 일 1점당 토큰 순, 순위 밖은 
   ]);
   r.unmount();
 });
+
+test('일터 현황 (06 문서 13장): 팀원마다 지금 일터 층 · 다음 층까지 일 점수 · 대기 이유, 표도 같은 값', async () => {
+  offline();
+  const s = village(DAYS);
+  s.buildings = {
+    'w1:backend-dev': {
+      id: 'w1:backend-dev',
+      memberId: 'backend-dev',
+      n: 1,
+      name: '',
+      lot: { x: 0, y: 0, size: 3 },
+      floor: 1,
+      points: 800,
+      paid: 0,
+      waiting: 'materials',
+      startedAt: 0,
+      floorAt: 0,
+    },
+  } as VillageState['buildings'];
+  const r = render(h(EconomyScreen, { projectId: 'p', state: s, cfg, onBack: () => {} }));
+  await flush();
+  const row = r.div.querySelector('.ec-wrow[data-building="w1:backend-dev"]');
+  expect(row?.textContent).toContain('1층');
+  expect(row?.textContent).toContain('일 점수 800 / 750');
+  expect(row?.textContent).toContain('자재비 대기');
+  expect(r.div.querySelectorAll('.ec-wrow')).toHaveLength(1); // 일터 없는 팀원은 줄 없음
+  click(button(r.div, '표로 보기'));
+  expect(tableRows(r.div, '일터 현황')).toEqual([['backend-dev의 공방', '1층', '일 점수 800 / 750', '자재비 대기']]);
+  r.unmount();
+});

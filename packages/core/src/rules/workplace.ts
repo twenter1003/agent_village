@@ -107,11 +107,14 @@ export function raiseAll(s: VillageState, at: number, cfg: GameConfig): void {
 export const waitingMaterials = (s: VillageState, memberId: string) =>
   Object.values(s.buildings).some((b) => b.memberId === memberId && b.waiting === 'materials');
 
-/** 그 팀원이 다음에 낼 자재비 (06 문서 6.4): 지금 일터의 다음 층 값, 큰 건물이면 다음 일터 2층 값, 일터가 없으면 0.
- *  가구 자동 구매가 이만큼 남긴다 — 잔고가 커져도(×10, D31) 가구가 자재비를 먹지 않게. 레벨 대기여도 그 층 값 */
-export function nextFloorCost(s: VillageState, memberId: string, cfg: GameConfig): number {
+/** 가구 자동 구매가 남길 자재비 (D33, 06 문서 6.4): 지금 일터의 다음 층 게이지가 autoBuy.saveFromGauge 이상이면 그 층 자재비, 아니면 0.
+ *  공사 중(0층)·큰 건물은 0 — 1층은 공짜, 큰 건물 뒤 두 번째 일터는 게이지가 0부터 */
+export function materialsReserve(s: VillageState, memberId: string, cfg: GameConfig): number {
   const cur = currentWorkplace(s, memberId);
-  if (!cur) return 0;
   const rows = cfg.workplace.levels;
-  return (cur.floor >= rows.length ? rows[1] : rows[cur.floor])?.cost ?? 0;
+  if (!cur || cur.floor < 1 || cur.floor >= rows.length) return 0;
+  const from = rows[cur.floor - 1]?.points ?? 0;
+  const next = rows[cur.floor];
+  if (!next) return 0;
+  return (cur.points - from) / (next.points - from) >= cfg.economy.autoBuy.saveFromGauge ? next.cost : 0;
 }

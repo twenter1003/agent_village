@@ -206,6 +206,8 @@ describe('팀장 = 시장 (D21, 06 문서 4장)', () => {
     expect(play([turn(45, 1_009_000)], cfg, s1).economy.deficit).toBe(true);
     const s2 = play([turn(50, 2_000_000)], cfg, s1);
     expect(deficitLines(s2)).toBe(1); // 이미 적자면 또 안 씀
+    // 알림도 들어갈 때 한 번 (06 문서 13장)
+    expect(s2.toasts.filter((x) => x.text.startsWith('시청 적자'))).toMatchObject([{ kind: 'tokens', ref: LEADER_ID }]);
     expect(s2.economy.today.leaderUnpaid).toBe(100);
   });
   test('시청 적자는 붙어 있다 (06 문서 3.3): 같은 날 다 낸 청구가 와도 그대로, 정산 뒤에도 그대로, 못 낸 몫이 없는 날이 지나야 꺼진다', () => {
@@ -702,7 +704,7 @@ describe('토큰 진단 (D13, 01 문서 6.7)', () => {
       usage: use({ [OPUS]: T({ cacheRead: last }) }, {}, last),
     });
     const s = play([roster, turn(1, 150_000), turn(2, 250_000), turn(3, 260_000), turn(4, 90_000), turn(5, 210_000)]);
-    const warns = s.toasts.filter((x) => x.kind === 'tokens');
+    const warns = s.toasts.filter((x) => x.kind === 'tokens' && x.text.startsWith('팀장 대화'));
     expect(warns.map((x) => x.text)).toEqual([
       '팀장 대화가 25만 토큰 · 호출마다 약 1.3만씩 다시 읽어요 · /compact나 새 세션으로 줄여요',
       '팀장 대화가 21만 토큰 · 호출마다 약 1.1만씩 다시 읽어요 · /compact나 새 세션으로 줄여요',

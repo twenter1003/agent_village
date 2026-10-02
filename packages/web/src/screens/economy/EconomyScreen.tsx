@@ -1,13 +1,13 @@
 // 경제 패널 (01 문서 8.7 + 구현 메모, 03 문서 6장, 캔버스 SeaScreenEconomy): 상단 바 아래를 덮는 상세 화면.
 // 기간 필터 한 줄 → 지표 타일 3개 → 2열(기금 흐름·주별 금고 흐름 / 잔고·효율) 또는 표. 기간은 아래 전부에 같이 적용.
 // 물가·금리·중앙은행은 없다 (D20). 지금 값은 상단 바와 같은 실시간 상태, 시계열은 GET /economy (실패하면 상태의 economy.history).
-import { efficiency, slotTone, topCause, type Tip } from '@tycoon/core';
+import { currentWorkplace, efficiency, slotTone, topCause, type Tip } from '@tycoon/core';
 import type { DayRecord, GameConfig, Member, VillageState } from '@tycoon/core';
 import { useEffect, useState, type ReactNode } from 'react';
 import { Prop } from '../../assets/sea/Asset';
 import { t } from '../../i18n';
 import { Icon } from '../../icons/Icon';
-import { toAccessory, toSpecies } from '../../live/sceneFromState';
+import { toAccessory, toSpecies, workplaceName } from '../../live/sceneFromState';
 import { Critter } from '../../render/Critter';
 import { Button, Toggle } from '../../ui';
 import { fetchEconomy, type EconomyRange } from './api';
@@ -414,6 +414,66 @@ export function EconomyScreen({ projectId, state: s, cfg, onBack }: EconomyScree
     </section>
   );
 
+  // 일터 현황 (06 문서 13장): 팀원마다 지금 일터의 층 · 다음 층까지 일 점수 · 대기 이유. 막대 = 격자 카드와 같은 누적 점수
+  const works = workers.flatMap((m) => {
+    const b = currentWorkplace(s, m.id);
+    return b ? [{ m, b, next: cfg.workplace.levels[b.floor] }] : [];
+  });
+  const waitText = (w: (typeof works)[number]) =>
+    w.b.waiting && w.next
+      ? w.b.waiting === 'materials'
+        ? t('workplace.waiting.materials')
+        : t('workplace.waiting.level', { n: w.next.level })
+      : '';
+  const gaugeText = (w: (typeof works)[number]) =>
+    w.next
+      ? t('workplace.gauge', { points: fmt(Math.floor(w.b.points)), next: fmt(w.next.points) })
+      : t('workplace.gaugeMax', { points: fmt(Math.floor(w.b.points)) });
+  const workCard = table ? (
+    <Table
+      title={t('economy.works')}
+      head={[t('economy.member'), t('workplace.floors'), t('workplace.gaugeLabel'), t('economy.state')]}
+      rows={works.map((w) => [
+        workplaceName(s, cfg, w.b),
+        t(`workplace.floor.${Math.min(w.b.floor, 4)}`),
+        gaugeText(w),
+        waitText(w) || '—',
+      ])}
+    />
+  ) : (
+    <section className="ui-card ec-card">
+      <div className="ec-cardhead">
+        <h2 className="ec-h2">{t('economy.works')}</h2>
+        <span className="ec-meta">{t('economy.worksMeta')}</span>
+      </div>
+      {works.length === 0 ? (
+        <p className="ec-meta">{t('economy.worksEmpty')}</p>
+      ) : (
+        <ul className="ec-bars">
+          {works.map((w) => (
+            <li key={w.b.id} className="ec-wrow" data-building={w.b.id}>
+              <span className="ec-who">
+                <Face m={w.m} />
+                <span className="ec-who__name">{w.m.name}</span>
+                <span className="ec-job">{t(`workplace.floor.${Math.min(w.b.floor, 4)}`)}</span>
+              </span>
+              <span className="ec-track" aria-hidden="true">
+                <span
+                  className="ec-fill"
+                  style={{ width: `${w.next ? Math.min(1, w.b.points / w.next.points) * 100 : 100}%` }}
+                />
+              </span>
+              <span className="ec-bnum">
+                {gaugeText(w)}
+                {waitText(w) && <span className="ec-meta">{waitText(w)}</span>}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  );
+
   return (
     <div className={`ec${loading ? ' ec--loading' : ''}`}>
       <div className="ec-head">
@@ -523,6 +583,7 @@ export function EconomyScreen({ projectId, state: s, cfg, onBack }: EconomyScree
 
         <div className="ec-col">
           {balances}
+          {workCard}
           {efficient}
         </div>
       </div>

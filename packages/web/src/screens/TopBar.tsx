@@ -6,6 +6,7 @@ import { IconButton, VillageProgress } from '../ui';
 import type { ProjectInfo } from '../live/api';
 import { noticeText, usePrefs } from '../live/prefs';
 import { t } from '../i18n';
+import { WeatherButton } from './WeatherButton';
 import './screens.css';
 
 const fmt = (n: number) => n.toLocaleString('ko-KR');
@@ -32,6 +33,10 @@ export interface TopBarProps {
   onSettings?: () => void;
   /** 마을 레벨 표 (06 문서 6.1). 없으면 기본 설정 */
   cfg?: GameConfig;
+  /** 신문 버튼 → 신문 달력 (06 문서 9장). 없으면 비활성 */
+  onNews?: () => void;
+  /** "?" 버튼 → 설명서 (06 문서 11장). 없으면 비활성 */
+  onGuide?: () => void;
 }
 
 /** 알림 목록에 보이는 최근 알림 수 */
@@ -119,6 +124,8 @@ export function TopBar({
   onEconomy,
   onSettings,
   cfg = DEFAULT_CFG,
+  onNews,
+  onGuide,
 }: TopBarProps) {
   // 마을 레벨 칸 (06 문서 13장·6.4): 막대 = 이 레벨 안에서 다음 레벨까지 일 점수,
   // 보조 글자 = 일·기금 / 다음 레벨 조건. 기금 조건 = 공사비 + 그날 팀장 토큰값 (core levelUp과 같은 조건)
@@ -203,15 +210,33 @@ export function TopBar({
         {deficit ? <Icon name="blocked" size={22} title={t('economy.deficit')} /> : <Icon name="coin" size={22} />}
         {t('economy.fund')} <span className="tb__num">{fmt(state?.economy.fund ?? 0)}</span>
       </button>
-      <Notifications toasts={state?.toasts ?? []} unread={unread} onReadAll={onReadAll} />
-      {/* 마을이 없으면(설정할 곳 없음) aria-disabled + 비활성 색. 포커스는 남는다 */}
-      <IconButton
-        className="tb__iconbtn"
-        aria-label={t('topbar.settings')}
-        aria-disabled={onSettings ? undefined : 'true'}
-        icon={<Icon name="settings" size={22} />}
-        onClick={onSettings}
-      />
+      {/* 아이콘 버튼 묶음 (M17~M19로 셋이 늘어 간격을 줄임) */}
+      <div className="tb__tools">
+        <WeatherButton state={state} cfg={cfg} />
+        <IconButton
+          className="tb__iconbtn"
+          aria-label={t('topbar.news')}
+          aria-disabled={onNews ? undefined : 'true'}
+          icon={<Icon name="news" size={22} />}
+          onClick={onNews}
+        />
+        <Notifications toasts={state?.toasts ?? []} unread={unread} onReadAll={onReadAll} />
+        {/* 마을이 없으면(설정할 곳 없음) aria-disabled + 비활성 색. 포커스는 남는다 */}
+        <IconButton
+          className="tb__iconbtn"
+          aria-label={t('topbar.settings')}
+          aria-disabled={onSettings ? undefined : 'true'}
+          icon={<Icon name="settings" size={22} />}
+          onClick={onSettings}
+        />
+        <IconButton
+          className="tb__iconbtn"
+          aria-label={t('topbar.guide')}
+          aria-disabled={onGuide ? undefined : 'true'}
+          icon={<Icon name="help" size={22} />}
+          onClick={onGuide}
+        />
+      </div>
     </header>
   );
 }

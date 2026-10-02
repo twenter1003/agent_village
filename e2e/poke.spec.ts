@@ -72,7 +72,7 @@ test('집 간판·이름표, 캐릭터 누르기(버둥·말풍선 1.2초), 끌�
   await expect(sign.locator('clipPath circle')).toBeAttached();
   await expect(sign.locator('g[clip-path] svg[data-asset-id$=".face"]')).toBeAttached();
   await expect(page.locator('[data-name-tag="backend-dev"]')).toHaveText('backend-dev');
-  await expect(page.locator('[data-name-tag="@leader"]')).toHaveText(['팀장의 집', '시청']);
+  await expect(page.locator('[data-name-tag="@leader"]')).toHaveText(['시청', '팀장의 집']); // 깊이 순서 (북쪽 시청이 먼저, M20)
   await expect(page.locator('[data-name-tag="backend-dev"]')).toBeVisible();
 
   // 현장에 도착해 일하는 중 (망치질·나르기)
